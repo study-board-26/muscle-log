@@ -1,5 +1,14 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import type { Exercise, Region } from "../data/types";
+
+/*
+ * three.js は 500KB を超えるので、初回表示には載せない。
+ * 3Dはカードを開いたときにだけ必要なので、その時点で取りに行く。
+ * Service Worker がキャッシュするため、2回目以降はオフラインでも開ける。
+ */
+const MuscleViewer = lazy(() =>
+  import("../components/MuscleViewer").then((m) => ({ default: m.MuscleViewer }))
+);
 import {
   EQUIPMENT_LABEL,
   EVIDENCE_LABEL,
@@ -45,6 +54,13 @@ function ExerciseCard({
 
       {open && (
         <div className="card-body">
+          {/* 3Dで動作と効く部位を見せる（FR-A2 / FR-A3） */}
+          <Suspense
+            fallback={<div className="viewer-loading">3Dを読み込んでいます…</div>}
+          >
+            <MuscleViewer exercise={exercise} master={master} />
+          </Suspense>
+
           {exercise.criticalNote && <p className="critical">{exercise.criticalNote}</p>}
 
           <dl className="kv">
