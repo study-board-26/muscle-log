@@ -105,6 +105,16 @@ export interface Exercise {
   phase: 1 | 2 | 3;
   /** 3Dアニメーションクリップの識別子。アセット制作時に確定する。 */
   modelAssetId: string;
+  /**
+   * ALG-5 の種目係数（体重比）。初回の開始重量を当たり付けするためだけに使う。
+   * 公開されている一般的なストレングス基準を丸めた目安で、
+   * 基準が確立している少数の種目にのみ設定する（OPEN-3）。
+   */
+  strengthCoefficient?: {
+    beginner: number;
+    intermediate: number;
+    advanced: number;
+  };
 }
 
 export interface Reference {

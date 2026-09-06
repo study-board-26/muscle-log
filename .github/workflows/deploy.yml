@@ -33,6 +33,10 @@ jobs:
       - name: Validate exercise master
         run: npm run validate
 
+      # 重量提案のロジックは誤るとユーザーの負荷設定を直接誤らせる
+      - name: Test algorithms
+        run: npm test
+
       - run: npm run build
 
       # enablement: true にしないと、Pages 未設定のリポジトリで
