@@ -11,7 +11,7 @@ import {
   weekLabel,
   weekStart,
   weeksWithData,
-  type RegionVolume,
+  type GroupVolume,
 } from "../lib/volume";
 
 const DAY = 86400000;
@@ -54,7 +54,7 @@ function Spark({ points }: { points: E1rmPoint[] }) {
   );
 }
 
-function VolumeBar({ v, label }: { v: RegionVolume; label: string }) {
+function VolumeBar({ v }: { v: GroupVolume }) {
   const [lo, hi] = v.range;
   // 目盛りは上限の1.5倍まで。過多がどれだけ超えているかも見えるようにする。
   const scaleMax = hi * 1.5;
@@ -62,7 +62,7 @@ function VolumeBar({ v, label }: { v: RegionVolume; label: string }) {
 
   return (
     <div className={`vol-row st-${v.status}`}>
-      <span className="vol-name">{label}</span>
+      <span className="vol-name">{v.group}</span>
       <div className="vol-track" aria-hidden="true">
         <span className="vol-range" style={{ left: pct(lo), width: `calc(${pct(hi)} - ${pct(lo)})` }} />
         <span className="vol-fill" style={{ width: pct(v.sets) }} />
@@ -130,7 +130,6 @@ export function Analysis({ master }: { master: Master }) {
     (s) => s.loggedAt >= currentWeek && s.loggedAt < currentWeek + 7 * DAY
   );
   const volumes = aggregateVolume(weekSets, master.exercises, master.muscles, range);
-  const volByRegion = new Map(volumes.map((v) => [v.region, v]));
 
   const deloadActive = deloadUntil !== null && Date.now() < deloadUntil;
 
@@ -216,14 +215,21 @@ export function Analysis({ master }: { master: Master }) {
 
         <div className="vol-list">
           {REGIONS.map((r) => {
-            const v = volByRegion.get(r.id);
-            if (!v) return null;
-            return <VolumeBar key={r.id} v={v} label={r.label} />;
+            const rows = volumes.filter((v) => v.region === r.id);
+            if (rows.length === 0) return null;
+            return (
+              <div key={r.id} className="vol-group">
+                <span className="vol-region">{r.label}</span>
+                {rows.map((v) => (
+                  <VolumeBar key={v.group} v={v} />
+                ))}
+              </div>
+            );
           })}
         </div>
 
         <p className="hint">
-          主働筋1.0・協働筋0.5で按分。目安は部位あたり週{range[0]}〜{range[1]}セット
+          主働筋1.0・協働筋0.5で按分。目安は<b>筋群あたり</b>週{range[0]}〜{range[1]}セット
           （帯の部分）。ウォームアップは集計しません。
         </p>
       </section>

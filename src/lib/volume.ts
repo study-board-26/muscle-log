@@ -41,17 +41,21 @@ export function weekLabel(start: number): string {
 
 export type VolumeStatus = "low" | "ok" | "high";
 
-export interface RegionVolume {
+export interface GroupVolume {
+  group: string;
   region: Region;
   sets: number;
   status: VolumeStatus;
   range: [number, number];
-  /** 内訳。筋ごとの按分値（部位合計とは一致しない） */
-  byMuscle: { muscleId: string; nameJa: string; sets: number }[];
 }
 
 /**
- * ALG-6 週間ボリュームの目安レンジ（部位あたりのセット数）
+ * ALG-6 週間ボリュームの目安レンジ
+ *
+ * 単位は「筋群あたり」。文献の 10〜20セット/週 はもともと筋群あたりの
+ * 数字であり、部位あたりで判定すると、含む筋群の数が多い部位ほど
+ * 過多と誤判定される。実際に「肩」は3頭、「足」は4筋群を含むため、
+ * 一律のレンジでは推奨テンプレートまで過多と出ていた。
  */
 export const WEEKLY_RANGE = {
   beginner: [8, 12] as [number, number],
@@ -72,59 +76,54 @@ export const STATUS_LABEL: Record<VolumeStatus, string> = {
 };
 
 /**
- * 指定した期間のセットから、部位別・筋別のボリュームを集計する。
+ * 指定した期間のセットから、筋群別のボリュームを集計する。
+ *
+ * 1セットが1つの筋群に与える寄与は最大1.0までとする。
+ * 例えばベンチプレスは上腕三頭筋の外側頭・内側頭を協働筋に持つが、
+ * 合計すると 0.5 + 0.5 = 1.0 となり、協働なのに主働と同じ量が入ってしまう。
+ * 要件の例（ベンチ4セット → 胸4.0 / 肩2.0 / 三頭2.0）に一致させる。
  */
 export function aggregateVolume(
   sets: SetLogRec[],
   exercises: Exercise[],
   muscles: Muscle[],
   range: [number, number]
-): RegionVolume[] {
+): GroupVolume[] {
   const exById = new Map(exercises.map((e) => [e.id, e]));
   const muById = new Map(muscles.map((m) => [m.id, m]));
 
-  const regionTotals = new Map<Region, number>();
-  const muscleTotals = new Map<string, number>();
+  const totals = new Map<string, number>();
 
   for (const s of sets) {
     if (s.type !== "main") continue;
     const ex = exById.get(s.exerciseId);
     if (!ex) continue;
 
-    // 部位ごとに、その種目が持つ筋の最大係数を求める
-    const perRegion = new Map<Region, number>();
+    const perGroup = new Map<string, number>();
     for (const em of ex.muscles) {
       const mu = muById.get(em.muscleId);
-      if (!mu) continue;
-      const c = em.coefficient;
-      if (c <= 0) continue;
-
-      muscleTotals.set(em.muscleId, (muscleTotals.get(em.muscleId) ?? 0) + c);
-      perRegion.set(mu.region, Math.max(perRegion.get(mu.region) ?? 0, c));
+      if (!mu?.group) continue;
+      if (em.coefficient <= 0) continue;
+      perGroup.set(mu.group, Math.max(perGroup.get(mu.group) ?? 0, em.coefficient));
     }
-    for (const [region, c] of perRegion) {
-      regionTotals.set(region, (regionTotals.get(region) ?? 0) + c);
+    for (const [group, c] of perGroup) {
+      totals.set(group, (totals.get(group) ?? 0) + c);
     }
   }
 
-  const out: RegionVolume[] = [];
-  for (const region of new Set(muscles.map((m) => m.region))) {
-    const total = regionTotals.get(region) ?? 0;
-    const byMuscle = muscles
-      .filter((m) => m.region === region && (muscleTotals.get(m.id) ?? 0) > 0)
-      .map((m) => ({
-        muscleId: m.id,
-        nameJa: m.nameJa,
-        sets: Math.round((muscleTotals.get(m.id) ?? 0) * 10) / 10,
-      }))
-      .sort((a, b) => b.sets - a.sets);
-
+  // 部位の並び順を保ったまま、その部位に属する筋群を列挙する
+  const seen = new Set<string>();
+  const out: GroupVolume[] = [];
+  for (const m of muscles) {
+    if (!m.group || seen.has(m.group)) continue;
+    seen.add(m.group);
+    const total = totals.get(m.group) ?? 0;
     out.push({
-      region,
+      group: m.group,
+      region: m.region,
       sets: Math.round(total * 10) / 10,
       status: judge(total, range),
       range,
-      byMuscle,
     });
   }
   return out;

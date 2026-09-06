@@ -1,43 +1,274 @@
 [
-  { "id": "delt_anterior",   "nameJa": "三角筋前部",     "nameEn": "Anterior Deltoid",      "region": "shoulders", "meshNodeId": "M_delt_anterior" },
-  { "id": "delt_lateral",    "nameJa": "三角筋中部",     "nameEn": "Lateral Deltoid",       "region": "shoulders", "meshNodeId": "M_delt_lateral" },
-  { "id": "delt_posterior",  "nameJa": "三角筋後部",     "nameEn": "Posterior Deltoid",     "region": "shoulders", "meshNodeId": "M_delt_posterior" },
-  { "id": "rotator_cuff",    "nameJa": "回旋筋腱板",     "nameEn": "Rotator Cuff",          "region": "shoulders", "meshNodeId": "M_rotator_cuff" },
-
-  { "id": "biceps_brachii",  "nameJa": "上腕二頭筋",     "nameEn": "Biceps Brachii",        "region": "biceps",    "meshNodeId": "M_biceps_brachii" },
-  { "id": "brachialis",      "nameJa": "上腕筋",         "nameEn": "Brachialis",            "region": "biceps",    "meshNodeId": "M_brachialis" },
-
-  { "id": "triceps_long",    "nameJa": "上腕三頭筋 長頭", "nameEn": "Triceps Long Head",     "region": "triceps",   "meshNodeId": "M_triceps_long" },
-  { "id": "triceps_lateral", "nameJa": "上腕三頭筋 外側頭", "nameEn": "Triceps Lateral Head", "region": "triceps",   "meshNodeId": "M_triceps_lateral" },
-  { "id": "triceps_medial",  "nameJa": "上腕三頭筋 内側頭", "nameEn": "Triceps Medial Head",  "region": "triceps",   "meshNodeId": "M_triceps_medial" },
-
-  { "id": "brachioradialis", "nameJa": "腕橈骨筋",       "nameEn": "Brachioradialis",       "region": "forearms",  "meshNodeId": "M_brachioradialis" },
-  { "id": "forearm_flexors", "nameJa": "前腕屈筋群",     "nameEn": "Forearm Flexors",       "region": "forearms",  "meshNodeId": "M_forearm_flexors" },
-  { "id": "forearm_extensors","nameJa": "前腕伸筋群",    "nameEn": "Forearm Extensors",     "region": "forearms",  "meshNodeId": "M_forearm_extensors" },
-
-  { "id": "rectus_abdominis_upper", "nameJa": "腹直筋 上部", "nameEn": "Upper Rectus Abdominis", "region": "abs", "meshNodeId": "M_rectus_abdominis_upper" },
-  { "id": "rectus_abdominis_lower", "nameJa": "腹直筋 下部", "nameEn": "Lower Rectus Abdominis", "region": "abs", "meshNodeId": "M_rectus_abdominis_lower" },
-  { "id": "obliques_external",      "nameJa": "外腹斜筋",    "nameEn": "External Oblique",       "region": "abs", "meshNodeId": "M_obliques_external" },
-  { "id": "obliques_internal",      "nameJa": "内腹斜筋",    "nameEn": "Internal Oblique",       "region": "abs", "meshNodeId": "M_obliques_internal" },
-  { "id": "transverse_abdominis",   "nameJa": "腹横筋",      "nameEn": "Transverse Abdominis",   "region": "abs", "meshNodeId": "M_transverse_abdominis" },
-
-  { "id": "latissimus_dorsi", "nameJa": "広背筋",         "nameEn": "Latissimus Dorsi",      "region": "back",      "meshNodeId": "M_latissimus_dorsi" },
-  { "id": "teres_major",      "nameJa": "大円筋",         "nameEn": "Teres Major",           "region": "back",      "meshNodeId": "M_teres_major" },
-  { "id": "trapezius_upper",  "nameJa": "僧帽筋 上部",     "nameEn": "Upper Trapezius",       "region": "back",      "meshNodeId": "M_trapezius_upper" },
-  { "id": "trapezius_middle", "nameJa": "僧帽筋 中部",     "nameEn": "Middle Trapezius",      "region": "back",      "meshNodeId": "M_trapezius_middle" },
-  { "id": "trapezius_lower",  "nameJa": "僧帽筋 下部",     "nameEn": "Lower Trapezius",       "region": "back",      "meshNodeId": "M_trapezius_lower" },
-  { "id": "rhomboids",        "nameJa": "菱形筋",         "nameEn": "Rhomboids",             "region": "back",      "meshNodeId": "M_rhomboids" },
-  { "id": "erector_spinae",   "nameJa": "脊柱起立筋",     "nameEn": "Erector Spinae",        "region": "back",      "meshNodeId": "M_erector_spinae" },
-
-  { "id": "pec_clavicular",   "nameJa": "大胸筋 鎖骨部",   "nameEn": "Clavicular Pectoralis", "region": "chest",     "meshNodeId": "M_pec_clavicular" },
-  { "id": "pec_sternal",      "nameJa": "大胸筋 胸肋部",   "nameEn": "Sternal Pectoralis",    "region": "chest",     "meshNodeId": "M_pec_sternal" },
-
-  { "id": "quadriceps",       "nameJa": "大腿四頭筋（広筋群）", "nameEn": "Vasti",           "region": "legs",      "meshNodeId": "M_quadriceps" },
-  { "id": "rectus_femoris",   "nameJa": "大腿直筋",       "nameEn": "Rectus Femoris",        "region": "legs",      "meshNodeId": "M_rectus_femoris" },
-  { "id": "hamstrings",       "nameJa": "ハムストリング",  "nameEn": "Hamstrings",            "region": "legs",      "meshNodeId": "M_hamstrings" },
-  { "id": "gluteus_maximus",  "nameJa": "大臀筋",         "nameEn": "Gluteus Maximus",       "region": "legs",      "meshNodeId": "M_gluteus_maximus" },
-  { "id": "adductors",        "nameJa": "内転筋群",       "nameEn": "Adductors",             "region": "legs",      "meshNodeId": "M_adductors" },
-  { "id": "gastrocnemius",    "nameJa": "腓腹筋",         "nameEn": "Gastrocnemius",         "region": "legs",      "meshNodeId": "M_gastrocnemius" },
-  { "id": "soleus",           "nameJa": "ヒラメ筋",       "nameEn": "Soleus",                "region": "legs",      "meshNodeId": "M_soleus" },
-  { "id": "iliopsoas",        "nameJa": "腸腰筋",         "nameEn": "Iliopsoas",             "region": "legs",      "meshNodeId": "M_iliopsoas" }
+  {
+    "id": "delt_anterior",
+    "nameJa": "三角筋前部",
+    "nameEn": "Anterior Deltoid",
+    "region": "shoulders",
+    "meshNodeId": "M_delt_anterior",
+    "group": "三角筋前部"
+  },
+  {
+    "id": "delt_lateral",
+    "nameJa": "三角筋中部",
+    "nameEn": "Lateral Deltoid",
+    "region": "shoulders",
+    "meshNodeId": "M_delt_lateral",
+    "group": "三角筋中部"
+  },
+  {
+    "id": "delt_posterior",
+    "nameJa": "三角筋後部",
+    "nameEn": "Posterior Deltoid",
+    "region": "shoulders",
+    "meshNodeId": "M_delt_posterior",
+    "group": "三角筋後部"
+  },
+  {
+    "id": "rotator_cuff",
+    "nameJa": "回旋筋腱板",
+    "nameEn": "Rotator Cuff",
+    "region": "shoulders",
+    "meshNodeId": "M_rotator_cuff",
+    "group": null
+  },
+  {
+    "id": "biceps_brachii",
+    "nameJa": "上腕二頭筋",
+    "nameEn": "Biceps Brachii",
+    "region": "biceps",
+    "meshNodeId": "M_biceps_brachii",
+    "group": "上腕二頭筋"
+  },
+  {
+    "id": "brachialis",
+    "nameJa": "上腕筋",
+    "nameEn": "Brachialis",
+    "region": "biceps",
+    "meshNodeId": "M_brachialis",
+    "group": "上腕二頭筋"
+  },
+  {
+    "id": "triceps_long",
+    "nameJa": "上腕三頭筋 長頭",
+    "nameEn": "Triceps Long Head",
+    "region": "triceps",
+    "meshNodeId": "M_triceps_long",
+    "group": "上腕三頭筋"
+  },
+  {
+    "id": "triceps_lateral",
+    "nameJa": "上腕三頭筋 外側頭",
+    "nameEn": "Triceps Lateral Head",
+    "region": "triceps",
+    "meshNodeId": "M_triceps_lateral",
+    "group": "上腕三頭筋"
+  },
+  {
+    "id": "triceps_medial",
+    "nameJa": "上腕三頭筋 内側頭",
+    "nameEn": "Triceps Medial Head",
+    "region": "triceps",
+    "meshNodeId": "M_triceps_medial",
+    "group": "上腕三頭筋"
+  },
+  {
+    "id": "brachioradialis",
+    "nameJa": "腕橈骨筋",
+    "nameEn": "Brachioradialis",
+    "region": "forearms",
+    "meshNodeId": "M_brachioradialis",
+    "group": "前腕"
+  },
+  {
+    "id": "forearm_flexors",
+    "nameJa": "前腕屈筋群",
+    "nameEn": "Forearm Flexors",
+    "region": "forearms",
+    "meshNodeId": "M_forearm_flexors",
+    "group": "前腕"
+  },
+  {
+    "id": "forearm_extensors",
+    "nameJa": "前腕伸筋群",
+    "nameEn": "Forearm Extensors",
+    "region": "forearms",
+    "meshNodeId": "M_forearm_extensors",
+    "group": "前腕"
+  },
+  {
+    "id": "rectus_abdominis_upper",
+    "nameJa": "腹直筋 上部",
+    "nameEn": "Upper Rectus Abdominis",
+    "region": "abs",
+    "meshNodeId": "M_rectus_abdominis_upper",
+    "group": "腹直筋"
+  },
+  {
+    "id": "rectus_abdominis_lower",
+    "nameJa": "腹直筋 下部",
+    "nameEn": "Lower Rectus Abdominis",
+    "region": "abs",
+    "meshNodeId": "M_rectus_abdominis_lower",
+    "group": "腹直筋"
+  },
+  {
+    "id": "obliques_external",
+    "nameJa": "外腹斜筋",
+    "nameEn": "External Oblique",
+    "region": "abs",
+    "meshNodeId": "M_obliques_external",
+    "group": "腹斜筋"
+  },
+  {
+    "id": "obliques_internal",
+    "nameJa": "内腹斜筋",
+    "nameEn": "Internal Oblique",
+    "region": "abs",
+    "meshNodeId": "M_obliques_internal",
+    "group": "腹斜筋"
+  },
+  {
+    "id": "transverse_abdominis",
+    "nameJa": "腹横筋",
+    "nameEn": "Transverse Abdominis",
+    "region": "abs",
+    "meshNodeId": "M_transverse_abdominis",
+    "group": null
+  },
+  {
+    "id": "latissimus_dorsi",
+    "nameJa": "広背筋",
+    "nameEn": "Latissimus Dorsi",
+    "region": "back",
+    "meshNodeId": "M_latissimus_dorsi",
+    "group": "広背筋"
+  },
+  {
+    "id": "teres_major",
+    "nameJa": "大円筋",
+    "nameEn": "Teres Major",
+    "region": "back",
+    "meshNodeId": "M_teres_major",
+    "group": "広背筋"
+  },
+  {
+    "id": "trapezius_upper",
+    "nameJa": "僧帽筋 上部",
+    "nameEn": "Upper Trapezius",
+    "region": "back",
+    "meshNodeId": "M_trapezius_upper",
+    "group": "僧帽筋・菱形筋"
+  },
+  {
+    "id": "trapezius_middle",
+    "nameJa": "僧帽筋 中部",
+    "nameEn": "Middle Trapezius",
+    "region": "back",
+    "meshNodeId": "M_trapezius_middle",
+    "group": "僧帽筋・菱形筋"
+  },
+  {
+    "id": "trapezius_lower",
+    "nameJa": "僧帽筋 下部",
+    "nameEn": "Lower Trapezius",
+    "region": "back",
+    "meshNodeId": "M_trapezius_lower",
+    "group": "僧帽筋・菱形筋"
+  },
+  {
+    "id": "rhomboids",
+    "nameJa": "菱形筋",
+    "nameEn": "Rhomboids",
+    "region": "back",
+    "meshNodeId": "M_rhomboids",
+    "group": "僧帽筋・菱形筋"
+  },
+  {
+    "id": "erector_spinae",
+    "nameJa": "脊柱起立筋",
+    "nameEn": "Erector Spinae",
+    "region": "back",
+    "meshNodeId": "M_erector_spinae",
+    "group": "脊柱起立筋"
+  },
+  {
+    "id": "pec_clavicular",
+    "nameJa": "大胸筋 鎖骨部",
+    "nameEn": "Clavicular Pectoralis",
+    "region": "chest",
+    "meshNodeId": "M_pec_clavicular",
+    "group": "大胸筋"
+  },
+  {
+    "id": "pec_sternal",
+    "nameJa": "大胸筋 胸肋部",
+    "nameEn": "Sternal Pectoralis",
+    "region": "chest",
+    "meshNodeId": "M_pec_sternal",
+    "group": "大胸筋"
+  },
+  {
+    "id": "quadriceps",
+    "nameJa": "大腿四頭筋（広筋群）",
+    "nameEn": "Vasti",
+    "region": "legs",
+    "meshNodeId": "M_quadriceps",
+    "group": "大腿四頭筋"
+  },
+  {
+    "id": "rectus_femoris",
+    "nameJa": "大腿直筋",
+    "nameEn": "Rectus Femoris",
+    "region": "legs",
+    "meshNodeId": "M_rectus_femoris",
+    "group": "大腿四頭筋"
+  },
+  {
+    "id": "hamstrings",
+    "nameJa": "ハムストリング",
+    "nameEn": "Hamstrings",
+    "region": "legs",
+    "meshNodeId": "M_hamstrings",
+    "group": "ハムストリング"
+  },
+  {
+    "id": "gluteus_maximus",
+    "nameJa": "大臀筋",
+    "nameEn": "Gluteus Maximus",
+    "region": "legs",
+    "meshNodeId": "M_gluteus_maximus",
+    "group": "大臀筋"
+  },
+  {
+    "id": "adductors",
+    "nameJa": "内転筋群",
+    "nameEn": "Adductors",
+    "region": "legs",
+    "meshNodeId": "M_adductors",
+    "group": "内転筋群"
+  },
+  {
+    "id": "gastrocnemius",
+    "nameJa": "腓腹筋",
+    "nameEn": "Gastrocnemius",
+    "region": "legs",
+    "meshNodeId": "M_gastrocnemius",
+    "group": "下腿三頭筋"
+  },
+  {
+    "id": "soleus",
+    "nameJa": "ヒラメ筋",
+    "nameEn": "Soleus",
+    "region": "legs",
+    "meshNodeId": "M_soleus",
+    "group": "下腿三頭筋"
+  },
+  {
+    "id": "iliopsoas",
+    "nameJa": "腸腰筋",
+    "nameEn": "Iliopsoas",
+    "region": "legs",
+    "meshNodeId": "M_iliopsoas",
+    "group": null
+  }
 ]

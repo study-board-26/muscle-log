@@ -71,7 +71,13 @@ export interface Muscle {
   nameJa: string;
   nameEn: string;
   region: Region;
-  /** 3Dモデルのメッシュノード名。アセット確定時に紐づける（OPEN-2）。 */
+  /**
+   * ボリューム判定の単位となる筋群。頭ごとに分かれている筋はまとめる
+   * （上腕三頭筋の3頭など）。三角筋は前部・中部・後部を別々に鍛えるので分ける。
+   * null は肥大の対象として数えない筋（回旋筋腱板、腹横筋、腸腰筋）。
+   */
+  group: string | null;
+  /** 3Dモデルのメッシュノード名（3Dは廃止したため現在は未使用）。 */
   meshNodeId: string;
 }
 

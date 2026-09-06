@@ -186,37 +186,54 @@ const mainSet = (exerciseId, at = Date.now()) => ({
 });
 const vol = (sets) => {
   const rows = aggregateVolume(sets, exercises, muscles, [12, 20]);
-  return Object.fromEntries(rows.map((r) => [r.region, r.sets]));
+  return Object.fromEntries(rows.map((r) => [r.group, r.sets]));
 };
 
 test("ALG-2: 要件定義書の例（ベンチ4セット → 胸4.0 / 肩2.0 / 三頭2.0）と一致する", () => {
   const v = vol(Array.from({ length: 4 }, () => mainSet("bench_press")));
-  assert.equal(v.chest, 4);
-  assert.equal(v.shoulders, 2);
-  assert.equal(v.triceps, 2);
+  assert.equal(v["大胸筋"], 4);
+  assert.equal(v["三角筋前部"], 2);
+  assert.equal(v["上腕三頭筋"], 2);
 });
 
-test("ALG-2: 三頭は2つの頭を持つが、1セットの寄与は1部位あたり最大1.0", () => {
+test("ALG-2: 三頭は2つの頭を持つが、1セットの寄与は1筋群あたり最大1.0", () => {
   // 合計してしまうと外側頭0.5 + 内側頭0.5 = 1.0 になり、協働なのに主働と同じ量になる
   const v = vol([mainSet("bench_press")]);
-  assert.equal(v.triceps, 0.5);
+  assert.equal(v["上腕三頭筋"], 0.5);
 });
 
 test("ALG-2: ウォームアップは集計しない", () => {
   const warm = { ...mainSet("bench_press"), type: "warmup" };
-  assert.equal(vol([warm]).chest ?? 0, 0);
+  assert.equal(vol([warm])["大胸筋"] ?? 0, 0);
 });
 
 test("ALG-2: 安定筋（係数0）はボリュームに入らない", () => {
   // ベントオーバーロウはハムストリングを安定筋として持つ
   const v = vol([mainSet("bent_over_row")]);
-  assert.equal(v.legs ?? 0, 0);
-  assert.equal(v.back, 1);
+  assert.equal(v["ハムストリング"] ?? 0, 0);
+  assert.equal(v["広背筋"], 1);
 });
 
-test("ALG-2: 複数種目が同じ部位に積み上がる", () => {
+test("ALG-2: 複数種目が同じ筋群に積み上がる", () => {
   const v = vol([mainSet("bench_press"), mainSet("incline_press"), mainSet("cable_fly")]);
-  assert.equal(v.chest, 3);
+  assert.equal(v["大胸筋"], 3);
+});
+
+test("ALG-2: 判定は筋群あたりで行う（部位あたりだと筋群の多い部位が過多になる）", () => {
+  // 足は4筋群を含む。部位で合算すると目安を超えるが、筋群ごとなら適正に収まる
+  const legSets = [
+    ...Array.from({ length: 8 }, () => mainSet("barbell_squat")),
+    ...Array.from({ length: 7 }, () => mainSet("seated_leg_curl")),
+    ...Array.from({ length: 4 }, () => mainSet("hip_thrust")),
+    ...Array.from({ length: 7 }, () => mainSet("standing_calf_raise")),
+  ];
+  const rows = aggregateVolume(legSets, exercises, muscles, [12, 20]);
+  const legs = rows.filter((r) => r.region === "legs");
+  const total = legs.reduce((a, r) => a + r.sets, 0);
+  assert.ok(total > 20, "部位合計では目安の上限を超える");
+  for (const r of legs) {
+    if (r.sets > 0) assert.notEqual(r.status, "high", `${r.group} が過多と判定された`);
+  }
 });
 
 test("ALG-6: 目安レンジで不足・適正・過多を判定する", () => {

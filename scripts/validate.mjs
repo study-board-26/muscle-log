@@ -39,6 +39,8 @@ if (muscleIds.size !== muscles.length) fail("muscles.json: id が重複してい
 for (const m of muscles) {
   if (!REGIONS.includes(m.region)) fail(`muscle ${m.id}: 未知の region "${m.region}"`);
   if (!m.meshNodeId) fail(`muscle ${m.id}: meshNodeId が空`);
+  // group は null 可（肥大の対象として数えない筋）だが、キー自体は必須
+  if (!("group" in m)) fail(`muscle ${m.id}: group が無い`);
 }
 
 // --- 種目 ---
@@ -143,7 +145,10 @@ for (const r of refIds) {
 }
 
 // --- 出力 ---
-console.log(`筋: ${muscles.length}  種目: ${exercises.length}  文献: ${references.length}`);
+const groupCount = new Set(muscles.map((m) => m.group).filter(Boolean)).size;
+console.log(
+  `筋: ${muscles.length}（筋群 ${groupCount}）  種目: ${exercises.length}  文献: ${references.length}`
+);
 console.log(
   REGIONS.map((r) => `${r}:${exercises.filter((e) => e.region === r).length}`).join("  ")
 );
