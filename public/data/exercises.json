@@ -57,7 +57,6 @@
       "url": "https://www.youtube.com/watch?v=-bvP-lzw6X0",
       "title": "正しいサイドレイズ4つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "サイドレイズ"
     }
   },
@@ -135,7 +134,6 @@
       "url": "https://www.youtube.com/watch?v=IH24_ohO4Jc",
       "title": "正しいショルダープレス4つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "ショルダープレス"
     }
   },
@@ -199,11 +197,10 @@
     "modelAssetId": "anim_reverse_pec_deck",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=pI1c0z5wSpM",
-      "title": "三角筋後部を大きくしたいなら、実はあの種目が効果的です【筋トレ】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
-      "query": "リアレイズ 三角筋後部"
+      "url": "https://www.youtube.com/watch?v=ai-bfu1bcYA",
+      "title": "【筋トレ悪いフォーム解説】リアレイズが効いているかわからない方へ向けたコツを伝授！",
+      "channel": "GENT Fitness",
+      "query": "リアレイズ"
     }
   },
   {
@@ -266,7 +263,6 @@
       "url": "https://www.youtube.com/watch?v=q4WLlXVIEmE",
       "title": "三角筋中部～後部を鍛えるフェイスプルのやり方【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "フェイスプル"
     }
   },
@@ -326,11 +322,10 @@
     "modelAssetId": "anim_incline_dumbbell_curl",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=OUgqSjTc0Io",
-      "title": "最も効果のある上腕二頭筋の種目3選 #フィットネス #筋トレ",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
-      "query": "インクラインカール"
+      "url": "https://www.youtube.com/watch?v=NXYgFP7XUJE",
+      "title": "【力こぶを作る筋トレ】インクラインダンベルカールのやり方・コツ・注意点！上腕二頭筋のストレッチ種目です◎",
+      "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
+      "query": "インクラインダンベルカール"
     }
   },
   {
@@ -389,10 +384,9 @@
     "modelAssetId": "anim_preacher_curl",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=hAZSfGUFZh4",
-      "title": "上腕二頭筋の筋肥大に最も良い種目は？【二頭筋のティアリスト】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
+      "url": "https://www.youtube.com/watch?v=FZSqFsHbLlo",
+      "title": "【筋トレ】たくましい力こぶをつくる！プリーチャーカールのやり方解説！【上腕二頭筋】",
+      "channel": "GENT Fitness",
       "query": "プリーチャーカール"
     }
   },
@@ -459,7 +453,6 @@
       "url": "https://www.youtube.com/watch?v=fOgnS18q1lI",
       "title": "こんなバーベルカールはやめろ！正しいフォーム解説　#筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "バーベルカール"
     }
   },
@@ -511,10 +504,9 @@
     "modelAssetId": "anim_bayesian_cable_curl",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=fx1bSOgB-Vw",
-      "title": "上腕二頭筋のおすすめ種目3つを紹介【筋トレ】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
+      "url": "https://www.youtube.com/watch?v=I-0ei_q92eI",
+      "title": "腕を太くする筋トレ 【ケーブルアームカール】ケーブルを使った腕トレで『マッチョな力こぶがある腕』を目指そう！",
+      "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "ケーブルカール"
     }
   },
@@ -573,11 +565,10 @@
     "modelAssetId": "anim_cable_overhead_triceps_extension",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=VXJlecGLis8",
-      "title": "上腕三頭筋を最大限鍛える方法【筋トレ】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
-      "query": "オーバーヘッドエクステンション 三頭"
+      "url": "https://www.youtube.com/watch?v=qcqBMRq00RI",
+      "title": "トライセプスエクステンションの効果的なやり方",
+      "channel": "前田のまいにちセルフケア !  by GronG",
+      "query": "トライセプスエクステンション"
     }
   },
   {
@@ -644,11 +635,10 @@
     "modelAssetId": "anim_close_grip_bench_press",
     "compound": true,
     "video": {
-      "url": "https://www.youtube.com/watch?v=e6Mbk3OCNMs",
-      "title": "三頭筋の筋肥大に最も良い種目は？【上腕三頭筋のティアリスト】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
-      "query": "ナローベンチプレス"
+      "url": "https://www.youtube.com/watch?v=dFfrDVjkp9U",
+      "title": "【初心者】ナローグリップ・ベンチプレスのやり方 | 上腕三頭筋に効きまくる！【ビーレジェンド プロテイン】",
+      "channel": "ビーレジェンド チャンネル",
+      "query": "ナローグリップベンチプレス"
     }
   },
   {
@@ -706,10 +696,9 @@
     "modelAssetId": "anim_lying_triceps_extension",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=bOPiYdFc8fQ",
-      "title": "最も効果のある上腕三頭筋の種目3選 #フィットネス #筋トレ",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
+      "url": "https://www.youtube.com/watch?v=k1NJU2-1u54",
+      "title": "【上腕三頭筋トレ】スカルクラッシャーの正しいフォーム・やり方をご紹介 | 「肘が痛い」「腕に効かない」という方是非！",
+      "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "スカルクラッシャー"
     }
   },
@@ -770,7 +759,6 @@
       "url": "https://www.youtube.com/watch?v=NAry9DhipJA",
       "title": "正しいケーブルプレスダウン4つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "プレスダウン"
     }
   },
@@ -835,11 +823,10 @@
     "modelAssetId": "anim_reverse_curl",
     "compound": false,
     "video": {
-      "url": null,
-      "title": null,
-      "channel": null,
-      "match": "search",
-      "query": "リバースカール フォーム"
+      "url": "https://www.youtube.com/watch?v=eqKAfKUIrGM",
+      "title": "【初心者】ダンベル・リバースカールのやり方 | 極太の前腕をつくる腕トレ種目【ビーレジェンド プロテイン】",
+      "channel": "ビーレジェンド チャンネル",
+      "query": "リバースカール"
     }
   },
   {
@@ -897,11 +884,10 @@
     "modelAssetId": "anim_hammer_curl",
     "compound": false,
     "video": {
-      "url": null,
-      "title": null,
-      "channel": null,
-      "match": "search",
-      "query": "ハンマーカール フォーム"
+      "url": "https://www.youtube.com/watch?v=DAY7XucFlDQ",
+      "title": "【上腕二頭筋トレ】ハンマーカールの正しいフォーム・やり方をご紹介 | 前腕・長頭を狙った腕を太くするトレーニング！",
+      "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
+      "query": "ハンマーカール"
     }
   },
   {
@@ -950,10 +936,9 @@
     "modelAssetId": "anim_wrist_curl",
     "compound": false,
     "video": {
-      "url": null,
-      "title": null,
-      "channel": null,
-      "match": "search",
+      "url": "https://www.youtube.com/watch?v=AGIOEPFpOXo",
+      "title": "【リストカール】手首を痛めず前腕に効かせるコツ〜重さ・回数・頻度まで解説！",
+      "channel": "Slope〜筋トレチャンネル〜",
       "query": "リストカール 前腕"
     }
   },
@@ -1012,11 +997,10 @@
     "modelAssetId": "anim_heavy_hold",
     "compound": false,
     "video": {
-      "url": null,
-      "title": null,
-      "channel": null,
-      "match": "search",
-      "query": "ファーマーズウォーク 握力"
+      "url": "https://www.youtube.com/watch?v=JQBXZTYiHYc",
+      "title": "【ファーマーズウォーク】そもそも歩くために必要な筋肉がスクワットより身に付く件",
+      "channel": "究極の運動説明書チャンネル",
+      "query": "ファーマーズウォーク"
     }
   },
   {
@@ -1074,10 +1058,9 @@
     "modelAssetId": "anim_cable_crunch",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=bANiOqDD7cw",
-      "title": "腹筋を最大限に鍛える種目３選【筋トレ】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
+      "url": "https://www.youtube.com/watch?v=Vh4iS5udoXk",
+      "title": "腹筋をケーブルで鍛える『ケーブルクランチ』の正しいフォームをご紹介！",
+      "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "ケーブルクランチ"
     }
   },
@@ -1142,11 +1125,10 @@
     "modelAssetId": "anim_hanging_leg_raise",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=lWO8f5I13og",
-      "title": "腹筋の筋肥大に最も良い種目は？【腹筋種目のティアリスト】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
-      "query": "レッグレイズ 腹筋"
+      "url": "https://www.youtube.com/watch?v=lXvFMPqGDPk",
+      "title": "【筋トレ】ハンギングレッグレイズの正しいやり方 | パーソナルトレーナーが解説【ビーレジェンド プロテイン】",
+      "channel": "ビーレジェンド チャンネル",
+      "query": "ハンギングレッグレイズ"
     }
   },
   {
@@ -1212,7 +1194,6 @@
       "url": "https://www.youtube.com/watch?v=l9Av2iBsn1Y",
       "title": "正しいアブローラー3つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "アブローラー"
     }
   },
@@ -1273,11 +1254,10 @@
     "modelAssetId": "anim_cable_woodchop",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=h0lPDIx83LA",
-      "title": "こんな腹筋はやめましょう #フィットネス #筋トレ",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
-      "query": "腹斜筋 ウッドチョップ"
+      "url": "https://www.youtube.com/watch?v=yAWcXaVqNy4",
+      "title": "PHYSIX Cable training：ケーブルウッドチョッパー",
+      "channel": "M,M",
+      "query": "ケーブル ウッドチョップ"
     }
   },
   {
@@ -1350,7 +1330,6 @@
       "url": "https://www.youtube.com/watch?v=QMuhF1Z6WwA",
       "title": "正しいラットプルダウン4つのポイント【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "ラットプルダウン"
     }
   },
@@ -1419,10 +1398,9 @@
     "modelAssetId": "anim_seated_cable_row",
     "compound": true,
     "video": {
-      "url": "https://www.youtube.com/watch?v=cx8YgjaqvwM",
-      "title": "最適なロウイング種目の選び方 #フィットネス #筋トレ",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
+      "url": "https://www.youtube.com/watch?v=7BX-RNCB5Ew",
+      "title": "シーテッドローの効果的なやり方｜背中に効かせる3つのポイント",
+      "channel": "前田のまいにちセルフケア !  by GronG",
       "query": "シーテッドロウ"
     }
   },
@@ -1500,7 +1478,6 @@
       "url": "https://www.youtube.com/watch?v=rdR6ekHQ21I",
       "title": "ベントオーバーロウの正しいやり方〜3つのポイント〜 #筋トレ #フィットネス",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "ベントオーバーロウ"
     }
   },
@@ -1557,10 +1534,9 @@
     "modelAssetId": "anim_straight_arm_pulldown",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=9vIhBJRVSDQ",
-      "title": "背中の筋肥大に最も良い種目は？【背中のティアリスト】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
+      "url": "https://www.youtube.com/watch?v=kasign-vlYo",
+      "title": "【ストレートアームプルダウン】広背筋に効かせて逆三角形ボディを作るコツを解説",
+      "channel": "Slope〜筋トレチャンネル〜",
       "query": "ストレートアームプルダウン"
     }
   },
@@ -1634,7 +1610,6 @@
       "url": "https://www.youtube.com/watch?v=K6FQrDhTtXw",
       "title": "正しいベンチプレス、5つのポイント【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "ベンチプレス"
     }
   },
@@ -1704,7 +1679,6 @@
       "url": "https://www.youtube.com/watch?v=vLaF-17chCk",
       "title": "インクラインプレスで大胸筋上部を鍛える2つのポイント #フィットネス #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "インクラインプレス"
     }
   },
@@ -1769,7 +1743,6 @@
       "url": "https://www.youtube.com/watch?v=ls-cMaddd-4",
       "title": "正しいダンベルフライ4つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "フライ 大胸筋"
     }
   },
@@ -1836,7 +1809,6 @@
       "url": "https://www.youtube.com/watch?v=9I-qZXJ2r14",
       "title": "正しいディップスのやり方 #フィットネス #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "ディップス"
     }
   },
@@ -1916,7 +1888,6 @@
       "url": "https://www.youtube.com/watch?v=v585xCrfn20",
       "title": "スクワットの正しいやり方【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
-      "match": "exact",
       "query": "スクワット"
     }
   },
@@ -1968,11 +1939,10 @@
     "modelAssetId": "anim_seated_leg_curl",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=NRkUtgcgvRk",
-      "title": "ルーマニアンデッドリフトのやり方｜ハムストリングスを強く太くする！【筋トレ】",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
-      "query": "レッグカール ハムストリング"
+      "url": "https://www.youtube.com/watch?v=m4xM0I22gv8",
+      "title": "【初心者】シーテッド・レッグカールのやり方 | ハムストリングを強化する重要種目【ビーレジェンド プロテイン】",
+      "channel": "ビーレジェンド チャンネル",
+      "query": "シーテッドレッグカール"
     }
   },
   {
@@ -2034,10 +2004,9 @@
     "modelAssetId": "anim_hip_thrust",
     "compound": true,
     "video": {
-      "url": "https://www.youtube.com/watch?v=u0EFKOsX-Ic",
-      "title": "スクワットVSヒップスラストお尻の筋肥大に効果的なのはどちら？ #フィットネス #筋トレ",
-      "channel": "今古賀翔【トレーニング科学】",
-      "match": "related",
+      "url": "https://www.youtube.com/watch?v=ic1xTd5asic",
+      "title": "【初心者】ヒップスラストの効果的なやり方 | お尻とハムストリングを鍛える種目【ビーレジェンド プロテイン】",
+      "channel": "ビーレジェンド チャンネル",
       "query": "ヒップスラスト"
     }
   },
@@ -2092,11 +2061,10 @@
     "modelAssetId": "anim_standing_calf_raise",
     "compound": false,
     "video": {
-      "url": null,
-      "title": null,
-      "channel": null,
-      "match": "search",
-      "query": "カーフレイズ ふくらはぎ"
+      "url": "https://www.youtube.com/watch?v=oVbkeODJNSE",
+      "title": "カーフレイズの正しいやり方。自宅で手軽にふくらはぎを強化！【30回×3セット】",
+      "channel": "MELOS -メロス-┃スポーツ×ライフスタイルWEBマガジン",
+      "query": "カーフレイズ"
     }
   }
 ]

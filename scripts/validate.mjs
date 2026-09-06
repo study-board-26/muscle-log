@@ -108,28 +108,19 @@ for (const ex of exercises) {
   if (!ex.modelAssetId) fail(`${at}: modelAssetId が空`);
   if (![1, 2, 3].includes(ex.phase)) fail(`${at}: 未知の phase "${ex.phase}"`);
 
-  // フォーム解説動画
+  // フォーム解説動画。全種目に必須。
   const v = ex.video;
   if (!v) {
     fail(`${at}: video が無い`);
   } else {
-    if (!["exact", "related", "search"].includes(v.match)) {
-      fail(`${at}: 未知の video.match "${v.match}"`);
+    if (!v.url) fail(`${at}: video.url が無い`);
+    else if (!/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(v.url)) {
+      fail(`${at}: video.url の形式が不正 "${v.url}"`);
     }
+    if (!v.title) fail(`${at}: video.title が空`);
+    if (!v.channel) fail(`${at}: video.channel が空`);
+    // リンク切れに備えて検索でも辿り着けるようにしておく
     if (!v.query) fail(`${at}: video.query が空（検索リンクが作れない）`);
-
-    if (v.match === "search") {
-      // 動画を特定できていないものは url を持たせない。
-      // 中途半端なURLを載せるとジムで開いたときに使えないため。
-      if (v.url) fail(`${at}: match が search なのに url がある`);
-    } else {
-      if (!v.url) fail(`${at}: match が ${v.match} なのに url が無い`);
-      else if (!/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]{11}$/.test(v.url)) {
-        fail(`${at}: video.url の形式が不正 "${v.url}"`);
-      }
-      if (!v.title) fail(`${at}: video.title が空`);
-      if (!v.channel) fail(`${at}: video.channel が空`);
-    }
   }
 
   if (typeof ex.compound !== "boolean") fail(`${at}: compound が真偽値でない`);
@@ -165,10 +156,15 @@ const levels = EVIDENCE_LEVELS.map(
 );
 console.log(`根拠の内訳  ${levels.join("  ")}`);
 
-const vm = ["exact", "related", "search"].map(
-  (m) => `${m}:${exercises.filter((e) => e.video?.match === m).length}`
-);
-console.log(`解説動画    ${vm.join("  ")}`);
+const byChannel = new Map();
+for (const e of exercises) {
+  const c = e.video?.channel ?? "(なし)";
+  byChannel.set(c, (byChannel.get(c) ?? 0) + 1);
+}
+console.log("解説動画のチャンネル");
+for (const [c, n] of [...byChannel].sort((a, b) => b[1] - a[1])) {
+  console.log(`  ${String(n).padStart(2)}  ${c}`);
+}
 
 if (warnings.length) {
   console.log(`\n警告 ${warnings.length}件`);

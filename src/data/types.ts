@@ -45,24 +45,22 @@ export type Equipment =
   | "bodyweight";
 
 /**
- * 動画とその種目の対応度。
- * exact:   その種目そのものを解説した動画
- * related: 同じ部位を扱うが、その種目専用ではない動画
- * search:  該当する動画を確認できなかった。検索リンクのみ提示する
+ * フォーム解説動画。
+ *
+ * 条件は「その種目のフォームを解説していること」。
+ * 第一候補は今古賀翔だが、その種目のフォーム解説が無い場合は
+ * 他のフォーム解説チャンネルから採る。種目選びの話（ティアリストや
+ * 部位別ベスト3）はフォーム解説ではないので採用しない。
  */
-export type VideoMatch = "exact" | "related" | "search";
-
 export interface ExerciseVideo {
-  /** 動画が特定できている場合のみ。特定できないものは null にして検索に回す。 */
-  url: string | null;
-  title: string | null;
-  channel: string | null;
-  match: VideoMatch;
+  url: string;
+  title: string;
+  channel: string;
   /** チャンネル内検索・一般検索の両方に使うキーワード */
   query: string;
 }
 
-/** 第一候補のチャンネル。ここに無い種目は一般検索にフォールバックする。 */
+/** 第一候補のチャンネル。「チャンネル内で探す」の遷移先になる。 */
 export const PRIMARY_CHANNEL = {
   name: "今古賀翔【トレーニング科学】",
   handle: "@ShoImakoga",
