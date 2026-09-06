@@ -1,0 +1,1071 @@
+[
+  {
+    "id": "cable_lateral_raise",
+    "code": "S-1",
+    "name": "ケーブル・サイドレイズ（リーンアウェイ）",
+    "nameEn": "Cable Lateral Raise",
+    "region": "shoulders",
+    "equipment": ["cable"],
+    "alternatives": ["ダンベル・サイドレイズ"],
+    "unit": "weight_reps",
+    "repRange": [12, 20],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "delt_lateral", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "delt_anterior", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "trapezius_upper", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r6"],
+      "summary": "ケーブルとダンベルの直接比較試験で、三角筋中部の筋厚がいずれも3.3〜4.6%増加し有意差はなかった。ケーブルを第一候補とするのは、腕を下ろした位置でも張力が抜けないため。"
+    },
+    "cues": [
+      "支柱を持って体を反対側に傾け、可動域の下端でも張力を残す",
+      "肘をわずかに曲げて固定し、小指側から挙げる"
+    ],
+    "commonErrors": [
+      "重量を追って僧帽筋で引き上げる。肩がすくむ重量は重すぎる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_cable_lateral_raise"
+  },
+  {
+    "id": "shoulder_press",
+    "code": "S-2",
+    "name": "ショルダープレス",
+    "nameEn": "Shoulder Press",
+    "region": "shoulders",
+    "equipment": ["machine", "dumbbell"],
+    "alternatives": ["スミスマシン・ショルダープレス"],
+    "unit": "weight_reps",
+    "repRange": [6, 12],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "delt_anterior", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "delt_lateral", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_long", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_lateral", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "trapezius_upper", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r7"],
+      "summary": "EMG分析でダンベルショルダープレスは三角筋前部の活動が他の9種目より有意に高かった。多関節種目のため重量の漸進が容易で、肩種目のなかで最もダブルプログレッションが機能する。"
+    },
+    "cues": [
+      "肘を体の真横よりやや前に置く",
+      "みぞおちを軽く突き出して肩甲骨を安定させる"
+    ],
+    "commonErrors": [
+      "腰を大きく反らせて実質インクラインプレスになる。背もたれに腰を密着させる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_shoulder_press"
+  },
+  {
+    "id": "reverse_pec_deck",
+    "code": "S-3",
+    "name": "リバース・ペックデック",
+    "nameEn": "Reverse Pec Deck",
+    "region": "shoulders",
+    "equipment": ["machine"],
+    "alternatives": ["ケーブル・リアデルトフライ"],
+    "unit": "weight_reps",
+    "repRange": [12, 20],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "delt_posterior", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rhomboids", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "trapezius_middle", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "rotator_cuff", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r7"],
+      "summary": "EMG分析では三角筋後部の活動はシーテッド・リアラテラルレイズと45度インクラインロウが最も高く、両者に差はなかった。マシン版は体幹が固定され反動を使いにくい。"
+    },
+    "cues": [
+      "肘を伸ばしすぎず、手ではなく肘で外側へ運ぶ",
+      "肩甲骨を寄せきらない範囲で止める"
+    ],
+    "commonErrors": [
+      "肩甲骨を強く寄せて僧帽筋中部の種目になる。肩甲骨の動きは最小限にする"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_reverse_pec_deck"
+  },
+  {
+    "id": "cable_face_pull",
+    "code": "S-4",
+    "name": "ケーブル・フェイスプル",
+    "nameEn": "Cable Face Pull",
+    "region": "shoulders",
+    "equipment": ["cable"],
+    "alternatives": ["ロープ・アップライトロウ"],
+    "unit": "weight_reps",
+    "repRange": [15, 20],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "delt_posterior", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rotator_cuff", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "trapezius_middle", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "trapezius_lower", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "後部三角筋に2種目を配分する理由は、プレス系で前部が過剰に刺激される一方、後部は日常動作でほぼ使われないため。肩関節の外旋を伴い回旋筋腱板も扱える点でリバース・ペックデックと重複しない。"
+    },
+    "cues": [
+      "顔の高さに設定し、引ききった位置で拳を耳の横まで持っていく（外旋を入れる）"
+    ],
+    "commonErrors": [
+      "重量が重く、上体を後ろに倒してロウイングになる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_cable_face_pull"
+  },
+
+  {
+    "id": "incline_dumbbell_curl",
+    "code": "BI-1",
+    "name": "インクライン・ダンベルカール",
+    "nameEn": "Incline Dumbbell Curl",
+    "region": "biceps",
+    "equipment": ["dumbbell", "bench"],
+    "alternatives": [],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 2.0,
+    "muscles": [
+      { "muscleId": "biceps_brachii", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "brachialis", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "brachioradialis", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r8", "r3", "r4"],
+      "summary": "プリーチャーカールとの直接比較試験で、インクラインカールは上腕二頭筋そのものの肥大が大きかった。肩関節伸展位で長頭が最大に伸張することが理由と考えられる。"
+    },
+    "cues": [
+      "下ろしきった位置で肘を完全に伸ばし、上腕が体幹より後ろにある状態を保つ",
+      "ベンチ角度は45〜60度"
+    ],
+    "commonErrors": [
+      "挙げるときに肘が前に出る。肘の位置が動くと伸張位の優位性が失われる"
+    ],
+    "criticalNote": "肩を伸展させた姿勢（上腕が体幹より後ろ）を保つことが本種目の効果の source。肘が前に出ると通常のカールと変わらなくなる。",
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_incline_dumbbell_curl"
+  },
+  {
+    "id": "preacher_curl",
+    "code": "BI-2",
+    "name": "プリーチャーカール",
+    "nameEn": "Preacher Curl",
+    "region": "biceps",
+    "equipment": ["machine", "ez_bar"],
+    "alternatives": ["ダンベル・プリーチャーカール"],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "brachialis", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "biceps_brachii", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "brachioradialis", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r8"],
+      "summary": "同じ直接比較試験で、プリーチャーカールは上腕筋・腕橈骨筋の肥大がインクラインカールより大きかった。肥大する筋が異なるため、インクラインカールの代替ではなく併用する。"
+    },
+    "cues": [
+      "台に脇を密着させ、下ろした位置で肘を伸ばしきる",
+      "トップで力を抜かない"
+    ],
+    "commonErrors": [
+      "下端で完全に脱力して反動で挙げる。伸張位で最も負荷がかかる種目なので下端の制御が要点"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_preacher_curl"
+  },
+  {
+    "id": "ez_bar_curl",
+    "code": "BI-3",
+    "name": "EZバーカール（立位）",
+    "nameEn": "EZ Bar Curl",
+    "region": "biceps",
+    "equipment": ["ez_bar"],
+    "alternatives": ["バーベルカール"],
+    "unit": "weight_reps",
+    "repRange": [6, 10],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "biceps_brachii", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "brachialis", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "brachioradialis", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "forearm_flexors", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r9", "r8"],
+      "summary": "EMG比較では回外グリップの通常カールが上腕二頭筋の活動が最も高い。加えて肘屈筋群では複数種目の組み合わせが近位・中間・遠位すべてで肥大に有利と報告されている。"
+    },
+    "cues": [
+      "反動を使わず、下ろす動作に2秒以上かける"
+    ],
+    "commonErrors": [
+      "体を反らせて挙げる。腰を壁につけて行うと反動を排除できる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_ez_bar_curl"
+  },
+  {
+    "id": "bayesian_cable_curl",
+    "code": "BI-4",
+    "name": "ケーブルカール（体幹後方・ベイジアン）",
+    "nameEn": "Bayesian Cable Curl",
+    "region": "biceps",
+    "equipment": ["cable"],
+    "alternatives": [],
+    "unit": "weight_reps",
+    "repRange": [10, 15],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "biceps_brachii", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "brachialis", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r8"],
+      "summary": "インクラインカールと同じ肩伸展位を、全可動域で張力が抜けないケーブルで行う種目。本種目単独の直接比較試験は確認できていない。"
+    },
+    "cues": [
+      "ケーブルの軌道が上腕と一直線になる立ち位置を探す",
+      "上腕は動かさない"
+    ],
+    "commonErrors": [
+      "ケーブルから離れすぎて肩の屈曲が入る。伸張位を作る意図が消える"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_bayesian_cable_curl"
+  },
+
+  {
+    "id": "cable_overhead_triceps_extension",
+    "code": "TR-1",
+    "name": "ケーブル・オーバーヘッドエクステンション",
+    "nameEn": "Cable Overhead Triceps Extension",
+    "region": "triceps",
+    "equipment": ["cable"],
+    "alternatives": ["ダンベル・オーバーヘッドエクステンション"],
+    "unit": "weight_reps",
+    "repRange": [10, 15],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "triceps_long", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_lateral", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_medial", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r2"],
+      "summary": "左右腕で12週比較した試験で、オーバーヘッド位は長頭 +28.5% 対 プレスダウン +19.6%、外側頭・内側頭でも +14.6% 対 +10.5% と全ての頭で有意に大きい肥大を示した（三頭全体で約1.4倍）。本アプリの32種目で最も強い根拠を持つ。"
+    },
+    "cues": [
+      "肘を耳の横で固定し、頭の後ろで完全に伸ばしきる／曲げきる",
+      "扱える重量はプレスダウンより明確に軽くなるが、それで正しい"
+    ],
+    "commonErrors": [
+      "肘が開いて前方に移動する。長頭の伸張が失われプレスダウンと変わらなくなる"
+    ],
+    "criticalNote": "腕を頭上に挙げた姿勢が効果の source。肘の位置が下がると優位性が消える。",
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_cable_overhead_triceps_extension"
+  },
+  {
+    "id": "close_grip_bench_press",
+    "code": "TR-2",
+    "name": "ナローグリップ・ベンチプレス",
+    "nameEn": "Close Grip Bench Press",
+    "region": "triceps",
+    "equipment": ["barbell", "bench"],
+    "alternatives": ["マシンディップス"],
+    "unit": "weight_reps",
+    "repRange": [6, 10],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "triceps_lateral", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_medial", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_long", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "pec_sternal", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "delt_anterior", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "単関節種目だけでは扱える絶対重量が小さく漸進の余地が早く尽きる。多関節の押し種目を1枠置き、高負荷帯（6〜10回）を担当させる。三頭種目で最も重量を伸ばしやすい。"
+    },
+    "cues": [
+      "グリップ幅は肩幅程度。手首が痛む幅まで狭めない",
+      "肘を体側に近づけて下ろす"
+    ],
+    "commonErrors": [
+      "グリップを狭めすぎて手首と肘を痛める。狭さより肘を締めることが三頭への刺激を決める"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_close_grip_bench_press"
+  },
+  {
+    "id": "lying_triceps_extension",
+    "code": "TR-3",
+    "name": "ライイング・エクステンション",
+    "nameEn": "Lying Triceps Extension",
+    "region": "triceps",
+    "equipment": ["ez_bar", "bench"],
+    "alternatives": ["ダンベル・ライイングエクステンション"],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "triceps_long", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_medial", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_lateral", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r2"],
+      "summary": "肩関節を約90度屈曲させるため、長頭の筋長はオーバーヘッド（約180度）とプレスダウン（0度）の中間にあたる。同じ原理によりプレスダウンよりは長頭に有利だが、本種目を直接比較した試験は確認できていない。"
+    },
+    "cues": [
+      "バーを額ではなく頭の後ろへ下ろすと長頭がさらに伸張する"
+    ],
+    "commonErrors": [
+      "肘を閉じられず実質プルオーバーになる。肘の間隔を一定に保つ"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_lying_triceps_extension"
+  },
+  {
+    "id": "cable_pushdown",
+    "code": "TR-4",
+    "name": "ケーブル・プレスダウン",
+    "nameEn": "Cable Pushdown",
+    "region": "triceps",
+    "equipment": ["cable"],
+    "alternatives": ["ロープ・プレスダウン"],
+    "unit": "weight_reps",
+    "repRange": [12, 20],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "triceps_lateral", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_medial", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_long", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r2"],
+      "summary": "長頭の肥大ではオーバーヘッドエクステンションに明確に劣ることが介入研究で示されている。それでも採用するのは、短縮位でのフィニッシュを担当し、肩に負担をかけず高回数を積める枠としての価値による。4種目中で優先度は最も低い。"
+    },
+    "cues": [
+      "肘を体側に固定し、伸ばしきった位置で1秒静止する"
+    ],
+    "commonErrors": [
+      "上体を前傾させて体重で押し下げる。三頭の仕事が減る"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_cable_pushdown"
+  },
+
+  {
+    "id": "reverse_curl",
+    "code": "FA-1",
+    "name": "リバースカール",
+    "nameEn": "Reverse Curl",
+    "region": "forearms",
+    "equipment": ["ez_bar", "cable"],
+    "alternatives": ["ケーブル・リバースカール"],
+    "unit": "weight_reps",
+    "repRange": [10, 15],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "brachioradialis", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "forearm_extensors", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "brachialis", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "biceps_brachii", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r9"],
+      "summary": "通常カール・ハンマーカール・リバースカールを比較したEMG研究で、上腕筋の活動はリバースカールが有意に高かった。前腕の背側（伸筋群）を鍛えられる数少ない加重種目。"
+    },
+    "cues": [
+      "手首を軽く伸展させたまま固定する",
+      "重量は通常カールの半分程度が目安"
+    ],
+    "commonErrors": [
+      "重すぎて手首が折れる。手首が動いた時点で前腕への刺激が逃げる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_reverse_curl"
+  },
+  {
+    "id": "hammer_curl",
+    "code": "FA-2",
+    "name": "ハンマーカール",
+    "nameEn": "Hammer Curl",
+    "region": "forearms",
+    "equipment": ["dumbbell", "cable"],
+    "alternatives": ["ロープ・ケーブルハンマーカール"],
+    "unit": "weight_reps",
+    "repRange": [10, 15],
+    "progressionStepKg": 2.0,
+    "muscles": [
+      { "muscleId": "brachioradialis", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "brachialis", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "biceps_brachii", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r9"],
+      "summary": "回外・回内・ニュートラルの3グリップのうち、ニュートラル（ハンマー）で腕橈骨筋の活動が最も高いと一貫して報告されている。"
+    },
+    "cues": [
+      "親指を上に向けたまま、体の前ではなく体側の軌道で挙げる"
+    ],
+    "commonErrors": [
+      "肩をすくめて上体で振り上げる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_hammer_curl"
+  },
+  {
+    "id": "wrist_curl",
+    "code": "FA-3",
+    "name": "リストカール",
+    "nameEn": "Wrist Curl",
+    "region": "forearms",
+    "equipment": ["barbell", "dumbbell", "bench"],
+    "alternatives": ["ケーブル・リストカール"],
+    "unit": "weight_reps",
+    "repRange": [15, 25],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "forearm_flexors", "role": "prime", "coefficient": 1.0 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r10"],
+      "summary": "前腕の筋量の大半は掌側の屈筋群が占めるが、他の前腕種目はいずれも肘屈曲種目である。手関節の屈曲を可動域を伴って直接負荷できる唯一の枠として採用する。"
+    },
+    "cues": [
+      "下端で指を軽く開いてバーを転がし、そこから握り込む（可動域を最大化する）"
+    ],
+    "commonErrors": [
+      "可動域が数センチしかない。前腕をベンチに固定し手首だけを大きく動かす"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_wrist_curl"
+  },
+  {
+    "id": "heavy_hold",
+    "code": "FA-4",
+    "name": "ヘビーホールド／ファーマーズウォーク",
+    "nameEn": "Heavy Hold / Farmer's Walk",
+    "region": "forearms",
+    "equipment": ["dumbbell"],
+    "alternatives": ["トラップバー・ファーマーズウォーク"],
+    "unit": "weight_seconds",
+    "repRange": [30, 60],
+    "progressionStepKg": 2.0,
+    "muscles": [
+      { "muscleId": "forearm_flexors", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "trapezius_upper", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "erector_spinae", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r10"],
+      "summary": "等尺性の保持はリストカールより前腕全体の活動が高いとする報告がある。加えて握力はデッドリフトやロウの制限因子になるため、他部位のボリューム確保にも間接的に寄与する。"
+    },
+    "cues": [
+      "ストラップを使わない",
+      "握力が限界になるまで保持する"
+    ],
+    "commonErrors": [
+      "記録単位が他種目と異なる。重量×レップではなく重量×秒で記録する"
+    ],
+    "criticalNote": "本種目のみ記録単位が weight_seconds。repRange は「秒数」を意味する。",
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_heavy_hold"
+  },
+
+  {
+    "id": "cable_crunch",
+    "code": "AB-1",
+    "name": "ケーブルクランチ（膝立ち）",
+    "nameEn": "Kneeling Cable Crunch",
+    "region": "abs",
+    "equipment": ["cable"],
+    "alternatives": ["アブドミナルクランチマシン"],
+    "unit": "weight_reps",
+    "repRange": [10, 15],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "rectus_abdominis_upper", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rectus_abdominis_lower", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "obliques_external", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r1", "r11"],
+      "summary": "腹筋種目のうち負荷を細かく漸進できる数少ない種目。EMG順位では自重種目に劣る場合があるが、EMGは肥大の予測因子として未検証であるのに対し、漸進性過負荷は最も確立された原則であるため第一種目に置いた。"
+    },
+    "cues": [
+      "股関節の角度を変えず、背骨を丸めてみぞおちを骨盤に近づける"
+    ],
+    "commonErrors": [
+      "背中をまっすぐ保ったまま股関節から倒れる。腹直筋ではなく腸腰筋の運動になる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_cable_crunch"
+  },
+  {
+    "id": "hanging_leg_raise",
+    "code": "AB-2",
+    "name": "ハンギングレッグレイズ／キャプテンズチェア",
+    "nameEn": "Hanging Leg Raise",
+    "region": "abs",
+    "equipment": ["rack", "bodyweight"],
+    "alternatives": ["キャプテンズチェア（ローマンチェア）"],
+    "unit": "weight_reps",
+    "repRange": [8, 15],
+    "progressionStepKg": 2.0,
+    "muscles": [
+      { "muscleId": "rectus_abdominis_lower", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rectus_abdominis_upper", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "obliques_external", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "iliopsoas", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r11", "r12"],
+      "summary": "ACEの13種目比較でキャプテンズチェアは上位3種目に入った。別のEMG研究でもハンギングニーアップと30度傾斜のリバースクランチが上部・下部腹直筋の活動で最上位だった。足の間にダンベルを挟むことで加重も可能。"
+    },
+    "cues": [
+      "脚を上げるだけで終わらせず、骨盤を後傾させて尾骨を持ち上げるところまで行う"
+    ],
+    "commonErrors": [
+      "股関節の屈曲だけで終わり骨盤が動かない。この場合ほぼ腸腰筋のトレーニングになる"
+    ],
+    "criticalNote": "骨盤の後傾まで到達しないと腹直筋下部の可動域に入らない。3D上で骨盤の動きを強調表示すること。",
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_hanging_leg_raise"
+  },
+  {
+    "id": "ab_rollout",
+    "code": "AB-3",
+    "name": "アブローラー（ロールアウト）",
+    "nameEn": "Ab Wheel Rollout",
+    "region": "abs",
+    "equipment": ["ab_roller", "bodyweight"],
+    "alternatives": ["ケーブル・ロールアウト"],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 0,
+    "muscles": [
+      { "muscleId": "rectus_abdominis_upper", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rectus_abdominis_lower", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "latissimus_dorsi", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "transverse_abdominis", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r12"],
+      "summary": "市販の腹筋器具を比較したEMG研究で、Ab Slide・Torso Track・Ab Roller 系が上部・下部腹直筋の活動で最上位だった。腹直筋が伸張された状態で高い張力がかかる数少ない種目。"
+    },
+    "cues": [
+      "腰を反らせず、骨盤を軽く後傾させたまま伸ばせる範囲までにとどめる"
+    ],
+    "commonErrors": [
+      "可動域を欲張って腰が落ちる。腰椎の伸展が出た時点で腹筋から負荷が抜け腰を痛める"
+    ],
+    "criticalNote": "加重手段がないため、膝つき→立位へと難易度で漸進する。progressionStepKg は 0 とし、ALG-3 の重量提案の対象外とする。",
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_ab_rollout"
+  },
+  {
+    "id": "cable_woodchop",
+    "code": "AB-4",
+    "name": "ケーブル・ウッドチョップ／パロフプレス",
+    "nameEn": "Cable Woodchop / Pallof Press",
+    "region": "abs",
+    "equipment": ["cable"],
+    "alternatives": ["ケーブル・パロフプレス（抗回旋）"],
+    "unit": "weight_reps",
+    "repRange": [12, 15],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "obliques_external", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "obliques_internal", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rectus_abdominis_upper", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "transverse_abdominis", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "他の3種目はいずれも矢状面（前後の屈曲・伸展）の種目であり、水平面（回旋）の刺激が欠ける。腹斜筋を加重して鍛えられる枠として採用した。"
+    },
+    "cues": [
+      "腕で振らず、みぞおちから捻る。骨盤は正面に固定する"
+    ],
+    "commonErrors": [
+      "腰から回してしまう。腰椎の回旋可動域は小さく、無理に捻ると障害リスクになる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_cable_woodchop"
+  },
+
+  {
+    "id": "lat_pulldown",
+    "code": "BK-1",
+    "name": "ラットプルダウン／チンニング",
+    "nameEn": "Lat Pulldown / Chin-up",
+    "region": "back",
+    "equipment": ["machine", "rack"],
+    "alternatives": ["チンニング（10回可能になったら移行）"],
+    "unit": "weight_reps",
+    "repRange": [6, 12],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "latissimus_dorsi", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "teres_major", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "biceps_brachii", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "trapezius_lower", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "forearm_flexors", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r14", "r15"],
+      "summary": "複数の背中種目を比較したEMG研究で広背筋の活動は懸垂・チンアップが最大だった。一方ラットプルダウンはグリップ幅や回内回外の違いで広背筋の活動に有意差が出ないため、グリップの種類を増やすより荷重を伸ばすことに集中すべきと解釈できる。"
+    },
+    "cues": [
+      "肘を体の前ではなく体側に沿って下ろす",
+      "開始位置で肩を上げ、広背筋を伸ばしきる"
+    ],
+    "commonErrors": [
+      "顎を上げて反動で引く。可動域の上端（伸張位）を省略しない"
+    ],
+    "criticalNote": "懸垂へ移行した後も同一種目として記録し、e1RM推移を1本の線として繋ぐ。懸垂時は「体重＋加重」を重量として記録すること（FR-C1）。",
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_lat_pulldown"
+  },
+  {
+    "id": "seated_cable_row",
+    "code": "BK-2",
+    "name": "シーテッド・ケーブルロウ",
+    "nameEn": "Seated Cable Row",
+    "region": "back",
+    "equipment": ["cable"],
+    "alternatives": ["チェストサポーテッド・ロウ"],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "trapezius_middle", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rhomboids", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "latissimus_dorsi", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "delt_posterior", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "biceps_brachii", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r14"],
+      "summary": "垂直引きでは僧帽筋中部・菱形筋への刺激が不足する。水平引きは肩甲骨の内転を伴うためこれらの筋を担当する枠として必須。体幹が固定され腰への負担なく高ボリュームを積める点でベントオーバーロウと役割が異なる。"
+    },
+    "cues": [
+      "引ききった位置で肩甲骨を寄せ1秒静止する",
+      "戻すときは肩甲骨を前に出しきる"
+    ],
+    "commonErrors": [
+      "上体を大きく前後させて反動で引く。上体の角度は固定する"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_seated_cable_row"
+  },
+  {
+    "id": "bent_over_row",
+    "code": "BK-3",
+    "name": "ベントオーバーロウ",
+    "nameEn": "Bent Over Row",
+    "region": "back",
+    "equipment": ["barbell"],
+    "alternatives": ["ペンドレイロウ", "Tバーロウ"],
+    "unit": "weight_reps",
+    "repRange": [6, 10],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "latissimus_dorsi", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "trapezius_middle", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "erector_spinae", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "delt_posterior", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "hamstrings", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r14"],
+      "summary": "EMG比較で脊柱起立筋の活動はベントオーバーロウが他の全ての引く種目より有意に高かった。脊柱起立筋を直接刺激できる唯一の枠であり、背中種目で最も高重量を扱えるためe1RMの主軸になる。"
+    },
+    "cues": [
+      "上体は45度以下に倒し、みぞおちに向けて引く",
+      "背中は最初から最後までフラットに保つ"
+    ],
+    "commonErrors": [
+      "重量を追って上体が起き実質シュラッグになる。背中が丸まる重量は使わない"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_bent_over_row"
+  },
+  {
+    "id": "straight_arm_pulldown",
+    "code": "BK-4",
+    "name": "ストレートアーム・プルダウン",
+    "nameEn": "Straight Arm Pulldown",
+    "region": "back",
+    "equipment": ["cable"],
+    "alternatives": ["ケーブル・ラットプルオーバー"],
+    "unit": "weight_reps",
+    "repRange": [12, 15],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "latissimus_dorsi", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "teres_major", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_long", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "他の背中種目はいずれも肘関節が関与するため、広背筋が限界に達する前に上腕二頭筋と握力が先に疲労する。肘を固定した単関節種目を置くことで広背筋のみを追い込める。"
+    },
+    "cues": [
+      "肘の角度を固定し、脇を閉じる動きだけで引く",
+      "開始位置で広背筋の伸びを感じるところまで腕を上げる"
+    ],
+    "commonErrors": [
+      "肘が曲がってプレスダウンになる。三頭の種目に変わってしまう"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_straight_arm_pulldown"
+  },
+
+  {
+    "id": "bench_press",
+    "code": "CH-1",
+    "name": "ベンチプレス（フラット）",
+    "nameEn": "Flat Bench Press",
+    "region": "chest",
+    "equipment": ["barbell", "bench"],
+    "alternatives": ["マシンチェストプレス", "ダンベルプレス"],
+    "unit": "weight_reps",
+    "repRange": [5, 10],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "pec_sternal", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "delt_anterior", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_lateral", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_medial", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r16"],
+      "summary": "EMG研究でフラットベンチは胸肋部（中・下部）の活動がインクラインより高い。胸種目のなかで最も高重量を扱え、ALG-5 の体重比基準（初心者0.50×体重／中級者0.75×体重）が最も機能する種目でもある。"
+    },
+    "cues": [
+      "肩甲骨を寄せて下げ、胸を張る",
+      "バーは乳頭のやや下に触れさせる"
+    ],
+    "commonErrors": [
+      "肩甲骨が動いて負荷が肩の前面に逃げる。肩に痛みが出る場合はまずここを疑う"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_bench_press"
+  },
+  {
+    "id": "incline_press",
+    "code": "CH-2",
+    "name": "インクラインプレス（30〜45度）",
+    "nameEn": "Incline Press",
+    "region": "chest",
+    "equipment": ["dumbbell", "machine", "smith", "bench"],
+    "alternatives": ["スミスマシン・インクラインプレス"],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 2.0,
+    "muscles": [
+      { "muscleId": "pec_clavicular", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "pec_sternal", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "delt_anterior", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_lateral", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "emg",
+      "refs": ["r16", "r17"],
+      "summary": "EMG研究で鎖骨部（上部）の活動はインクラインで有意に高く、フラットでは逆に胸肋部が高いという明確なパターンが確認されている。ただし局所肥大が種目選択で完全に制御できるとは限らない点には留保がある。"
+    },
+    "cues": [
+      "角度は30度前後にとどめる。45度を超えると三角筋前部の関与が増える"
+    ],
+    "commonErrors": [
+      "ベンチを立てすぎている。市販ベンチの2段目はしばしば45度以上ある"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_incline_press"
+  },
+  {
+    "id": "cable_fly",
+    "code": "CH-3",
+    "name": "ケーブルフライ／ペックデック",
+    "nameEn": "Cable Fly / Pec Deck",
+    "region": "chest",
+    "equipment": ["cable", "machine"],
+    "alternatives": ["ペックデックフライ"],
+    "unit": "weight_reps",
+    "repRange": [12, 15],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      { "muscleId": "pec_sternal", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "pec_clavicular", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "delt_anterior", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": ["r2", "r3", "r4"],
+      "summary": "バーベルプレスではバーが胸に当たった時点で可動域が止まり、大胸筋を完全な伸張位まで持っていけない。長い筋長でのトレーニングが肥大に有利という所見から単関節種目の併用を推奨する。ただし胸に関する直接比較の介入研究は確認できていない。"
+    },
+    "cues": [
+      "肘の角度を一定に保ち、腕ではなく上腕で弧を描く",
+      "開いた位置で1秒静止する"
+    ],
+    "commonErrors": [
+      "重量が重くプレス動作になる。肘の角度が変わり始めたら重すぎる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_cable_fly"
+  },
+  {
+    "id": "chest_dip",
+    "code": "CH-4",
+    "name": "ディップス（前傾フォーム）",
+    "nameEn": "Chest Dip",
+    "region": "chest",
+    "equipment": ["rack", "bodyweight"],
+    "alternatives": ["ディップスマシン", "デクラインプレス"],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "pec_sternal", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "triceps_lateral", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "triceps_medial", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "delt_anterior", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "デクライン方向（腕を斜め下に押す）の動作は他の3種目でカバーされない。上体を前傾させることで大胸筋下部が主働となり、深く沈む姿勢は胸を伸張位に置く。ディップスベルトで加重できる。"
+    },
+    "cues": [
+      "上体を30度ほど前傾させ、肘をやや開く",
+      "直立すると三頭の種目になる"
+    ],
+    "commonErrors": [
+      "肩関節の柔軟性を超えて深く沈む。肩の前面に痛みが出る深さより浅くする"
+    ],
+    "criticalNote": "記録は「体重＋加重」を重量として扱う。ディップスベルト使用時のみ加重分を入力する運用も可（設定で切替）。",
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_chest_dip"
+  },
+
+  {
+    "id": "barbell_squat",
+    "code": "LG-1",
+    "name": "バーベルスクワット（フルデプス）",
+    "nameEn": "Barbell Squat",
+    "region": "legs",
+    "equipment": ["barbell", "rack"],
+    "alternatives": ["ハックスクワット", "スミスマシンスクワット"],
+    "unit": "weight_reps",
+    "repRange": [5, 10],
+    "progressionStepKg": 5.0,
+    "muscles": [
+      { "muscleId": "quadriceps", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "rectus_femoris", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "gluteus_maximus", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "adductors", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "erector_spinae", "role": "stabilizer", "coefficient": 0.0 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r18", "r13"],
+      "summary": "深いスクワット（膝屈曲120度）が浅いスクワット（0〜60度）より大腿四頭筋の肥大が大きく、特に遠位部で差が顕著だった。ただしレッグプレスでは可動域が肥大に影響しなかった報告もあり、可動域の効果は種目により一様ではない。"
+    },
+    "cues": [
+      "大腿が水平を明確に下回る深さまでしゃがむ",
+      "踵が浮くなら足首の可動域不足。ヒールを上げるか靴を変える"
+    ],
+    "commonErrors": [
+      "重量を優先して深さを削る。深さを保てる重量まで落とす"
+    ],
+    "criticalNote": "深さが効果の source。可動域を削って重量を伸ばすと本種目を選んだ意味が失われる。",
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_barbell_squat"
+  },
+  {
+    "id": "seated_leg_curl",
+    "code": "LG-2",
+    "name": "シーテッド・レッグカール",
+    "nameEn": "Seated Leg Curl",
+    "region": "legs",
+    "equipment": ["machine"],
+    "alternatives": [],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      { "muscleId": "hamstrings", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "gastrocnemius", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r3"],
+      "summary": "左右脚でシーテッドとプローンを12週比較したMRI研究で、ハムストリング全体の筋体積が +14%（座位）対 +9%（うつ伏せ）、二関節筋では +8〜24% 対 +4〜19% と座位が明確に優れていた。"
+    },
+    "cues": [
+      "骨盤をシートに密着させ、股関節が伸びないようにする",
+      "伸ばしきった位置で止めない"
+    ],
+    "commonErrors": [
+      "ライイングレッグカールで代用する。本種目の優位性は座位という条件そのものにある"
+    ],
+    "criticalNote": "必ず座位マシンを使うこと。うつ伏せ（ライイング）版では効果が明確に落ちる。3D上で姿勢の違いを強調表示する。",
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_seated_leg_curl"
+  },
+  {
+    "id": "hip_thrust",
+    "code": "LG-3",
+    "name": "ヒップスラスト",
+    "nameEn": "Hip Thrust",
+    "region": "legs",
+    "equipment": ["barbell", "machine", "bench"],
+    "alternatives": ["ヒップスラストマシン"],
+    "unit": "weight_reps",
+    "repRange": [8, 12],
+    "progressionStepKg": 5.0,
+    "muscles": [
+      { "muscleId": "gluteus_maximus", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "hamstrings", "role": "secondary", "coefficient": 0.5 },
+      { "muscleId": "quadriceps", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r19", "r20", "r1"],
+      "summary": "ヒップスラストとバックスクワットの直接比較では大臀筋の肥大は同等だった（EMGではヒップスラストが高値を示したが肥大には反映されなかった）。採用理由は、複数の股関節伸展種目を併用した方が大臀筋の肥大が大きいとするメタ分析の所見による。スクワットの代替ではなく追加として意味を持つ。"
+    },
+    "cues": [
+      "トップで顎を引き、肋骨を締めたまま骨盤を後傾させる",
+      "腰を反らせて可動域を稼がない"
+    ],
+    "commonErrors": [
+      "腰椎の伸展でロックアウトする。股関節の伸展で挙げる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_hip_thrust"
+  },
+  {
+    "id": "standing_calf_raise",
+    "code": "LG-4",
+    "name": "スタンディング・カーフレイズ",
+    "nameEn": "Standing Calf Raise",
+    "region": "legs",
+    "equipment": ["machine", "smith"],
+    "alternatives": ["スミスマシン・カーフレイズ"],
+    "unit": "weight_reps",
+    "repRange": [10, 15],
+    "progressionStepKg": 5.0,
+    "muscles": [
+      { "muscleId": "gastrocnemius", "role": "prime", "coefficient": 1.0 },
+      { "muscleId": "soleus", "role": "secondary", "coefficient": 0.5 }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": ["r4"],
+      "summary": "左右脚で立位（膝伸展）と座位（膝90度屈曲）を12週比較した研究で、外側腓腹筋 +12.4% 対 +1.7%、内側腓腹筋 +9.2% 対 +0.6%、下腿三頭筋全体 +5.6% 対 +2.1% と立位が圧倒的に優れていた。ヒラメ筋のみ両条件で同等。"
+    },
+    "cues": [
+      "膝を伸ばしたまま、踵を限界まで下ろし限界まで上げる",
+      "可動域を削らない"
+    ],
+    "commonErrors": [
+      "重量を上げて可動域が数センチになる。伸張位こそが効果の source"
+    ],
+    "criticalNote": "必ず立位（膝を伸ばした姿勢）で行うこと。座位では腓腹筋がほぼ成長しない（+0.6〜1.7%）。3D上で膝の角度を強調表示する。",
+    "equivalentTo": [],
+    "phase": 1,
+    "modelAssetId": "anim_standing_calf_raise"
+  }
+]

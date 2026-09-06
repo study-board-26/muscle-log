@@ -1,0 +1,130 @@
+/**
+ * 種目マスタの型定義
+ *
+ * 要件定義書 v1.0 のデータモデル（Muscle / Exercise / ExerciseMuscle）に対応する。
+ * 実データは muscles.json / exercises.json / references.json に置き、
+ * アプリ本体とは分離して配信する（NFR-8）。
+ */
+
+/** 部位。ボリューム集計（ALG-2）とヒートマップ（FR-C3）の単位でもある。 */
+export type Region =
+  | "shoulders"
+  | "biceps"
+  | "triceps"
+  | "forearms"
+  | "abs"
+  | "back"
+  | "chest"
+  | "legs";
+
+/** 種目におけるその筋の役割。ボリュームの按分係数を決める（ALG-2）。 */
+export type MuscleRole = "prime" | "secondary" | "stabilizer";
+
+/**
+ * 根拠の強さ。種目詳細画面に表示する（FR-A9）。
+ * intervention: 筋量を直接測定した縦断研究。左右差デザインを含む。
+ * meta:         メタ分析・システマティックレビュー。
+ * emg:          急性の筋電図研究。肥大の予測因子としては未検証（ref 1）。
+ * principle:    確立された原則からの演繹。直接の比較研究は未確認。
+ */
+export type EvidenceLevel = "intervention" | "meta" | "emg" | "principle";
+
+/** 記録単位。FA-4 のような等尺性種目は秒数で記録する（FR-B2 の拡張）。 */
+export type LogUnit = "weight_reps" | "weight_seconds";
+
+export type Equipment =
+  | "barbell"
+  | "ez_bar"
+  | "dumbbell"
+  | "cable"
+  | "machine"
+  | "smith"
+  | "bench"
+  | "rack"
+  | "ab_roller"
+  | "bodyweight";
+
+export interface Muscle {
+  id: string;
+  nameJa: string;
+  nameEn: string;
+  region: Region;
+  /** 3Dモデルのメッシュノード名。アセット確定時に紐づける（OPEN-2）。 */
+  meshNodeId: string;
+}
+
+export interface ExerciseMuscle {
+  muscleId: string;
+  role: MuscleRole;
+  /**
+   * ボリューム按分係数（ALG-2）。既定は prime 1.0 / secondary 0.5 / stabilizer 0。
+   * 種目ごとの実態に合わせて上書きできる（RISK-3 への対応）。
+   */
+  coefficient: number;
+}
+
+export interface Evidence {
+  level: EvidenceLevel;
+  /** references.json の id。 */
+  refs: string[];
+  /** 種目詳細画面に表示する1〜2文の要約。 */
+  summary: string;
+}
+
+export interface Exercise {
+  id: string;
+  /** 種目選定書での通し番号（S-1, BI-1 …）。 */
+  code: string;
+  name: string;
+  nameEn: string;
+  region: Region;
+  equipment: Equipment[];
+  /** 器具が空いていない場合の代替種目名（表示用）。 */
+  alternatives: string[];
+  unit: LogUnit;
+  /** [下限, 上限]。ダブルプログレッションの目標レップ帯（ALG-3）。 */
+  repRange: [number, number];
+  /** 1段階の増量幅（kg）。ALG-3 の条件A で使う。unit が weight_seconds の場合も同様。 */
+  progressionStepKg: number;
+  muscles: ExerciseMuscle[];
+  evidence: Evidence;
+  /** 効かせるコツ。3D上のホットスポット注釈にも流用する（FR-A4）。 */
+  cues: string[];
+  /** よくある失敗。NGフォーム比較アニメの元になる（FR-A5）。 */
+  commonErrors: string[];
+  /**
+   * 姿勢を誤ると効果が大きく落ちる種目に付ける警告。
+   * 3D上でも強調表示する（LG-2 の座位、LG-4 の立位など）。
+   */
+  criticalNote: string | null;
+  /**
+   * e1RM推移を1本の線として繋ぐ種目（FR-C1）。
+   * 例: ラットプルダウン → チンニング。
+   */
+  equivalentTo: string[];
+  phase: 1 | 2 | 3;
+  /** 3Dアニメーションクリップの識別子。アセット制作時に確定する。 */
+  modelAssetId: string;
+}
+
+export interface Reference {
+  id: string;
+  citation: string;
+  url: string;
+  /** 一次研究か解説記事かを区別する。 */
+  kind: "intervention" | "meta" | "emg" | "methodology" | "review_article";
+  year: number;
+}
+
+/** ALG-2 の既定係数。 */
+export const DEFAULT_COEFFICIENT: Record<MuscleRole, number> = {
+  prime: 1.0,
+  secondary: 0.5,
+  stabilizer: 0.0,
+};
+
+/** ALG-6 の週間ボリューム目安レンジ（部位あたりのセット数）。 */
+export const WEEKLY_VOLUME_RANGE: Record<"beginner" | "intermediate", [number, number]> = {
+  beginner: [8, 12],
+  intermediate: [12, 20],
+};

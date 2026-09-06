@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "muscle-log",
+      "runtimeExecutable": "C:/Users/dahui/AppData/Local/Programs/nodejs/node.exe",
+      "runtimeArgs": ["node_modules/vite/bin/vite.js", "--port", "5173"],
+      "port": 5173,
+      "url": "http://localhost:5173"
+    }
+  ]
+}

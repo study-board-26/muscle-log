@@ -1,0 +1,149 @@
+[
+  {
+    "id": "r1",
+    "citation": "Vigotsky AD, et al. Longing for a Longitudinal Proxy: Acutely Measured Surface EMG Amplitude is not a Validated Predictor of Muscle Hypertrophy. Sports Medicine.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/35006527/",
+    "kind": "methodology",
+    "year": 2022
+  },
+  {
+    "id": "r2",
+    "citation": "Maeo S, et al. Triceps brachii hypertrophy is substantially greater after elbow extension training performed in the overhead versus neutral arm position. European Journal of Sport Science.",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1080/17461391.2022.2100279",
+    "kind": "intervention",
+    "year": 2023
+  },
+  {
+    "id": "r3",
+    "citation": "Maeo S, et al. Greater Hamstrings Muscle Hypertrophy but Similar Damage Protection after Training at Long versus Short Muscle Lengths. Medicine & Science in Sports & Exercise.",
+    "url": "https://www.researchgate.net/publication/344445943_Greater_Hamstrings_Muscle_Hypertrophy_but_Similar_Damage_Protection_after_Training_at_Long_versus_Short_Muscle_Lengths",
+    "kind": "intervention",
+    "year": 2021
+  },
+  {
+    "id": "r4",
+    "citation": "Kinoshita M, et al. Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training. Frontiers in Physiology.",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10753835/",
+    "kind": "intervention",
+    "year": 2023
+  },
+  {
+    "id": "r5",
+    "citation": "Do Lengthened Partials Really Stimulate Stretch-Mediated Hypertrophy? Stronger by Science.",
+    "url": "https://www.strongerbyscience.com/stretch-mediated-hypertrophy/",
+    "kind": "review_article",
+    "year": 2025
+  },
+  {
+    "id": "r6",
+    "citation": "Dumbbell versus cable lateral raises for lateral deltoid hypertrophy: an experimental study.",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12277279/",
+    "kind": "intervention",
+    "year": 2025
+  },
+  {
+    "id": "r7",
+    "citation": "Sweeney S. Electromyographic analysis of the deltoid muscle during various shoulder exercises. University of Wisconsin.",
+    "url": "https://minds.wisconsin.edu/handle/1793/70129",
+    "kind": "emg",
+    "year": 2014
+  },
+  {
+    "id": "r8",
+    "citation": "Kobayashi Y, et al. Distinct muscle growth and strength adaptations after preacher and incline biceps curl. International Journal of Sports Medicine.",
+    "url": "https://www.thieme-connect.com/products/ejournals/abstract/10.1055/a-2517-0509",
+    "kind": "intervention",
+    "year": 2024
+  },
+  {
+    "id": "r9",
+    "citation": "Differences in electromyographic activity of biceps brachii and brachioradialis while performing three variants of curl.",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6047503/",
+    "kind": "emg",
+    "year": 2018
+  },
+  {
+    "id": "r10",
+    "citation": "Forearm Training, Demystified. RP Strength.",
+    "url": "https://rpstrength.com/blogs/articles/forearm-training-demystified",
+    "kind": "review_article",
+    "year": 2023
+  },
+  {
+    "id": "r11",
+    "citation": "ACE-sponsored study: Best and Worst Abdominal Exercises. San Diego State University.",
+    "url": "https://www.acefitness.org/getfit/studies/bestworstabexercises.pdf",
+    "kind": "emg",
+    "year": 2001
+  },
+  {
+    "id": "r12",
+    "citation": "Escamilla RF, et al. Electromyographic analysis of traditional and nontraditional abdominal exercises. Physical Therapy / JOSPT.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16649890/",
+    "kind": "emg",
+    "year": 2006
+  },
+  {
+    "id": "r13",
+    "citation": "Knee flexion range of motion does not influence muscle hypertrophy of the quadriceps femoris during leg press training in resistance-trained individuals. Journal of Sports Sciences.",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/02640414.2025.2481534",
+    "kind": "intervention",
+    "year": 2025
+  },
+  {
+    "id": "r14",
+    "citation": "Edelburg H. Electromyographic analysis of the back muscles during various back exercises. University of Wisconsin–La Crosse.",
+    "url": "https://minds.wisconsin.edu/handle/1793/76924",
+    "kind": "emg",
+    "year": 2018
+  },
+  {
+    "id": "r15",
+    "citation": "Electromyographic Analysis of Back Muscle Activation During Lat Pulldown Exercise: Effects of Grip Variations and Forearm Orientation.",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12452428/",
+    "kind": "emg",
+    "year": 2025
+  },
+  {
+    "id": "r16",
+    "citation": "Electromyographical analysis of the pectoralis major muscle during various chest exercises. University of Wisconsin.",
+    "url": "https://minds.wisc.edu/items/48f80f8d-09fb-4290-b552-3fc15d3a5f64/full",
+    "kind": "emg",
+    "year": 2013
+  },
+  {
+    "id": "r17",
+    "citation": "Is Regional Hypertrophy Predictable? Stronger by Science.",
+    "url": "https://www.strongerbyscience.com/regional-hypertrophy/",
+    "kind": "review_article",
+    "year": 2023
+  },
+  {
+    "id": "r18",
+    "citation": "Does squat depth matter for growth? Stronger by Science.",
+    "url": "https://www.strongerbyscience.com/squat-depth-growth/",
+    "kind": "review_article",
+    "year": 2023
+  },
+  {
+    "id": "r19",
+    "citation": "Plotkin D, et al. Hip thrust and back squat training elicit similar gluteus muscle hypertrophy and transfer similarly to the deadlift.",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10593473/",
+    "kind": "intervention",
+    "year": 2023
+  },
+  {
+    "id": "r20",
+    "citation": "The impact of resistance training on gluteus maximus hypertrophy: a systematic review and meta-analysis. Frontiers in Physiology.",
+    "url": "https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1542334/full",
+    "kind": "meta",
+    "year": 2025
+  },
+  {
+    "id": "r21",
+    "citation": "The effects of hip flexion angle on quadriceps femoris muscle hypertrophy in the leg extension exercise. Journal of Sports Sciences.",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/02640414.2024.2444713",
+    "kind": "intervention",
+    "year": 2024
+  }
+]

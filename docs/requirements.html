@@ -1,0 +1,1061 @@
+<title>筋トレアプリ 要件定義書</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --ground:      #EFF2F1;
+    --surface:     #FFFFFF;
+    --surface-2:   #E5EAE8;
+    --ink:         #131719;
+    --ink-2:       #4B565B;
+    --ink-3:       #7B878D;
+    --line:        #D2D9D7;
+    --line-strong: #B4BEBB;
+    --accent:      #1D4E89;
+    --accent-ink:  #FFFFFF;
+    --accent-soft: #E0E9F4;
+    --red:         #A9382F;
+    --red-soft:    #F5E2E0;
+    --yellow:      #9A6E0C;
+    --yellow-soft: #F6EBD4;
+    --green:       #2A6E51;
+    --green-soft:  #DDEDE5;
+    --shadow:      0 1px 2px rgba(19,23,25,.05), 0 8px 24px -16px rgba(19,23,25,.28);
+
+    --font-display: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+    --font-body:    "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+    --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #11161A;
+      --surface:     #181E23;
+      --surface-2:   #212930;
+      --ink:         #E5EBEE;
+      --ink-2:       #A2ADB4;
+      --ink-3:       #77848B;
+      --line:        #2A333A;
+      --line-strong: #3B464E;
+      --accent:      #74AAE8;
+      --accent-ink:  #0D1218;
+      --accent-soft: #1A2937;
+      --red:         #E0796E;
+      --red-soft:    #33211F;
+      --yellow:      #DCAF57;
+      --yellow-soft: #2E2718;
+      --green:       #63BC93;
+      --green-soft:  #172C24;
+      --shadow:      0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.8);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #11161A;
+    --surface:     #181E23;
+    --surface-2:   #212930;
+    --ink:         #E5EBEE;
+    --ink-2:       #A2ADB4;
+    --ink-3:       #77848B;
+    --line:        #2A333A;
+    --line-strong: #3B464E;
+    --accent:      #74AAE8;
+    --accent-ink:  #0D1218;
+    --accent-soft: #1A2937;
+    --red:         #E0796E;
+    --red-soft:    #33211F;
+    --yellow:      #DCAF57;
+    --yellow-soft: #2E2718;
+    --green:       #63BC93;
+    --green-soft:  #172C24;
+    --shadow:      0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    padding: 56px 0 28px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(30px, 5.2vw, 46px);
+    line-height: 1.24;
+    letter-spacing: .01em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .lede {
+    max-width: 62ch;
+    color: var(--ink-2);
+    font-size: 16px;
+    margin: 0 0 30px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 36px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .meta div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta dt {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .meta dd {
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: var(--font-display);
+  }
+
+  /* ---------- layout ---------- */
+  .cols {
+    display: grid;
+    grid-template-columns: 208px minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+  nav.toc {
+    position: sticky;
+    top: 24px;
+    padding-top: 44px;
+  }
+  nav.toc h2 {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+  nav.toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    counter-reset: toc;
+  }
+  nav.toc a {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 6px;
+    padding: 4px 8px 4px 0;
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 3px;
+  }
+  nav.toc a::before {
+    counter-increment: toc;
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+  nav.toc a:hover { color: var(--accent); background: var(--accent-soft); }
+  nav.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  main { padding-top: 44px; counter-reset: sec; }
+
+  section { margin-bottom: 68px; scroll-margin-top: 24px; }
+  section > h2 {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: 14px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-strong);
+    text-wrap: balance;
+  }
+  section > h2::before {
+    counter-increment: sec;
+    content: counter(sec, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: .04em;
+  }
+  .sec-note {
+    max-width: 68ch;
+    color: var(--ink-2);
+    margin: 0 0 26px;
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    margin: 34px 0 12px;
+    letter-spacing: .01em;
+  }
+  h3 .gid {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-right: 8px;
+  }
+  p { max-width: 68ch; margin: 0 0 14px; }
+  main ul { max-width: 68ch; padding-left: 1.15em; margin: 0 0 16px; }
+  main li { margin-bottom: 5px; }
+  strong { font-weight: 700; }
+  code {
+    font-family: var(--font-mono);
+    font-size: .88em;
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ---------- tables ---------- */
+  .tbl-scroll { overflow-x: auto; margin: 0 0 18px; }
+  table {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    line-height: 1.68;
+    background: var(--surface);
+  }
+  caption {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding-bottom: 8px;
+  }
+  th, td {
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  thead th {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .04em;
+    color: var(--ink-2);
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line-strong);
+    white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.id {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  td.name { font-weight: 700; white-space: nowrap; }
+  td.num { font-variant-numeric: tabular-nums; font-family: var(--font-mono); white-space: nowrap; }
+  td.pri { white-space: nowrap; }
+
+  .pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    padding: 1px 7px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+  }
+  .p0 { background: var(--accent); color: var(--accent-ink); }
+  .p1 { background: var(--yellow-soft); color: var(--yellow); border-color: var(--yellow); }
+  .p2 { background: var(--surface-2); color: var(--ink-3); border-color: var(--line-strong); }
+
+  /* ---------- scope panels ---------- */
+  .scope {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    padding: 18px 20px 20px;
+  }
+  .panel.out { border-top-color: var(--red); }
+  .panel h4 {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .panel ul { margin: 0; padding-left: 1.1em; font-size: 13.5px; line-height: 1.75; }
+  .panel .why { font-size: 12.5px; color: var(--ink-3); margin: 10px 0 0; }
+
+  /* ---------- callout ---------- */
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--yellow);
+    padding: 14px 18px;
+    margin: 0 0 20px;
+    max-width: 72ch;
+  }
+  .callout p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+  .callout p + p { margin-top: 8px; }
+  .callout b { color: var(--ink); }
+
+  /* ---------- formula ---------- */
+  .formula {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.9;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    margin: 0 0 14px;
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--ink);
+  }
+  .formula .cm { color: var(--ink-3); }
+
+  /* ---------- terms ---------- */
+  dl.terms {
+    display: grid;
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: 0;
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+  dl.terms dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface-2);
+  }
+  dl.terms dd {
+    margin: 0;
+    padding: 11px 16px;
+    font-size: 13.5px;
+    border-bottom: 1px solid var(--line);
+  }
+  dl.terms dt:last-of-type, dl.terms dd:last-of-type { border-bottom: none; }
+
+  /* ---------- phases ---------- */
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 0 0 18px;
+    display: flex;
+    flex-direction: column;
+  }
+  .phase .bar { height: 5px; }
+  .phase:nth-child(1) .bar { background: var(--accent); }
+  .phase:nth-child(2) .bar { background: var(--yellow); }
+  .phase:nth-child(3) .bar { background: var(--green); }
+  .phase .body { padding: 16px 18px 0; }
+  .phase h4 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 900;
+    margin: 0 0 2px;
+  }
+  .phase .goal { font-size: 12.5px; color: var(--ink-3); margin: 0 0 12px; }
+  .phase ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    line-height: 1.9;
+    color: var(--ink-2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .phase li {
+    background: var(--surface-2);
+    border-radius: 2px;
+    padding: 0 6px;
+    margin: 0;
+  }
+
+  /* ---------- diagram ---------- */
+  figure { margin: 0 0 22px; }
+  .fig-scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); padding: 20px 18px 12px; }
+  .fig-scroll svg { display: block; min-width: 680px; width: 100%; height: auto; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 10px; max-width: 68ch; }
+  .d-box { fill: var(--surface-2); stroke: var(--line-strong); stroke-width: 1; }
+  .d-title { fill: var(--ink); font-family: var(--font-display); font-size: 14px; font-weight: 700; }
+  .d-sub { fill: var(--ink-2); font-family: var(--font-body); font-size: 11.5px; }
+  .d-num { fill: var(--accent); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+  .d-line { stroke: var(--line-strong); stroke-width: 1.5; fill: none; }
+  .d-loop { stroke: var(--accent); stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+  .d-loop-label { fill: var(--accent); font-family: var(--font-body); font-size: 11.5px; }
+
+  footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    max-width: 68ch;
+  }
+
+  @media (max-width: 940px) {
+    .cols { grid-template-columns: 1fr; gap: 0; }
+    nav.toc { position: static; padding-top: 32px; }
+    nav.toc ol { flex-direction: row; flex-wrap: wrap; gap: 4px 6px; }
+    nav.toc a {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      padding: 3px 9px;
+      font-size: 12px;
+    }
+    main { padding-top: 34px; }
+    dl.terms { grid-template-columns: 1fr; }
+    dl.terms dt { border-bottom: none; padding-bottom: 0; background: var(--surface); }
+    dl.terms dd { padding-top: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Requirements Specification</p>
+    <h1>筋トレアプリ 要件定義書</h1>
+    <p class="lede">「どこに、どう効かせるか」を3Dで理解し、記録に基づいて次に扱う重量が自動で決まる。<br>この2点を軸に、筋肥大を継続的に進めるための個人向けトレーニングアプリ。</p>
+    <dl class="meta">
+      <div><dt>Version</dt><dd>1.1</dd></div>
+      <div><dt>更新日</dt><dd>2026-09-06</dd></div>
+      <div><dt>実行環境</dt><dd>iPhone / PWA</dd></div>
+      <div><dt>種目数</dt><dd>32（Phase 1 は20）</dd></div>
+      <div><dt>想定ユーザー</dt><dd>単独利用（個人）</dd></div>
+    </dl>
+  </header>
+
+  <div class="cols">
+
+    <nav class="toc" aria-label="目次">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#s1">目的とゴール</a></li>
+        <li><a href="#s2">前提条件</a></li>
+        <li><a href="#s3">スコープ</a></li>
+        <li><a href="#s4">用語定義</a></li>
+        <li><a href="#s5">コアループ</a></li>
+        <li><a href="#s6">機能要件</a></li>
+        <li><a href="#s7">非機能要件</a></li>
+        <li><a href="#s8">データモデル</a></li>
+        <li><a href="#s9">アルゴリズム仕様</a></li>
+        <li><a href="#s10">画面構成</a></li>
+        <li><a href="#s11">技術構成案</a></li>
+        <li><a href="#s12">開発フェーズ</a></li>
+        <li><a href="#s13">リスクと未決事項</a></li>
+        <li><a href="#s14">改訂履歴</a></li>
+      </ol>
+    </nav>
+
+    <main>
+
+      <!-- 01 -->
+      <section id="s1">
+        <h2>目的とゴール</h2>
+        <p class="sec-note">既存の類似アプリは「記録はできるが、次に何をすればいいか教えてくれない」か「メニューは出るが、なぜその動きなのかが分からない」のどちらかに寄っている。本アプリは<strong>理解（3D）と意思決定（重量提案）を、記録という1つのデータ基盤の上で接続する</strong>ことを目的とする。</p>
+
+        <h3>プロダクトゴール</h3>
+        <ul>
+          <li><strong>効かせ方が分かる</strong> — 種目ごとに、どの筋が主働で、どの意識で動かすかを3Dで確認できる</li>
+          <li><strong>迷わず重量が決まる</strong> — 初回は体格ベースの目安から、2回目以降は自分の実測値から自動提案する</li>
+          <li><strong>漸進性過負荷が途切れない</strong> — 前回の記録が常に見え、停滞したらデロードを提案する</li>
+          <li><strong>偏りに気づける</strong> — 週の部位別ボリュームを3Dボディに色で反映し、サボっている部位を可視化する</li>
+        </ul>
+
+        <h3>成功指標（プロダクトKPI）</h3>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>指標</th><th>定義</th><th>目標</th></tr></thead>
+            <tbody>
+              <tr><td class="name">記録継続率</td><td>週2回以上の記録が8週継続したユーザー比率</td><td class="num">60%</td></tr>
+              <tr><td class="name">提案採用率</td><td>次回重量の提案をそのまま実行した割合</td><td class="num">70%</td></tr>
+              <tr><td class="name">e1RM 更新率</td><td>8週間で主要種目のe1RMが向上したユーザー比率</td><td class="num">80%</td></tr>
+              <tr><td class="name">記録所要時間</td><td>1セットの記録完了までの操作時間</td><td class="num">5秒以内</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section id="s2">
+        <h2>前提条件</h2>
+        <ul>
+          <li><strong>利用形態</strong>：単一ユーザーの個人利用。アカウント登録は必須としない（ローカル保存が既定）。</li>
+          <li><strong>実行環境</strong>：<strong>iPhone の Safari で動作する PWA</strong>（<code>OPEN-1</code> 確定）。<strong>ホーム画面に追加した状態での利用を前提とする</strong>（理由は <code>NFR-9</code>）。</li>
+          <li><strong>配信</strong>：HTTPS でのホスティングを必須とする。Service Worker は HTTPS または localhost でしか登録できず、これがないとオフライン動作（<code>NFR-1</code>）が成立しない。</li>
+          <li><strong>利用環境</strong>：ジム内での片手操作を主用途とする。電波が不安定な前提でオフライン動作を必須とする。</li>
+          <li><strong>対象ユーザー</strong>：筋トレ歴0〜3年程度の初心者〜中級者。競技志向のパワーリフター向けの周期化は対象外。</li>
+          <li><strong>目的の限定</strong>：筋肥大（ハイパートロフィー）を主目的とする。減量・増量の栄養管理は扱わない。</li>
+        </ul>
+        <div class="callout">
+          <p><b>免責の前提。</b>本アプリの重量提案は統計的な目安であり、医療・トレーニング指導行為ではない。初回起動時と提案表示部に、体調・既往症に応じた自己判断が必要である旨を明示する（<code>FR-F4</code>）。</p>
+        </div>
+      </section>
+
+      <!-- 03 -->
+      <section id="s3">
+        <h2>スコープ</h2>
+        <div class="scope">
+          <div class="panel">
+            <h4>対象に含む</h4>
+            <ul>
+              <li>種目マスタと3Dモーション／効かせ方の可視化</li>
+              <li>ワークアウトのセット記録（重量・レップ・RIR）</li>
+              <li>体重の記録と、体の写真の記録・比較</li>
+              <li>e1RM と部位別ボリュームの分析</li>
+              <li>次回重量・デロード・補助種目の提案</li>
+              <li>ルーティン（分割法）の管理</li>
+              <li>オフライン動作とデータのエクスポート</li>
+            </ul>
+          </div>
+          <div class="panel out">
+            <h4>対象に含まない</h4>
+            <ul>
+              <li>栄養・食事・カロリー・PFCの記録および目標提示</li>
+              <li>睡眠時間・睡眠スコアの記録</li>
+              <li>主観疲労・コンディションの日次入力</li>
+              <li>プレート計算機（バーベルの重量内訳表示）</li>
+              <li>体組成ログ（体脂肪率・部位別周囲径の測定記録）</li>
+              <li>SNS共有・他ユーザーとの比較・フォロー機能</li>
+              <li>ウェアラブル連携、心拍・有酸素運動の管理</li>
+            </ul>
+            <p class="why">体組成ログの代替として、体重（<code>FR-B5</code>）と体の写真（<code>FR-B6</code>）の2つのみを扱う。</p>
+          </div>
+        </div>
+        <div class="callout">
+          <p><b>スコープ除外による設計上の影響。</b>睡眠・主観疲労を入力として持たないため、デロード判定は<b>客観データのみ</b>で行う。具体的には「e1RMの停滞」と「同一重量におけるRIRの低下傾向」の2指標を用いる（<code>ALG-4</code>）。主観入力に頼る一般的な疲労管理より判定が遅れる代わりに、入力コストがゼロで済むトレードオフを取る。</p>
+        </div>
+      </section>
+
+      <!-- 04 -->
+      <section id="s4">
+        <h2>用語定義</h2>
+        <dl class="terms">
+          <dt>RIR</dt>
+          <dd>Reps In Reserve。そのセット終了時に「あと何回挙げられたか」の主観値。0 = 限界、3 = 余裕あり。強度の指標として全セットで記録する。</dd>
+          <dt>e1RM</dt>
+          <dd>推定1RM（Estimated One Rep Max）。実測せずに、重量・レップ・RIRから換算した最大挙上重量。種目ごとの筋力推移を1本の線で追うための指標。</dd>
+          <dt>セットボリューム</dt>
+          <dd>部位ごとの週間の実施セット数。本アプリでは主働筋を1.0、協働筋を0.5として按分して集計する。</dd>
+          <dt>主働筋 / 協働筋 / 安定筋</dt>
+          <dd>その種目で主に力を発揮する筋 / 補助的に働く筋 / 姿勢保持に働く筋。3Dモデル上で3段階に色分けする。</dd>
+          <dt>ダブルプログレッション</dt>
+          <dd>目標レップ帯（例 8〜12回）の上限に達したら重量を上げ、レップを下限に戻す漸進方式。本アプリの重量提案の基本ロジック。</dd>
+          <dt>デロード</dt>
+          <dd>疲労を抜くために意図的に負荷を落とす期間。本アプリでは「1週間、ボリュームを約50%に落とし、重量は維持する」形を既定とする。</dd>
+          <dt>器具プロファイル</dt>
+          <dd>ユーザーが使える器具の構成（自宅ダンベルのみ / ホームジム / フィットネスジム等）。種目候補のフィルタ条件になる。</dd>
+        </dl>
+      </section>
+
+      <!-- 05 -->
+      <section id="s5">
+        <h2>コアループ</h2>
+        <p class="sec-note">本アプリの機能はすべて、次の1本のループに接続している。どの機能追加も「このループを速く・切れにくくするか」で判断する。</p>
+        <figure>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 244" role="img" aria-label="記録から分析、提案、実行へと進み、記録に戻るコアループの図">
+              <defs>
+                <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line-strong)"></path>
+                </marker>
+                <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"></path>
+                </marker>
+              </defs>
+
+              <rect class="d-box" x="10" y="28" width="190" height="104" rx="3"></rect>
+              <text class="d-num" x="26" y="52">01</text>
+              <text class="d-title" x="26" y="76">記録する</text>
+              <text class="d-sub" x="26" y="99">重量・レップ・RIR</text>
+              <text class="d-sub" x="26" y="117">前回値を見ながら入力</text>
+
+              <rect class="d-box" x="250" y="28" width="190" height="104" rx="3"></rect>
+              <text class="d-num" x="266" y="52">02</text>
+              <text class="d-title" x="266" y="76">分析する</text>
+              <text class="d-sub" x="266" y="99">e1RM の推移</text>
+              <text class="d-sub" x="266" y="117">部位別の週間ボリューム</text>
+
+              <rect class="d-box" x="490" y="28" width="190" height="104" rx="3"></rect>
+              <text class="d-num" x="506" y="52">03</text>
+              <text class="d-title" x="506" y="76">提案する</text>
+              <text class="d-sub" x="506" y="99">次回重量 / デロード</text>
+              <text class="d-sub" x="506" y="117">不足部位の補助種目</text>
+
+              <rect class="d-box" x="730" y="28" width="190" height="104" rx="3"></rect>
+              <text class="d-num" x="746" y="52">04</text>
+              <text class="d-title" x="746" y="76">実行する</text>
+              <text class="d-sub" x="746" y="99">3Dで効かせ方を確認</text>
+              <text class="d-sub" x="746" y="117">今日のメニューを消化</text>
+
+              <path class="d-line" d="M 200 80 L 244 80" marker-end="url(#ah)"></path>
+              <path class="d-line" d="M 440 80 L 484 80" marker-end="url(#ah)"></path>
+              <path class="d-line" d="M 680 80 L 724 80" marker-end="url(#ah)"></path>
+
+              <path class="d-loop" d="M 825 132 L 825 186 L 105 186 L 105 138" marker-end="url(#ah2)"></path>
+              <text class="d-loop-label" x="465" y="212" text-anchor="middle">実行結果が次のセッションの負荷を決める（漸進性過負荷）</text>
+            </svg>
+          </div>
+          <figcaption>3Dによる理解（04）は、記録（01）と切り離された読み物ではなく、実行の直前に置かれる。分析（02）の出力である筋肉ヒートマップも、同じ3Dモデル資産を再利用する。</figcaption>
+        </figure>
+      </section>
+
+      <!-- 06 -->
+      <section id="s6">
+        <h2>機能要件</h2>
+        <p class="sec-note">優先度は <span class="pill p0">P0</span> 必須（これが無いとプロダクトが成立しない）、<span class="pill p1">P1</span> 重要（差別化要素）、<span class="pill p2">P2</span> 拡張。</p>
+
+        <h3><span class="gid">A</span>種目マスタと3Dビジュアル</h3>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Group A — Exercise &amp; 3D</caption>
+            <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th></tr></thead>
+            <tbody>
+              <tr><td class="id">FR-A1</td><td class="name">種目マスタ</td><td>種目ごとに、名称・使用器具・主働筋／協働筋／安定筋・目標レップ帯・漸進幅・効かせるコツ・よくある失敗・根拠の強さ・姿勢の警告を保持する。初期データは<strong>8部位32種目で確定済み</strong>（うち Phase 1 は20種目）。詳細は付属文書「種目選定書」を参照。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-A2</td><td class="name">3Dモーション再生</td><td>種目詳細画面で、動作を3Dアニメーションで再生する。ドラッグでの視点回転、ピンチズーム、再生／一時停止、0.5倍速のスロー再生、任意フレームでの停止に対応する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-A3</td><td class="name">筋肉の色分け表示</td><td>3Dモデル上で、主働筋・協働筋・安定筋を3段階の濃度で塗り分ける。凡例を常時表示し、各筋名をタップすると筋名称を表示する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-A4</td><td class="name">効かせ方のホットスポット注釈</td><td>3Dモデル上の該当箇所にピンを配置し、タップで「ここを縮める意識」「肩甲骨を寄せたまま固定」等の短い指示を表示する。1種目あたり2〜4個。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-A5</td><td class="name">NGフォーム比較</td><td>正しいフォームと、よくある崩れ方（腰が反る、肘が開く等）を並列またはトグルで比較再生する。崩れによってどの筋への刺激が逃げるかを色の変化で示す。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-A6</td><td class="name">部位からの種目逆引き</td><td>3Dボディモデルの部位をタップすると、その部位を主働筋とする種目一覧に遷移する。器具プロファイルによる絞り込みを併用できる。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-A7</td><td class="name">器具プロファイル・フィルタ</td><td>設定した器具構成で実施可能な種目のみを表示する。ルーティン作成・補助種目レコメンドにも同じフィルタを適用する。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-A8</td><td class="name">テクニック提示</td><td>種目ごとに、停滞時に使える手法（テンポ調整、ストレッチ種目としての可動域重視、レストポーズ、パーシャル）を解説付きで提示する。</td><td class="pri"><span class="pill p2">P2</span></td></tr>
+              <tr><td class="id">FR-A9</td><td class="name">根拠の強さの表示</td><td>種目ごとに根拠の強さ（介入研究／メタ分析／EMG／原則）を表示する。急性のEMG振幅は筋肥大の予測因子として妥当性が検証されていないため、EMGのみを根拠とする種目を介入研究と同列に見せない。出典リンクもあわせて表示する。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-A10</td><td class="name">姿勢の警告表示</td><td>姿勢を誤ると効果が大きく落ちる種目（シーテッド・レッグカール、スタンディング・カーフレイズ 等）に警告を表示し、3D上でも該当する関節角度を強調する。介入研究で2〜15倍の差が出ている項目であり、種目名だけでは誤選択を防げない。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3><span class="gid">B</span>記録</h3>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Group B — Logging</caption>
+            <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th></tr></thead>
+            <tbody>
+              <tr><td class="id">FR-B1</td><td class="name">セッション管理</td><td>ワークアウトの開始・中断・終了を管理する。中断中もタイマーと入力内容を保持し、アプリ再起動後に復元する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-B2</td><td class="name">セット記録</td><td>種目ごとに、重量・レップ数・RIR・セット種別（ウォームアップ／メイン）を記録する。前セットの値を初期値として引き継ぎ、±ボタンで調整して2タップ以内に確定できること。<strong>記録単位は種目マスタの指定に従い、「重量×レップ」と「重量×秒数」を切り替える</strong>（等尺性種目への対応）。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-B3</td><td class="name">前回記録の表示</td><td>入力欄の直上に、同一種目の前回実施内容（全セットの重量×レップ×RIR）と、前回比のe1RM差分を常時表示する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-B4</td><td class="name">レストタイマー</td><td>セット確定と同時に自動起動する。目標レップ帯に応じた推奨秒数を既定値とし（低レップほど長い）、画面消灯中も継続し、完了時に通知する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-B5</td><td class="name">体重記録</td><td>日付付きで体重を記録する。1日1件、後から編集可能。増減の週平均を併記する。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-B6</td><td class="name">体の写真記録</td><td>日付付きで写真を保存する。撮影ポーズのラベル（正面／背面／横）を付与し、同一ポーズの任意2枚を左右または重ねて比較表示する。撮影ガイド（前回写真の半透明オーバーレイ）で構図を揃える。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-B7</td><td class="name">セッションメモ</td><td>セッション単位・セット単位に自由記述メモを残す（例「右肩に張り」「グリップ幅を1つ広げた」）。</td><td class="pri"><span class="pill p2">P2</span></td></tr>
+              <tr><td class="id">FR-B8</td><td class="name">記録の編集・削除</td><td>過去のセット・セッション・体重・写真を後から修正、削除できる。削除は取り消し可能とする。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-B9</td><td class="name">オフライン記録</td><td>ネットワーク接続なしで全ての記録操作が完了すること。同期機構を導入する場合も、書き込みはローカル優先とする。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3><span class="gid">C</span>分析</h3>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Group C — Analysis</caption>
+            <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th></tr></thead>
+            <tbody>
+              <tr><td class="id">FR-C1</td><td class="name">e1RM 推移</td><td>種目別にe1RMを算出し、時系列グラフで表示する（<code>ALG-1</code>）。自己ベスト更新時はマーカーで強調する。<strong>種目マスタで等価と定義された種目の記録は1本の線として連結する</strong>（例：ラットプルダウン → 懸垂。懸垂時は「体重＋加重」を重量として扱う）。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-C2</td><td class="name">部位別ボリューム集計</td><td>週単位（月曜起点）で、部位別の実施セット数を按分係数で集計する（<code>ALG-2</code>）。ウォームアップセットは集計対象外とする。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-C3</td><td class="name">3D筋肉ヒートマップ</td><td>FR-C2 の結果を3Dボディモデルに色で反映する。不足＝寒色、適正＝中間、過多＝暖色の連続スケールとし、部位タップで「今週◯セット／目安◯〜◯セット」を表示する。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-C4</td><td class="name">ボリューム過不足の判定</td><td>経験レベル別の推奨レンジと比較し、不足・適正・過多を判定して一覧表示する（<code>ALG-3</code>）。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-C5</td><td class="name">体重推移と写真タイムライン</td><td>体重の推移グラフ（生値＋7日移動平均）と、写真のタイムラインを同一画面に並べ、任意時点の比較を可能にする。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-C6</td><td class="name">左右差・弱点の検出</td><td>片側種目（ダンベル・片脚種目）の左右の記録差、および部位間のe1RM伸長率の差から、弱点部位を抽出して提示する。</td><td class="pri"><span class="pill p2">P2</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3><span class="gid">D</span>レコメンド</h3>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Group D — Recommendation</caption>
+            <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th></tr></thead>
+            <tbody>
+              <tr><td class="id">FR-D1</td><td class="name">初回開始重量の提案</td><td>身長・体重・筋トレ歴・（あれば）現在扱っている重量から、未実施種目の開始重量を提案する（<code>ALG-5</code>）。あくまで初回の当たり付けであることを画面上に明示する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-D2</td><td class="name">次回重量の自動提案</td><td>前回の全メインセットの達成状況とRIRから、次回の重量とレップ目標を提案する（<code>ALG-3</code>）。提案理由を1行で併記し、ユーザーは上書き可能とする。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-D3</td><td class="name">デロード提案</td><td>e1RMの停滞とRIRの低下傾向から疲労蓄積を検出し、デロード週を提案する（<code>ALG-4</code>）。採用時は1週間、全種目のセット数を約50%に自動調整する。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-D4</td><td class="name">補助種目レコメンド</td><td>ボリューム不足の部位、または弱点として検出された部位に対し、器具プロファイルで実施可能な種目を提案する。既存ルーティンへの追加を1タップで行える。</td><td class="pri"><span class="pill p2">P2</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3><span class="gid">E</span>プログラム・ルーティン</h3>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Group E — Program</caption>
+            <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th></tr></thead>
+            <tbody>
+              <tr><td class="id">FR-E1</td><td class="name">今日のメニュー</td><td>ホーム画面に、ルーティン上の当日の実施種目・セット数・提案重量を表示し、1タップでセッションを開始する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-E2</td><td class="name">テンプレプログラム</td><td>PPL（押す／引く／脚）、上下分割、全身法などのテンプレートを提供し、選択するだけでルーティンを初期構築できる。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-E3</td><td class="name">ルーティン編集</td><td>曜日ごとの種目・セット数・目標レップ帯を自由に編集する。並べ替え、種目差し替えに対応する。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3><span class="gid">F</span>システム・データ</h3>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Group F — System</caption>
+            <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th></tr></thead>
+            <tbody>
+              <tr><td class="id">FR-F1</td><td class="name">プロフィール設定</td><td>身長・体重・性別・生年（任意）・筋トレ歴・経験レベル・器具プロファイル・単位（kg／lb）を設定する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+              <tr><td class="id">FR-F2</td><td class="name">エクスポート／インポート</td><td>全記録をCSVおよびJSONで書き出し、JSONから復元できる。写真は別途ZIPで書き出す。</td><td class="pri"><span class="pill p1">P1</span></td></tr>
+              <tr><td class="id">FR-F3</td><td class="name">バックアップ</td><td>端末内への定期自動バックアップ、および任意タイミングでの手動バックアップを行う。</td><td class="pri"><span class="pill p2">P2</span></td></tr>
+              <tr><td class="id">FR-F4</td><td class="name">免責表示</td><td>初回起動時、および重量提案の画面に、医療・指導行為ではない旨と自己判断の必要性を表示する。</td><td class="pri"><span class="pill p0">P0</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 07 -->
+      <section id="s7">
+        <h2>非機能要件</h2>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>ID</th><th>区分</th><th>要件</th></tr></thead>
+            <tbody>
+              <tr><td class="id">NFR-1</td><td class="name">オフライン</td><td>全機能がネットワーク接続なしで動作する。3Dモデルを含むアセットは初回ダウンロード後にキャッシュし、以降オフラインで再生できる。</td></tr>
+              <tr><td class="id">NFR-2</td><td class="name">パフォーマンス</td><td>種目詳細の3D初回表示は3秒以内、再生は30fps以上（目標60fps）。モデルはDraco圧縮し、1種目あたり2MB以下に抑える。</td></tr>
+              <tr><td class="id">NFR-3</td><td class="name">操作性</td><td>ワークアウト中の主要操作（セット確定・重量増減・次種目へ）は、画面下部の親指到達範囲に配置する。1セットの記録は2タップ以内。</td></tr>
+              <tr><td class="id">NFR-4</td><td class="name">中断耐性</td><td>画面消灯、着信、アプリのバックグラウンド遷移でレストタイマーと入力内容が失われない。</td></tr>
+              <tr><td class="id">NFR-5</td><td class="name">プライバシー</td><td>体の写真は端末内にのみ保存し、外部送信・クラウド同期を行わない。アプリ内の写真一覧は端末のギャラリーに露出させない。</td></tr>
+              <tr><td class="id">NFR-6</td><td class="name">データ保全</td><td>記録の書き込みはトランザクションで行い、アプリ強制終了時にも直前のセットまで保持する。</td></tr>
+              <tr><td class="id">NFR-7</td><td class="name">アクセシビリティ</td><td>3Dの色分けは色のみに依存せず、凡例テキストと筋名ラベルを併記する。主要な文字は最小14px、コントラスト比4.5:1以上。</td></tr>
+              <tr><td class="id">NFR-8</td><td class="name">拡張性</td><td>種目マスタと3Dアセットはアプリ本体と分離し、アプリ更新なしで種目を追加できる構造とする。</td></tr>
+              <tr><td class="id">NFR-9</td><td class="name">iOS のデータ保持</td><td>iOS Safari は、ホーム画面に追加していないWebサイトの保存データを7日間の未使用で削除する。したがって<strong>ホーム画面への追加を必須の利用条件</strong>とし、初回起動時に追加を誘導する。追加されていない状態を検知した場合は警告を表示する。</td></tr>
+              <tr><td class="id">NFR-10</td><td class="name">配信</td><td>HTTPS で配信する。Service Worker の登録要件であり、これを満たさないと <code>NFR-1</code> のオフライン動作が成立しない。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 08 -->
+      <section id="s8">
+        <h2>データモデル</h2>
+        <p class="sec-note">分析・提案系の機能はすべて <code>SetLog</code> と <code>ExerciseMuscle</code> の2テーブルから導出される。この2つの設計を最初に固めることが、後続フェーズの前提になる。</p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>エンティティ</th><th>主なフィールド</th><th>役割</th></tr></thead>
+            <tbody>
+              <tr><td class="name">User</td><td>height, weight, sex, trainingYears, experienceLevel, equipmentProfile, unit</td><td>初回重量提案とボリューム目安レンジの決定に使う</td></tr>
+              <tr><td class="name">Muscle</td><td>id, nameJa, nameEn, region, meshNodeId</td><td>3Dモデルのメッシュノードと1対1で対応させる</td></tr>
+              <tr><td class="name">Exercise</td><td>id, code, name, region, equipment[], unit, repRange, progressionStepKg, cues[], commonErrors[], evidence{level, refs[], summary}, criticalNote, equivalentTo[], phase, modelAssetId</td><td>種目マスタ本体。実データは <code>data/exercises.json</code>（32件）</td></tr>
+              <tr><td class="name">ExerciseMuscle</td><td>exerciseId, muscleId, role（prime/secondary/stabilizer）, coefficient</td><td>ボリューム按分とヒートマップ着色の根拠</td></tr>
+              <tr><td class="name">Routine / RoutineDay / RoutineItem</td><td>dayOfWeek, exerciseId, targetSets, targetRepRange, order</td><td>「今日のメニュー」の生成元</td></tr>
+              <tr><td class="name">Session</td><td>id, startedAt, endedAt, routineDayId, note</td><td>1回のワークアウト</td></tr>
+              <tr><td class="name">SetLog</td><td>sessionId, exerciseId, setIndex, type（warmup/main）, weight, <strong>unit（weight_reps / weight_seconds）</strong>, reps, seconds, rir, side（both/L/R）, restSec, note</td><td>全分析の一次データ。unit により reps と seconds のどちらを使うかが決まる</td></tr>
+              <tr><td class="name">BodyWeightLog</td><td>date, weight</td><td>体重推移</td></tr>
+              <tr><td class="name">PhotoLog</td><td>date, pose（front/back/side）, blobRef</td><td>写真比較。画像実体は端末ローカルに保持</td></tr>
+              <tr><td class="name">ProgressionState</td><td>exerciseId, currentWeight, currentRepTarget, consecutiveFailures, lastDeloadAt</td><td>重量提案とデロード判定の状態保持</td></tr>
+              <tr><td class="name">Reference</td><td>id, citation, url, kind, year</td><td>根拠の出典（<code>FR-A9</code>）。実データは <code>data/references.json</code>（21件）</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 09 -->
+      <section id="s9">
+        <h2>アルゴリズム仕様</h2>
+
+        <h3><span class="gid">ALG-1</span>推定1RM（e1RM）</h3>
+        <p>Epley式を、RIRを加味した形で用いる。RIRぶんの余力を「実施できたはずのレップ」とみなして換算する。</p>
+        <div class="formula"><span class="cm">// 有効レップ数</span>
+effReps = reps + rir
+
+<span class="cm">// Epley 式</span>
+e1RM = weight × (1 + effReps / 30)
+
+<span class="cm">// 例：80kg × 8レップ・RIR 2</span>
+e1RM = 80 × (1 + 10 / 30) = 106.7 kg</div>
+        <p>有効レップが12を超える範囲では誤差が大きくなるため、<code>effReps &gt; 12</code> のセットはe1RMの算出対象から除外し、グラフには表示しない。</p>
+
+        <h3><span class="gid">ALG-2</span>部位別ボリューム按分</h3>
+        <div class="formula"><span class="cm">// 1メインセットあたりの寄与</span>
+prime      → 1.0 セット
+secondary  → 0.5 セット
+stabilizer → 0.0 セット（集計対象外）
+
+<span class="cm">// 例：ベンチプレス 4セット</span>
+大胸筋 4.0 / 三角筋前部 2.0 / 上腕三頭筋 2.0</div>
+        <p>ウォームアップセットは集計しない。週の区切りは月曜0時起点とする。</p>
+
+        <h3><span class="gid">ALG-3</span>次回重量の提案（ダブルプログレッション）</h3>
+        <div class="formula"><span class="cm">// 目標レップ帯 [lo, hi]、直近セッションのメインセット群を評価</span>
+
+条件A：全メインセットで reps &gt;= hi かつ 平均 rir &lt;= 1
+  → 重量を1段階上げ、レップ目標を lo に戻す
+     上げ幅：バーベル上半身 +2.5kg／下半身 +5kg
+             ダンベル +2kg（片手あたり）／マシン 1プレート
+
+条件B：条件Aを満たさず、reps &gt;= lo を全セットで達成
+  → 重量据え置き、レップを +1 狙い
+
+条件C：reps &lt; lo のセットが1つ以上ある
+  → consecutiveFailures += 1
+     2セッション連続で該当した場合、重量を 10% 下げて再開</div>
+
+        <h3><span class="gid">ALG-4</span>デロード判定</h3>
+        <p>睡眠・主観疲労を入力に持たないため、判定は客観指標2つのAND条件とする。</p>
+        <div class="formula"><span class="cm">// 主要種目（ルーティン内のコンパウンド種目）ごとに評価</span>
+
+条件1：直近3セッションで e1RM の自己ベスト更新がない
+条件2：同一重量帯における平均RIRが、4週間前と比べて 1.0 以上低下
+
+条件1 かつ 条件2 を満たす主要種目が 2種目以上
+  → デロード週を提案
+
+<span class="cm">// 採用時の調整（1週間）</span>
+セット数 × 0.5（切り上げ）／ 重量は維持 ／ RIR 3 以上を目標</div>
+        <div class="callout">
+          <p><b>判定の限界を明示すること。</b>主観入力がないぶん、体調不良や生活由来の疲労は検知できない。提案は「そろそろ落としませんか」という提示に留め、強制はしない。また最終デロードから3週間以内は再提案しない。</p>
+        </div>
+
+        <h3><span class="gid">ALG-5</span>初回開始重量の提案</h3>
+        <p>実測データがない種目に対してのみ適用する。体重比のストレングス基準に経験レベル係数を掛け、目標レップ帯へ換算したうえで、安全側に10%割り引く。</p>
+        <div class="formula">推定1RM = 体重 × 種目係数 × 経験レベル係数
+開始重量 = 推定1RM × repFactor(目標レップ) × 0.9
+
+<span class="cm">// repFactor は ALG-1 の逆算：1 / (1 + reps/30)</span></div>
+        <div class="tbl-scroll">
+          <table>
+            <caption>種目係数（体重比 / 男性・目安）</caption>
+            <thead><tr><th>種目</th><th>初心者</th><th>中級者</th><th>上級者</th></tr></thead>
+            <tbody>
+              <tr><td class="name">ベンチプレス</td><td class="num">0.50</td><td class="num">0.75</td><td class="num">1.25</td></tr>
+              <tr><td class="name">スクワット</td><td class="num">0.75</td><td class="num">1.25</td><td class="num">1.75</td></tr>
+              <tr><td class="name">デッドリフト</td><td class="num">1.00</td><td class="num">1.50</td><td class="num">2.00</td></tr>
+              <tr><td class="name">オーバーヘッドプレス</td><td class="num">0.35</td><td class="num">0.55</td><td class="num">0.80</td></tr>
+              <tr><td class="name">ベントオーバーロウ</td><td class="num">0.50</td><td class="num">0.75</td><td class="num">1.10</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <p><b>身長・体重からの推定は初回限定とする。</b>体格から扱える重量を当てる精度には限界があり、2回目以降は必ず実測ベース（<code>ALG-3</code>）に切り替える。既に扱っている重量をユーザーが入力した場合は、そちらを常に優先する。</p>
+          <p>上表は公開されている一般的なストレングス基準を丸めた目安であり、Phase 1では女性向け係数・体重階級補正を持たない。実データが貯まった段階での見直しを前提とする（<code>OPEN-3</code>）。</p>
+        </div>
+
+        <h3><span class="gid">ALG-6</span>週間ボリュームの目安レンジ</h3>
+        <div class="formula">初心者　：部位あたり  8 〜 12 セット / 週
+中級者　：部位あたり 12 〜 20 セット / 週
+
+判定：レンジ下限未満 → 不足（寒色）
+　　　レンジ内　　　 → 適正（中間色）
+　　　レンジ上限超過 → 過多（暖色）</div>
+      </section>
+
+      <!-- 10 -->
+      <section id="s10">
+        <h2>画面構成</h2>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>画面</th><th>目的</th><th>主な要素</th><th>関連要件</th></tr></thead>
+            <tbody>
+              <tr><td class="name">ホーム</td><td>今日やることを1画面で示す</td><td>今日のメニュー、提案重量、開始ボタン、デロード提案バナー</td><td class="id">FR-E1, D2, D3</td></tr>
+              <tr><td class="name">ワークアウト</td><td>記録に専念する</td><td>前回記録、重量／レップ／RIR入力、レストタイマー、次種目送り</td><td class="id">FR-B1〜B4</td></tr>
+              <tr><td class="name">種目詳細（3D）</td><td>効かせ方を理解する</td><td>3D再生、筋色分け、ホットスポット注釈、NG比較、テクニック</td><td class="id">FR-A2〜A5, A8</td></tr>
+              <tr><td class="name">部位から探す</td><td>鍛えたい部位から種目を引く</td><td>3Dボディ、部位タップ、種目一覧、器具フィルタ</td><td class="id">FR-A6, A7</td></tr>
+              <tr><td class="name">分析</td><td>効いているかを確認する</td><td>筋肉ヒートマップ、部位別ボリューム一覧、e1RM推移グラフ</td><td class="id">FR-C1〜C4, C6</td></tr>
+              <tr><td class="name">ボディログ</td><td>見た目の変化を追う</td><td>体重グラフ、写真タイムライン、2枚比較ビュー、撮影ガイド</td><td class="id">FR-B5, B6, C5</td></tr>
+              <tr><td class="name">ルーティン</td><td>分割を組む</td><td>テンプレ選択、曜日別の種目編集、セット数・レップ帯設定</td><td class="id">FR-E2, E3</td></tr>
+              <tr><td class="name">設定</td><td>前提情報を保つ</td><td>プロフィール、器具プロファイル、単位、エクスポート、免責</td><td class="id">FR-F1〜F4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section id="s11">
+        <h2>技術構成案</h2>
+        <p class="sec-note">対象プラットフォームは <strong>iPhone 向け PWA で確定</strong>（<code>OPEN-1</code> クローズ）。3D表示・オフライン・写真のローカル保持という3条件を満たす構成を示す。</p>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>領域</th><th>推奨</th><th>理由</th></tr></thead>
+            <tbody>
+              <tr><td class="name">配信形態</td><td>PWA（iOS Safari／ホーム画面に追加）</td><td><code>OPEN-1</code> 確定。3Dアセットの差し替えがストア審査なしで行える。ネイティブ化は後から Capacitor 等で被せられる。</td></tr>
+              <tr><td class="name">ホスティング</td><td>GitHub Pages</td><td>HTTPS が自動で付き（<code>NFR-10</code>）、無料。Git は開発環境に導入済み。Vercel / Netlify でも要件は満たす。</td></tr>
+              <tr><td class="name">ビルド</td><td>Node.js LTS + Vite</td><td>型チェックと React Three Fiber を使うために必要。<strong>開発マシンにのみ必要で、利用時のiPhone側には何も要らない。</strong></td></tr>
+              <tr><td class="name">UI</td><td>React + TypeScript + Vite</td><td>3Dライブラリとの統合が最も枯れている。</td></tr>
+              <tr><td class="name">3D</td><td>three.js + React Three Fiber + drei</td><td>glTF（Draco圧縮）のスキンメッシュを再生し、筋ごとのマテリアル切り替えで色分けとヒートマップを同一モデルで実現できる。</td></tr>
+              <tr><td class="name">3Dアセット</td><td>筋別にメッシュ分割した1体のリグ付きモデル＋種目ごとのアニメーションクリップ</td><td>モデルを1体に統一することで、種目数の増加コストがアニメーションのみになる。</td></tr>
+              <tr><td class="name">データ</td><td>IndexedDB（Dexie）</td><td>オフライン前提。将来的な件数増に対してもインデックス検索で足りる。</td></tr>
+              <tr><td class="name">写真</td><td>Origin Private File System もしくは IndexedDB Blob</td><td>端末外に出さない要件（NFR-5）を満たす。</td></tr>
+              <tr><td class="name">グラフ</td><td>自前SVG または軽量ライブラリ</td><td>描画対象は折れ線とバーのみ。重量級のチャートライブラリは不要。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section id="s12">
+        <h2>開発フェーズ</h2>
+        <p class="sec-note">3Dアセットの制作が最大のコスト要因になるため、Phase 1では種目数を絞り、ループが回ることの確認を優先する。</p>
+        <div class="phases">
+          <div class="phase">
+            <div class="bar"></div>
+            <div class="body">
+              <h4>Phase 1 — ループを閉じる</h4>
+              <p class="goal">確定済みの20種目。記録し、次回重量が出るところまで。</p>
+              <ul>
+                <li>FR-A1</li><li>FR-A2</li><li>FR-A3</li>
+                <li>FR-B1</li><li>FR-B2</li><li>FR-B3</li><li>FR-B4</li><li>FR-B9</li>
+                <li>FR-C1</li>
+                <li>FR-D1</li><li>FR-D2</li>
+                <li>FR-E1</li>
+                <li>FR-F1</li><li>FR-F4</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="bar"></div>
+            <div class="body">
+              <h4>Phase 2 — 偏りと停滞に効かせる</h4>
+              <p class="goal">残り12種目を追加。ヒートマップとデロードを追加。</p>
+              <ul>
+                <li>FR-A4</li><li>FR-A5</li><li>FR-A6</li><li>FR-A7</li>
+                <li>FR-B5</li><li>FR-B6</li><li>FR-B8</li>
+                <li>FR-C2</li><li>FR-C3</li><li>FR-C4</li><li>FR-C5</li>
+                <li>FR-D3</li>
+                <li>FR-E2</li><li>FR-E3</li>
+                <li>FR-F2</li>
+              </ul>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="bar"></div>
+            <div class="body">
+              <h4>Phase 3 — 個別最適に踏み込む</h4>
+              <p class="goal">弱点検出と、それに応じた種目提案。</p>
+              <ul>
+                <li>FR-A8</li>
+                <li>FR-B7</li>
+                <li>FR-C6</li>
+                <li>FR-D4</li>
+                <li>FR-F3</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 -->
+      <section id="s13">
+        <h2>リスクと未決事項</h2>
+
+        <h3>リスク</h3>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>ID</th><th>リスク</th><th>影響</th><th>対応方針</th></tr></thead>
+            <tbody>
+              <tr><td class="id">RISK-1</td><td class="name">3Dアセットの制作コスト</td><td>大</td><td>本プロジェクト最大のリスク。1体のリグ付きモデルにアニメーションクリップを追加する構成に統一し、種目追加の限界費用を下げる。Phase 1は20種目に固定する。</td></tr>
+              <tr><td class="id">RISK-2</td><td class="name">RIR入力の精度</td><td>中</td><td>初心者はRIRを過大評価しがちで、提案の質が下がる。入力UIに「あと何回挙がったか」の平易な文言と目安を添える。極端な値が続く場合は補正を検討する。</td></tr>
+              <tr><td class="id">RISK-3</td><td class="name">ボリューム按分の粗さ</td><td>中</td><td>0.5固定の按分は種目によって実態と乖離する。ExerciseMuscle に coefficient を持たせ、種目単位で調整できる構造は先に用意しておく。</td></tr>
+              <tr><td class="id">RISK-4</td><td class="name">写真データの容量</td><td>小</td><td>端末ストレージを圧迫する。保存時にリサイズ・再圧縮し、古い写真の間引き提案を行う。</td></tr>
+              <tr><td class="id">RISK-5</td><td class="name">ジム内でのモバイル通信</td><td>小</td><td>オフライン必須要件（NFR-1）で吸収済み。ただし3Dアセットの初回取得タイミングを、ジム外での事前ダウンロードに誘導する。</td></tr>
+              <tr><td class="id">RISK-6</td><td class="name">iOS によるデータ削除</td><td>大</td><td>ホーム画面に追加していない状態では、7日間の未使用で全記録が消える。記録アプリとして致命的。<code>NFR-9</code> で追加を必須条件とするほか、<code>FR-F2</code>（エクスポート）の優先度を P1 のまま Phase 2 の早期に置き、バックアップ手段を確保する。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>未決事項</h3>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>ID</th><th>論点</th><th>決めるべき時期</th><th>状態</th></tr></thead>
+            <tbody>
+              <tr><td class="id">OPEN-1</td><td>対象プラットフォーム</td><td>Phase 1 着手前</td><td class="pri"><span class="pill p2">クローズ</span> iPhone / PWA</td></tr>
+              <tr><td class="id">OPEN-2</td><td>3Dモデルの調達方法（購入アセットの改変 / 自作 / 外注）とライセンス条件</td><td>Phase 1 着手前</td><td class="pri"><span class="pill p0">未決</span></td></tr>
+              <tr><td class="id">OPEN-3</td><td>ストレングス基準の出典と、女性・体重階級への補正の扱い</td><td>Phase 1 中</td><td class="pri"><span class="pill p1">未決</span></td></tr>
+              <tr><td class="id">OPEN-4</td><td>Phase 1 に含める20種目の確定リスト</td><td>Phase 1 着手前</td><td class="pri"><span class="pill p2">クローズ</span> 種目選定書</td></tr>
+              <tr><td class="id">OPEN-5</td><td>複数端末での利用を想定するか（＝将来的な同期の要否）</td><td>Phase 2 着手前</td><td class="pri"><span class="pill p1">未決</span></td></tr>
+              <tr><td class="id">OPEN-6</td><td>iPhone の対応最低iOSバージョン。OPFS の利用可否（iOS 17以降）に影響する</td><td>Phase 1 中</td><td class="pri"><span class="pill p1">未決</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="s14">
+        <h2>改訂履歴</h2>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>版</th><th>日付</th><th>変更内容</th></tr></thead>
+            <tbody>
+              <tr><td class="name">1.0</td><td class="num">2026-09-06</td><td>初版。</td></tr>
+              <tr><td class="name">1.1</td><td class="num">2026-09-06</td><td>
+                <strong>クローズ：</strong><code>OPEN-1</code>（iPhone 向け PWA に確定）、<code>OPEN-4</code>（8部位32種目・Phase 1 は20種目を確定。付属文書「種目選定書」）。<br>
+                <strong>新規要件：</strong><code>FR-A9</code>（根拠の強さの表示）、<code>FR-A10</code>（姿勢の警告表示）、<code>NFR-9</code>（iOS のデータ保持）、<code>NFR-10</code>（HTTPS 配信）、<code>RISK-6</code>、<code>OPEN-6</code>。<br>
+                <strong>変更：</strong><code>FR-B2</code> に記録単位の切り替えを追加。<code>FR-C1</code> に等価種目の連結を追加。データモデルの Exercise / SetLog を実装に合わせて更新し、Reference を追加。技術構成案にホスティングとビルドを追加。<br>
+                <strong>不採用の決定：</strong>「足」を4筋群（大腿四頭筋・ハムストリング・臀筋・下腿）に分割する案は<strong>見送り</strong>。部位は8つのまま、足は1部位4種目として扱う。このためボリューム集計（<code>FR-C2</code>）とヒートマップ（<code>FR-C3</code>）では、足の内訳の過不足が相殺されて見えない制約が残る。
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        <p>本書は Phase 1 着手前の要件定義（v1.1）。付属文書に「種目選定書」および <code>data/</code> 配下の種目マスタがある。残る <code>OPEN-2</code>（3Dアセットの調達）の決定をもって v1.2 に更新する。</p>
+      </footer>
+
+    </main>
+  </div>
+</div>

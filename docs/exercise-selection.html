@@ -1,0 +1,1108 @@
+<title>種目選定書 32種目</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --ground:      #EFF2F1;
+    --surface:     #FFFFFF;
+    --surface-2:   #E5EAE8;
+    --ink:         #131719;
+    --ink-2:       #4B565B;
+    --ink-3:       #7B878D;
+    --line:        #D2D9D7;
+    --line-strong: #B4BEBB;
+    --accent:      #1D4E89;
+    --accent-ink:  #FFFFFF;
+    --accent-soft: #E0E9F4;
+    --red:         #A9382F;
+    --yellow:      #9A6E0C;
+    --yellow-soft: #F6EBD4;
+    --green:       #2A6E51;
+    --green-soft:  #DDEDE5;
+
+    --font-display: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+    --font-body:    "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+    --font-mono:    "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #11161A; --surface: #181E23; --surface-2: #212930;
+      --ink: #E5EBEE; --ink-2: #A2ADB4; --ink-3: #77848B;
+      --line: #2A333A; --line-strong: #3B464E;
+      --accent: #74AAE8; --accent-ink: #0D1218; --accent-soft: #1A2937;
+      --red: #E0796E; --yellow: #DCAF57; --yellow-soft: #2E2718;
+      --green: #63BC93; --green-soft: #172C24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #11161A; --surface: #181E23; --surface-2: #212930;
+    --ink: #E5EBEE; --ink-2: #A2ADB4; --ink-3: #77848B;
+    --line: #2A333A; --line-strong: #3B464E;
+    --accent: #74AAE8; --accent-ink: #0D1218; --accent-soft: #1A2937;
+    --red: #E0796E; --yellow: #DCAF57; --yellow-soft: #2E2718;
+    --green: #63BC93; --green-soft: #172C24;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 96px; }
+
+  .masthead { padding: 56px 0 28px; border-bottom: 2px solid var(--ink); }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--font-display); font-weight: 900;
+    font-size: clamp(30px, 5.2vw, 46px); line-height: 1.24;
+    margin: 0 0 14px; text-wrap: balance;
+  }
+  .lede { max-width: 62ch; color: var(--ink-2); font-size: 16px; margin: 0 0 30px; }
+  dl.meta { display: flex; flex-wrap: wrap; gap: 8px 36px; margin: 0; }
+  dl.meta div { display: flex; flex-direction: column; gap: 2px; }
+  dl.meta dt {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  dl.meta dd { margin: 0; font-weight: 700; font-size: 14px; font-family: var(--font-display); }
+
+  .cols { display: grid; grid-template-columns: 208px minmax(0, 1fr); gap: 56px; align-items: start; }
+  nav.toc { position: sticky; top: 24px; padding-top: 44px; }
+  nav.toc h2 {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin: 0 0 12px;
+  }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+  nav.toc a {
+    display: block; padding: 4px 8px 4px 0; color: var(--ink-2);
+    text-decoration: none; font-size: 13px; line-height: 1.5; border-radius: 3px;
+  }
+  nav.toc a:hover { color: var(--accent); background: var(--accent-soft); }
+  nav.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  main { padding-top: 44px; }
+  section { margin-bottom: 64px; scroll-margin-top: 24px; }
+  section > h2 {
+    font-family: var(--font-display); font-weight: 900; font-size: 24px; line-height: 1.4;
+    margin: 0 0 8px; padding-bottom: 12px; border-bottom: 1px solid var(--line-strong);
+    text-wrap: balance;
+  }
+  section > h2 .cnt {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    color: var(--ink-3); margin-left: 10px; letter-spacing: .04em;
+  }
+  .sec-note { max-width: 68ch; color: var(--ink-2); margin: 16px 0 24px; }
+  h3 { font-family: var(--font-display); font-weight: 700; font-size: 16px; margin: 34px 0 12px; }
+  p { max-width: 68ch; margin: 0 0 14px; }
+  main ul { max-width: 68ch; padding-left: 1.15em; margin: 0 0 16px; }
+  main li { margin-bottom: 5px; }
+  code {
+    font-family: var(--font-mono); font-size: .88em;
+    background: var(--surface-2); padding: 1px 5px; border-radius: 3px;
+  }
+  a.cite {
+    font-family: var(--font-mono); font-size: 10.5px; font-weight: 600;
+    color: var(--accent); text-decoration: none; vertical-align: super;
+    padding: 0 1px;
+  }
+  a.cite:hover { text-decoration: underline; }
+
+  /* chips */
+  .chip {
+    display: inline-block; font-family: var(--font-mono); font-size: 10.5px;
+    font-weight: 600; letter-spacing: .04em; padding: 1px 7px;
+    border-radius: 2px; border: 1px solid transparent; white-space: nowrap;
+  }
+  .ev-int  { background: var(--accent); color: var(--accent-ink); }
+  .ev-meta { background: var(--green-soft); color: var(--green); border-color: var(--green); }
+  .ev-emg  { background: var(--yellow-soft); color: var(--yellow); border-color: var(--yellow); }
+  .ev-prin { background: var(--surface-2); color: var(--ink-3); border-color: var(--line-strong); }
+  .eq { background: var(--surface-2); color: var(--ink-2); border-color: var(--line); font-weight: 500; }
+  .ph1 { background: var(--accent); color: var(--accent-ink); }
+  .ph2 { background: var(--surface-2); color: var(--ink-3); border-color: var(--line-strong); }
+
+  /* evidence legend */
+  .legend {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+    gap: 14px; margin: 0 0 22px;
+  }
+  .legend div {
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 3px solid var(--line-strong); padding: 12px 14px;
+  }
+  .legend .lv { display: block; margin-bottom: 6px; }
+  .legend p { font-size: 12.5px; color: var(--ink-2); margin: 0; line-height: 1.7; }
+  .legend div:nth-child(1) { border-left-color: var(--accent); }
+  .legend div:nth-child(2) { border-left-color: var(--green); }
+  .legend div:nth-child(3) { border-left-color: var(--yellow); }
+  .legend div:nth-child(4) { border-left-color: var(--ink-3); }
+
+  /* tables */
+  .tbl-scroll { overflow-x: auto; margin: 0 0 18px; }
+  table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 13px; line-height: 1.65; background: var(--surface); }
+  caption {
+    text-align: left; font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 8px;
+  }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th {
+    font-family: var(--font-display); font-weight: 700; font-size: 12px;
+    color: var(--ink-2); background: var(--surface-2);
+    border-bottom: 1px solid var(--line-strong); white-space: nowrap;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.grp { font-weight: 700; white-space: nowrap; font-family: var(--font-display); }
+  td.no { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); white-space: nowrap; }
+  td.nm { font-weight: 700; }
+  td.ct { white-space: nowrap; }
+  tr.grp-start td { border-top: 2px solid var(--line-strong); }
+
+  /* exercise entries */
+  .ex {
+    display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 24px;
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 18px 20px; margin-bottom: 12px;
+  }
+  .ex-head { display: flex; flex-direction: column; gap: 7px; }
+  .ex-no {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    color: var(--accent); letter-spacing: .08em;
+  }
+  .ex-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 1.45; margin: 0; }
+  .ex-alt { font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+  .ex-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+  .ex-body { display: flex; flex-direction: column; gap: 10px; }
+  .ex-body p { margin: 0; max-width: none; font-size: 13.5px; line-height: 1.8; }
+  .kv { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 4px 10px; font-size: 13px; }
+  .kv dt {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em;
+    color: var(--ink-3); padding-top: 4px;
+  }
+  .kv dd { margin: 0; }
+  .ex-why { border-top: 1px solid var(--line); padding-top: 10px; }
+  .ex-why b { font-family: var(--font-display); font-size: 12.5px; }
+  .ex-cue { color: var(--ink-2); font-size: 13px; }
+  .ex-cue b { color: var(--ink); }
+
+  .dropped {
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 3px solid var(--ink-3); padding: 12px 16px; margin: 14px 0 0;
+  }
+  .dropped p { margin: 0; font-size: 12.5px; color: var(--ink-2); max-width: none; }
+  .dropped b { color: var(--ink); font-family: var(--font-display); }
+
+  .callout {
+    background: var(--surface); border: 1px solid var(--line);
+    border-left: 3px solid var(--yellow); padding: 14px 18px; margin: 0 0 20px; max-width: 72ch;
+  }
+  .callout p { margin: 0; font-size: 13.5px; color: var(--ink-2); }
+  .callout p + p { margin-top: 8px; }
+  .callout b { color: var(--ink); }
+
+  ol.refs { max-width: none; padding-left: 0; list-style: none; counter-reset: ref; margin: 0; }
+  ol.refs li {
+    display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px;
+    padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 13px; line-height: 1.7;
+  }
+  ol.refs li::before {
+    counter-increment: ref; content: "[" counter(ref) "]";
+    font-family: var(--font-mono); font-size: 11px; color: var(--accent); padding-top: 2px;
+  }
+  ol.refs a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-strong); }
+  ol.refs a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  ol.refs .kind {
+    display: block; font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--ink-3); letter-spacing: .06em; margin-top: 2px;
+  }
+
+  footer {
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--ink-3); max-width: 68ch;
+  }
+
+  @media (max-width: 940px) {
+    .cols { grid-template-columns: 1fr; gap: 0; }
+    nav.toc { position: static; padding-top: 32px; }
+    nav.toc ol { flex-direction: row; flex-wrap: wrap; gap: 4px 6px; }
+    nav.toc a { border: 1px solid var(--line); background: var(--surface); padding: 3px 9px; font-size: 12px; }
+    main { padding-top: 34px; }
+    .ex { grid-template-columns: 1fr; gap: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Exercise Selection · Evidence Review</p>
+    <h1>種目選定書 — 8部位 32種目</h1>
+    <p class="lede">要件定義書 <code>FR-A1</code>（種目マスタ）および <code>OPEN-4</code>（Phase 1 種目リスト）に対する回答。エニタイムフィットネス標準設備で実施可能な範囲から、筋肥大に関するエビデンスに基づいて各部位4種目を選定した。</p>
+    <dl class="meta">
+      <div><dt>Version</dt><dd>1.0</dd></div>
+      <div><dt>作成日</dt><dd>2026-09-06</dd></div>
+      <div><dt>選定数</dt><dd>8部位 × 4 = 32種目</dd></div>
+      <div><dt>器具前提</dt><dd>一般的な24時間ジム</dd></div>
+    </dl>
+  </header>
+
+  <div class="cols">
+
+    <nav class="toc" aria-label="目次">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#policy">選定方針</a></li>
+        <li><a href="#list">選定一覧 32種目</a></li>
+        <li><a href="#shoulder">肩</a></li>
+        <li><a href="#biceps">腕 — 上腕二頭筋</a></li>
+        <li><a href="#triceps">腕 — 上腕三頭筋</a></li>
+        <li><a href="#forearm">腕 — 前腕</a></li>
+        <li><a href="#abs">腹筋</a></li>
+        <li><a href="#back">背中</a></li>
+        <li><a href="#chest">胸</a></li>
+        <li><a href="#legs">足</a></li>
+        <li><a href="#phase1">Phase 1 の20種目</a></li>
+        <li><a href="#impact">要件定義書への反映</a></li>
+        <li><a href="#refs">参考文献</a></li>
+      </ol>
+    </nav>
+
+    <main>
+
+      <!-- 選定方針 -->
+      <section id="policy">
+        <h2>選定方針</h2>
+        <p class="sec-note">「効果が高い」と紹介される種目の多くは、EMG（筋電図）による<strong>急性の筋活動量</strong>を根拠にしている。しかしEMG振幅は筋肥大の予測因子として妥当性が検証されていないことが指摘されており<a class="cite" href="#r1">[1]</a>、EMGだけを根拠に選ぶと選定を誤る。本書では次の優先順位で採用した。</p>
+
+        <div class="legend">
+          <div>
+            <span class="chip ev-int lv">介入研究</span>
+            <p>MRI・超音波で筋量を直接測定した縦断研究。同一被験者の左右脚・左右腕で条件を分ける設計は特に信頼度が高い。<b>最優先で採用。</b></p>
+          </div>
+          <div>
+            <span class="chip ev-meta lv">メタ分析</span>
+            <p>複数研究を統合したレビュー。個別種目ではなく「原則」（筋長・可動域・種目の多様性など）の裏づけとして使う。</p>
+          </div>
+          <div>
+            <span class="chip ev-emg lv">EMG</span>
+            <p>急性の筋活動量。肥大の直接的な証拠にはならないため<a class="cite" href="#r1">[1]</a>、<b>介入研究が存在しない部位に限り</b>補助的な根拠として使う。</p>
+          </div>
+          <div>
+            <span class="chip ev-prin lv">原則</span>
+            <p>確立された原則からの演繹。その種目を直接比較した研究は確認できていない。<b>採用理由は書くが、効果の保証はしない。</b></p>
+          </div>
+        </div>
+
+        <h3>採用基準</h3>
+        <ul>
+          <li><strong>基準1｜直接比較の介入研究がある</strong> — 同一部位の別種目と比較して、筋肥大の優位性が測定されている</li>
+          <li><strong>基準2｜長い筋長で負荷がかかる</strong> — 伸張位で高い張力がかかる種目を優先する（後述の留保つき）</li>
+          <li><strong>基準3｜漸進性過負荷が可能</strong> — 重量を段階的に増やせること。自重のみで加重手段がない種目は減点した</li>
+          <li><strong>基準4｜4種目で領域を網羅する</strong> — 同一筋の複数の頭・領域、および伸張位と短縮位の両方をカバーする配分にした</li>
+          <li><strong>基準5｜一般的な24時間ジムで実施可能</strong> — バーベル、ダンベル、ケーブル、スミス、主要マシン、懸垂・ディップスラックの範囲に限定した</li>
+        </ul>
+
+        <div class="callout">
+          <p><b>「伸張位が常に優れる」わけではない。</b>ハムストリング<a class="cite" href="#r3">[3]</a>、上腕三頭筋<a class="cite" href="#r2">[2]</a>、下腿三頭筋<a class="cite" href="#r4">[4]</a>では長い筋長での優位性が明確に示されている一方、2025年の局所肥大メタ分析では長筋長と短筋長の差は「些細（SMD 0.05〜0.09）」と報告されている<a class="cite" href="#r5">[5]</a>。レッグプレスでは膝関節の可動域が大腿四頭筋の肥大に影響しなかったという報告もある<a class="cite" href="#r13">[13]</a>。</p>
+          <p>したがって本書では、伸張位を<b>原則として優先しつつ、直接比較の介入研究がある種目を常にその上位に置く</b>方針を取った。</p>
+        </div>
+
+        <h3>部位区分についての注記</h3>
+        <p>「腕」は指定どおり<strong>上腕二頭筋・上腕三頭筋・前腕</strong>の3部位に分割し、それぞれ4種目を選定した（計12種目）。一方「足」は、大腿四頭筋・ハムストリング・臀筋・下腿という機能の異なる4筋群を含むため、4枠を<strong>1筋群1種目</strong>で配分せざるを得ない。腕と同じ粒度に揃えるなら、足も分割して各4種目とする改訂を推奨する（<a href="#impact">後述</a>）。</p>
+      </section>
+
+      <!-- 一覧 -->
+      <section id="list">
+        <h2>選定一覧<span class="cnt">32 exercises</span></h2>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Selected Exercises</caption>
+            <thead>
+              <tr><th>部位</th><th>№</th><th>種目</th><th>器具</th><th>主なターゲット</th><th>根拠</th><th>Phase</th></tr>
+            </thead>
+            <tbody>
+              <tr class="grp-start"><td class="grp" rowspan="4">肩</td><td class="no">S-1</td><td class="nm">ケーブル・サイドレイズ（リーンアウェイ）</td><td>ケーブル</td><td>三角筋中部</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">S-2</td><td class="nm">マシン／ダンベル・ショルダープレス</td><td>マシン・DB</td><td>三角筋前部・中部</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">S-3</td><td class="nm">リバース・ペックデック</td><td>マシン</td><td>三角筋後部</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">S-4</td><td class="nm">ケーブル・フェイスプル</td><td>ケーブル</td><td>三角筋後部・外旋筋群</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+
+              <tr class="grp-start"><td class="grp" rowspan="4">二頭</td><td class="no">BI-1</td><td class="nm">インクライン・ダンベルカール</td><td>DB・ベンチ</td><td>上腕二頭筋（長頭）</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">BI-2</td><td class="nm">プリーチャーカール</td><td>マシン・EZ</td><td>上腕筋・腕橈骨筋</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">BI-3</td><td class="nm">EZバーカール（立位）</td><td>EZバー</td><td>肘屈筋群 全体</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+              <tr><td class="no">BI-4</td><td class="nm">ケーブルカール（体幹後方・ベイジアン）</td><td>ケーブル</td><td>上腕二頭筋（長頭）</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+
+              <tr class="grp-start"><td class="grp" rowspan="4">三頭</td><td class="no">TR-1</td><td class="nm">ケーブル・オーバーヘッドエクステンション</td><td>ケーブル</td><td>上腕三頭筋 長頭</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">TR-2</td><td class="nm">ナローグリップ・ベンチプレス</td><td>バーベル</td><td>三頭 全頭・胸</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">TR-3</td><td class="nm">ライイング・エクステンション</td><td>EZバー</td><td>長頭・内側頭</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+              <tr><td class="no">TR-4</td><td class="nm">ケーブル・プレスダウン</td><td>ケーブル</td><td>外側頭・内側頭</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+
+              <tr class="grp-start"><td class="grp" rowspan="4">前腕</td><td class="no">FA-1</td><td class="nm">リバースカール</td><td>EZ・ケーブル</td><td>上腕筋・腕橈骨筋</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">FA-2</td><td class="nm">ハンマーカール</td><td>DB・ロープ</td><td>腕橈骨筋</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+              <tr><td class="no">FA-3</td><td class="nm">リストカール</td><td>バーベル・DB</td><td>前腕屈筋群</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+              <tr><td class="no">FA-4</td><td class="nm">ヘビーホールド／ファーマーズウォーク</td><td>DB</td><td>前腕全体（等尺性）</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+
+              <tr class="grp-start"><td class="grp" rowspan="4">腹筋</td><td class="no">AB-1</td><td class="nm">ケーブルクランチ（膝立ち）</td><td>ケーブル</td><td>腹直筋（上部優位）</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">AB-2</td><td class="nm">ハンギングレッグレイズ／キャプテンズチェア</td><td>ラック</td><td>腹直筋下部・腸腰筋</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">AB-3</td><td class="nm">アブローラー（ロールアウト）</td><td>ローラー</td><td>腹直筋（抗伸展）</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+              <tr><td class="no">AB-4</td><td class="nm">ケーブル・ウッドチョップ／パロフプレス</td><td>ケーブル</td><td>腹斜筋</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+
+              <tr class="grp-start"><td class="grp" rowspan="4">背中</td><td class="no">BK-1</td><td class="nm">チンニング／ラットプルダウン</td><td>ラック・マシン</td><td>広背筋</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">BK-2</td><td class="nm">シーテッド・ケーブルロウ</td><td>ケーブル</td><td>僧帽筋中部・菱形筋</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">BK-3</td><td class="nm">ベントオーバーロウ</td><td>バーベル</td><td>広背筋・脊柱起立筋</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">BK-4</td><td class="nm">ストレートアーム・プルダウン</td><td>ケーブル</td><td>広背筋（単関節）</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+
+              <tr class="grp-start"><td class="grp" rowspan="4">胸</td><td class="no">CH-1</td><td class="nm">ベンチプレス（フラット）</td><td>バーベル</td><td>大胸筋 胸肋部</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">CH-2</td><td class="nm">インクラインプレス（30〜45度）</td><td>DB・マシン</td><td>大胸筋 鎖骨部</td><td class="ct"><span class="chip ev-emg">EMG</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">CH-3</td><td class="nm">ケーブルフライ／ペックデック</td><td>ケーブル・マシン</td><td>大胸筋（伸張位）</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">CH-4</td><td class="nm">ディップス（前傾フォーム）</td><td>ラック</td><td>大胸筋 下部・三頭</td><td class="ct"><span class="chip ev-prin">原則</span></td><td class="ct"><span class="chip ph2">P2</span></td></tr>
+
+              <tr class="grp-start"><td class="grp" rowspan="4">足</td><td class="no">LG-1</td><td class="nm">バーベルスクワット（フルデプス）</td><td>バーベル</td><td>大腿四頭筋・臀筋</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">LG-2</td><td class="nm">シーテッド・レッグカール</td><td>マシン</td><td>ハムストリング</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">LG-3</td><td class="nm">ヒップスラスト</td><td>バーベル・マシン</td><td>大臀筋</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+              <tr><td class="no">LG-4</td><td class="nm">スタンディング・カーフレイズ</td><td>マシン・スミス</td><td>腓腹筋・ヒラメ筋</td><td class="ct"><span class="chip ev-int">介入</span></td><td class="ct"><span class="chip ph1">P1</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 肩 -->
+      <section id="shoulder">
+        <h2>肩<span class="cnt">4 exercises</span></h2>
+        <p class="sec-note">三角筋は前部・中部・後部で機能が異なり、1種目で全頭を賄えない。プレス系で前部は日常的に刺激されやすく、後部が不足しがちであるため、<strong>中部1・前部＋中部1・後部2</strong>の配分とした。ケーブルとダンベルのサイドレイズは肥大効果が同等と報告されているため<a class="cite" href="#r6">[6]</a>、器具の空き状況で置換可能とする。</p>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">S-1</span>
+            <h3 class="ex-name">ケーブル・サイドレイズ（リーンアウェイ）</h3>
+            <span class="ex-alt">代替：ダンベル・サイドレイズ</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>三角筋中部</dd>
+              <dt>協働</dt><dd>三角筋前部、僧帽筋上部</dd>
+              <dt>レップ</dt><dd>12〜20回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>ケーブルとダンベルの直接比較試験で、いずれも三角筋中部の筋厚が3.3〜4.6%増加し、両者に有意差はなかった<a class="cite" href="#r6">[6]</a>。ケーブルを第一候補とするのは、腕を下ろした位置（＝中部が最も伸張する位置）で張力が抜けないため。肩幅を決める主要種目であり、最優先で採用する。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>支柱を持って体を反対側に傾け、可動域の下端でも張力を残す。肘をわずかに曲げて固定し、小指側から挙げる。<br><b>よくある失敗｜</b>重量を追って僧帽筋で引き上げる。肩がすくむ重量は明確に重すぎる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">S-2</span>
+            <h3 class="ex-name">マシン／ダンベル・ショルダープレス</h3>
+            <span class="ex-alt">代替：スミスマシン・ショルダープレス</span>
+            <div class="ex-tags"><span class="chip eq">マシン</span><span class="chip eq">ダンベル</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>三角筋前部</dd>
+              <dt>協働</dt><dd>三角筋中部、上腕三頭筋、僧帽筋上部</dd>
+              <dt>レップ</dt><dd>6〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>EMG分析でダンベルショルダープレスは三角筋前部の活動が他の9種目より有意に高かった<a class="cite" href="#r7">[7]</a>。多関節種目のため重量の漸進が容易で、<code>ALG-3</code>のダブルプログレッションが最も機能する肩種目である。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肘を体の真横よりやや前に置き、みぞおちを軽く突き出して肩甲骨を安定させる。<br><b>よくある失敗｜</b>腰を大きく反らせて実質インクラインプレスになる。背もたれに腰を密着させる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">S-3</span>
+            <h3 class="ex-name">リバース・ペックデック</h3>
+            <span class="ex-alt">代替：ケーブル・リアデルトフライ</span>
+            <div class="ex-tags"><span class="chip eq">マシン</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>三角筋後部</dd>
+              <dt>協働</dt><dd>菱形筋、僧帽筋中部、棘下筋</dd>
+              <dt>レップ</dt><dd>12〜20回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>EMG分析では、三角筋後部の活動はシーテッド・リアラテラルレイズと45度インクラインロウが最も高く、両者に差はなかった<a class="cite" href="#r7">[7]</a>。マシン版を採用するのは、胸パッドで体幹が固定され反動を使いにくく、軽負荷でも狙った筋に集中しやすいため。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肘を伸ばしすぎず、手ではなく肘で外側へ運ぶ。肩甲骨を寄せきらない範囲で止める。<br><b>よくある失敗｜</b>肩甲骨を強く寄せて僧帽筋中部の種目になる。後部三角筋を狙うなら肩甲骨の動きは最小限にする。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">S-4</span>
+            <h3 class="ex-name">ケーブル・フェイスプル</h3>
+            <span class="ex-alt">代替：ロープ・アップライトロウ</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>三角筋後部</dd>
+              <dt>協働</dt><dd>棘下筋、小円筋、僧帽筋中部・下部</dd>
+              <dt>レップ</dt><dd>15〜20回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>後部三角筋に2種目を配分する理由は、プレス系・ベンチプレス系で前部が過剰に刺激される一方、後部は日常の動作でほぼ使われないため。本種目は肩関節の外旋を伴い、回旋筋腱板も同時に扱える点で S-3 と役割が重複しない。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>顔の高さに設定し、引ききった位置で拳を耳の横まで持っていく（外旋を入れる）。<br><b>よくある失敗｜</b>重量が重く、上体を後ろに倒してロウイングになる。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外｜</b>アップライトロウ（インピンジメントのリスクに対し、中部三角筋への刺激で S-1 を上回る根拠がない）、フロントレイズ（前部は全てのプレス種目で十分に刺激されるため冗長）、シュラッグ（僧帽筋上部は「肩」ではなく「背中」の枠で扱うのが妥当）。</p></div>
+      </section>
+
+      <!-- 二頭 -->
+      <section id="biceps">
+        <h2>腕 — 上腕二頭筋<span class="cnt">4 exercises</span></h2>
+        <p class="sec-note">肘屈筋群では、<strong>肩関節の角度によって肥大する筋が変わる</strong>ことが直接比較試験で示されている。上腕二頭筋は肩関節もまたぐ二関節筋のため、肩を伸展させたインクライン位で最も伸張し、肩を屈曲させたプリーチャー位では短縮する。この2条件は肘屈筋全体では同等の肥大だが、内訳が異なる<a class="cite" href="#r8">[8]</a>。したがって<strong>両方を採用する</strong>のが最適解になる。</p>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BI-1</span>
+            <h3 class="ex-name">インクライン・ダンベルカール</h3>
+            <span class="ex-alt">ベンチ角度 45〜60度</span>
+            <div class="ex-tags"><span class="chip eq">ダンベル</span><span class="chip eq">ベンチ</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕二頭筋（特に長頭）</dd>
+              <dt>協働</dt><dd>上腕筋、腕橈骨筋</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>プリーチャーカールとの直接比較試験で、インクラインカールは<b>上腕二頭筋そのものの肥大</b>が大きかった<a class="cite" href="#r8">[8]</a>。肩関節伸展位で長頭が最大に伸張することが理由と考えられ、ハムストリング<a class="cite" href="#r3">[3]</a>・下腿三頭筋<a class="cite" href="#r4">[4]</a>で得られている「長い筋長で鍛えると肥大が大きい」という所見と整合する。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>下ろしきった位置で肘を完全に伸ばし、上腕が体幹より後ろにある状態を保つ。<br><b>よくある失敗｜</b>挙げるときに肘が前に出る。肘の位置が動くと伸張位の優位性が失われる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BI-2</span>
+            <h3 class="ex-name">プリーチャーカール</h3>
+            <span class="ex-alt">マシン、EZバー、ダンベル いずれも可</span>
+            <div class="ex-tags"><span class="chip eq">マシン</span><span class="chip eq">EZバー</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕筋、腕橈骨筋</dd>
+              <dt>協働</dt><dd>上腕二頭筋</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>同じ直接比較試験で、プリーチャーカールは<b>上腕筋・腕橈骨筋</b>の肥大がインクラインカールより大きかった<a class="cite" href="#r8">[8]</a>。上腕筋は上腕二頭筋の下層にあり、太くなると二頭筋を押し上げるため腕囲の増加に直接寄与する。BI-1 とは<b>肥大する筋が異なるため、代替ではなく併用</b>する。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>台に脇を密着させ、下ろした位置で肘を伸ばしきる。トップで力を抜かない。<br><b>よくある失敗｜</b>下端で完全に脱力して反動で挙げる。伸張位で最も負荷がかかる種目なので、下端の制御が要点になる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BI-3</span>
+            <h3 class="ex-name">EZバーカール（立位）</h3>
+            <span class="ex-alt">代替：バーベルカール</span>
+            <div class="ex-tags"><span class="chip eq">EZバー</span><span class="chip ev-emg">EMG</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕二頭筋</dd>
+              <dt>協働</dt><dd>上腕筋、腕橈骨筋、前腕屈筋群</dd>
+              <dt>レップ</dt><dd>6〜10回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>EMG比較では回外グリップの通常カールが上腕二頭筋の活動が最も高い<a class="cite" href="#r9">[9]</a>。加えて、肘屈筋群では<b>複数の種目を組み合わせた方が、近位・中間・遠位すべての領域で肥大が大きかった</b>と報告されている<a class="cite" href="#r8">[8]</a>。中間的な肩角度を担当する枠として、また最も高重量を扱えて漸進しやすい種目として採用する。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>反動を使わず、下ろす動作に2秒以上かける。<br><b>よくある失敗｜</b>体を反らせて挙げる。腰を壁につけて行うと反動を排除できる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BI-4</span>
+            <h3 class="ex-name">ケーブルカール（体幹後方・ベイジアン）</h3>
+            <span class="ex-alt">ケーブルを背後から引く片手種目</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕二頭筋（長頭）</dd>
+              <dt>協働</dt><dd>上腕筋</dd>
+              <dt>レップ</dt><dd>10〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>BI-1 と同じ肩伸展位を、<b>全可動域で張力が抜けないケーブル</b>で行う種目。ダンベルでは重力方向の都合上トップで負荷が抜けるのに対し、ケーブルはその区間も張力を保つ。本種目単独の直接比較試験は確認できていないため、根拠は「原則」に留める。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>ケーブルの軌道が上腕と一直線になる立ち位置を探す。上腕は動かさない。<br><b>よくある失敗｜</b>ケーブルから離れすぎて肩の屈曲が入る。伸張位を作る意図が消える。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外｜</b>コンセントレーションカール（EMGでの活動は高いが、片腕ずつで時間対効果が低く、可動域・筋長の面で BI-1／BI-2 を上回る根拠がない）、チンニング（背中の枠 BK-1 と重複するため）。</p></div>
+      </section>
+
+      <!-- 三頭 -->
+      <section id="triceps">
+        <h2>腕 — 上腕三頭筋<span class="cnt">4 exercises</span></h2>
+        <p class="sec-note">上腕三頭筋は上腕の約3分の2を占め、腕囲への寄与は二頭筋より大きい。<strong>本書の32種目のなかで最も明確な介入研究の裏づけがあるのがこの部位</strong>で、肩の角度によって肥大量が1.4倍変わることが示されている<a class="cite" href="#r2">[2]</a>。</p>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">TR-1</span>
+            <h3 class="ex-name">ケーブル・オーバーヘッドエクステンション</h3>
+            <span class="ex-alt">代替：ダンベル・オーバーヘッドエクステンション</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕三頭筋 長頭</dd>
+              <dt>協働</dt><dd>外側頭、内側頭</dd>
+              <dt>レップ</dt><dd>10〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>同一被験者の左右腕でオーバーヘッド位とニュートラル位（プレスダウン）を12週比較した試験で、オーバーヘッド位は<b>長頭 +28.5% 対 +19.6%</b>、外側頭・内側頭でも <b>+14.6% 対 +10.5%</b> と、全ての頭で有意に大きい肥大を示した（三頭全体で約1.4倍）<a class="cite" href="#r2">[2]</a>。長頭は肩関節をまたぐため、腕を挙上した位置で最大に伸張することが理由と考えられる。<b>本書で最も強い根拠を持つ種目。</b></p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肘を耳の横で固定し、頭の後ろで完全に伸ばしきる／曲げきる。扱える重量はプレスダウンより明確に軽くなるが、それで正しい。<br><b>よくある失敗｜</b>肘が開いて前方に移動する。肘の位置を動かすと長頭の伸張が失われ、プレスダウンと変わらなくなる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">TR-2</span>
+            <h3 class="ex-name">ナローグリップ・ベンチプレス</h3>
+            <span class="ex-alt">代替：マシンディップス</span>
+            <div class="ex-tags"><span class="chip eq">バーベル</span><span class="chip ev-prin">原則</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕三頭筋（全頭）</dd>
+              <dt>協働</dt><dd>大胸筋、三角筋前部</dd>
+              <dt>レップ</dt><dd>6〜10回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>単関節種目だけでは扱える絶対重量が小さく、漸進の余地が早く尽きる。多関節の押し種目を1枠置くことで、高負荷帯（6〜10回）を担当させる。三頭種目のなかで最も重量を伸ばしやすく、<code>ALG-1</code>のe1RM推移で成長を可視化しやすい。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>グリップ幅は肩幅程度。手首が痛む幅まで狭めない。肘を体側に近づけて下ろす。<br><b>よくある失敗｜</b>グリップを狭めすぎて手首と肘を痛める。狭さより「肘を締めること」が三頭への刺激を決める。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">TR-3</span>
+            <h3 class="ex-name">ライイング・エクステンション</h3>
+            <span class="ex-alt">スカルクラッシャー。バーを額の後ろへ下ろす</span>
+            <div class="ex-tags"><span class="chip eq">EZバー</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕三頭筋 長頭・内側頭</dd>
+              <dt>協働</dt><dd>外側頭</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>肩関節を約90度屈曲させた状態で行うため、長頭の筋長は TR-1（約180度）と TR-4（0度）の中間にあたる。同一の原理<a class="cite" href="#r2">[2]</a>により、プレスダウンよりは長頭に有利な条件になる。TR-1 とは異なる関節角度帯をカバーする枠として採用する。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>バーを額ではなく<b>頭の後ろ</b>へ下ろすと、長頭がさらに伸張する。<br><b>よくある失敗｜</b>肘を閉じられず、実質プルオーバーになる。肘の間隔を一定に保つ。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">TR-4</span>
+            <h3 class="ex-name">ケーブル・プレスダウン</h3>
+            <span class="ex-alt">ロープ／ストレートバー</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕三頭筋 外側頭・内側頭</dd>
+              <dt>協働</dt><dd>長頭</dd>
+              <dt>レップ</dt><dd>12〜20回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>長頭の肥大では TR-1 に明確に劣る<a class="cite" href="#r2">[2]</a>。それでも採用するのは、<b>肘を体側に固定した短縮位でのフィニッシュ</b>を担当する枠として、また肩に負担をかけず高回数を安全に積める種目としての価値があるため。優先度は4種目中で最も低い。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肘を体側に固定し、伸ばしきった位置で1秒静止する。<br><b>よくある失敗｜</b>上体を前傾させて体重で押し下げる。三頭の仕事が減る。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外｜</b>キックバック（可動域の終端＝短縮位でしか高負荷がかからず、伸張位で負荷がかかる種目に劣る）、ベンチディップス（肩関節の伸展を強いられ、負荷の割に肩前面のリスクが高い）。</p></div>
+      </section>
+
+      <!-- 前腕 -->
+      <section id="forearm">
+        <h2>腕 — 前腕<span class="cnt">4 exercises</span></h2>
+        <div class="callout">
+          <p><b>この部位はエビデンスが最も薄い。</b>前腕を対象に筋量を直接測定した介入研究はほとんど存在せず、選定は主にEMG研究と解剖学的な役割に依拠している<a class="cite" href="#r1">[1]</a>。他部位の選定と同じ確度では扱えない点を、アプリ上でも明示すべきである。</p>
+          <p>前腕は屈筋群（掌側）・伸筋群（背側）・腕橈骨筋の3系統に分かれるため、4枠を<b>肘屈曲系2・手関節系1・等尺性1</b>で配分した。</p>
+        </div>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">FA-1</span>
+            <h3 class="ex-name">リバースカール</h3>
+            <span class="ex-alt">EZバーまたはケーブル、回内グリップ</span>
+            <div class="ex-tags"><span class="chip eq">EZバー</span><span class="chip eq">ケーブル</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>上腕筋、腕橈骨筋</dd>
+              <dt>協働</dt><dd>前腕伸筋群、上腕二頭筋</dd>
+              <dt>レップ</dt><dd>10〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>通常カール・ハンマーカール・リバースカールを比較したEMG研究で、<b>上腕筋の活動はリバースカールが有意に高かった</b><a class="cite" href="#r9">[9]</a>。回内位では上腕二頭筋が力を発揮しにくくなり、上腕筋と前腕伸筋群への依存が高まる。前腕の背側（伸筋群）を鍛えられる数少ない加重種目である。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>手首を軽く伸展させたまま固定する。重量は通常カールの半分程度が目安。<br><b>よくある失敗｜</b>重すぎて手首が折れる。手首が動いた時点で前腕への刺激が逃げる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">FA-2</span>
+            <h3 class="ex-name">ハンマーカール</h3>
+            <span class="ex-alt">ダンベルまたはロープケーブル、ニュートラルグリップ</span>
+            <div class="ex-tags"><span class="chip eq">ダンベル</span><span class="chip eq">ケーブル</span><span class="chip ev-emg">EMG</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>腕橈骨筋</dd>
+              <dt>協働</dt><dd>上腕筋、上腕二頭筋</dd>
+              <dt>レップ</dt><dd>10〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>EMG研究では、回外・回内・ニュートラルの3グリップのうち<b>ニュートラル（ハンマー）で腕橈骨筋の活動が最も高い</b>と一貫して報告されている<a class="cite" href="#r9">[9]</a>。腕橈骨筋は肘の外側に位置し、前腕上部の太さに視覚的な影響が大きい。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>親指を上に向けたまま、体の前ではなく体側の軌道で挙げる。<br><b>よくある失敗｜</b>肩をすくめて上体で振り上げる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">FA-3</span>
+            <h3 class="ex-name">リストカール</h3>
+            <span class="ex-alt">ベンチに前腕を乗せ、手首のみを屈曲</span>
+            <div class="ex-tags"><span class="chip eq">バーベル</span><span class="chip eq">ダンベル</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>前腕屈筋群</dd>
+              <dt>協働</dt><dd>—</dd>
+              <dt>レップ</dt><dd>15〜25回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>前腕の筋量の大半は掌側の屈筋群が占めるが、FA-1・FA-2 はいずれも肘屈曲種目であり、手関節の屈曲を直接負荷できるのは本種目のみ。EMG上は握力系種目に劣るという報告もある<a class="cite" href="#r10">[10]</a>が、<b>可動域を伴う唯一の屈筋群種目</b>という役割で採用する。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>下端で指を軽く開いてバーを転がし、そこから握り込む（可動域を最大化する）。<br><b>よくある失敗｜</b>可動域が数センチしかない。前腕をベンチに固定し、手首だけを大きく動かす。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">FA-4</span>
+            <h3 class="ex-name">ヘビーホールド／ファーマーズウォーク</h3>
+            <span class="ex-alt">重いダンベルを保持。時間または距離で管理</span>
+            <div class="ex-tags"><span class="chip eq">ダンベル</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>前腕屈筋群（等尺性）</dd>
+              <dt>協働</dt><dd>僧帽筋上部、体幹</dd>
+              <dt>レップ</dt><dd>30〜60秒 × 3セット</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>等尺性の保持（キャリー系）はリストカールより前腕全体の活動が高いとするEMG報告がある<a class="cite" href="#r10">[10]</a>。加えて、握力はデッドリフトやロウの制限因子になるため、<b>他部位のボリューム確保にも間接的に寄与する</b>点を評価した。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>ストラップを使わない。握力が限界になるまで保持する。<br><b>よくある失敗｜</b>記録単位が他種目と異なる（重量×レップではなく重量×秒）。アプリ側で秒数管理に対応する必要がある（下記 <a href="#impact">要件への反映</a> を参照）。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外｜</b>リバースリストカール（伸筋群を狙えるが、FA-1 のリバースカールで同時に刺激されるため冗長）、グリッパー（ジム設備に依存せず自宅で可能なため、ジム種目の枠を割く必要がない）。</p></div>
+      </section>
+
+      <!-- 腹筋 -->
+      <section id="abs">
+        <h2>腹筋<span class="cnt">4 exercises</span></h2>
+        <p class="sec-note">腹筋のEMG研究は豊富で、ACEの比較研究（13種目）ではバイシクルクランチが腹直筋の活動が最も高く、通常のクランチの約2.5倍だった<a class="cite" href="#r11">[11]</a>。しかし本アプリは<strong>漸進性過負荷を中核に据えている</strong>ため（<code>ALG-3</code>）、加重できない自重種目は減点し、<strong>荷重可能な種目を優先</strong>した。配分は体幹屈曲2・抗伸展1・回旋1。</p>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">AB-1</span>
+            <h3 class="ex-name">ケーブルクランチ（膝立ち）</h3>
+            <span class="ex-alt">代替：アブドミナルクランチマシン</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-prin">原則</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>腹直筋（上部優位）</dd>
+              <dt>協働</dt><dd>外腹斜筋</dd>
+              <dt>レップ</dt><dd>10〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>腹筋種目のうち、<b>5kg刻みで負荷を漸進できる数少ない種目</b>。EMG上の順位では自重種目に劣る場合があるが<a class="cite" href="#r11">[11]</a>、EMGは肥大の予測因子として検証されていない<a class="cite" href="#r1">[1]</a>のに対し、漸進性過負荷は筋肥大の最も確立された原則である。この観点から第一種目に置いた。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>股関節の角度を変えず、<b>背骨を丸めて</b>みぞおちを骨盤に近づける。<br><b>よくある失敗｜</b>背中をまっすぐ保ったまま股関節から倒れる。腹直筋ではなく腸腰筋の運動になる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">AB-2</span>
+            <h3 class="ex-name">ハンギングレッグレイズ／キャプテンズチェア</h3>
+            <span class="ex-alt">懸垂バーまたはローマンチェア</span>
+            <div class="ex-tags"><span class="chip eq">ラック</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>腹直筋（下部優位）</dd>
+              <dt>協働</dt><dd>腸腰筋、外腹斜筋</dd>
+              <dt>レップ</dt><dd>8〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>ACEの13種目比較でキャプテンズチェアは<b>上位3種目</b>に入った<a class="cite" href="#r11">[11]</a>。別のEMG研究でも、ハンギングニーアップと30度傾斜のリバースクランチが上部・下部腹直筋の活動で最上位に位置している<a class="cite" href="#r12">[12]</a>。足の間にダンベルを挟むことで加重も可能。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>脚を上げるだけで終わらせず、<b>骨盤を後傾させて尾骨を持ち上げる</b>ところまで行う。ここからが腹直筋下部の可動域。<br><b>よくある失敗｜</b>股関節の屈曲だけで終わり、骨盤が動かない。この場合ほぼ腸腰筋のトレーニングになる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">AB-3</span>
+            <h3 class="ex-name">アブローラー（ロールアウト）</h3>
+            <span class="ex-alt">膝つき → 立位へ段階的に進める</span>
+            <div class="ex-tags"><span class="chip eq">ローラー</span><span class="chip ev-emg">EMG</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>腹直筋（抗伸展・伸張性）</dd>
+              <dt>協働</dt><dd>広背筋、腹横筋</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>市販の腹筋器具を比較したEMG研究で、Ab Slide・Torso Track・Ab Roller 系が上部・下部腹直筋の活動で最上位だった<a class="cite" href="#r12">[12]</a>。腹直筋が<b>伸張された状態で高い張力がかかる</b>数少ない種目であり、他の3種目（いずれも短縮方向）と刺激の性質が異なる。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>腰を反らせず、骨盤を軽く後傾させたまま伸ばせる範囲までにとどめる。<br><b>よくある失敗｜</b>可動域を欲張って腰が落ちる。腰椎の伸展が出た時点で腹筋から負荷が抜け、腰を痛める。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">AB-4</span>
+            <h3 class="ex-name">ケーブル・ウッドチョップ／パロフプレス</h3>
+            <span class="ex-alt">回旋（チョップ）と抗回旋（パロフ）を交互に</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>外腹斜筋、内腹斜筋</dd>
+              <dt>協働</dt><dd>腹直筋、腹横筋</dd>
+              <dt>レップ</dt><dd>12〜15回（左右）</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>AB-1〜AB-3 はいずれも矢状面（前後の屈曲・伸展）の種目であり、水平面（回旋）の刺激が欠ける。腹斜筋を加重して鍛えられる種目としてケーブル系を採用した。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>腕で振らず、みぞおちから捻る。骨盤は正面に固定する。<br><b>よくある失敗｜</b>腰から回してしまう。腰椎の回旋可動域は小さく、無理に捻ると障害リスクになる。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外｜</b>バイシクルクランチ（ACEのEMG順位は1位<a class="cite" href="#r11">[11]</a>だが加重手段がなく、漸進性過負荷が early に頭打ちになる。Phase 3 で「自重代替種目」として追加する候補）、シットアップ（腸腰筋の関与が大きく、腰椎への剪断力も大きい）、プランク（等尺性で漸進が難しく、肥大目的では優先度が低い）。</p></div>
+      </section>
+
+      <!-- 背中 -->
+      <section id="back">
+        <h2>背中<span class="cnt">4 exercises</span></h2>
+        <p class="sec-note">背中は広背筋・僧帽筋・菱形筋・脊柱起立筋が層状に重なり、<strong>引く方向によって働く筋が変わる</strong>。EMG研究では、広背筋の活動は懸垂・チンアップで最も高く、脊柱起立筋はベントオーバーロウで最も高い<a class="cite" href="#r14">[14]</a>。配分は垂直引き1・水平引き2・単関節1とした。</p>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BK-1</span>
+            <h3 class="ex-name">チンニング／ラットプルダウン</h3>
+            <span class="ex-alt">初期はラットプルダウン、10回可能になったら懸垂へ</span>
+            <div class="ex-tags"><span class="chip eq">ラック</span><span class="chip eq">マシン</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>広背筋</dd>
+              <dt>協働</dt><dd>大円筋、上腕二頭筋、僧帽筋下部</dd>
+              <dt>レップ</dt><dd>6〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>複数の背中種目を比較したEMG研究で、<b>広背筋の活動は懸垂・チンアップが最大</b>だった<a class="cite" href="#r14">[14]</a>。一方でラットプルダウンはグリップ幅・回内回外の違いで広背筋の活動に有意差が出ないことが示されており<a class="cite" href="#r15">[15]</a>、<b>グリップの種類を増やすより、荷重を伸ばすことに集中すべき</b>と解釈できる。懸垂ができない段階ではラットプルダウンで代替し、同一種目として記録を接続する。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肘を体の前ではなく体側に沿って下ろす。開始位置で肩を上げ、広背筋を伸ばしきる。<br><b>よくある失敗｜</b>顎を上げて反動で引く。可動域の上端（伸張位）を省略しない。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BK-2</span>
+            <h3 class="ex-name">シーテッド・ケーブルロウ</h3>
+            <span class="ex-alt">代替：チェストサポーテッド・ロウ</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-prin">原則</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>僧帽筋中部、菱形筋</dd>
+              <dt>協働</dt><dd>広背筋、三角筋後部、上腕二頭筋</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>垂直引き（BK-1）では僧帽筋中部・菱形筋への刺激が不足する。水平引きは肩甲骨の内転を伴うため、これらの筋を担当する枠として必須。胸パッドまたは足位置で体幹が固定され、腰への負担なく高ボリュームを積める点で BK-3 と役割が異なる。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>引ききった位置で肩甲骨を寄せ、1秒静止する。戻すときは肩甲骨を前に出しきる。<br><b>よくある失敗｜</b>上体を大きく前後させて反動で引く。上体の角度は固定する。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BK-3</span>
+            <h3 class="ex-name">ベントオーバーロウ</h3>
+            <span class="ex-alt">代替：ペンドレイロウ、Tバーロウ</span>
+            <div class="ex-tags"><span class="chip eq">バーベル</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>広背筋、僧帽筋中部</dd>
+              <dt>協働</dt><dd>脊柱起立筋、三角筋後部、ハムストリング</dd>
+              <dt>レップ</dt><dd>6〜10回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>EMG比較で、<b>脊柱起立筋の活動はベントオーバーロウが他の全ての引く種目より有意に高かった</b><a class="cite" href="#r14">[14]</a>。脊柱起立筋を直接刺激できる唯一の枠であり、かつ背中種目のなかで最も高重量を扱えるため、e1RMによる進捗把握の主軸になる。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>上体は45度以下に倒し、みぞおちに向けて引く。背中は最初から最後までフラットに保つ。<br><b>よくある失敗｜</b>重量を追って上体が起き、実質シュラッグになる。背中が丸まる重量は使わない。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">BK-4</span>
+            <h3 class="ex-name">ストレートアーム・プルダウン</h3>
+            <span class="ex-alt">代替：ケーブル・ラットプルオーバー</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>広背筋（単関節）</dd>
+              <dt>協働</dt><dd>大円筋、上腕三頭筋 長頭</dd>
+              <dt>レップ</dt><dd>12〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>BK-1〜BK-3 はいずれも肘関節が関与するため、広背筋が限界に達する前に<b>上腕二頭筋と握力が先に疲労する</b>。肘を固定した単関節種目を1枠置くことで、広背筋のみを追い込める。頭上での伸張位から短縮位までを扱える点も、垂直引きと補完関係にある。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肘の角度を固定し、脇を閉じる動きだけで引く。開始位置で広背筋の伸びを感じるところまで腕を上げる。<br><b>よくある失敗｜</b>肘が曲がってプレスダウンになる。三頭の種目に変わってしまう。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外｜</b>デッドリフト（背中の種目として優秀だが、全身の疲労が大きく、脚のセッションと競合する。<code>ALG-4</code>のデロード判定を狂わせるリスクもあるため Phase 3 で再検討）、シュラッグ（僧帽筋上部は BK-3 と S-2 で相当量が刺激されるため、4枠のなかでは優先度が低い）。</p></div>
+      </section>
+
+      <!-- 胸 -->
+      <section id="chest">
+        <h2>胸<span class="cnt">4 exercises</span></h2>
+        <p class="sec-note">大胸筋は鎖骨部（上部）と胸肋部（中・下部）で走行が異なり、EMG研究では<strong>インクラインで鎖骨部、フラットで胸肋部の活動が高い</strong>ことが示されている<a class="cite" href="#r16">[16]</a>。ただし局所肥大が種目選択で完全に制御できるとは限らないことも指摘されている<a class="cite" href="#r17">[17]</a>ため、角度違いのプレスを2枠に留め、残りを単関節と下部に配分した。</p>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">CH-1</span>
+            <h3 class="ex-name">ベンチプレス（フラット）</h3>
+            <span class="ex-alt">代替：マシンチェストプレス、ダンベルプレス</span>
+            <div class="ex-tags"><span class="chip eq">バーベル</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>大胸筋 胸肋部</dd>
+              <dt>協働</dt><dd>三角筋前部、上腕三頭筋</dd>
+              <dt>レップ</dt><dd>5〜10回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>EMG研究でフラットベンチは胸肋部（中・下部）の活動がインクラインより高い<a class="cite" href="#r16">[16]</a>。加えて、胸種目のなかで最も高重量を扱え、漸進の余地が大きい。<code>ALG-1</code>のe1RM推移と <code>ALG-5</code> の体重比基準（初心者0.50×体重／中級者0.75×体重）が最も機能する種目でもある。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肩甲骨を寄せて下げ、胸を張る。バーは乳頭のやや下に触れさせる。<br><b>よくある失敗｜</b>肩甲骨が動いてしまい、負荷が肩の前面に逃げる。肩に痛みが出る場合はまずここを疑う。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">CH-2</span>
+            <h3 class="ex-name">インクラインプレス（30〜45度）</h3>
+            <span class="ex-alt">ダンベル、スミス、マシンいずれも可</span>
+            <div class="ex-tags"><span class="chip eq">ダンベル</span><span class="chip eq">マシン</span><span class="chip ev-emg">EMG</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>大胸筋 鎖骨部</dd>
+              <dt>協働</dt><dd>三角筋前部、上腕三頭筋</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>EMG研究で、鎖骨部（上部）の活動はインクラインで有意に高く、フラットでは逆に胸肋部が高いという明確なパターンが確認されている<a class="cite" href="#r16">[16]</a>。上部胸筋は日常の押す動作で刺激が入りにくく、フラットのみでは発達が遅れやすい領域である。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>角度は30度前後にとどめる。45度を超えると三角筋前部の関与が増え、ショルダープレスに近づく。<br><b>よくある失敗｜</b>ベンチを立てすぎている。市販ベンチの「2段目」はしばしば45度以上ある。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">CH-3</span>
+            <h3 class="ex-name">ケーブルフライ／ペックデック</h3>
+            <span class="ex-alt">ケーブルは可動域、マシンは安定性で選ぶ</span>
+            <div class="ex-tags"><span class="chip eq">ケーブル</span><span class="chip eq">マシン</span><span class="chip ev-prin">原則</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>大胸筋（伸張位）</dd>
+              <dt>協働</dt><dd>三角筋前部</dd>
+              <dt>レップ</dt><dd>12〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>バーベルプレスでは<b>バーが胸に当たった時点で可動域が止まる</b>ため、大胸筋を完全な伸張位まで持っていけない。フライ系は腕を体の外側まで開けるため、伸張位での負荷を担当できる。長い筋長でのトレーニングが肥大に有利という所見<a class="cite" href="#r2">[2]</a><a class="cite" href="#r3">[3]</a><a class="cite" href="#r4">[4]</a>から、プレスのみの構成より単関節種目を併用する構成を推奨する。<b>ただし胸に関する直接比較の介入研究は確認できていないため、根拠は「原則」に留める。</b></p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>肘の角度を一定に保ち、腕ではなく上腕で弧を描く。開いた位置で1秒静止する。<br><b>よくある失敗｜</b>重量が重くプレス動作になる。肘の角度が変わり始めたら重すぎる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">CH-4</span>
+            <h3 class="ex-name">ディップス（前傾フォーム）</h3>
+            <span class="ex-alt">代替：ディップスマシン、デクラインプレス</span>
+            <div class="ex-tags"><span class="chip eq">ラック</span><span class="chip ev-prin">原則</span><span class="chip ph2">Phase 2</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>大胸筋 下部</dd>
+              <dt>協働</dt><dd>上腕三頭筋、三角筋前部</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>デクライン方向（腕を斜め下に押す）の動作は CH-1〜CH-3 でカバーされない。上体を前傾させることで大胸筋下部が主働となり、加えて深く沈む姿勢は胸を伸張位に置く。ディップスベルトで加重でき、漸進性も確保できる。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>上体を30度ほど前傾させ、肘をやや開く。直立すると三頭の種目（TR-2 と重複）になる。<br><b>よくある失敗｜</b>肩関節の柔軟性を超えて深く沈む。肩の前面に痛みが出る深さより浅くする。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外｜</b>デクラインベンチプレス（CH-4 と役割が重複し、設備のないジムも多い）、腕立て伏せ（加重が難しく、CH-1 の下位互換になる）、プルオーバー（胸か背中か作用が曖昧で、BK-4 と競合する）。</p></div>
+      </section>
+
+      <!-- 足 -->
+      <section id="legs">
+        <h2>足<span class="cnt">4 exercises</span></h2>
+        <div class="callout">
+          <p><b>「足」は4つの独立した筋群を含む。</b>大腿四頭筋・ハムストリング・臀筋・下腿三頭筋はいずれも他部位1つ分の規模があり、4枠では<b>1筋群につき1種目</b>しか割り当てられない。本書ではこの制約下で「各筋群の最良種目を1つずつ」という配分を採ったが、腕を二頭・三頭・前腕に分割したのと同じ論理で、<b>足も分割して各4種目とする改訂を推奨する</b>（<a href="#impact">後述</a>）。</p>
+          <p>一方で幸運なことに、<b>4筋群すべてに直接比較の介入研究が存在する</b>。本書のなかで最もエビデンスが強い部位である。</p>
+        </div>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">LG-1</span>
+            <h3 class="ex-name">バーベルスクワット（フルデプス）</h3>
+            <span class="ex-alt">代替：ハックスクワット、スミスマシンスクワット</span>
+            <div class="ex-tags"><span class="chip eq">バーベル</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>大腿四頭筋</dd>
+              <dt>協働</dt><dd>大臀筋、内転筋群、脊柱起立筋</dd>
+              <dt>レップ</dt><dd>5〜10回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>スクワットの深さを比較した研究群では、<b>深いスクワット（膝屈曲120度）が浅いスクワット（0〜60度）より大腿四頭筋の肥大が大きく</b>、特に遠位部で差が顕著だった<a class="cite" href="#r18">[18]</a>。ただしレッグプレスでは膝関節の可動域が四頭筋の肥大に影響しなかったという報告もあり<a class="cite" href="#r13">[13]</a>、可動域の効果は種目によって一様ではない。フリーウェイトのスクワットでは深さを確保する価値が高いと判断した。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>大腿が水平を明確に下回る深さまでしゃがむ。踵が浮くなら足首の可動域不足なので、ヒールを上げるか靴を変える。<br><b>よくある失敗｜</b>重量を優先して深さを削る。本種目では深さが優位性の source なので、深さを保てる重量まで落とす。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">LG-2</span>
+            <h3 class="ex-name">シーテッド・レッグカール</h3>
+            <span class="ex-alt">※ ライイング（うつ伏せ）版ではなく座位版を選ぶこと</span>
+            <div class="ex-tags"><span class="chip eq">マシン</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>ハムストリング（二関節筋群）</dd>
+              <dt>協働</dt><dd>腓腹筋</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>同一被験者の左右脚でシーテッドとプローン（うつ伏せ）を12週比較したMRI研究で、<b>ハムストリング全体の筋体積が +14%（シーテッド）対 +9%（プローン）</b>、二関節筋では +8〜24% 対 +4〜19% と、座位が明確に優れていた<a class="cite" href="#r3">[3]</a>。座位では股関節が屈曲したままなので、二関節性のハムストリングが常に伸張された状態で働くことが理由と考えられる。<b>同じ「レッグカール」でもマシンの選択で結果が変わる、実用上インパクトの大きい知見。</b></p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>骨盤をシートに密着させ、股関節が伸びないようにする。伸ばしきった位置で止めない。<br><b>よくある失敗｜</b>ライイングレッグカールで代用する。本種目の優位性は座位という条件そのものにある。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">LG-3</span>
+            <h3 class="ex-name">ヒップスラスト</h3>
+            <span class="ex-alt">代替：ヒップスラストマシン</span>
+            <div class="ex-tags"><span class="chip eq">バーベル</span><span class="chip eq">マシン</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>大臀筋</dd>
+              <dt>協働</dt><dd>ハムストリング、大腿四頭筋</dd>
+              <dt>レップ</dt><dd>8〜12回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>ヒップスラストとバックスクワットを直接比較した研究では、<b>大臀筋の上部・中部・下部および全体の肥大は両者で同等</b>だった<a class="cite" href="#r19">[19]</a>（EMGではヒップスラストが高値を示したが、肥大には反映されなかった。これも<a class="cite" href="#r1">[1]</a>の指摘と整合する）。それでも採用するのは、<b>複数の股関節伸展種目を併用した方が大臀筋の肥大が大きい</b>とするメタ分析の所見<a class="cite" href="#r20">[20]</a>による。LG-1 の代替ではなく<b>追加</b>として意味を持つ。</p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>トップで顎を引き、肋骨を締めたまま骨盤を後傾させる。腰を反らせて可動域を稼がない。<br><b>よくある失敗｜</b>腰椎の伸展でロックアウトする。股関節の伸展で挙げる。</p>
+          </div>
+        </article>
+
+        <article class="ex">
+          <div class="ex-head">
+            <span class="ex-no">LG-4</span>
+            <h3 class="ex-name">スタンディング・カーフレイズ</h3>
+            <span class="ex-alt">※ シーテッド版ではなく立位版を選ぶこと</span>
+            <div class="ex-tags"><span class="chip eq">マシン</span><span class="chip eq">スミス</span><span class="chip ev-int">介入研究</span><span class="chip ph1">Phase 1</span></div>
+          </div>
+          <div class="ex-body">
+            <dl class="kv">
+              <dt>主働</dt><dd>腓腹筋（内側頭・外側頭）</dd>
+              <dt>協働</dt><dd>ヒラメ筋</dd>
+              <dt>レップ</dt><dd>10〜15回</dd>
+            </dl>
+            <p class="ex-why"><b>選定根拠｜</b>同一被験者の左右脚で立位（膝伸展）と座位（膝90度屈曲）を12週比較した研究で、<b>外側腓腹筋 +12.4% 対 +1.7%、内側腓腹筋 +9.2% 対 +0.6%、下腿三頭筋全体 +5.6% 対 +2.1%</b> と、立位が圧倒的に優れていた<a class="cite" href="#r4">[4]</a>。ヒラメ筋のみ両条件で同等（+2.1% 対 +2.9%）。腓腹筋は膝関節をまたぐため、膝を曲げると短縮して働けなくなる。<b>座位カーフレイズでは腓腹筋がほぼ成長しないという、極端な差が出た事例。</b></p>
+            <p class="ex-cue"><b>効かせるコツ｜</b>膝を伸ばしたまま、踵を限界まで下ろし、限界まで上げる。可動域を削らない。<br><b>よくある失敗｜</b>重量を上げて可動域が数センチになる。本種目は伸張位こそが効果の source。</p>
+          </div>
+        </article>
+
+        <div class="dropped"><p><b>選外（ただし足を分割する場合の最有力候補）｜</b>レッグエクステンション（股関節を伸展させた姿勢＝大腿直筋が長い条件で行うと、股関節屈曲位より大腿直筋の肥大が大きいことが示されている<a class="cite" href="#r21">[21]</a>。シートを倒せるマシンなら有効）、ルーマニアンデッドリフト（ハムを股関節伸展方向から鍛える。LG-2 と作用が異なる）、レッグプレス（高重量を安全に扱え、四頭のボリューム確保に有効）、ブルガリアンスクワット（片脚のため左右差の是正に有効。<code>FR-C6</code>と接続する）。</p></div>
+      </section>
+
+      <!-- Phase 1 -->
+      <section id="phase1">
+        <h2>Phase 1 の20種目</h2>
+        <p class="sec-note">要件定義書の <code>OPEN-4</code>（Phase 1 に含める20種目の確定）に対する回答。32種目のうち、<strong>3Dアセットを最優先で制作する20種目</strong>を以下のとおり指定する。選定条件は「その部位を始めるうえで欠かせないこと」「エビデンスが強いこと」「重量の漸進が成立すること」の3点。</p>
+        <div class="tbl-scroll">
+          <table>
+            <caption>Phase 1 — 20 exercises</caption>
+            <thead><tr><th>部位</th><th>数</th><th>種目</th></tr></thead>
+            <tbody>
+              <tr><td class="grp">肩</td><td class="no">3</td><td>ケーブル・サイドレイズ／ショルダープレス／リバース・ペックデック</td></tr>
+              <tr><td class="grp">二頭</td><td class="no">2</td><td>インクライン・ダンベルカール／プリーチャーカール</td></tr>
+              <tr><td class="grp">三頭</td><td class="no">2</td><td>ケーブル・オーバーヘッドエクステンション／ナローグリップ・ベンチプレス</td></tr>
+              <tr><td class="grp">前腕</td><td class="no">1</td><td>リバースカール</td></tr>
+              <tr><td class="grp">腹筋</td><td class="no">2</td><td>ケーブルクランチ／ハンギングレッグレイズ</td></tr>
+              <tr><td class="grp">背中</td><td class="no">3</td><td>チンニング／ラットプルダウン、シーテッド・ケーブルロウ、ベントオーバーロウ</td></tr>
+              <tr><td class="grp">胸</td><td class="no">3</td><td>ベンチプレス／インクラインプレス／ケーブルフライ</td></tr>
+              <tr><td class="grp">足</td><td class="no">4</td><td>バーベルスクワット／シーテッド・レッグカール／ヒップスラスト／スタンディング・カーフレイズ</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>足のみ4種目すべてをPhase 1に含めるのは、4つの異なる筋群に対応しており、いずれかを外すとその筋群が完全に空白になるため。前腕を1種目に絞るのは、エビデンスが最も薄く<a class="cite" href="#r1">[1]</a>、かつ他部位の種目で間接的に刺激される部位であるため。</p>
+      </section>
+
+      <!-- 要件への反映 -->
+      <section id="impact">
+        <h2>要件定義書への反映</h2>
+
+        <h3>クローズできる項目</h3>
+        <ul>
+          <li><code>OPEN-4</code>（Phase 1 の20種目リスト）— <strong>本書で確定。クローズ可能。</strong></li>
+          <li><code>FR-A1</code>（種目マスタ）— 32種目分の「主働筋／協働筋」「目標レップ帯」「効かせるコツ」「よくある失敗」が本書で埋まった。<strong>初期データとして投入可能。</strong></li>
+        </ul>
+
+        <h3>本書の作成により新たに判明した要件</h3>
+        <div class="tbl-scroll">
+          <table>
+            <thead><tr><th>論点</th><th>影響</th><th>対応</th></tr></thead>
+            <tbody>
+              <tr><td class="nm">秒数ベースの記録</td><td><code>FR-B2</code></td><td>FA-4（ヘビーホールド）は「重量 × 秒数」で記録する。現行のセット記録は「重量 × レップ」前提のため、<b>記録単位の切り替えをデータモデルに追加</b>する必要がある（<code>SetLog</code> に <code>unit</code> フィールドを追加）。</td></tr>
+              <tr><td class="nm">代替種目の同一視</td><td><code>FR-C1</code></td><td>BK-1 は「ラットプルダウン → 懸垂」と移行する。e1RM推移を連続した1本の線として見せるには、<b>種目間の等価関係を種目マスタに持たせる</b>必要がある。</td></tr>
+              <tr><td class="nm">「座位／立位」の明示</td><td><code>FR-A1</code> <code>FR-A3</code></td><td>LG-2（シーテッド・レッグカール）と LG-4（スタンディング・カーフレイズ）は、姿勢を間違えると効果が大きく落ちる<a class="cite" href="#r3">[3]</a><a class="cite" href="#r4">[4]</a>。<b>種目名だけでなく3D上でも姿勢の違いを強調表示</b>し、誤選択を防ぐ。</td></tr>
+              <tr><td class="nm">エビデンス強度の表示</td><td>新規</td><td>種目ごとに「根拠の強さ」（介入研究／メタ分析／EMG／原則）を保持し、種目詳細画面に表示する。前腕のように根拠が薄い部位を、強い部位と同じ確度で提示しない。<b><code>FR-A9</code> として新規追加を提案。</b></td></tr>
+              <tr><td class="nm">足の部位分割</td><td><code>FR-C2</code> <code>FR-C3</code></td><td>ボリューム集計とヒートマップで「足」を1部位として扱うと、四頭・ハム・臀筋・下腿の不足が相殺されて見えなくなる。<b>集計上は4部位に分割する</b>ことを推奨。あわせて種目も各4種目へ拡張すれば、全体は 11部位 44種目になる。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>ボリューム目安レンジへの補足</h3>
+        <p>要件定義書 <code>ALG-6</code> の週間セット数レンジは、上記の部位分割を前提に「大腿四頭筋」「ハムストリング」「臀筋」「下腿三頭筋」それぞれに設定する。腕についても、上腕二頭筋・上腕三頭筋は背中・胸の種目で間接的に相当量のセットを受けるため、<strong>按分係数（<code>ALG-2</code>）による加算を前提にレンジを設定する</strong>こと。直接種目のみで週12〜20セットを積むと過剰になる。</p>
+      </section>
+
+      <!-- 参考文献 -->
+      <section id="refs">
+        <h2>参考文献</h2>
+        <p class="sec-note">アプリ内で根拠を表示する場合は、以下のリンクをそのまま種目マスタに保持する。エビデンスは更新されるため、年1回の見直しを想定する。</p>
+        <ol class="refs">
+          <li id="r1"><a href="https://pubmed.ncbi.nlm.nih.gov/35006527/">Vigotsky AD, et al. Longing for a Longitudinal Proxy: Acutely Measured Surface EMG Amplitude is not a Validated Predictor of Muscle Hypertrophy. <i>Sports Medicine</i>, 2022.</a><span class="kind">方法論レビュー — 本書の選定方針の基礎</span></li>
+          <li id="r2"><a href="https://onlinelibrary.wiley.com/doi/10.1080/17461391.2022.2100279">Maeo S, et al. Triceps brachii hypertrophy is substantially greater after elbow extension training performed in the overhead versus neutral arm position. <i>European Journal of Sport Science</i>, 2023.</a><span class="kind">介入研究（12週・MRI・左右腕比較）— TR-1</span></li>
+          <li id="r3"><a href="https://www.researchgate.net/publication/344445943_Greater_Hamstrings_Muscle_Hypertrophy_but_Similar_Damage_Protection_after_Training_at_Long_versus_Short_Muscle_Lengths">Maeo S, et al. Greater Hamstrings Muscle Hypertrophy but Similar Damage Protection after Training at Long versus Short Muscle Lengths. <i>Medicine &amp; Science in Sports &amp; Exercise</i>, 2021.</a><span class="kind">介入研究（12週・MRI・左右脚比較）— LG-2</span></li>
+          <li id="r4"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10753835/">Kinoshita M, et al. Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training. <i>Frontiers in Physiology</i>, 2023.</a><span class="kind">介入研究（12週・左右脚比較）— LG-4</span></li>
+          <li id="r5"><a href="https://www.strongerbyscience.com/stretch-mediated-hypertrophy/">Do Lengthened Partials Really Stimulate Stretch-Mediated Hypertrophy? <i>Stronger by Science</i>.</a><span class="kind">解説記事 — 2025年局所肥大メタ分析（SMD 0.05〜0.09）の要約と批判的検討</span></li>
+          <li id="r6"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12277279/">Dumbbell versus cable lateral raises for lateral deltoid hypertrophy: an experimental study.</a><span class="kind">介入研究 — S-1（両者同等、筋厚 +3.3〜4.6%）</span></li>
+          <li id="r7"><a href="https://minds.wisconsin.edu/handle/1793/70129">Sweeney S. Electromyographic analysis of the deltoid muscle during various shoulder exercises. University of Wisconsin.</a><span class="kind">EMG研究 — S-2, S-3</span></li>
+          <li id="r8"><a href="https://www.thieme-connect.com/products/ejournals/abstract/10.1055/a-2517-0509">Kobayashi Y, et al. Distinct muscle growth and strength adaptations after preacher and incline biceps curl. <i>International Journal of Sports Medicine</i>, 2024.</a><span class="kind">介入研究 — BI-1, BI-2（インクライン＝上腕二頭筋、プリーチャー＝上腕筋・腕橈骨筋）</span></li>
+          <li id="r9"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6047503/">Differences in electromyographic activity of biceps brachii and brachioradialis while performing three variants of curl.</a><span class="kind">EMG研究 — BI-3, FA-1, FA-2</span></li>
+          <li id="r10"><a href="https://rpstrength.com/blogs/articles/forearm-training-demystified">Forearm Training, Demystified. <i>RP Strength</i>.</a><span class="kind">解説記事 — FA-3, FA-4（前腕は一次研究が乏しく、実務的整理として参照）</span></li>
+          <li id="r11"><a href="https://www.acefitness.org/getfit/studies/bestworstabexercises.pdf">ACE-sponsored study: Best and Worst Abdominal Exercises. San Diego State University.</a><span class="kind">EMG研究（13種目比較）— AB-1, AB-2</span></li>
+          <li id="r12"><a href="https://pubmed.ncbi.nlm.nih.gov/16649890/">Escamilla RF, et al. Electromyographic analysis of traditional and nontraditional abdominal exercises. <i>Physical Therapy / JOSPT</i>, 2006.</a><span class="kind">EMG研究 — AB-2, AB-3</span></li>
+          <li id="r13"><a href="https://www.tandfonline.com/doi/full/10.1080/02640414.2025.2481534">Knee flexion range of motion does not influence muscle hypertrophy of the quadriceps femoris during leg press training in resistance-trained individuals. <i>Journal of Sports Sciences</i>, 2025.</a><span class="kind">介入研究 — 可動域の効果が種目により一様でないことの根拠</span></li>
+          <li id="r14"><a href="https://minds.wisconsin.edu/handle/1793/76924">Edelburg H. Electromyographic analysis of the back muscles during various back exercises. University of Wisconsin–La Crosse.</a><span class="kind">EMG研究 — BK-1, BK-2, BK-3</span></li>
+          <li id="r15"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12452428/">Electromyographic Analysis of Back Muscle Activation During Lat Pulldown Exercise: Effects of Grip Variations and Forearm Orientation, 2025.</a><span class="kind">EMG研究 — BK-1（グリップ差は有意でない）</span></li>
+          <li id="r16"><a href="https://minds.wisc.edu/items/48f80f8d-09fb-4290-b552-3fc15d3a5f64/full">Electromyographical analysis of the pectoralis major muscle during various chest exercises. University of Wisconsin.</a><span class="kind">EMG研究 — CH-1, CH-2, CH-4</span></li>
+          <li id="r17"><a href="https://www.strongerbyscience.com/regional-hypertrophy/">Is Regional Hypertrophy Predictable? <i>Stronger by Science</i>.</a><span class="kind">解説記事 — 局所肥大が種目選択で制御しきれないことの整理</span></li>
+          <li id="r18"><a href="https://www.strongerbyscience.com/squat-depth-growth/">Does squat depth matter for growth? <i>Stronger by Science</i>.</a><span class="kind">解説記事 — スクワット深度に関する介入研究群のレビュー（LG-1）</span></li>
+          <li id="r19"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10593473/">Plotkin D, et al. Hip thrust and back squat training elicit similar gluteus muscle hypertrophy and transfer similarly to the deadlift, 2023.</a><span class="kind">介入研究 — LG-3</span></li>
+          <li id="r20"><a href="https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1542334/full">The impact of resistance training on gluteus maximus hypertrophy: a systematic review and meta-analysis. <i>Frontiers in Physiology</i>, 2025.</a><span class="kind">メタ分析 — LG-3（複数の股関節伸展種目の併用が有利）</span></li>
+          <li id="r21"><a href="https://www.tandfonline.com/doi/full/10.1080/02640414.2024.2444713">The effects of hip flexion angle on quadriceps femoris muscle hypertrophy in the leg extension exercise. <i>Journal of Sports Sciences</i>, 2024.</a><span class="kind">介入研究（10週）— 足を分割する場合のレッグエクステンション設計</span></li>
+        </ol>
+      </section>
+
+      <footer>
+        <p>本書は要件定義書 v1.0 の <code>FR-A1</code> および <code>OPEN-4</code> に対する付属文書。エビデンスの更新に応じて年1回見直す。本書の内容は筋肥大に関する研究の要約であり、医療上の助言ではない。</p>
+      </footer>
+
+    </main>
+  </div>
+</div>
