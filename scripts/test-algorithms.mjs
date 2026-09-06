@@ -14,6 +14,7 @@ import { e1rm, e1rmSeries, setE1rm } from "../src/lib/e1rm.ts";
 import { estimateStartWeight, suggestNext } from "../src/lib/progression.ts";
 import { aggregateVolume, judge, weekStart } from "../src/lib/volume.ts";
 import { evaluateDeload } from "../src/lib/deload.ts";
+import { TEMPLATES } from "../src/data/routineTemplates.ts";
 
 let passed = 0;
 const fails = [];
@@ -309,7 +310,62 @@ test("ALG-4: 伸びていればRIRが下がっていても提案しない", () =
   assert.equal(evaluateDeload(m, exercises, NOW, null).suggest, false);
 });
 
+/* ---------- テンプレプログラムの配分 ---------- */
+
+const UPPER = new Set(["shoulders", "biceps", "triceps", "forearms", "back", "chest"]);
+const exById = new Map(exercises.map((e) => [e.id, e]));
+
+/** 腹筋は上下どちらにも属さないので比率から外す */
+function upperLower(routine) {
+  let upper = 0;
+  let lower = 0;
+  for (const day of routine.days) {
+    for (const item of day.items) {
+      const ex = exById.get(item.exerciseId);
+      if (!ex) throw new Error(`未知の種目 ${item.exerciseId}`);
+      if (UPPER.has(ex.region)) upper += item.sets;
+      else if (ex.region === "legs") lower += item.sets;
+    }
+  }
+  return { upper, lower, ratio: upper / lower };
+}
+
+for (const tpl of TEMPLATES) {
+  const routine = tpl.build();
+
+  test(`${tpl.name}: 種目IDがすべて実在する`, () => {
+    for (const day of routine.days) {
+      for (const item of day.items) {
+        assert.ok(exById.has(item.exerciseId), `未知の種目 ${item.exerciseId}`);
+        assert.ok(item.sets >= 1 && item.sets <= 10, `セット数が範囲外 ${item.sets}`);
+      }
+    }
+  });
+
+  test(`${tpl.name}: 上半身と下半身のセット比が約2:1（1.8〜2.2）`, () => {
+    const { upper, lower, ratio } = upperLower(routine);
+    assert.ok(
+      ratio >= 1.8 && ratio <= 2.2,
+      `上${upper} : 下${lower} = ${ratio.toFixed(2)}:1（1.8〜2.2に収めること）`
+    );
+  });
+
+  test(`${tpl.name}: 同じ曜日が重複しない`, () => {
+    const dows = routine.days.map((d) => d.dayOfWeek);
+    assert.equal(new Set(dows).size, dows.length);
+  });
+}
+
 /* ---------- 結果 ---------- */
+
+console.log("\nテンプレプログラムの上下比");
+for (const tpl of TEMPLATES) {
+  const { upper, lower, ratio } = upperLower(tpl.build());
+  console.log(
+    `  ${tpl.name.padEnd(16)} 上${String(upper).padStart(3)} : 下${String(lower).padStart(3)}  = ${ratio.toFixed(2)}:1`
+  );
+}
+console.log("");
 
 console.log(`${passed} passed, ${fails.length} failed`);
 if (fails.length) {

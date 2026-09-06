@@ -4,9 +4,14 @@ import type { RoutineRec } from "../db";
  * FR-E2 テンプレプログラム
  *
  * 種目は Phase 1 の20種目から組んでいる。
- * セット数は、部位あたり週12〜20セット（ALG-6 の中級者レンジ）に
- * 収まることを目安に配分した。分割数が少ないほど1部位あたりの
- * 頻度が落ちるため、週3の全身法はレンジ下限寄りになる。
+ *
+ * セット配分の方針:
+ *  - 上半身と下半身のセット比を約 2:1 にする
+ *  - 部位あたり週12〜20セット（ALG-6 の中級者レンジ）を目安にする
+ *
+ * 比率は腹筋を除いて数える。腹筋はどちらにも属さず、
+ * 上下のバランスの議論に入れると話がぼやけるため。
+ * 実際の比率は npm test で検証している。
  */
 
 export interface RoutineTemplate {
@@ -56,7 +61,7 @@ export const TEMPLATES: RoutineTemplate[] = [
           label: "脚 A",
           items: [
             { exerciseId: "barbell_squat", sets: 4 },
-            { exerciseId: "seated_leg_curl", sets: 3 },
+            { exerciseId: "seated_leg_curl", sets: 4 },
             { exerciseId: "standing_calf_raise", sets: 4 },
             { exerciseId: "cable_crunch", sets: 3 },
           ],
@@ -86,8 +91,9 @@ export const TEMPLATES: RoutineTemplate[] = [
           label: "脚 B",
           items: [
             { exerciseId: "hip_thrust", sets: 4 },
-            { exerciseId: "barbell_squat", sets: 3 },
+            { exerciseId: "barbell_squat", sets: 4 },
             { exerciseId: "seated_leg_curl", sets: 3 },
+            { exerciseId: "standing_calf_raise", sets: 3 },
             { exerciseId: "hanging_leg_raise", sets: 3 },
           ],
         },
@@ -119,9 +125,8 @@ export const TEMPLATES: RoutineTemplate[] = [
           label: "下半身 A",
           items: [
             { exerciseId: "barbell_squat", sets: 4 },
-            { exerciseId: "seated_leg_curl", sets: 4 },
-            { exerciseId: "hip_thrust", sets: 3 },
-            { exerciseId: "standing_calf_raise", sets: 4 },
+            { exerciseId: "seated_leg_curl", sets: 3 },
+            { exerciseId: "standing_calf_raise", sets: 3 },
           ],
         },
         {
@@ -143,7 +148,6 @@ export const TEMPLATES: RoutineTemplate[] = [
             { exerciseId: "hip_thrust", sets: 4 },
             { exerciseId: "barbell_squat", sets: 3 },
             { exerciseId: "seated_leg_curl", sets: 3 },
-            { exerciseId: "standing_calf_raise", sets: 4 },
             { exerciseId: "hanging_leg_raise", sets: 3 },
           ],
         },
@@ -157,18 +161,47 @@ export const TEMPLATES: RoutineTemplate[] = [
     build: () => ({
       id: "active",
       name: "全身（週3）",
-      days: [1, 3, 5].map((dow, i) => ({
-        dayOfWeek: dow,
-        label: `全身 ${"ABC"[i]}`,
-        items: [
-          { exerciseId: i === 1 ? "incline_press" : "bench_press", sets: 3 },
-          { exerciseId: i === 1 ? "seated_cable_row" : "lat_pulldown", sets: 3 },
-          { exerciseId: "barbell_squat", sets: 3 },
-          { exerciseId: "seated_leg_curl", sets: 3 },
-          { exerciseId: "cable_lateral_raise", sets: 3 },
-          { exerciseId: i === 2 ? "hanging_leg_raise" : "cable_crunch", sets: 3 },
-        ],
-      })),
+      days: [
+        {
+          dayOfWeek: 1,
+          label: "全身 A",
+          items: [
+            { exerciseId: "bench_press", sets: 3 },
+            { exerciseId: "lat_pulldown", sets: 3 },
+            { exerciseId: "cable_lateral_raise", sets: 2 },
+            { exerciseId: "incline_dumbbell_curl", sets: 2 },
+            { exerciseId: "barbell_squat", sets: 3 },
+            { exerciseId: "seated_leg_curl", sets: 2 },
+            { exerciseId: "cable_crunch", sets: 2 },
+          ],
+        },
+        {
+          dayOfWeek: 3,
+          label: "全身 B",
+          items: [
+            { exerciseId: "incline_press", sets: 3 },
+            { exerciseId: "seated_cable_row", sets: 3 },
+            { exerciseId: "shoulder_press", sets: 2 },
+            { exerciseId: "cable_overhead_triceps_extension", sets: 2 },
+            { exerciseId: "barbell_squat", sets: 3 },
+            { exerciseId: "hip_thrust", sets: 2 },
+            { exerciseId: "hanging_leg_raise", sets: 2 },
+          ],
+        },
+        {
+          dayOfWeek: 5,
+          label: "全身 C",
+          items: [
+            { exerciseId: "bench_press", sets: 3 },
+            { exerciseId: "bent_over_row", sets: 3 },
+            { exerciseId: "cable_lateral_raise", sets: 2 },
+            { exerciseId: "preacher_curl", sets: 2 },
+            { exerciseId: "barbell_squat", sets: 3 },
+            { exerciseId: "standing_calf_raise", sets: 2 },
+            { exerciseId: "cable_crunch", sets: 2 },
+          ],
+        },
+      ],
     }),
   },
 ];
