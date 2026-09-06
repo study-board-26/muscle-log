@@ -18,6 +18,7 @@ import {
 } from "../lib/progression";
 import { primeAudio, recommendedRestSec } from "../lib/rest";
 import { RirPicker, Stepper } from "./Stepper";
+import { SetEditor } from "./SetEditor";
 
 function formatDay(ms: number): string {
   const d = new Date(ms);
@@ -58,6 +59,7 @@ export function ExercisePanel({
   const [amount, setAmount] = useState(lo);
   const [rir, setRir] = useState(2);
   const [saving, setSaving] = useState(false);
+  const [editId, setEditId] = useState<string | null>(null);
 
   // 種目が変わるたびに、前回記録と提案を読み直す
   useEffect(() => {
@@ -260,10 +262,32 @@ export function ExercisePanel({
         <ul className="today-sets">
           {mine.map((s, i) => {
             const v = setE1rm(s);
+            if (editId === s.id) {
+              return (
+                <li key={s.id} className="editing">
+                  <SetEditor
+                    set={s}
+                    exercise={exercise}
+                    onCancel={() => setEditId(null)}
+                    onSaved={() => {
+                      setEditId(null);
+                      onLogged();
+                    }}
+                  />
+                </li>
+              );
+            }
             return (
               <li key={s.id}>
                 <span className="n">{i + 1}</span>
-                <span className="d">{describeSet(s)}</span>
+                <button
+                  type="button"
+                  className="d tap"
+                  onClick={() => setEditId(s.id)}
+                  aria-label={`${i + 1}セット目を修正`}
+                >
+                  {describeSet(s)}
+                </button>
                 <span className="e">{v ? `e1RM ${formatKg(v)}` : "—"}</span>
                 <button
                   type="button"

@@ -720,7 +720,7 @@
               <tr><td class="id">FR-B5</td><td class="name">体重記録</td><td>日付付きで体重を記録する。1日1件、後から編集可能。増減の週平均を併記する。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B6</td><td class="name">体の写真記録</td><td>日付付きで写真を保存する。撮影ポーズのラベル（正面／背面／横）を付与し、同一ポーズの任意2枚を左右または重ねて比較表示する。撮影ガイド（前回写真の半透明オーバーレイ）で構図を揃える。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B7</td><td class="name">セッションメモ</td><td>セッション単位・セット単位に自由記述メモを残す（例「右肩に張り」「グリップ幅を1つ広げた」）。</td><td class="pri"><span class="pill p2">P2</span></td><td class="ct"><span class="stt st-todo">未</span></td></tr>
-              <tr><td class="id">FR-B8</td><td class="name">記録の削除</td><td>過去のセッションをセット単位、またはセッションごと削除できる。セッション削除時はぶら下がるセットも同時に消す。<b>編集（値の修正）は未実装</b>で、いったん削除して記録し直す運用。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-part">一部</span></td></tr>
+              <tr><td class="id">FR-B8</td><td class="name">記録の修正と削除</td><td>過去のセットをタップして重量・レップ・RIR を修正できる。×で1セット削除、セッションごとの削除も可能。セッション削除時はぶら下がるセットも同時に消す。<b>種目やセッションの付け替えはできない</b>。許すと e1RM の推移と週間ボリュームの整合を保てなくなるため、種目を間違えた場合は削除して記録し直す。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B9</td><td class="name">オフライン記録</td><td>ネットワーク接続なしで全ての記録操作が完了すること。同期機構を導入する場合も、書き込みはローカル優先とする。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
             </tbody>
           </table>
@@ -1101,7 +1101,7 @@ stabilizer → 0.0 セット（集計対象外）
                 <strong>実装済み：</strong><code>FR-E1〜E3</code>（ルーティンと今日のメニュー）、<code>FR-B5/B6</code>（体重・写真）、<code>FR-B8</code>（記録の削除）。<br>
                 <strong>新規：</strong><code>RISK-7</code>（解説動画のリンク切れ）、<code>OPEN-7</code>（テンプレの目標ボリューム）。
                 データモデルに MuscleGroup を追加し、Routine / BodyWeight / Photo を実装に合わせて更新。<br>
-                <strong>表記：</strong>各要件に実装状況（済 / 一部 / 未 / 廃止）を付けた。
+                <strong>表記：</strong>各要件に実装状況（済 / 一部 / 未 / 廃止）を付けた。<br><strong>追記（同日）：</strong><code>FR-B8</code> に記録の修正を実装し、状態を済に更新。
               </td></tr>
             </tbody>
           </table>

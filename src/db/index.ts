@@ -235,6 +235,27 @@ export async function deleteSet(id: string): Promise<void> {
   await db.delete("setLogs", id);
 }
 
+/**
+ * FR-B8 記録した値を後から修正する。
+ *
+ * 修正できるのは入力値（重量・レップ・秒数・RIR）だけで、
+ * 種目やセッションの付け替えはできない。付け替えを許すと
+ * e1RM の推移と週間ボリュームの整合を保つのが難しくなるため、
+ * 種目を間違えた場合は削除して記録し直す。
+ *
+ * loggedAt は変えない。並び順と、前回記録・デロード判定の
+ * 時系列がずれるため。
+ */
+export async function updateSet(
+  id: string,
+  patch: Partial<Pick<SetLogRec, "weight" | "reps" | "seconds" | "rir">>
+): Promise<void> {
+  const db = await getDB();
+  const rec = await db.get("setLogs", id);
+  if (!rec) return;
+  await db.put("setLogs", { ...rec, ...patch });
+}
+
 export async function getSessionSets(sessionId: string): Promise<SetLogRec[]> {
   const db = await getDB();
   const rows = await db.getAllFromIndex("setLogs", "sessionId", sessionId);

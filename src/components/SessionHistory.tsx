@@ -9,13 +9,15 @@ import {
   type SetLogRec,
 } from "../db";
 import { formatKg, setE1rm } from "../lib/e1rm";
+import { SetEditor } from "./SetEditor";
 
 /**
  * FR-B8 過去の記録の確認と削除。
  *
- * 間違えて記録したものを後から消せないと、e1RMの推移も
- * 週間ボリュームも狂ったままになる。削除は取り消せないので、
- * セッションごと消すときだけ確認を挟む。
+ * 間違えて記録したものを後から直せないと、e1RMの推移も
+ * 週間ボリュームも狂ったままになる。セット行をタップすると値を修正でき、
+ * ×で1セット削除、セッションごとの削除もできる。
+ * 削除は取り消せないので、セッションごと消すときだけ確認を挟む。
  */
 
 function fmtDateTime(ms: number): string {
@@ -35,6 +37,7 @@ export function SessionHistory({ master }: { master: Master }) {
   const [openId, setOpenId] = useState<string | null>(null);
   const [sets, setSets] = useState<SetLogRec[]>([]);
   const [confirmId, setConfirmId] = useState<string | null>(null);
+  const [editId, setEditId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     const list = (await listSessions(20)).filter((s) => s.endedAt !== null);
@@ -55,6 +58,7 @@ export function SessionHistory({ master }: { master: Master }) {
     }
     setOpenId(id);
     setConfirmId(null);
+    setEditId(null);
     setSets(await getSessionSets(id));
   };
 
@@ -86,14 +90,35 @@ export function SessionHistory({ master }: { master: Master }) {
                       {sets.map((x) => {
                         const ex = master.exercises.find((e) => e.id === x.exerciseId);
                         const v = setE1rm(x);
+                        if (editId === x.id) {
+                          return (
+                            <li key={x.id} className="editing">
+                              <SetEditor
+                                set={x}
+                                exercise={ex}
+                                onCancel={() => setEditId(null)}
+                                onSaved={async () => {
+                                  setEditId(null);
+                                  setSets(await getSessionSets(s.id));
+                                  await load();
+                                }}
+                              />
+                            </li>
+                          );
+                        }
                         return (
                           <li key={x.id}>
                             <span className="n">{ex?.code ?? "—"}</span>
-                            <span className="d">
+                            <button
+                              type="button"
+                              className="d tap"
+                              onClick={() => setEditId(x.id)}
+                              aria-label={`${ex?.name ?? x.exerciseId} の記録を修正`}
+                            >
                               {ex?.name ?? x.exerciseId}
                               <br />
                               {describeSet(x)}
-                            </span>
+                            </button>
                             <span className="e">{v ? `e1RM ${formatKg(v)}` : "—"}</span>
                             <button
                               type="button"
