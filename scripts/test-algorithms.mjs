@@ -9,8 +9,11 @@
  */
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { e1rm, e1rmSeries, setE1rm } from "../src/lib/e1rm.ts";
 import { estimateStartWeight, suggestNext } from "../src/lib/progression.ts";
+import { aggregateVolume, judge, weekStart } from "../src/lib/volume.ts";
+import { evaluateDeload } from "../src/lib/deload.ts";
 
 let passed = 0;
 const fails = [];
@@ -170,6 +173,140 @@ test("ALG-5: 係数が無い種目では推定しない", () => {
 
 test("ALG-5: 体重未入力なら推定しない", () => {
   assert.equal(estimateStartWeight(bench, 0, "beginner"), null);
+});
+
+/* ---------- ALG-2 ボリューム按分 ---------- */
+
+const exercises = JSON.parse(readFileSync(new URL("../public/data/exercises.json", import.meta.url), "utf8"));
+const muscles = JSON.parse(readFileSync(new URL("../public/data/muscles.json", import.meta.url), "utf8"));
+
+const mainSet = (exerciseId, at = Date.now()) => ({
+  exerciseId, type: "main", unit: "weight_reps", weight: 60, reps: 8, rir: 1, loggedAt: at, sessionId: "s",
+});
+const vol = (sets) => {
+  const rows = aggregateVolume(sets, exercises, muscles, [12, 20]);
+  return Object.fromEntries(rows.map((r) => [r.region, r.sets]));
+};
+
+test("ALG-2: 要件定義書の例（ベンチ4セット → 胸4.0 / 肩2.0 / 三頭2.0）と一致する", () => {
+  const v = vol(Array.from({ length: 4 }, () => mainSet("bench_press")));
+  assert.equal(v.chest, 4);
+  assert.equal(v.shoulders, 2);
+  assert.equal(v.triceps, 2);
+});
+
+test("ALG-2: 三頭は2つの頭を持つが、1セットの寄与は1部位あたり最大1.0", () => {
+  // 合計してしまうと外側頭0.5 + 内側頭0.5 = 1.0 になり、協働なのに主働と同じ量になる
+  const v = vol([mainSet("bench_press")]);
+  assert.equal(v.triceps, 0.5);
+});
+
+test("ALG-2: ウォームアップは集計しない", () => {
+  const warm = { ...mainSet("bench_press"), type: "warmup" };
+  assert.equal(vol([warm]).chest ?? 0, 0);
+});
+
+test("ALG-2: 安定筋（係数0）はボリュームに入らない", () => {
+  // ベントオーバーロウはハムストリングを安定筋として持つ
+  const v = vol([mainSet("bent_over_row")]);
+  assert.equal(v.legs ?? 0, 0);
+  assert.equal(v.back, 1);
+});
+
+test("ALG-2: 複数種目が同じ部位に積み上がる", () => {
+  const v = vol([mainSet("bench_press"), mainSet("incline_press"), mainSet("cable_fly")]);
+  assert.equal(v.chest, 3);
+});
+
+test("ALG-6: 目安レンジで不足・適正・過多を判定する", () => {
+  assert.equal(judge(7, [8, 12]), "low");
+  assert.equal(judge(8, [8, 12]), "ok");
+  assert.equal(judge(12, [8, 12]), "ok");
+  assert.equal(judge(13, [8, 12]), "high");
+});
+
+test("週の区切りは月曜0時起点", () => {
+  const wed = new Date(2026, 8, 9, 15, 30).getTime(); // 水曜
+  const mon = new Date(2026, 8, 7, 0, 0, 0, 0).getTime();
+  assert.equal(weekStart(wed), mon);
+});
+
+test("週の区切り: 日曜は前の月曜に属する", () => {
+  const sun = new Date(2026, 8, 13, 23, 0).getTime();
+  const mon = new Date(2026, 8, 7, 0, 0, 0, 0).getTime();
+  assert.equal(weekStart(sun), mon);
+});
+
+/* ---------- ALG-4 デロード判定 ---------- */
+
+const DAY = 86400000;
+const NOW = Date.now();
+
+/** 停滞かつRIR低下を再現する記録を作る */
+function fatiguedHistory(exerciseId) {
+  const sets = [];
+  // 6週間前〜3週間前：同じ重量、余力あり（RIR 3）
+  for (let i = 0; i < 3; i++) {
+    const at = NOW - (40 - i * 5) * DAY;
+    sets.push({ exerciseId, sessionId: `old${i}`, type: "main", unit: "weight_reps", weight: 100, reps: 5, rir: 3, loggedAt: at });
+    sets.push({ exerciseId, sessionId: `old${i}`, type: "main", unit: "weight_reps", weight: 100, reps: 5, rir: 3, loggedAt: at + 60000 });
+  }
+  // 直近2週間：同じ重量なのに余力なし（RIR 1）＝疲労の兆候。ベスト更新もなし
+  for (let i = 0; i < 3; i++) {
+    const at = NOW - (12 - i * 5) * DAY;
+    sets.push({ exerciseId, sessionId: `new${i}`, type: "main", unit: "weight_reps", weight: 100, reps: 5, rir: 1, loggedAt: at });
+    sets.push({ exerciseId, sessionId: `new${i}`, type: "main", unit: "weight_reps", weight: 100, reps: 5, rir: 1, loggedAt: at + 60000 });
+  }
+  return sets;
+}
+
+test("ALG-4: 主要種目2つで停滞とRIR低下が揃えば提案する", () => {
+  const m = new Map([
+    ["bench_press", fatiguedHistory("bench_press")],
+    ["barbell_squat", fatiguedHistory("barbell_squat")],
+  ]);
+  const v = evaluateDeload(m, exercises, NOW, null);
+  assert.equal(v.suggest, true);
+  assert.equal(v.flagged.length, 2);
+});
+
+test("ALG-4: 1種目だけなら提案しない", () => {
+  const m = new Map([["bench_press", fatiguedHistory("bench_press")]]);
+  assert.equal(evaluateDeload(m, exercises, NOW, null).suggest, false);
+});
+
+test("ALG-4: 単関節種目は対象外", () => {
+  const m = new Map([
+    ["cable_lateral_raise", fatiguedHistory("cable_lateral_raise")],
+    ["ez_bar_curl", fatiguedHistory("ez_bar_curl")],
+  ]);
+  const v = evaluateDeload(m, exercises, NOW, null);
+  assert.equal(v.suggest, false);
+  assert.equal(v.flagged.length, 0);
+});
+
+test("ALG-4: 前回デロードから3週間以内は判定しない", () => {
+  const m = new Map([
+    ["bench_press", fatiguedHistory("bench_press")],
+    ["barbell_squat", fatiguedHistory("barbell_squat")],
+  ]);
+  const v = evaluateDeload(m, exercises, NOW, NOW - 10 * DAY);
+  assert.equal(v.suggest, false);
+  assert.ok(v.reason.includes("あと"));
+});
+
+test("ALG-4: 記録が浅いうちは判定しない", () => {
+  const few = fatiguedHistory("bench_press").slice(0, 4);
+  const m = new Map([["bench_press", few], ["barbell_squat", few]]);
+  assert.equal(evaluateDeload(m, exercises, NOW, null).suggest, false);
+});
+
+test("ALG-4: 伸びていればRIRが下がっていても提案しない", () => {
+  const grow = (id) => fatiguedHistory(id).map((s, i) =>
+    i >= 6 ? { ...s, weight: 110 } : s // 直近は重量が伸びている＝自己ベスト更新
+  );
+  const m = new Map([["bench_press", grow("bench_press")], ["barbell_squat", grow("barbell_squat")]]);
+  assert.equal(evaluateDeload(m, exercises, NOW, null).suggest, false);
 });
 
 /* ---------- 結果 ---------- */

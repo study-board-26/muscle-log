@@ -44,6 +44,11 @@ export function ExercisePanel({
 }) {
   const isSeconds = exercise.unit === "weight_seconds";
   const [lo] = exercise.repRange;
+  /**
+   * 自重種目は 0kg が正しい記録だが、それ以外で 0kg を許すと
+   * e1RM が算出できず、ボリューム集計にも意味のない行が混ざる。
+   */
+  const needsWeight = !exercise.equipment.includes("bodyweight");
 
   const [prev, setPrev] = useState<{ sessionId: string; sets: SetLogRec[] } | null>(null);
   const [suggestion, setSuggestion] = useState<Suggestion | null>(null);
@@ -223,7 +228,18 @@ export function ExercisePanel({
 
       <RirPicker value={rir} onChange={setRir} />
 
-      <button type="button" className="log-btn" onClick={save} disabled={saving}>
+      {needsWeight && weight <= 0 && (
+        <p className="warn">
+          重量を入力してください。0kg では記録できません（e1RMも算出できません）。
+        </p>
+      )}
+
+      <button
+        type="button"
+        className="log-btn"
+        onClick={save}
+        disabled={saving || (needsWeight && weight <= 0) || amount <= 0}
+      >
         {mine.length + 1} セット目を記録
       </button>
 

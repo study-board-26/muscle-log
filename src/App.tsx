@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { loadMaster, type Master } from "./data/master";
 import { Exercises } from "./screens/Exercises";
-import { Progress } from "./screens/Progress";
+import { Analysis } from "./screens/Analysis";
 import { Settings } from "./screens/Settings";
 import { Workout } from "./screens/Workout";
 
@@ -10,7 +10,7 @@ type Tab = "workout" | "exercises" | "progress" | "settings";
 const TABS: { id: Tab; label: string }[] = [
   { id: "workout", label: "記録" },
   { id: "exercises", label: "種目" },
-  { id: "progress", label: "推移" },
+  { id: "progress", label: "分析" },
   { id: "settings", label: "設定" },
 ];
 
@@ -85,7 +85,7 @@ export default function App() {
         {!standalone && <InstallNotice />}
         {tab === "workout" && <Workout master={master} />}
         {tab === "exercises" && <Exercises master={master} />}
-        {tab === "progress" && <Progress master={master} />}
+        {tab === "progress" && <Analysis master={master} />}
         {tab === "settings" && <Settings />}
       </div>
 

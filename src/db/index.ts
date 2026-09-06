@@ -159,6 +159,13 @@ export async function getSessionSets(sessionId: string): Promise<SetLogRec[]> {
   return rows.sort((a, b) => a.loggedAt - b.loggedAt);
 }
 
+/** 全ての記録を古い順に返す。ボリューム集計（ALG-2）で使う。 */
+export async function getAllSets(): Promise<SetLogRec[]> {
+  const db = await getDB();
+  const rows = await db.getAll("setLogs");
+  return rows.sort((a, b) => a.loggedAt - b.loggedAt);
+}
+
 /** その種目の全記録を古い順に返す */
 export async function getExerciseSets(exerciseId: string): Promise<SetLogRec[]> {
   const db = await getDB();
