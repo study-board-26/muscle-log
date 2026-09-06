@@ -21,7 +21,7 @@
       {
         "muscleId": "delt_lateral",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "delt_anterior",
@@ -31,7 +31,7 @@
       {
         "muscleId": "trapezius_upper",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -52,7 +52,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_cable_lateral_raise",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=-bvP-lzw6X0",
+      "title": "正しいサイドレイズ4つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "サイドレイズ"
+    }
   },
   {
     "id": "shoulder_press",
@@ -77,7 +84,7 @@
       {
         "muscleId": "delt_anterior",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "delt_lateral",
@@ -97,7 +104,7 @@
       {
         "muscleId": "trapezius_upper",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -123,7 +130,14 @@
       "intermediate": 0.55,
       "advanced": 0.8
     },
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=IH24_ohO4Jc",
+      "title": "正しいショルダープレス4つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "ショルダープレス"
+    }
   },
   {
     "id": "reverse_pec_deck",
@@ -147,7 +161,7 @@
       {
         "muscleId": "delt_posterior",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rhomboids",
@@ -183,7 +197,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_reverse_pec_deck",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=pI1c0z5wSpM",
+      "title": "三角筋後部を大きくしたいなら、実はあの種目が効果的です【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "リアレイズ 三角筋後部"
+    }
   },
   {
     "id": "cable_face_pull",
@@ -207,7 +228,7 @@
       {
         "muscleId": "delt_posterior",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rotator_cuff",
@@ -240,7 +261,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_cable_face_pull",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=q4WLlXVIEmE",
+      "title": "三角筋中部～後部を鍛えるフェイスプルのやり方【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "フェイスプル"
+    }
   },
   {
     "id": "incline_dumbbell_curl",
@@ -258,12 +286,12 @@
       8,
       12
     ],
-    "progressionStepKg": 2.0,
+    "progressionStepKg": 2,
     "muscles": [
       {
         "muscleId": "biceps_brachii",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "brachialis",
@@ -296,7 +324,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_incline_dumbbell_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=OUgqSjTc0Io",
+      "title": "最も効果のある上腕二頭筋の種目3選 #フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "インクラインカール"
+    }
   },
   {
     "id": "preacher_curl",
@@ -321,12 +356,12 @@
       {
         "muscleId": "brachialis",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "biceps_brachii",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "brachioradialis",
@@ -352,7 +387,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_preacher_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=hAZSfGUFZh4",
+      "title": "上腕二頭筋の筋肥大に最も良い種目は？【二頭筋のティアリスト】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "プリーチャーカール"
+    }
   },
   {
     "id": "ez_bar_curl",
@@ -376,7 +418,7 @@
       {
         "muscleId": "biceps_brachii",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "brachialis",
@@ -391,7 +433,7 @@
       {
         "muscleId": "forearm_flexors",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -412,7 +454,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_ez_bar_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=fOgnS18q1lI",
+      "title": "こんなバーベルカールはやめろ！正しいフォーム解説　#筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "バーベルカール"
+    }
   },
   {
     "id": "bayesian_cable_curl",
@@ -434,7 +483,7 @@
       {
         "muscleId": "biceps_brachii",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "brachialis",
@@ -460,7 +509,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_bayesian_cable_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=fx1bSOgB-Vw",
+      "title": "上腕二頭筋のおすすめ種目3つを紹介【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "ケーブルカール"
+    }
   },
   {
     "id": "cable_overhead_triceps_extension",
@@ -484,7 +540,7 @@
       {
         "muscleId": "triceps_long",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_lateral",
@@ -515,7 +571,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_cable_overhead_triceps_extension",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=VXJlecGLis8",
+      "title": "上腕三頭筋を最大限鍛える方法【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "オーバーヘッドエクステンション 三頭"
+    }
   },
   {
     "id": "close_grip_bench_press",
@@ -540,12 +603,12 @@
       {
         "muscleId": "triceps_lateral",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_medial",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_long",
@@ -579,7 +642,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_close_grip_bench_press",
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=e6Mbk3OCNMs",
+      "title": "三頭筋の筋肥大に最も良い種目は？【上腕三頭筋のティアリスト】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "ナローベンチプレス"
+    }
   },
   {
     "id": "lying_triceps_extension",
@@ -604,12 +674,12 @@
       {
         "muscleId": "triceps_long",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_medial",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_lateral",
@@ -634,7 +704,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_lying_triceps_extension",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=bOPiYdFc8fQ",
+      "title": "最も効果のある上腕三頭筋の種目3選 #フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "スカルクラッシャー"
+    }
   },
   {
     "id": "cable_pushdown",
@@ -658,12 +735,12 @@
       {
         "muscleId": "triceps_lateral",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_medial",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_long",
@@ -688,7 +765,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_cable_pushdown",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=NAry9DhipJA",
+      "title": "正しいケーブルプレスダウン4つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "プレスダウン"
+    }
   },
   {
     "id": "reverse_curl",
@@ -713,12 +797,12 @@
       {
         "muscleId": "brachioradialis",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "forearm_extensors",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "brachialis",
@@ -749,7 +833,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_reverse_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": null,
+      "title": null,
+      "channel": null,
+      "match": "search",
+      "query": "リバースカール フォーム"
+    }
   },
   {
     "id": "hammer_curl",
@@ -769,12 +860,12 @@
       10,
       15
     ],
-    "progressionStepKg": 2.0,
+    "progressionStepKg": 2,
     "muscles": [
       {
         "muscleId": "brachioradialis",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "brachialis",
@@ -804,7 +895,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_hammer_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": null,
+      "title": null,
+      "channel": null,
+      "match": "search",
+      "query": "ハンマーカール フォーム"
+    }
   },
   {
     "id": "wrist_curl",
@@ -830,7 +928,7 @@
       {
         "muscleId": "forearm_flexors",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       }
     ],
     "evidence": {
@@ -850,7 +948,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_wrist_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": null,
+      "title": null,
+      "channel": null,
+      "match": "search",
+      "query": "リストカール 前腕"
+    }
   },
   {
     "id": "heavy_hold",
@@ -869,12 +974,12 @@
       30,
       60
     ],
-    "progressionStepKg": 2.0,
+    "progressionStepKg": 2,
     "muscles": [
       {
         "muscleId": "forearm_flexors",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "trapezius_upper",
@@ -884,7 +989,7 @@
       {
         "muscleId": "erector_spinae",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -905,7 +1010,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_heavy_hold",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": null,
+      "title": null,
+      "channel": null,
+      "match": "search",
+      "query": "ファーマーズウォーク 握力"
+    }
   },
   {
     "id": "cable_crunch",
@@ -929,7 +1041,7 @@
       {
         "muscleId": "rectus_abdominis_upper",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rectus_abdominis_lower",
@@ -960,7 +1072,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_cable_crunch",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=bANiOqDD7cw",
+      "title": "腹筋を最大限に鍛える種目３選【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "ケーブルクランチ"
+    }
   },
   {
     "id": "hanging_leg_raise",
@@ -980,12 +1099,12 @@
       8,
       15
     ],
-    "progressionStepKg": 2.0,
+    "progressionStepKg": 2,
     "muscles": [
       {
         "muscleId": "rectus_abdominis_lower",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rectus_abdominis_upper",
@@ -1000,7 +1119,7 @@
       {
         "muscleId": "iliopsoas",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -1021,7 +1140,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_hanging_leg_raise",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=lWO8f5I13og",
+      "title": "腹筋の筋肥大に最も良い種目は？【腹筋種目のティアリスト】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "レッグレイズ 腹筋"
+    }
   },
   {
     "id": "ab_rollout",
@@ -1046,12 +1172,12 @@
       {
         "muscleId": "rectus_abdominis_upper",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rectus_abdominis_lower",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "latissimus_dorsi",
@@ -1061,7 +1187,7 @@
       {
         "muscleId": "transverse_abdominis",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -1081,7 +1207,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_ab_rollout",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=l9Av2iBsn1Y",
+      "title": "正しいアブローラー3つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "アブローラー"
+    }
   },
   {
     "id": "cable_woodchop",
@@ -1105,12 +1238,12 @@
       {
         "muscleId": "obliques_external",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "obliques_internal",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rectus_abdominis_upper",
@@ -1120,7 +1253,7 @@
       {
         "muscleId": "transverse_abdominis",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -1138,7 +1271,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_cable_woodchop",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=h0lPDIx83LA",
+      "title": "こんな腹筋はやめましょう #フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "腹斜筋 ウッドチョップ"
+    }
   },
   {
     "id": "lat_pulldown",
@@ -1163,7 +1303,7 @@
       {
         "muscleId": "latissimus_dorsi",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "teres_major",
@@ -1183,7 +1323,7 @@
       {
         "muscleId": "forearm_flexors",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -1205,7 +1345,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_lat_pulldown",
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=QMuhF1Z6WwA",
+      "title": "正しいラットプルダウン4つのポイント【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "ラットプルダウン"
+    }
   },
   {
     "id": "seated_cable_row",
@@ -1229,12 +1376,12 @@
       {
         "muscleId": "trapezius_middle",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rhomboids",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "latissimus_dorsi",
@@ -1270,7 +1417,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_seated_cable_row",
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=cx8YgjaqvwM",
+      "title": "最適なロウイング種目の選び方 #フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "シーテッドロウ"
+    }
   },
   {
     "id": "bent_over_row",
@@ -1295,12 +1449,12 @@
       {
         "muscleId": "latissimus_dorsi",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "trapezius_middle",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "erector_spinae",
@@ -1315,7 +1469,7 @@
       {
         "muscleId": "hamstrings",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -1341,7 +1495,14 @@
       "intermediate": 0.75,
       "advanced": 1.1
     },
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=rdR6ekHQ21I",
+      "title": "ベントオーバーロウの正しいやり方〜3つのポイント〜 #筋トレ #フィットネス",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "ベントオーバーロウ"
+    }
   },
   {
     "id": "straight_arm_pulldown",
@@ -1365,7 +1526,7 @@
       {
         "muscleId": "latissimus_dorsi",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "teres_major",
@@ -1394,7 +1555,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_straight_arm_pulldown",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=9vIhBJRVSDQ",
+      "title": "背中の筋肥大に最も良い種目は？【背中のティアリスト】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "ストレートアームプルダウン"
+    }
   },
   {
     "id": "bench_press",
@@ -1420,7 +1588,7 @@
       {
         "muscleId": "pec_sternal",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "delt_anterior",
@@ -1461,7 +1629,14 @@
       "intermediate": 0.75,
       "advanced": 1.25
     },
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=K6FQrDhTtXw",
+      "title": "正しいベンチプレス、5つのポイント【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "ベンチプレス"
+    }
   },
   {
     "id": "incline_press",
@@ -1483,12 +1658,12 @@
       8,
       12
     ],
-    "progressionStepKg": 2.0,
+    "progressionStepKg": 2,
     "muscles": [
       {
         "muscleId": "pec_clavicular",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "pec_sternal",
@@ -1524,7 +1699,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_incline_press",
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=vLaF-17chCk",
+      "title": "インクラインプレスで大胸筋上部を鍛える2つのポイント #フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "インクラインプレス"
+    }
   },
   {
     "id": "cable_fly",
@@ -1549,7 +1731,7 @@
       {
         "muscleId": "pec_sternal",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "pec_clavicular",
@@ -1582,7 +1764,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_cable_fly",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ls-cMaddd-4",
+      "title": "正しいダンベルフライ4つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "フライ 大胸筋"
+    }
   },
   {
     "id": "chest_dip",
@@ -1608,7 +1797,7 @@
       {
         "muscleId": "pec_sternal",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "triceps_lateral",
@@ -1642,7 +1831,14 @@
     "equivalentTo": [],
     "phase": 2,
     "modelAssetId": "anim_chest_dip",
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=9I-qZXJ2r14",
+      "title": "正しいディップスのやり方 #フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "ディップス"
+    }
   },
   {
     "id": "barbell_squat",
@@ -1663,12 +1859,12 @@
       5,
       10
     ],
-    "progressionStepKg": 5.0,
+    "progressionStepKg": 5,
     "muscles": [
       {
         "muscleId": "quadriceps",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "rectus_femoris",
@@ -1678,7 +1874,7 @@
       {
         "muscleId": "gluteus_maximus",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "adductors",
@@ -1688,7 +1884,7 @@
       {
         "muscleId": "erector_spinae",
         "role": "stabilizer",
-        "coefficient": 0.0
+        "coefficient": 0
       }
     ],
     "evidence": {
@@ -1715,7 +1911,14 @@
       "intermediate": 1.25,
       "advanced": 1.75
     },
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=v585xCrfn20",
+      "title": "スクワットの正しいやり方【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "exact",
+      "query": "スクワット"
+    }
   },
   {
     "id": "seated_leg_curl",
@@ -1737,7 +1940,7 @@
       {
         "muscleId": "hamstrings",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "gastrocnemius",
@@ -1763,7 +1966,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_seated_leg_curl",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=NRkUtgcgvRk",
+      "title": "ルーマニアンデッドリフトのやり方｜ハムストリングスを強く太くする！【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "レッグカール ハムストリング"
+    }
   },
   {
     "id": "hip_thrust",
@@ -1784,12 +1994,12 @@
       8,
       12
     ],
-    "progressionStepKg": 5.0,
+    "progressionStepKg": 5,
     "muscles": [
       {
         "muscleId": "gluteus_maximus",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "hamstrings",
@@ -1822,7 +2032,14 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_hip_thrust",
-    "compound": true
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=u0EFKOsX-Ic",
+      "title": "スクワットVSヒップスラストお尻の筋肥大に効果的なのはどちら？ #フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "match": "related",
+      "query": "ヒップスラスト"
+    }
   },
   {
     "id": "standing_calf_raise",
@@ -1842,12 +2059,12 @@
       10,
       15
     ],
-    "progressionStepKg": 5.0,
+    "progressionStepKg": 5,
     "muscles": [
       {
         "muscleId": "gastrocnemius",
         "role": "prime",
-        "coefficient": 1.0
+        "coefficient": 1
       },
       {
         "muscleId": "soleus",
@@ -1873,6 +2090,13 @@
     "equivalentTo": [],
     "phase": 1,
     "modelAssetId": "anim_standing_calf_raise",
-    "compound": false
+    "compound": false,
+    "video": {
+      "url": null,
+      "title": null,
+      "channel": null,
+      "match": "search",
+      "query": "カーフレイズ ふくらはぎ"
+    }
   }
 ]
