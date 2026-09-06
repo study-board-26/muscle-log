@@ -157,6 +157,19 @@ export function ExercisePanel({
       <header className="panel-ex-head">
         <span className="card-code">{exercise.code}</span>
         <h2>{exercise.name}</h2>
+        {/*
+          フォームを確認したいのは種目をやる直前で、そのときいるのはこの画面。
+          種目タブへ移動して探し直さずに済むよう、ここからも開けるようにする。
+        */}
+        <a
+          className="fv-mini"
+          href={exercise.video.url}
+          target="_blank"
+          rel="noreferrer"
+          title={exercise.video.title}
+        >
+          <span aria-hidden="true">▶</span> フォーム
+        </a>
       </header>
 
       {exercise.criticalNote && <p className="critical">{exercise.criticalNote}</p>}
