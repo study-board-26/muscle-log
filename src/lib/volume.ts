@@ -70,16 +70,22 @@ export interface MuscleGroupDef {
  * 積む対象ではない。同じレンジで判定すると、まともな構成でも
  * これらが必ず不足と出てしまう。
  */
+/*
+ * 経験レベル間でレンジを重ねること。
+ * 初心者 8〜12 / 中級者 12〜20 のように隣接させると、13セットの構成が
+ * 初心者では過多、中級者では不足となり、どちらに設定しても不適切と出る。
+ * 下限12は根拠が弱く、一般に引かれるのは10〜20セット/週。
+ */
 export const WEEKLY_RANGE = {
-  beginner: [8, 12] as [number, number],
-  intermediate: [12, 20] as [number, number],
-  advanced: [12, 20] as [number, number],
+  beginner: [8, 14] as [number, number],
+  intermediate: [10, 20] as [number, number],
+  advanced: [10, 20] as [number, number],
 };
 
 export const SUPPORTING_RANGE = {
-  beginner: [3, 8] as [number, number],
-  intermediate: [4, 10] as [number, number],
-  advanced: [4, 10] as [number, number],
+  beginner: [3, 9] as [number, number],
+  intermediate: [4, 12] as [number, number],
+  advanced: [4, 12] as [number, number],
 };
 
 export type ExperienceKey = keyof typeof WEEKLY_RANGE;

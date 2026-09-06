@@ -270,6 +270,17 @@ test("ALG-6: 補助的な筋群は主要筋群より低いレンジで判定す�
   assert.ok(s[0] < p[0] && s[1] < p[1]);
 });
 
+test("ALG-6: 経験レベル間でレンジが重なる（同じ量が過多にも不足にもならない）", () => {
+  for (const tier of ["primary", "supporting"]) {
+    const b = rangeFor(tier, "beginner");
+    const i = rangeFor(tier, "intermediate");
+    assert.ok(
+      b[1] > i[0],
+      `${tier}: 初心者の上限 ${b[1]} が中級者の下限 ${i[0]} を超えていない`
+    );
+  }
+});
+
 test("ALG-6: 多関節種目で常に働く筋群は supporting になっている", () => {
   const tier = Object.fromEntries(muscleGroups.map((g) => [g.name, g.tier]));
   for (const g of ["脊柱起立筋", "内転筋群", "前腕", "腹斜筋"]) {
