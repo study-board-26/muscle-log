@@ -474,7 +474,7 @@ main {
 }
 
 .back {
-  padding: 8px 2px 10px;
+  padding: 6px 2px 8px;
   font-size: 13px;
   color: var(--accent);
 }
@@ -487,6 +487,18 @@ main {
   color: var(--accent-ink);
   font-size: 16px;
   font-weight: 800;
+}
+
+/*
+ * 記録ボタンは常に親指の届く位置に置く（NFR-3）。
+ * 入力欄を1行1項目にした結果、画面外に押し出されるようになったため、
+ * sticky で下端に貼り付ける。内容が短いときは通常の位置に収まる。
+ */
+.panel-ex .log-btn {
+  position: sticky;
+  bottom: calc(var(--safe-b) + 66px);
+  z-index: 20;
+  box-shadow: 0 6px 20px -6px var(--ground), 0 0 0 6px var(--ground);
 }
 .log-btn:disabled {
   opacity: 0.5;
@@ -535,7 +547,7 @@ main {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .panel-ex-head h2 {
   margin: 0;
@@ -548,8 +560,8 @@ main {
   border: 1px solid var(--accent);
   background: var(--accent-soft);
   border-radius: 10px;
-  padding: 12px 14px;
-  margin-bottom: 12px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
 }
 .suggest.kind-down {
   border-color: var(--red);
@@ -592,8 +604,8 @@ main {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 14px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
 }
 .prev-label {
   display: block;
@@ -632,11 +644,16 @@ main {
 }
 
 /* ---------- 入力 ---------- */
+/*
+ * 重量とレップは1行に1つずつ置く。
+ * 横2列に並べると、375px幅の端末では増減ボタンと単位表示に取られて
+ * 数値欄が40pxしか残らず、2桁や小数（45.5 / 137.5）が見切れる。
+ */
 .inputs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 14px;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 .stepper-label {
   display: block;
@@ -647,9 +664,10 @@ main {
 }
 .stepper-row {
   display: grid;
-  grid-template-columns: 48px 1fr 48px;
+  /* minmax(0,1fr) にしないと、中身の最小幅でトラックが押し広げられる */
+  grid-template-columns: 64px minmax(0, 1fr) 64px;
   align-items: stretch;
-  gap: 4px;
+  gap: 6px;
 }
 .stepper-row button {
   background: var(--surface-2);
@@ -658,7 +676,7 @@ main {
   font-size: 21px;
   font-weight: 700;
   color: var(--ink);
-  min-height: 52px;
+  min-height: 50px;
 }
 .stepper-row button:active {
   background: var(--accent-soft);
@@ -667,19 +685,23 @@ main {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
+  min-width: 0;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 0 4px;
+  padding: 0 12px;
 }
 .stepper-value input {
-  width: 100%;
+  /* width:100% だと単位ラベルを押し出してしまうので、
+     余った幅を受け取る形にして min-width:0 で縮小も許可する */
+  flex: 1 1 auto;
+  width: auto;
   min-width: 0;
   border: none;
   background: none;
   color: var(--ink);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -696,12 +718,13 @@ main {
   appearance: textfield;
 }
 .stepper-unit {
-  font-size: 12px;
+  flex: 0 0 auto;
+  font-size: 13px;
   color: var(--ink-3);
 }
 
 .rir {
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 .rir-row {
   display: grid;
@@ -713,8 +736,8 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 1px;
-  min-height: 52px;
-  padding: 6px 2px;
+  min-height: 50px;
+  padding: 5px 2px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -797,7 +820,8 @@ main {
   position: fixed;
   left: 8px;
   right: 8px;
-  bottom: calc(var(--safe-b) + 66px);
+  /* sticky の記録ボタンの上に重ねずに並べる */
+  bottom: calc(var(--safe-b) + 130px);
   z-index: 40;
   display: flex;
   align-items: center;
