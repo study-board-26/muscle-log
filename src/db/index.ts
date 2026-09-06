@@ -57,6 +57,25 @@ export interface BodyWeightRec {
   weight: number;
 }
 
+/** FR-E3 ルーティン。個人利用なので有効なものは常に1つ（id は "active"）。 */
+export interface RoutineItem {
+  exerciseId: string;
+  sets: number;
+}
+
+export interface RoutineDay {
+  /** 0=日 〜 6=土 */
+  dayOfWeek: number;
+  label: string;
+  items: RoutineItem[];
+}
+
+export interface RoutineRec {
+  id: string;
+  name: string;
+  days: RoutineDay[];
+}
+
 export type Pose = "front" | "back" | "side";
 
 /**
@@ -105,10 +124,14 @@ interface MuscleLogDB extends DBSchema {
     value: PhotoRec;
     indexes: { date: number };
   };
+  routines: {
+    key: string;
+    value: RoutineRec;
+  };
 }
 
 const DB_NAME = "muscle-log";
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
 let dbPromise: Promise<IDBPDatabase<MuscleLogDB>> | null = null;
 
@@ -135,6 +158,9 @@ function getDB() {
 
           const ph = db.createObjectStore("photos", { keyPath: "id" });
           ph.createIndex("date", "date");
+        }
+        if (oldVersion < 3) {
+          db.createObjectStore("routines", { keyPath: "id" });
         }
       },
     });
@@ -284,6 +310,23 @@ export async function setSetting(key: string, value: unknown): Promise<void> {
   await db.put("settings", { key, value });
 }
 
+/* ---------- ルーティン（FR-E1 / FR-E3） ---------- */
+
+export async function getRoutine(): Promise<RoutineRec | undefined> {
+  const db = await getDB();
+  return db.get("routines", "active");
+}
+
+export async function putRoutine(rec: RoutineRec): Promise<void> {
+  const db = await getDB();
+  await db.put("routines", { ...rec, id: "active" });
+}
+
+export async function clearRoutine(): Promise<void> {
+  const db = await getDB();
+  await db.delete("routines", "active");
+}
+
 /* ---------- 体重（FR-B5） ---------- */
 
 /** 1日1件にするためのキー */
@@ -350,6 +393,7 @@ export async function exportAll(): Promise<string> {
       db.getAll("bodyWeights"),
       db.count("photos"),
     ]);
+  const routine = await db.get("routines", "active");
   return JSON.stringify(
     {
       version: DB_VERSION,
@@ -359,6 +403,7 @@ export async function exportAll(): Promise<string> {
       progression,
       settings,
       bodyWeights,
+      routine: routine ?? null,
       photos: { count: photoCount, note: "写真は端末内にのみ保存され、書き出しに含まれません" },
     },
     null,

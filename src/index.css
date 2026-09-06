@@ -182,8 +182,13 @@ main {
   padding: 13px 14px;
   text-align: left;
 }
+/*
+ * grid-area は .card-head の名前付きエリアを定義しているグリッドの中でだけ効かせる。
+ * 種目コードは今日のメニューやセッション中の一覧でも使い回しており、
+ * そこは名前付きエリアを持たないため、grid-area を素で付けると
+ * 暗黙のラインに飛ばされて列が崩れる。
+ */
 .card-code {
-  grid-area: code;
   align-self: start;
   padding-top: 2px;
   font-size: 11px;
@@ -191,6 +196,9 @@ main {
   color: var(--accent);
   font-variant-numeric: tabular-nums;
   min-width: 34px;
+}
+.card-head .card-code {
+  grid-area: code;
 }
 .card-name {
   grid-area: name;
@@ -1106,6 +1114,221 @@ main {
   font-size: 12.5px;
   font-weight: 600;
   text-decoration: none;
+}
+
+/* ---------- 今日のメニュー（FR-E1） ---------- */
+.today {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 13px 14px;
+  margin-bottom: 12px;
+}
+.today-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.today-head h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.today-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 1px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+}
+.today-head button {
+  flex: 0 0 auto;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 600;
+}
+.today-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.today-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.tm-name {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.tm-plan {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tm-plan small {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.tm-first {
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.done-list li.done button {
+  border-color: var(--green);
+}
+.done-tick {
+  margin-left: 6px;
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* ---------- ルーティン編集（FR-E2 / FR-E3） ---------- */
+.rt-templates {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rt-tpl {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-align: left;
+}
+.rt-tpl-name {
+  font-size: 15px;
+  font-weight: 800;
+}
+.rt-tpl-sum {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.rt-name {
+  margin: 4px 0 12px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.rt-day {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 13px;
+  margin-bottom: 10px;
+}
+.rt-day header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.rt-dow {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+}
+.rt-label {
+  font-size: 14px;
+  font-weight: 800;
+}
+.rt-sets {
+  margin-left: auto;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.rt-items {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rt-items li {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto 30px 30px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.rt-code {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.rt-ex {
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.rt-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.rt-count button {
+  width: 28px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+.rt-count b {
+  min-width: 18px;
+  text-align: center;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.rt-up,
+.rt-del {
+  height: 30px;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+.rt-up:disabled {
+  opacity: 0.3;
+}
+.rt-add {
+  width: 100%;
 }
 
 /* ---------- 記録の履歴と削除（FR-B8） ---------- */
