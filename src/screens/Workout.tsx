@@ -11,6 +11,7 @@ import {
 import { ExercisePanel } from "../components/ExercisePanel";
 import { ExercisePicker } from "../components/ExercisePicker";
 import { RestTimer } from "../components/RestTimer";
+import { SessionHistory } from "../components/SessionHistory";
 import { formatMMSS } from "../lib/rest";
 
 function elapsedLabel(from: number, now: number): string {
@@ -76,6 +77,9 @@ export function Workout({ master }: { master: Master }) {
             トレーニングを開始
           </button>
         </div>
+
+        {/* 間違えて記録したものを後から消せるようにする（FR-B8） */}
+        <SessionHistory master={master} />
       </main>
     );
   }

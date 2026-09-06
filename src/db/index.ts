@@ -50,6 +50,28 @@ export interface SettingsRec {
   value: unknown;
 }
 
+/** FR-B5 体重。1日1件にするため id は YYYY-MM-DD。 */
+export interface BodyWeightRec {
+  id: string;
+  date: number;
+  weight: number;
+}
+
+export type Pose = "front" | "back" | "side";
+
+/**
+ * FR-B6 体の写真。
+ * 画像は Blob のまま端末内に置き、外部へは一切送らない（NFR-5）。
+ */
+export interface PhotoRec {
+  id: string;
+  date: number;
+  pose: Pose;
+  blob: Blob;
+  width: number;
+  height: number;
+}
+
 interface MuscleLogDB extends DBSchema {
   sessions: {
     key: string;
@@ -73,27 +95,47 @@ interface MuscleLogDB extends DBSchema {
     key: string;
     value: SettingsRec;
   };
+  bodyWeights: {
+    key: string;
+    value: BodyWeightRec;
+    indexes: { date: number };
+  };
+  photos: {
+    key: string;
+    value: PhotoRec;
+    indexes: { date: number };
+  };
 }
 
 const DB_NAME = "muscle-log";
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 let dbPromise: Promise<IDBPDatabase<MuscleLogDB>> | null = null;
 
 function getDB() {
   if (!dbPromise) {
     dbPromise = openDB<MuscleLogDB>(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        const sessions = db.createObjectStore("sessions", { keyPath: "id" });
-        sessions.createIndex("startedAt", "startedAt");
+      // 既存の記録を消さずに移行できるよう、版ごとに追加分だけを作る
+      upgrade(db, oldVersion) {
+        if (oldVersion < 1) {
+          const sessions = db.createObjectStore("sessions", { keyPath: "id" });
+          sessions.createIndex("startedAt", "startedAt");
 
-        const setLogs = db.createObjectStore("setLogs", { keyPath: "id" });
-        setLogs.createIndex("sessionId", "sessionId");
-        setLogs.createIndex("exerciseId", "exerciseId");
-        setLogs.createIndex("exerciseId+loggedAt", ["exerciseId", "loggedAt"]);
+          const setLogs = db.createObjectStore("setLogs", { keyPath: "id" });
+          setLogs.createIndex("sessionId", "sessionId");
+          setLogs.createIndex("exerciseId", "exerciseId");
+          setLogs.createIndex("exerciseId+loggedAt", ["exerciseId", "loggedAt"]);
 
-        db.createObjectStore("progression", { keyPath: "exerciseId" });
-        db.createObjectStore("settings", { keyPath: "key" });
+          db.createObjectStore("progression", { keyPath: "exerciseId" });
+          db.createObjectStore("settings", { keyPath: "key" });
+        }
+        if (oldVersion < 2) {
+          const bw = db.createObjectStore("bodyWeights", { keyPath: "id" });
+          bw.createIndex("date", "date");
+
+          const ph = db.createObjectStore("photos", { keyPath: "id" });
+          ph.createIndex("date", "date");
+        }
       },
     });
   }
@@ -135,6 +177,20 @@ export async function listSessions(limit = 30): Promise<SessionRec[]> {
   const db = await getDB();
   const all = await db.getAllFromIndex("sessions", "startedAt");
   return all.reverse().slice(0, limit);
+}
+
+/**
+ * FR-B8 セッションを丸ごと削除する。
+ * ぶら下がるセットも同じトランザクションで消す。
+ * 片方だけ残ると、どの画面にも出ないのに集計にだけ効く記録になるため。
+ */
+export async function deleteSession(sessionId: string): Promise<void> {
+  const db = await getDB();
+  const tx = db.transaction(["sessions", "setLogs"], "readwrite");
+  const sets = await tx.objectStore("setLogs").index("sessionId").getAllKeys(sessionId);
+  for (const key of sets) await tx.objectStore("setLogs").delete(key);
+  await tx.objectStore("sessions").delete(sessionId);
+  await tx.done;
 }
 
 /* ---------- セット ---------- */
@@ -228,18 +284,83 @@ export async function setSetting(key: string, value: unknown): Promise<void> {
   await db.put("settings", { key, value });
 }
 
+/* ---------- 体重（FR-B5） ---------- */
+
+/** 1日1件にするためのキー */
+export function dayKey(at: number): string {
+  const d = new Date(at);
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+export async function putBodyWeight(weight: number, at = Date.now()): Promise<void> {
+  const db = await getDB();
+  await db.put("bodyWeights", { id: dayKey(at), date: at, weight });
+}
+
+export async function listBodyWeights(): Promise<BodyWeightRec[]> {
+  const db = await getDB();
+  return (await db.getAllFromIndex("bodyWeights", "date")).sort((a, b) => a.date - b.date);
+}
+
+export async function deleteBodyWeight(id: string): Promise<void> {
+  const db = await getDB();
+  await db.delete("bodyWeights", id);
+}
+
+/* ---------- 写真（FR-B6） ---------- */
+
+export async function addPhoto(
+  blob: Blob,
+  pose: Pose,
+  width: number,
+  height: number,
+  at = Date.now()
+): Promise<PhotoRec> {
+  const db = await getDB();
+  const rec: PhotoRec = { id: newId(), date: at, pose, blob, width, height };
+  await db.put("photos", rec);
+  return rec;
+}
+
+export async function listPhotos(): Promise<PhotoRec[]> {
+  const db = await getDB();
+  return (await db.getAllFromIndex("photos", "date")).sort((a, b) => b.date - a.date);
+}
+
+export async function deletePhoto(id: string): Promise<void> {
+  const db = await getDB();
+  await db.delete("photos", id);
+}
+
 /* ---------- エクスポート（FR-F2） ---------- */
 
+/**
+ * 写真は含めない。JSONに埋めるとテキストが肥大して扱えなくなるため、
+ * 写真は端末内に置いたまま、件数だけを記録しておく。
+ */
 export async function exportAll(): Promise<string> {
   const db = await getDB();
-  const [sessions, setLogs, progression, settings] = await Promise.all([
-    db.getAll("sessions"),
-    db.getAll("setLogs"),
-    db.getAll("progression"),
-    db.getAll("settings"),
-  ]);
+  const [sessions, setLogs, progression, settings, bodyWeights, photoCount] =
+    await Promise.all([
+      db.getAll("sessions"),
+      db.getAll("setLogs"),
+      db.getAll("progression"),
+      db.getAll("settings"),
+      db.getAll("bodyWeights"),
+      db.count("photos"),
+    ]);
   return JSON.stringify(
-    { version: DB_VERSION, exportedAt: new Date().toISOString(), sessions, setLogs, progression, settings },
+    {
+      version: DB_VERSION,
+      exportedAt: new Date().toISOString(),
+      sessions,
+      setLogs,
+      progression,
+      settings,
+      bodyWeights,
+      photos: { count: photoCount, note: "写真は端末内にのみ保存され、書き出しに含まれません" },
+    },
     null,
     2
   );

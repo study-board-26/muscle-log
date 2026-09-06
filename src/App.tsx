@@ -2,15 +2,17 @@ import { useEffect, useMemo, useState } from "react";
 import { loadMaster, type Master } from "./data/master";
 import { Exercises } from "./screens/Exercises";
 import { Analysis } from "./screens/Analysis";
+import { Body } from "./screens/Body";
 import { Settings } from "./screens/Settings";
 import { Workout } from "./screens/Workout";
 
-type Tab = "workout" | "exercises" | "progress" | "settings";
+type Tab = "workout" | "exercises" | "progress" | "body" | "settings";
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "workout", label: "記録" },
   { id: "exercises", label: "種目" },
   { id: "progress", label: "分析" },
+  { id: "body", label: "ボディ" },
   { id: "settings", label: "設定" },
 ];
 
@@ -86,6 +88,7 @@ export default function App() {
         {tab === "workout" && <Workout master={master} />}
         {tab === "exercises" && <Exercises master={master} />}
         {tab === "progress" && <Analysis master={master} />}
+        {tab === "body" && <Body />}
         {tab === "settings" && <Settings />}
       </div>
 
