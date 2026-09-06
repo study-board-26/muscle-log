@@ -12,7 +12,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { e1rm, e1rmSeries, setE1rm } from "../src/lib/e1rm.ts";
 import { estimateStartWeight, suggestNext } from "../src/lib/progression.ts";
-import { aggregateVolume, judge, weekStart } from "../src/lib/volume.ts";
+import { aggregateVolume, judge, rangeFor, weekStart } from "../src/lib/volume.ts";
 import { evaluateDeload } from "../src/lib/deload.ts";
 import { TEMPLATES } from "../src/data/routineTemplates.ts";
 
@@ -180,12 +180,13 @@ test("ALG-5: 体重未入力なら推定しない", () => {
 
 const exercises = JSON.parse(readFileSync(new URL("../public/data/exercises.json", import.meta.url), "utf8"));
 const muscles = JSON.parse(readFileSync(new URL("../public/data/muscles.json", import.meta.url), "utf8"));
+const muscleGroups = JSON.parse(readFileSync(new URL("../public/data/muscleGroups.json", import.meta.url), "utf8"));
 
 const mainSet = (exerciseId, at = Date.now()) => ({
   exerciseId, type: "main", unit: "weight_reps", weight: 60, reps: 8, rir: 1, loggedAt: at, sessionId: "s",
 });
 const vol = (sets) => {
-  const rows = aggregateVolume(sets, exercises, muscles, [12, 20]);
+  const rows = aggregateVolume(sets, exercises, muscles, muscleGroups, "intermediate");
   return Object.fromEntries(rows.map((r) => [r.group, r.sets]));
 };
 
@@ -227,7 +228,7 @@ test("ALG-2: 判定は筋群あたりで行う（部位あたりだと筋群の�
     ...Array.from({ length: 4 }, () => mainSet("hip_thrust")),
     ...Array.from({ length: 7 }, () => mainSet("standing_calf_raise")),
   ];
-  const rows = aggregateVolume(legSets, exercises, muscles, [12, 20]);
+  const rows = aggregateVolume(legSets, exercises, muscles, muscleGroups, "intermediate");
   const legs = rows.filter((r) => r.region === "legs");
   const total = legs.reduce((a, r) => a + r.sets, 0);
   assert.ok(total > 20, "部位合計では目安の上限を超える");
@@ -253,6 +254,30 @@ test("週の区切り: 日曜は前の月曜に属する", () => {
   const sun = new Date(2026, 8, 13, 23, 0).getTime();
   const mon = new Date(2026, 8, 7, 0, 0, 0, 0).getTime();
   assert.equal(weekStart(sun), mon);
+});
+
+test("ALG-6: 筋群の定義が muscles.json と一致する", () => {
+  const inMuscles = new Set(muscles.map((m) => m.group).filter(Boolean));
+  const inGroups = new Set(muscleGroups.map((g) => g.name));
+  assert.equal(inGroups.size, muscleGroups.length, "muscleGroups.json に重複がある");
+  for (const g of inMuscles) assert.ok(inGroups.has(g), `${g} が muscleGroups.json に無い`);
+  for (const g of inGroups) assert.ok(inMuscles.has(g), `${g} を持つ筋が無い`);
+});
+
+test("ALG-6: 補助的な筋群は主要筋群より低いレンジで判定する", () => {
+  const p = rangeFor("primary", "intermediate");
+  const s = rangeFor("supporting", "intermediate");
+  assert.ok(s[0] < p[0] && s[1] < p[1]);
+});
+
+test("ALG-6: 多関節種目で常に働く筋群は supporting になっている", () => {
+  const tier = Object.fromEntries(muscleGroups.map((g) => [g.name, g.tier]));
+  for (const g of ["脊柱起立筋", "内転筋群", "前腕", "腹斜筋"]) {
+    assert.equal(tier[g], "supporting", `${g} が supporting でない`);
+  }
+  for (const g of ["大胸筋", "広背筋", "大腿四頭筋", "三角筋中部"]) {
+    assert.equal(tier[g], "primary", `${g} が primary でない`);
+  }
 });
 
 /* ---------- ALG-4 デロード判定 ---------- */

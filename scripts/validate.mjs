@@ -18,6 +18,7 @@ const read = (f) => JSON.parse(readFileSync(join(dataDir, f), "utf8"));
 const muscles = read("muscles.json");
 const exercises = read("exercises.json");
 const references = read("references.json");
+const muscleGroups = read("muscleGroups.json");
 
 const REGIONS = ["shoulders", "biceps", "triceps", "forearms", "abs", "back", "chest", "legs"];
 const ROLES = ["prime", "secondary", "stabilizer"];
@@ -41,6 +42,22 @@ for (const m of muscles) {
   if (!m.meshNodeId) fail(`muscle ${m.id}: meshNodeId が空`);
   // group は null 可（肥大の対象として数えない筋）だが、キー自体は必須
   if (!("group" in m)) fail(`muscle ${m.id}: group が無い`);
+}
+
+// --- 筋群 ---
+const groupNames = new Set(muscleGroups.map((g) => g.name));
+if (groupNames.size !== muscleGroups.length) fail("muscleGroups.json: name が重複している");
+for (const g of muscleGroups) {
+  if (!["primary", "supporting"].includes(g.tier)) {
+    fail(`muscleGroup ${g.name}: 未知の tier "${g.tier}"`);
+  }
+}
+const usedGroups = new Set(muscles.map((m) => m.group).filter(Boolean));
+for (const g of usedGroups) {
+  if (!groupNames.has(g)) fail(`筋群 "${g}" が muscleGroups.json に無い`);
+}
+for (const g of groupNames) {
+  if (!usedGroups.has(g)) fail(`筋群 "${g}" を持つ筋が無い`);
 }
 
 // --- 種目 ---
@@ -145,9 +162,10 @@ for (const r of refIds) {
 }
 
 // --- 出力 ---
-const groupCount = new Set(muscles.map((m) => m.group).filter(Boolean)).size;
+const supporting = muscleGroups.filter((g) => g.tier === "supporting").length;
 console.log(
-  `筋: ${muscles.length}（筋群 ${groupCount}）  種目: ${exercises.length}  文献: ${references.length}`
+  `筋: ${muscles.length}（筋群 ${muscleGroups.length}：主要 ${muscleGroups.length - supporting} / 補助 ${supporting}）  ` +
+    `種目: ${exercises.length}  文献: ${references.length}`
 );
 console.log(
   REGIONS.map((r) => `${r}:${exercises.filter((e) => e.region === r).length}`).join("  ")

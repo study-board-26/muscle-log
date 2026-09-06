@@ -44,9 +44,18 @@ export type VolumeStatus = "low" | "ok" | "high";
 export interface GroupVolume {
   group: string;
   region: Region;
+  tier: MuscleGroupTier;
   sets: number;
   status: VolumeStatus;
   range: [number, number];
+}
+
+export type MuscleGroupTier = "primary" | "supporting";
+
+export interface MuscleGroupDef {
+  name: string;
+  tier: MuscleGroupTier;
+  note?: string;
 }
 
 /**
@@ -54,14 +63,30 @@ export interface GroupVolume {
  *
  * 単位は「筋群あたり」。文献の 10〜20セット/週 はもともと筋群あたりの
  * 数字であり、部位あたりで判定すると、含む筋群の数が多い部位ほど
- * 過多と誤判定される。実際に「肩」は3頭、「足」は4筋群を含むため、
- * 一律のレンジでは推奨テンプレートまで過多と出ていた。
+ * 過多と誤判定される（「肩」は3頭、「足」は4筋群を含む）。
+ *
+ * さらに筋群を2段階に分ける。脊柱起立筋・内転筋群・前腕・腹斜筋は
+ * 多関節種目で常に働くため間接的な刺激が多く、直接12〜20セットを
+ * 積む対象ではない。同じレンジで判定すると、まともな構成でも
+ * これらが必ず不足と出てしまう。
  */
 export const WEEKLY_RANGE = {
   beginner: [8, 12] as [number, number],
   intermediate: [12, 20] as [number, number],
   advanced: [12, 20] as [number, number],
 };
+
+export const SUPPORTING_RANGE = {
+  beginner: [3, 8] as [number, number],
+  intermediate: [4, 10] as [number, number],
+  advanced: [4, 10] as [number, number],
+};
+
+export type ExperienceKey = keyof typeof WEEKLY_RANGE;
+
+export function rangeFor(tier: MuscleGroupTier, experience: ExperienceKey): [number, number] {
+  return tier === "supporting" ? SUPPORTING_RANGE[experience] : WEEKLY_RANGE[experience];
+}
 
 export function judge(sets: number, range: [number, number]): VolumeStatus {
   if (sets < range[0]) return "low";
@@ -87,8 +112,10 @@ export function aggregateVolume(
   sets: SetLogRec[],
   exercises: Exercise[],
   muscles: Muscle[],
-  range: [number, number]
+  groups: MuscleGroupDef[],
+  experience: ExperienceKey
 ): GroupVolume[] {
+  const tierByName = new Map(groups.map((g) => [g.name, g.tier]));
   const exById = new Map(exercises.map((e) => [e.id, e]));
   const muById = new Map(muscles.map((m) => [m.id, m]));
 
@@ -118,9 +145,12 @@ export function aggregateVolume(
     if (!m.group || seen.has(m.group)) continue;
     seen.add(m.group);
     const total = totals.get(m.group) ?? 0;
+    const tier = tierByName.get(m.group) ?? "primary";
+    const range = rangeFor(tier, experience);
     out.push({
       group: m.group,
       region: m.region,
+      tier,
       sets: Math.round(total * 10) / 10,
       status: judge(total, range),
       range,

@@ -6,6 +6,7 @@ import { DELOAD_GUIDE, evaluateDeload, type DeloadVerdict } from "../lib/deload"
 import type { Experience } from "../lib/progression";
 import {
   STATUS_LABEL,
+  SUPPORTING_RANGE,
   WEEKLY_RANGE,
   aggregateVolume,
   weekLabel,
@@ -123,13 +124,20 @@ export function Analysis({ master }: { master: Master }) {
     );
   }
 
-  const range = WEEKLY_RANGE[experience];
   const weeks = weeksWithData(sets);
   const currentWeek = weeks[Math.min(weekIdx, weeks.length - 1)] ?? weekStart(Date.now());
   const weekSets = sets.filter(
     (s) => s.loggedAt >= currentWeek && s.loggedAt < currentWeek + 7 * DAY
   );
-  const volumes = aggregateVolume(weekSets, master.exercises, master.muscles, range);
+  const volumes = aggregateVolume(
+    weekSets,
+    master.exercises,
+    master.muscles,
+    master.muscleGroups,
+    experience
+  );
+  const primaryRange = WEEKLY_RANGE[experience];
+  const supportingRange = SUPPORTING_RANGE[experience];
 
   const deloadActive = deloadUntil !== null && Date.now() < deloadUntil;
 
@@ -229,8 +237,11 @@ export function Analysis({ master }: { master: Master }) {
         </div>
 
         <p className="hint">
-          主働筋1.0・協働筋0.5で按分。目安は<b>筋群あたり</b>週{range[0]}〜{range[1]}セット
-          （帯の部分）。ウォームアップは集計しません。
+          主働筋1.0・協働筋0.5で按分。目安は<b>筋群あたり</b>週{primaryRange[0]}〜
+          {primaryRange[1]}セット（帯の部分）。
+          脊柱起立筋・内転筋群・前腕・腹斜筋は多関節種目で常に働くため
+          {supportingRange[0]}〜{supportingRange[1]}セットで判定します。
+          ウォームアップは集計しません。
         </p>
       </section>
 

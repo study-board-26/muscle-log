@@ -1,9 +1,12 @@
+import type { MuscleGroupDef } from "../lib/volume";
 import type { Exercise, Muscle, Reference, Region } from "./types";
 
 export interface Master {
   muscles: Muscle[];
   exercises: Exercise[];
   references: Reference[];
+  /** 筋群の一覧と、ボリューム判定の区分（ALG-6） */
+  muscleGroups: MuscleGroupDef[];
   /** muscleId から筋を引くための索引 */
   muscleById: Map<string, Muscle>;
   /** refId から文献を引くための索引 */
@@ -25,16 +28,18 @@ async function fetchJson<T>(file: string): Promise<T> {
 }
 
 export async function loadMaster(): Promise<Master> {
-  const [muscles, exercises, references] = await Promise.all([
+  const [muscles, exercises, references, muscleGroups] = await Promise.all([
     fetchJson<Muscle[]>("muscles.json"),
     fetchJson<Exercise[]>("exercises.json"),
     fetchJson<Reference[]>("references.json"),
+    fetchJson<MuscleGroupDef[]>("muscleGroups.json"),
   ]);
 
   return {
     muscles,
     exercises,
     references,
+    muscleGroups,
     muscleById: new Map(muscles.map((m) => [m.id, m])),
     referenceById: new Map(references.map((r) => [r.id, r])),
   };
