@@ -4,6 +4,7 @@ import { dayLabel } from "../data/routineTemplates";
 import { getPreviousSets, getProgression, type RoutineRec } from "../db";
 import { formatKg } from "../lib/e1rm";
 import { suggestNext } from "../lib/progression";
+import { estimateMinutes } from "../lib/duration";
 
 /**
  * FR-E1 今日のメニュー
@@ -106,6 +107,11 @@ export function TodayMenu({
         <h2>
           今日のメニュー
           {day && <span className="today-label">{day.label}</span>}
+          {day && (
+            <span className="today-mins">
+              約{estimateMinutes(day.items, master.exercises)}分
+            </span>
+          )}
         </h2>
         <button type="button" onClick={onOpenRoutine}>
           編集

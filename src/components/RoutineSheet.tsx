@@ -3,6 +3,7 @@ import type { Master } from "../data/master";
 import { TEMPLATES, dayLabel } from "../data/routineTemplates";
 import { clearRoutine, putRoutine, type RoutineRec } from "../db";
 import { ExercisePicker } from "./ExercisePicker";
+import { DURATION, estimateMinutes } from "../lib/duration";
 
 /**
  * FR-E2 / FR-E3 ルーティンの選択と編集。
@@ -126,6 +127,12 @@ export function RoutineSheet({
                 <span className="rt-label">{day.label}</span>
                 <span className="rt-sets">
                   {day.items.reduce((a, i) => a + i.sets, 0)} セット
+                  {(() => {
+                    const m = estimateMinutes(day.items, master.exercises);
+                    return (
+                      <b className={m > DURATION.sessionLimit ? "rt-over" : undefined}>約{m}分</b>
+                    );
+                  })()}
                 </span>
               </header>
 

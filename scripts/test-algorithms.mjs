@@ -15,6 +15,7 @@ import { estimateStartWeight, suggestNext } from "../src/lib/progression.ts";
 import { aggregateVolume, judge, rangeFor, weekStart } from "../src/lib/volume.ts";
 import { evaluateDeload } from "../src/lib/deload.ts";
 import { TEMPLATES } from "../src/data/routineTemplates.ts";
+import { DURATION, estimateMinutes } from "../src/lib/duration.ts";
 
 let passed = 0;
 const fails = [];
@@ -445,9 +446,20 @@ for (const tpl of TEMPLATES) {
     }
   });
 
+  // ジムの滞在時間の上限。これを超えるメニューは実行されないので、
+  // ボリュームより先に効く制約として扱う。
+  test(`${tpl.name}: 1回 ${DURATION.sessionLimit} 分以内`, () => {
+    for (const day of routine.days) {
+      const m = estimateMinutes(day.items, exercises);
+      assert.ok(m <= DURATION.sessionLimit, `${day.label} が約${m}分`);
+    }
+  });
+
   // 週あたりが ALG-6 のレンジに収まること。テンプレ自体が「不足」と
   // 判定されるようでは、ボリューム画面の判定と噛み合わない。
-  test(`${tpl.name}: 全筋群が週間レンジ内`, () => {
+  // fullCoverage が false のテンプレは、90分×その日数では総量が
+  // 入りきらないことを承知で用意しているので上限だけ見る。
+  test(`${tpl.name}: 週間ボリューム（${tpl.fullCoverage ? "レンジ内" : "上限のみ"}）`, () => {
     const w = new Map();
     for (const day of routine.days) {
       for (const [g, v] of perGroupSets(day.items)) w.set(g, (w.get(g) ?? 0) + v);
@@ -455,7 +467,9 @@ for (const tpl of TEMPLATES) {
     for (const g of muscleGroups) {
       const v = w.get(g.name) ?? 0;
       const [lo, hi] = g.tier === "supporting" ? [4, 12] : [10, 20];
-      assert.ok(v >= lo && v <= hi, `${g.name} が週${v}セット（${lo}〜${hi}）`);
+      assert.ok(v <= hi, `${g.name} が週${v}セット（上限${hi}）`);
+      if (tpl.fullCoverage) assert.ok(v >= lo, `${g.name} が週${v}セット（下限${lo}）`);
+      else assert.ok(v > 0, `${g.name} を1セットも鍛えていない`);
     }
   });
 
@@ -495,11 +509,12 @@ for (const tpl of TEMPLATES) {
 
 /* ---------- 結果 ---------- */
 
-console.log("\nテンプレプログラムの上下比");
+console.log("\nテンプレプログラムの上下比と所要時間");
 for (const tpl of TEMPLATES) {
+  const mins = tpl.build().days.map((d) => estimateMinutes(d.items, exercises));
   const { upper, lower, ratio } = upperLower(tpl.build());
   console.log(
-    `  ${tpl.name.padEnd(16)} 上${String(upper).padStart(3)} : 下${String(lower).padStart(3)}  = ${ratio.toFixed(2)}:1`
+    `  ${tpl.name.padEnd(16)} 上${String(upper).padStart(3)} : 下${String(lower).padStart(3)}  = ${ratio.toFixed(2)}:1  1回 ${Math.min(...mins)}〜${Math.max(...mins)}分`
   );
 }
 console.log("");
