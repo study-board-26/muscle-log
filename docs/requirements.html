@@ -499,8 +499,8 @@
     <h1>筋トレアプリ 要件定義書</h1>
     <p class="lede">フォーム解説動画で「どう効かせるか」を確認し、記録に基づいて次に扱う重量が自動で決まる。<br>この2点を軸に、筋肥大を継続的に進めるための個人向けトレーニングアプリ。</p>
     <dl class="meta">
-      <div><dt>Version</dt><dd>1.2</dd></div>
-      <div><dt>更新日</dt><dd>2026-09-06</dd></div>
+      <div><dt>Version</dt><dd>1.3</dd></div>
+      <div><dt>更新日</dt><dd>2026-09-07</dd></div>
       <div><dt>実行環境</dt><dd>iPhone / PWA</dd></div>
       <div><dt>種目数</dt><dd>44（全種目に解説動画）</dd></div>
       <div><dt>想定ユーザー</dt><dd>単独利用（個人）</dd></div>
@@ -1050,7 +1050,7 @@ stabilizer → 0.0 セット（集計対象外）
             <thead><tr><th>ID</th><th>リスク</th><th>影響</th><th>対応方針</th></tr></thead>
             <tbody>
               <tr><td class="id">RISK-1</td><td class="name">3Dアセットの制作コスト</td><td>—</td><td><strong>解消（v1.2）。</strong>コードで自作したモデルは品質が実用に届かず、外部アセットの調達も見送った。フォーム解説動画へのリンクに置き換えたことで、アセットの制作・調達・ライセンスの問題がすべて消えた。</td></tr>
-              <tr><td class="id">RISK-7</td><td class="name">解説動画のリンク切れ</td><td>中</td><td>動画は削除・非公開・改題される。全32件を YouTube の oEmbed で照合する <code>npm run check:videos</code> を用意し、定期的に流す。あわせて全種目に検索リンクを併記し、リンク切れでも辿り着けるようにしてある。</td></tr>
+              <tr><td class="id">RISK-7</td><td class="name">解説動画のリンク切れ</td><td>中</td><td>動画は削除・非公開・改題される。全44件を YouTube の oEmbed で照合する <code>npm run check:videos</code> を用意し、定期的に流す。あわせて全種目に検索リンクを併記し、リンク切れでも辿り着けるようにしてある。</td></tr>
               <tr><td class="id">RISK-2</td><td class="name">RIR入力の精度</td><td>中</td><td>初心者はRIRを過大評価しがちで、提案の質が下がる。入力UIに「あと何回挙がったか」の平易な文言と目安を添える。極端な値が続く場合は補正を検討する。</td></tr>
               <tr><td class="id">RISK-3</td><td class="name">ボリューム按分の粗さ</td><td>中</td><td>0.5固定の按分は種目によって実態と乖離する。ExerciseMuscle に coefficient を持たせ、種目単位で調整できる構造は先に用意しておく。</td></tr>
               <tr><td class="id">RISK-4</td><td class="name">写真データの容量</td><td>小</td><td>端末ストレージを圧迫する。保存時にリサイズ・再圧縮し、古い写真の間引き提案を行う。</td></tr>
