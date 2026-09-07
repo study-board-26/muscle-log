@@ -138,6 +138,12 @@ export interface Exercise {
    * 単関節の補助種目は疲労の指標として当てにならないため。
    */
   compound: boolean;
+  /**
+   * 筋肥大のエビデンスに基づいて選定した32種目か。
+   * false は「実際によく使われている」という別の基準で追加した種目で、
+   * 種目選定書が説明しているのは curated の集合のみ。
+   */
+  curated: boolean;
   /** フォーム解説動画。FR-A2 の代替として、実際の動画で動作を示す。 */
   video: ExerciseVideo;
   /**

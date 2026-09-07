@@ -146,14 +146,21 @@ for (const ex of exercises) {
 }
 
 // --- 件数 ---
+// curated はエビデンスで選定した集合。種目選定書が説明しているのはこちらで、
+// 8部位×4種目の構成を崩さないよう固定する。
+const curated = exercises.filter((e) => e.curated);
 for (const region of REGIONS) {
-  const n = exercises.filter((e) => e.region === region).length;
-  if (n !== 4) fail(`region "${region}": ${n}種目（4種目であるべき）`);
+  const n = curated.filter((e) => e.region === region).length;
+  if (n !== 4) fail(`region "${region}": curated ${n}種目（4種目であるべき）`);
 }
-if (exercises.length !== 32) fail(`種目数 ${exercises.length}（32であるべき）`);
+if (curated.length !== 32) fail(`curated 種目数 ${curated.length}（32であるべき）`);
 
-const phase1 = exercises.filter((e) => e.phase === 1).length;
-if (phase1 !== 20) fail(`Phase 1 の種目数 ${phase1}（20であるべき）`);
+const phase1 = curated.filter((e) => e.phase === 1).length;
+if (phase1 !== 20) fail(`Phase 1 の curated 種目数 ${phase1}（20であるべき）`);
+
+for (const ex of exercises) {
+  if (typeof ex.curated !== "boolean") fail(`${ex.code}: curated が真偽値でない`);
+}
 
 // --- 未使用の参考文献 ---
 const usedRefs = new Set(exercises.flatMap((e) => e.evidence.refs));
@@ -168,11 +175,13 @@ console.log(
     `種目: ${exercises.length}  文献: ${references.length}`
 );
 console.log(
+  `種目 ${exercises.length}（選定 ${curated.length} / 追加 ${exercises.length - curated.length}）`
+);
+console.log(
   REGIONS.map((r) => `${r}:${exercises.filter((e) => e.region === r).length}`).join("  ")
 );
 console.log(
-  `Phase 1: ${phase1}  Phase 2: ${exercises.filter((e) => e.phase === 2).length}  ` +
-    `Phase 3: ${exercises.filter((e) => e.phase === 3).length}`
+  `Phase 1: ${phase1}  Phase 2: ${curated.filter((e) => e.phase === 2).length}（選定分）`
 );
 const levels = EVIDENCE_LEVELS.map(
   (l) => `${l}:${exercises.filter((e) => e.evidence.level === l).length}`

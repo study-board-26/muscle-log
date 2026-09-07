@@ -58,7 +58,8 @@
       "title": "正しいサイドレイズ4つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "サイドレイズ"
-    }
+    },
+    "curated": true
   },
   {
     "id": "shoulder_press",
@@ -135,7 +136,8 @@
       "title": "正しいショルダープレス4つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "ショルダープレス"
-    }
+    },
+    "curated": true
   },
   {
     "id": "reverse_pec_deck",
@@ -201,7 +203,8 @@
       "title": "【筋トレ悪いフォーム解説】リアレイズが効いているかわからない方へ向けたコツを伝授！",
       "channel": "GENT Fitness",
       "query": "リアレイズ"
-    }
+    },
+    "curated": true
   },
   {
     "id": "cable_face_pull",
@@ -264,7 +267,8 @@
       "title": "三角筋中部～後部を鍛えるフェイスプルのやり方【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "フェイスプル"
-    }
+    },
+    "curated": true
   },
   {
     "id": "incline_dumbbell_curl",
@@ -326,7 +330,8 @@
       "title": "【力こぶを作る筋トレ】インクラインダンベルカールのやり方・コツ・注意点！上腕二頭筋のストレッチ種目です◎",
       "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "インクラインダンベルカール"
-    }
+    },
+    "curated": true
   },
   {
     "id": "preacher_curl",
@@ -388,7 +393,8 @@
       "title": "【筋トレ】たくましい力こぶをつくる！プリーチャーカールのやり方解説！【上腕二頭筋】",
       "channel": "GENT Fitness",
       "query": "プリーチャーカール"
-    }
+    },
+    "curated": true
   },
   {
     "id": "ez_bar_curl",
@@ -454,7 +460,8 @@
       "title": "こんなバーベルカールはやめろ！正しいフォーム解説　#筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "バーベルカール"
-    }
+    },
+    "curated": true
   },
   {
     "id": "bayesian_cable_curl",
@@ -508,7 +515,8 @@
       "title": "腕を太くする筋トレ 【ケーブルアームカール】ケーブルを使った腕トレで『マッチョな力こぶがある腕』を目指そう！",
       "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "ケーブルカール"
-    }
+    },
+    "curated": true
   },
   {
     "id": "cable_overhead_triceps_extension",
@@ -569,7 +577,8 @@
       "title": "トライセプスエクステンションの効果的なやり方",
       "channel": "前田のまいにちセルフケア !  by GronG",
       "query": "トライセプスエクステンション"
-    }
+    },
+    "curated": true
   },
   {
     "id": "close_grip_bench_press",
@@ -639,7 +648,8 @@
       "title": "【初心者】ナローグリップ・ベンチプレスのやり方 | 上腕三頭筋に効きまくる！【ビーレジェンド プロテイン】",
       "channel": "ビーレジェンド チャンネル",
       "query": "ナローグリップベンチプレス"
-    }
+    },
+    "curated": true
   },
   {
     "id": "lying_triceps_extension",
@@ -700,7 +710,8 @@
       "title": "【上腕三頭筋トレ】スカルクラッシャーの正しいフォーム・やり方をご紹介 | 「肘が痛い」「腕に効かない」という方是非！",
       "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "スカルクラッシャー"
-    }
+    },
+    "curated": true
   },
   {
     "id": "cable_pushdown",
@@ -760,7 +771,8 @@
       "title": "正しいケーブルプレスダウン4つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "プレスダウン"
-    }
+    },
+    "curated": true
   },
   {
     "id": "reverse_curl",
@@ -827,7 +839,8 @@
       "title": "【初心者】ダンベル・リバースカールのやり方 | 極太の前腕をつくる腕トレ種目【ビーレジェンド プロテイン】",
       "channel": "ビーレジェンド チャンネル",
       "query": "リバースカール"
-    }
+    },
+    "curated": true
   },
   {
     "id": "hammer_curl",
@@ -888,7 +901,8 @@
       "title": "【上腕二頭筋トレ】ハンマーカールの正しいフォーム・やり方をご紹介 | 前腕・長頭を狙った腕を太くするトレーニング！",
       "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "ハンマーカール"
-    }
+    },
+    "curated": true
   },
   {
     "id": "wrist_curl",
@@ -940,7 +954,8 @@
       "title": "【リストカール】手首を痛めず前腕に効かせるコツ〜重さ・回数・頻度まで解説！",
       "channel": "Slope〜筋トレチャンネル〜",
       "query": "リストカール 前腕"
-    }
+    },
+    "curated": true
   },
   {
     "id": "heavy_hold",
@@ -1001,7 +1016,8 @@
       "title": "【ファーマーズウォーク】そもそも歩くために必要な筋肉がスクワットより身に付く件",
       "channel": "究極の運動説明書チャンネル",
       "query": "ファーマーズウォーク"
-    }
+    },
+    "curated": true
   },
   {
     "id": "cable_crunch",
@@ -1062,7 +1078,8 @@
       "title": "腹筋をケーブルで鍛える『ケーブルクランチ』の正しいフォームをご紹介！",
       "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
       "query": "ケーブルクランチ"
-    }
+    },
+    "curated": true
   },
   {
     "id": "hanging_leg_raise",
@@ -1129,7 +1146,8 @@
       "title": "【筋トレ】ハンギングレッグレイズの正しいやり方 | パーソナルトレーナーが解説【ビーレジェンド プロテイン】",
       "channel": "ビーレジェンド チャンネル",
       "query": "ハンギングレッグレイズ"
-    }
+    },
+    "curated": true
   },
   {
     "id": "ab_rollout",
@@ -1195,7 +1213,8 @@
       "title": "正しいアブローラー3つのポイント #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "アブローラー"
-    }
+    },
+    "curated": true
   },
   {
     "id": "cable_woodchop",
@@ -1258,7 +1277,8 @@
       "title": "PHYSIX Cable training：ケーブルウッドチョッパー",
       "channel": "M,M",
       "query": "ケーブル ウッドチョップ"
-    }
+    },
+    "curated": true
   },
   {
     "id": "lat_pulldown",
@@ -1331,7 +1351,8 @@
       "title": "正しいラットプルダウン4つのポイント【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "ラットプルダウン"
-    }
+    },
+    "curated": true
   },
   {
     "id": "seated_cable_row",
@@ -1402,7 +1423,8 @@
       "title": "シーテッドローの効果的なやり方｜背中に効かせる3つのポイント",
       "channel": "前田のまいにちセルフケア !  by GronG",
       "query": "シーテッドロウ"
-    }
+    },
+    "curated": true
   },
   {
     "id": "bent_over_row",
@@ -1479,7 +1501,8 @@
       "title": "ベントオーバーロウの正しいやり方〜3つのポイント〜 #筋トレ #フィットネス",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "ベントオーバーロウ"
-    }
+    },
+    "curated": true
   },
   {
     "id": "straight_arm_pulldown",
@@ -1538,7 +1561,8 @@
       "title": "【ストレートアームプルダウン】広背筋に効かせて逆三角形ボディを作るコツを解説",
       "channel": "Slope〜筋トレチャンネル〜",
       "query": "ストレートアームプルダウン"
-    }
+    },
+    "curated": true
   },
   {
     "id": "bench_press",
@@ -1611,7 +1635,8 @@
       "title": "正しいベンチプレス、5つのポイント【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "ベンチプレス"
-    }
+    },
+    "curated": true
   },
   {
     "id": "incline_press",
@@ -1680,7 +1705,8 @@
       "title": "インクラインプレスで大胸筋上部を鍛える2つのポイント #フィットネス #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "インクラインプレス"
-    }
+    },
+    "curated": true
   },
   {
     "id": "cable_fly",
@@ -1740,11 +1766,12 @@
     "modelAssetId": "anim_cable_fly",
     "compound": false,
     "video": {
-      "url": "https://www.youtube.com/watch?v=ls-cMaddd-4",
-      "title": "正しいダンベルフライ4つのポイント #筋トレ",
+      "url": "https://www.youtube.com/watch?v=t9H_y-cX1pU",
+      "title": "ケーブルフライの正しいやり方 #フィットネス #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
-      "query": "フライ 大胸筋"
-    }
+      "query": "ケーブルフライ"
+    },
+    "curated": true
   },
   {
     "id": "chest_dip",
@@ -1810,7 +1837,8 @@
       "title": "正しいディップスのやり方 #フィットネス #筋トレ",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "ディップス"
-    }
+    },
+    "curated": true
   },
   {
     "id": "barbell_squat",
@@ -1889,7 +1917,8 @@
       "title": "スクワットの正しいやり方【筋トレ】",
       "channel": "今古賀翔【トレーニング科学】",
       "query": "スクワット"
-    }
+    },
+    "curated": true
   },
   {
     "id": "seated_leg_curl",
@@ -1943,7 +1972,8 @@
       "title": "【初心者】シーテッド・レッグカールのやり方 | ハムストリングを強化する重要種目【ビーレジェンド プロテイン】",
       "channel": "ビーレジェンド チャンネル",
       "query": "シーテッドレッグカール"
-    }
+    },
+    "curated": true
   },
   {
     "id": "hip_thrust",
@@ -2008,7 +2038,8 @@
       "title": "【初心者】ヒップスラストの効果的なやり方 | お尻とハムストリングを鍛える種目【ビーレジェンド プロテイン】",
       "channel": "ビーレジェンド チャンネル",
       "query": "ヒップスラスト"
-    }
+    },
+    "curated": true
   },
   {
     "id": "standing_calf_raise",
@@ -2065,6 +2096,813 @@
       "title": "カーフレイズの正しいやり方。自宅で手軽にふくらはぎを強化！【30回×3セット】",
       "channel": "MELOS -メロス-┃スポーツ×ライフスタイルWEBマガジン",
       "query": "カーフレイズ"
-    }
+    },
+    "curated": true
+  },
+  {
+    "id": "dumbbell_bench_press",
+    "code": "CH-5",
+    "name": "ダンベル・ベンチプレス",
+    "nameEn": "Dumbbell Bench Press",
+    "region": "chest",
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "alternatives": [
+      "インクライン・ダンベルプレス"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      6,
+      12
+    ],
+    "progressionStepKg": 2,
+    "muscles": [
+      {
+        "muscleId": "pec_sternal",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "delt_anterior",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "triceps_lateral",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "triceps_medial",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "summary": "バーベルではバーが胸に当たった時点で可動域が止まるが、ダンベルは腕を体側より下げられるため大胸筋を深い伸張位まで持っていける。長い筋長でのトレーニングが肥大に有利という所見に沿う。"
+    },
+    "cues": [
+      "下ろしきった位置で胸のストレッチを感じるところまで下げる",
+      "肩甲骨を寄せて下げ、胸を張ったまま保つ"
+    ],
+    "commonErrors": [
+      "ダンベル同士を上でぶつけて力を抜く。トップでも張力を残す"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_dumbbell_bench_press",
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=N4dCNxgtJ-s",
+      "title": "正しいダンベルベンチプレス5つのポイント　【筋トレ】",
+      "channel": "今古賀翔【トレーニング科学】",
+      "query": "ダンベルベンチプレス"
+    },
+    "curated": false
+  },
+  {
+    "id": "machine_chest_press",
+    "code": "CH-6",
+    "name": "チェストプレス（マシン）",
+    "nameEn": "Machine Chest Press",
+    "region": "chest",
+    "equipment": [
+      "machine"
+    ],
+    "alternatives": [
+      "スミスマシン・ベンチプレス"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      8,
+      12
+    ],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      {
+        "muscleId": "pec_sternal",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "delt_anterior",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "triceps_lateral",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "triceps_medial",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "軌道が固定されているため、バランスを取る必要がなく大胸筋に集中できる。補助者なしで限界まで追い込める点も利点。フリーウェイトの代替として、あるいは追い込み用の締めとして使う。"
+    },
+    "cues": [
+      "シートの高さを、グリップが胸の中央〜やや下に来る位置に合わせる",
+      "肩甲骨を背もたれに押し付けたまま押す"
+    ],
+    "commonErrors": [
+      "肩がすくんで前に出る。負荷が肩の前面に逃げる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_machine_chest_press",
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=NMLFTGXgXvo",
+      "title": "【ジム初心者】チェストプレスの使い方をプロが分かりやすく解説！【筋トレ】",
+      "channel": "フィットネス大学【酒筋】",
+      "query": "チェストプレス マシン"
+    },
+    "curated": false
+  },
+  {
+    "id": "dumbbell_fly",
+    "code": "CH-7",
+    "name": "ダンベルフライ",
+    "nameEn": "Dumbbell Fly",
+    "region": "chest",
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "alternatives": [
+      "インクライン・ダンベルフライ"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      10,
+      15
+    ],
+    "progressionStepKg": 2,
+    "muscles": [
+      {
+        "muscleId": "pec_sternal",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "pec_clavicular",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "delt_anterior",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "summary": "プレス種目では届かない伸張位まで大胸筋を伸ばせる単関節種目。ケーブルと違い下端で最も負荷がかかるため、伸張位への刺激という点では有利。"
+    },
+    "cues": [
+      "肘の角度を一定に保ち、腕ではなく上腕で弧を描く",
+      "下ろしきった位置で1秒静止する"
+    ],
+    "commonErrors": [
+      "重量が重くプレス動作になる。肘の角度が変わり始めたら重すぎる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_dumbbell_fly",
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ls-cMaddd-4",
+      "title": "正しいダンベルフライ4つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "query": "ダンベルフライ"
+    },
+    "curated": false
+  },
+  {
+    "id": "barbell_deadlift",
+    "code": "BK-5",
+    "name": "デッドリフト",
+    "nameEn": "Barbell Deadlift",
+    "region": "back",
+    "equipment": [
+      "barbell"
+    ],
+    "alternatives": [
+      "トラップバー・デッドリフト"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      3,
+      8
+    ],
+    "progressionStepKg": 5,
+    "muscles": [
+      {
+        "muscleId": "erector_spinae",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "gluteus_maximus",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "hamstrings",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "latissimus_dorsi",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "trapezius_upper",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "quadriceps",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "forearm_flexors",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "脊柱起立筋を主働として直接鍛えられる唯一の種目。既存の32種目では脊柱起立筋が週2セット程度しか入らず、分析タブでも常に不足と出ていた。全身の疲労が大きいため、頻度と量は控えめに。"
+    },
+    "cues": [
+      "バーを体に沿わせて引く。バーが体から離れると腰への負担が跳ね上がる",
+      "背中は最初から最後までフラットに保つ"
+    ],
+    "commonErrors": [
+      "背中を丸めて引く。丸まる重量は使わない",
+      "膝を先に伸ばしてバーが膝に引っかかる"
+    ],
+    "criticalNote": "全身の疲労が大きく、デロード判定（ALG-4）を狂わせることがある。週1回、他の脚種目と同じ日に詰め込まないこと。",
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_barbell_deadlift",
+    "strengthCoefficient": {
+      "beginner": 1,
+      "intermediate": 1.5,
+      "advanced": 2
+    },
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=XT8SxKi1QcI",
+      "title": "正しいデッドリフト4つのポイント#筋トレ #デッドリフト",
+      "channel": "今古賀翔【トレーニング科学】",
+      "query": "デッドリフト"
+    },
+    "curated": false
+  },
+  {
+    "id": "one_arm_dumbbell_row",
+    "code": "BK-6",
+    "name": "ワンハンドローイング",
+    "nameEn": "One Arm Dumbbell Row",
+    "region": "back",
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "alternatives": [
+      "チェストサポーテッド・ダンベルロウ"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      8,
+      12
+    ],
+    "progressionStepKg": 2,
+    "muscles": [
+      {
+        "muscleId": "latissimus_dorsi",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "trapezius_middle",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "teres_major",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "delt_posterior",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "biceps_brachii",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "erector_spinae",
+        "role": "stabilizer",
+        "coefficient": 0
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "片側ずつ行うため左右差を是正できる。ベンチに手をつくので腰への負担がベントオーバーロウより小さく、可動域も広く取れる。"
+    },
+    "cues": [
+      "肘を体側に沿わせて腰の方向へ引く",
+      "引ききった位置で肩甲骨を寄せる"
+    ],
+    "commonErrors": [
+      "体を大きく捻って反動で引く。肩のラインは床と平行に保つ"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_one_arm_dumbbell_row",
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=0LY1bGPPsRk",
+      "title": "正しいダンベルロウ4つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "query": "ワンハンドローイング ダンベルロウ"
+    },
+    "curated": false
+  },
+  {
+    "id": "military_press",
+    "code": "S-5",
+    "name": "ミリタリープレス",
+    "nameEn": "Military Press",
+    "region": "shoulders",
+    "equipment": [
+      "barbell"
+    ],
+    "alternatives": [
+      "スミスマシン・ショルダープレス"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      5,
+      10
+    ],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      {
+        "muscleId": "delt_anterior",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "delt_lateral",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "triceps_long",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "triceps_lateral",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "erector_spinae",
+        "role": "stabilizer",
+        "coefficient": 0
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "立位でバーベルを頭上へ押す。マシンやダンベルのショルダープレスより高重量を扱え、体幹の関与も大きい。肩のプレス種目のなかで最も漸進しやすい。"
+    },
+    "cues": [
+      "肋骨を締め、腰を反らせない",
+      "バーが顔の前を通るよう、頭をわずかに後ろへ引いてから真上に押す"
+    ],
+    "commonErrors": [
+      "腰を反らせて実質インクラインプレスになる。反らずに押せる重量まで落とす"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_military_press",
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=82QcDoCIvAo",
+      "title": "【山岸秀匡】肩の基本種目第一弾！スタンディングミリタリープレス",
+      "channel": "山岸秀匡の筋肉トリセツ",
+      "query": "ミリタリープレス"
+    },
+    "curated": false
+  },
+  {
+    "id": "arnold_press",
+    "code": "S-6",
+    "name": "アーノルドプレス",
+    "nameEn": "Arnold Press",
+    "region": "shoulders",
+    "equipment": [
+      "dumbbell"
+    ],
+    "alternatives": [
+      "ダンベル・ショルダープレス"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      8,
+      12
+    ],
+    "progressionStepKg": 2,
+    "muscles": [
+      {
+        "muscleId": "delt_anterior",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "delt_lateral",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "triceps_long",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "triceps_lateral",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "回外位から回内しながら押し上げるため、通常のショルダープレスより可動域が広く、三角筋前部と中部を1種目でまとめて扱える。重量は落ちる。"
+    },
+    "cues": [
+      "下ろした位置で手のひらを自分に向け、押し上げながら回す",
+      "肘が体の前から外へ動く軌道をなぞる"
+    ],
+    "commonErrors": [
+      "回す動作だけが大きく、押す距離が短い。可動域の上端まで押しきる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_arnold_press",
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=B4-8SwssfT0",
+      "title": "【初心者】アーノルドプレスのやり方 | ダンベルを使った肩の筋トレ種目【ビーレジェンド プロテイン】",
+      "channel": "ビーレジェンド チャンネル",
+      "query": "アーノルドプレス"
+    },
+    "curated": false
+  },
+  {
+    "id": "front_raise",
+    "code": "S-7",
+    "name": "フロントレイズ",
+    "nameEn": "Front Raise",
+    "region": "shoulders",
+    "equipment": [
+      "dumbbell",
+      "cable"
+    ],
+    "alternatives": [
+      "ケーブル・フロントレイズ"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      12,
+      20
+    ],
+    "progressionStepKg": 1.25,
+    "muscles": [
+      {
+        "muscleId": "delt_anterior",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "delt_lateral",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "三角筋前部の単関節種目。ただし前部はあらゆるプレス種目で十分に刺激されるため、優先度は低い。プレスが少ない構成のときや、前部を特に狙いたい場合に使う。"
+    },
+    "cues": [
+      "肩の高さまで挙げたら止める。それ以上は僧帽筋の仕事になる",
+      "反動を使わず、下ろす動作をゆっくり行う"
+    ],
+    "commonErrors": [
+      "重量が重く、体を反らせて振り上げる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_front_raise",
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=i3Fc-OYdoo0",
+      "title": "【三角筋前部】フロントレイズ(ダンベル)の正しいやり方 | 『怪我をしにくいダンベルの向き』など初心者向けの解説！",
+      "channel": "筋トレダンジョン - 3分で学べるトレーニング動画ch",
+      "query": "フロントレイズ"
+    },
+    "curated": false
+  },
+  {
+    "id": "leg_press",
+    "code": "LG-5",
+    "name": "レッグプレス",
+    "nameEn": "Leg Press",
+    "region": "legs",
+    "equipment": [
+      "machine"
+    ],
+    "alternatives": [
+      "ハックスクワット"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      8,
+      15
+    ],
+    "progressionStepKg": 5,
+    "muscles": [
+      {
+        "muscleId": "quadriceps",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "gluteus_maximus",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "hamstrings",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "adductors",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": [
+        "r13"
+      ],
+      "summary": "背もたれがあるため体幹の関与が小さく、脚に絞って高重量を扱える。膝関節の可動域は大腿四頭筋の肥大に影響しなかったという報告があり、スクワットほど深さにこだわる必要はない。"
+    },
+    "cues": [
+      "腰がシートから浮かない範囲まで下ろす",
+      "膝を完全に伸ばしきってロックしない"
+    ],
+    "commonErrors": [
+      "深く下ろしすぎて骨盤が後傾し、腰が丸まる"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_leg_press",
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=mcdJRrMCAhw",
+      "title": "正しいレッグプレス4つのポイント　#フィットネス #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "query": "レッグプレス"
+    },
+    "curated": false
+  },
+  {
+    "id": "leg_extension",
+    "code": "LG-6",
+    "name": "レッグエクステンション",
+    "nameEn": "Leg Extension",
+    "region": "legs",
+    "equipment": [
+      "machine"
+    ],
+    "alternatives": [],
+    "unit": "weight_reps",
+    "repRange": [
+      10,
+      15
+    ],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      {
+        "muscleId": "quadriceps",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "rectus_femoris",
+        "role": "prime",
+        "coefficient": 1
+      }
+    ],
+    "evidence": {
+      "level": "intervention",
+      "refs": [
+        "r21"
+      ],
+      "summary": "大腿四頭筋の単関節種目。股関節を伸展させた姿勢（シートを倒す）で行うと、股関節屈曲位より大腿直筋の肥大が大きいことが10週の介入研究で示されている。"
+    },
+    "cues": [
+      "シートを倒せるマシンなら倒す。大腿直筋が伸びた状態で行える",
+      "伸ばしきった位置で1秒静止する"
+    ],
+    "commonErrors": [
+      "反動で振り上げ、下ろすときに力を抜く"
+    ],
+    "criticalNote": "シートを倒して股関節を伸展させた姿勢のほうが大腿直筋に有利。倒せるマシンなら倒すこと。",
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_leg_extension",
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=aa0Eilqwlcw",
+      "title": "レッグエクステンションをより効果的にする3つのテクニック #筋トレ #フィットネス",
+      "channel": "今古賀翔【トレーニング科学】",
+      "query": "レッグエクステンション"
+    },
+    "curated": false
+  },
+  {
+    "id": "bulgarian_split_squat",
+    "code": "LG-7",
+    "name": "ブルガリアンスクワット",
+    "nameEn": "Bulgarian Split Squat",
+    "region": "legs",
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "alternatives": [
+      "スミスマシン・ブルガリアンスクワット"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      8,
+      12
+    ],
+    "progressionStepKg": 2,
+    "muscles": [
+      {
+        "muscleId": "quadriceps",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "gluteus_maximus",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "hamstrings",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "adductors",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "erector_spinae",
+        "role": "stabilizer",
+        "coefficient": 0
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "片脚ずつ行うため左右差を是正でき、体幹の安定も要求される。両脚種目より軽い重量で同等の刺激が得られるので、腰への負担を抑えたい場合にも使える。"
+    },
+    "cues": [
+      "前脚の膝がつま先方向を向くよう、足幅を確保する",
+      "上体をやや前傾させると臀筋、垂直に保つと四頭筋に寄る"
+    ],
+    "commonErrors": [
+      "後ろ脚に体重を乗せてしまう。前脚で押す意識を持つ"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_bulgarian_split_squat",
+    "compound": true,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=2JFyKWAjM6I",
+      "title": "正しいブルガリアンスクワット4つのポイント #筋トレ",
+      "channel": "今古賀翔【トレーニング科学】",
+      "query": "ブルガリアンスクワット"
+    },
+    "curated": false
+  },
+  {
+    "id": "ab_crunch_machine",
+    "code": "AB-5",
+    "name": "アブドミナルクランチ（マシン）",
+    "nameEn": "Ab Crunch Machine",
+    "region": "abs",
+    "equipment": [
+      "machine"
+    ],
+    "alternatives": [
+      "ケーブルクランチ"
+    ],
+    "unit": "weight_reps",
+    "repRange": [
+      10,
+      15
+    ],
+    "progressionStepKg": 2.5,
+    "muscles": [
+      {
+        "muscleId": "rectus_abdominis_upper",
+        "role": "prime",
+        "coefficient": 1
+      },
+      {
+        "muscleId": "rectus_abdominis_lower",
+        "role": "secondary",
+        "coefficient": 0.5
+      },
+      {
+        "muscleId": "obliques_external",
+        "role": "secondary",
+        "coefficient": 0.5
+      }
+    ],
+    "evidence": {
+      "level": "principle",
+      "refs": [],
+      "summary": "軌道が固定されているため、腸腰筋に逃げにくく腹直筋の屈曲に集中しやすい。ケーブルクランチ同様、重量を細かく漸進できる数少ない腹筋種目。"
+    },
+    "cues": [
+      "股関節の角度を変えず、背骨を丸めて胸を骨盤に近づける",
+      "戻すときに完全に脱力しない"
+    ],
+    "commonErrors": [
+      "脚の力で押してしまう。腹筋の収縮だけで動かす"
+    ],
+    "criticalNote": null,
+    "equivalentTo": [],
+    "phase": 2,
+    "modelAssetId": "anim_ab_crunch_machine",
+    "compound": false,
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Q2zQgDmaEZE",
+      "title": "＜お腹＞アブドミナルクランチ：基本編",
+      "channel": "ホリデイチャンネル",
+      "query": "アブドミナルクランチ マシン"
+    },
+    "curated": false
   }
 ]

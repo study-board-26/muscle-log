@@ -502,7 +502,7 @@
       <div><dt>Version</dt><dd>1.2</dd></div>
       <div><dt>更新日</dt><dd>2026-09-06</dd></div>
       <div><dt>実行環境</dt><dd>iPhone / PWA</dd></div>
-      <div><dt>種目数</dt><dd>32（全種目に解説動画）</dd></div>
+      <div><dt>種目数</dt><dd>44（全種目に解説動画）</dd></div>
       <div><dt>想定ユーザー</dt><dd>単独利用（個人）</dd></div>
     </dl>
   </header>
@@ -693,7 +693,7 @@
             <caption>Group A — Exercise &amp; Form</caption>
             <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th><th>状態</th></tr></thead>
             <tbody>
-              <tr><td class="id">FR-A1</td><td class="name">種目マスタ</td><td>種目ごとに、名称・使用器具・主働筋／協働筋／安定筋・目標レップ帯・漸進幅・効かせるコツ・よくある失敗・根拠の強さ・姿勢の警告を保持する。初期データは<strong>8部位32種目で確定済み</strong>（うち Phase 1 は20種目）。詳細は付属文書「種目選定書」を参照。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
+              <tr><td class="id">FR-A1</td><td class="name">種目マスタ</td><td>種目ごとに、名称・使用器具・主働筋／協働筋／安定筋・目標レップ帯・漸進幅・効かせるコツ・よくある失敗・根拠の強さ・姿勢の警告・解説動画を保持する。<strong>44種目</strong>を収録し、うち32種目は筋肥大のエビデンスで選定したもの（付属文書「種目選定書」）、12種目は実施回数の多さから追加したもの。両者は <code>curated</code> フラグで区別する。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-A2</td><td class="name">フォーム解説動画</td><td>種目ごとに、その種目のフォームを解説した動画へのリンクを保持し、種目詳細と記録画面の両方から1タップで開けるようにする。動画は消えることがあるため、検索リンクも併記する。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-A3</td><td class="name">使う筋の表示</td><td>種目ごとに主働筋・協働筋・安定筋を、役割つきで一覧表示する。<b>3Dモデル上での色分けは廃止した</b>（v1.2）。自作モデルは品質が実用に届かず、外部アセットは調達コストが見合わなかったため。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-A4</td><td class="name">効かせるコツの提示</td><td>種目ごとに「ここを縮める意識」「肩甲骨を寄せたまま固定」等の指示を文章で提示する。<b>3D上のホットスポット注釈は廃止した</b>（v1.2）。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
@@ -1101,7 +1101,7 @@ stabilizer → 0.0 セット（集計対象外）
                 <strong>実装済み：</strong><code>FR-E1〜E3</code>（ルーティンと今日のメニュー）、<code>FR-B5/B6</code>（体重・写真）、<code>FR-B8</code>（記録の削除）。<br>
                 <strong>新規：</strong><code>RISK-7</code>（解説動画のリンク切れ）、<code>OPEN-7</code>（テンプレの目標ボリューム）。
                 データモデルに MuscleGroup を追加し、Routine / BodyWeight / Photo を実装に合わせて更新。<br>
-                <strong>表記：</strong>各要件に実装状況（済 / 一部 / 未 / 廃止）を付けた。<br><strong>追記（同日）：</strong><code>FR-B8</code> に記録の修正を実装し、状態を済に更新。
+                <strong>表記：</strong>各要件に実装状況（済 / 一部 / 未 / 廃止）を付けた。<br><strong>追記（同日）：</strong><code>FR-B8</code> に記録の修正を実装し、状態を済に更新。<br><strong>追記（2026-09-07）：</strong>実施回数ランキング上位から重複しない12種目を追加し、収録種目を44に拡張（<code>FR-A1</code>）。エビデンスで選定した32種目とは基準が異なるため、<code>curated</code> フラグで区別する。あわせて記録一覧を日付ごとの表示に変更。
               </td></tr>
             </tbody>
           </table>
