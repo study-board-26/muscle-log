@@ -936,8 +936,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 12px;
+  padding: 10px 14px;
   background: var(--surface-2);
   border: 1px solid var(--line-strong);
   border-radius: 12px;
@@ -949,10 +949,7 @@ main {
 .rest-main {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  /* ボタンが増えても「レスト 1:57」は折り返させない */
-  flex: none;
-  white-space: nowrap;
+  gap: 10px;
 }
 .rest-label {
   font-size: 11px;
@@ -974,12 +971,11 @@ main {
 }
 .rest-actions button {
   min-height: 38px;
-  padding: 0 10px;
+  padding: 0 12px;
   border: 1px solid var(--line-strong);
   border-radius: 9px;
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--ink-2);
-  white-space: nowrap;
 }
 
 /* ---------- 種目選択シート ---------- */
@@ -1882,42 +1878,6 @@ main {
   padding: 14px;
   margin-top: 0;
 }
-/* ---------- レストタイマーの設定（ショートカット連携） ---------- */
-.howto {
-  margin: 10px 0 12px;
-  padding-left: 1.3em;
-  font-size: 12.5px;
-  line-height: 1.75;
-  color: var(--ink-2);
-}
-.howto li { margin-bottom: 3px; }
-.field {
-  display: block;
-  margin-bottom: 10px;
-}
-.field input {
-  display: block;
-  width: 100%;
-  margin-top: 4px;
-  min-height: 42px;
-  padding: 0 12px;
-  background: var(--surface);
-  color: var(--ink);
-  border: 1px solid var(--line-strong);
-  border-radius: 9px;
-  font: inherit;
-  font-size: 15px;
-  -webkit-user-select: text;
-  user-select: text;
-}
-/* レストバーでは、端末のタイマーに渡す方を主導線にする */
-.rest-actions button.rest-ios {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
-  font-weight: 700;
-}
-
 .export {
   width: 100%;
   margin-top: 8px;

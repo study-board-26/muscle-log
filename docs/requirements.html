@@ -716,7 +716,7 @@
               <tr><td class="id">FR-B1</td><td class="name">セッション管理</td><td>ワークアウトの開始・中断・終了を管理する。中断中もタイマーと入力内容を保持し、アプリ再起動後に復元する。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B2</td><td class="name">セット記録</td><td>種目ごとに、重量・レップ数・RIR・セット種別（ウォームアップ／メイン）を記録する。前セットの値を初期値として引き継ぎ、±ボタンで調整して2タップ以内に確定できること。<strong>記録単位は種目マスタの指定に従い、「重量×レップ」と「重量×秒数」を切り替える</strong>（等尺性種目への対応）。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B3</td><td class="name">前回記録の表示</td><td>入力欄の直上に、同一種目の前回実施内容（全セットの重量×レップ×RIR）と、前回比のe1RM差分を常時表示する。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
-              <tr><td class="id">FR-B4</td><td class="name">レストタイマー</td><td>セット確定と同時に自動起動する。目標レップ帯に応じた推奨秒数を既定値とし（低レップほど長い）、残り時間は終了時刻との差で算出するため画面消灯中も狂わない。<b>ただしアプリが前面にない間は音が鳴らない</b>（iOS が AudioContext とタイマーを止めるため）。ポケットに入れて休憩する場合に備え、<b>端末標準のタイマーへ受け渡す導線を持つ</b>（<code>ALG-8</code>）。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
+              <tr><td class="id">FR-B4</td><td class="name">レストタイマー</td><td>セット確定と同時に自動起動する。目標レップ帯に応じた推奨秒数を既定値とし（低レップほど長い）、残り時間は終了時刻との差で算出するため画面消灯やバックグラウンド遷移で狂わない。<b>ただしアプリが前面にない間は完了音が鳴らない</b>（iOS が <code>AudioContext</code> と <code>setInterval</code> を止めるため。Web 側では回避できず、端末標準のタイマーへ逃がす案は v1.5 で検討したうえで採らなかった）。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B5</td><td class="name">体重記録</td><td>日付付きで体重を記録する。1日1件、後から編集可能。増減の週平均を併記する。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B6</td><td class="name">体の写真記録</td><td>日付付きで写真を保存する。撮影ポーズのラベル（正面／背面／横）を付与し、同一ポーズの任意2枚を左右または重ねて比較表示する。撮影ガイド（前回写真の半透明オーバーレイ）で構図を揃える。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-B7</td><td class="name">セッションメモ</td><td>セッション単位・セット単位に自由記述メモを残す（例「右肩に張り」「グリップ幅を1つ広げた」）。</td><td class="pri"><span class="pill p2">P2</span></td><td class="ct"><span class="stt st-todo">未</span></td></tr>
@@ -966,19 +966,6 @@ stabilizer → 0.0 セット（集計対象外）
           テンプレ選択画面にもその旨を明記する。休憩を短縮すればセット数は増やせるが、
           筋肥大では2分未満の休憩は不利という結果が出ているため、休憩を削る調整は取らない。</p>
         </div>
-
-        <h3><span class="gid">ALG-8</span>端末タイマーへの受け渡し</h3>
-        <p>アプリ内のレストタイマーは、前面にない間は音を鳴らせない。iOS はバックグラウンドの <code>AudioContext</code> と <code>setInterval</code> を止めるためで、Web 側では回避できない。ポケットに入れて休憩する場合に備え、<strong>ショートカット App 経由で端末標準のタイマーを起動する</strong>導線を持つ。</p>
-        <div class="formula">shortcuts://run-shortcut
-  ?name=&lt;ショートカット名&gt;
-  &amp;input=text
-  &amp;text=&lt;残り秒数&gt;</div>
-        <p>利用者は「タイマーを開始」アクションを持つショートカットを1つ作り、その名前を設定に入れる。名前が空なら導線ごと出さない。</p>
-        <div class="callout">
-          <p><b>「時計」App を直接は起動できない。</b>公開された URL スキームが存在しないため、ショートカット App を踏み台にする以外の手が無い。</p>
-          <p><b>x-callback-url でアプリに戻す実装は取らない。</b><code>x-success</code> に渡せるのは https URL で、それを開くとホーム画面のアプリではなく Safari が開く。iOS ではこの2つでストレージが別なので、記録の入っていない空のアプリに着地する。スキームで遷移すると iOS が左上に「◀ 筋トレ記録」を出すので、戻りはそれを使う。</p>
-          <p><b>Web Push は採らなかった。</b>ホーム画面追加済みなら通知自体は受け取れるが、「N秒後に鳴らす」を予約する仕組みが iOS に無く、プッシュサーバーが要る。静的配信（GitHub Pages）の構成に対して割が合わない。</p>
-        </div>
       </section>
 
       <!-- 10 -->
@@ -1166,9 +1153,11 @@ stabilizer → 0.0 セット（集計対象外）
                 文字用（<code>--accent-text</code>・5.5:1）でトークンを分けた（<code>NFR-7</code>）。
                 「不足」判定は <code>--accent</code> を流用していたが、オレンジにすると「過多」の赤と隣り合う色相になり見分けがつかないため、<code>--blue</code> を新設して判定色をブランド色から切り離した。
                 現時点ではライト固定で、OS 設定への追従は未決。<br>
-                <strong>端末タイマーへの受け渡し（<code>ALG-8</code>）：</strong><code>FR-B4</code> のレストタイマーは前面にない間は音が鳴らないという制約があるため、
-                ショートカット App 経由で端末標準のタイマーを起動する導線を追加した。設定でショートカット名を登録した場合のみ出す。<br>
-                <strong>UI：</strong>下部タブにアイコンを付けた（インライン SVG）。選択中は色に加えて線を太くする（<code>NFR-7</code>）。
+                <strong>UI：</strong>下部タブにアイコンを付けた（インライン SVG）。選択中は色に加えて線を太くする（<code>NFR-7</code>）。<br>
+                <strong>不採用の決定：</strong>レストの完了音がバックグラウンドで鳴らない問題に対し、ショートカット App 経由で端末標準のタイマーを起動する案を実装したうえで<strong>取り下げた</strong>。
+                毎セット別アプリへ切り替わること、利用者が事前にショートカットを1つ作る必要があること、名前を変えると黙って壊れることが、得られる利点に見合わないと判断した。
+                「時計」App を直接起動する公開 URL スキームは存在せず、Web Push も「N秒後に鳴らす」の予約手段が iOS に無くプッシュサーバーが要るため、いずれも代替にならない。
+                <code>FR-B4</code> には制約を明記するにとどめる。
               </td></tr>
             </tbody>
           </table>

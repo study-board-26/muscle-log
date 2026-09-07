@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { beep, formatMMSS } from "../lib/rest";
-import { runShortcut } from "../lib/shortcuts";
 
 /**
  * FR-B4 レストタイマー
@@ -11,14 +10,11 @@ import { runShortcut } from "../lib/shortcuts";
  */
 export function RestTimer({
   endsAt,
-  shortcutName,
   onDone,
   onDismiss,
   onExtend,
 }: {
   endsAt: number;
-  /** 設定済みなら iOS タイマーへの受け渡しボタンを出す。未設定なら出さない。 */
-  shortcutName: string;
   onDone: () => void;
   onDismiss: () => void;
   onExtend: (sec: number) => void;
@@ -62,16 +58,6 @@ export function RestTimer({
         <span className="rest-time">{formatMMSS(Math.max(0, remainSec))}</span>
       </div>
       <div className="rest-actions">
-        {!done && shortcutName && (
-          <button
-            type="button"
-            className="rest-ios"
-            /* 残り時間をそのまま渡す。途中で押しても辻褄が合う */
-            onClick={() => runShortcut(shortcutName, remainSec)}
-          >
-            iOSタイマー
-          </button>
-        )}
         {!done && (
           <button type="button" onClick={() => onExtend(30)}>
             +30秒

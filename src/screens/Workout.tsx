@@ -4,7 +4,6 @@ import {
   endSession,
   getOpenSession,
   getRoutine,
-  getSetting,
   getSessionSets,
   startSession,
   type RoutineRec,
@@ -18,7 +17,6 @@ import { SessionHistory } from "../components/SessionHistory";
 import { RoutineSheet } from "../components/RoutineSheet";
 import { TodayMenu, todayIndex } from "../components/TodayMenu";
 import { formatMMSS } from "../lib/rest";
-import { SHORTCUT_NAME_KEY } from "../lib/shortcuts";
 
 function elapsedLabel(from: number, now: number): string {
   return formatMMSS((now - from) / 1000);
@@ -34,12 +32,6 @@ export function Workout({ master }: { master: Master }) {
   const [loading, setLoading] = useState(true);
   const [routine, setRoutine] = useState<RoutineRec | null>(null);
   const [editingRoutine, setEditingRoutine] = useState(false);
-  const [shortcutName, setShortcutName] = useState("");
-
-  // 設定済みのときだけ、レストバーに iOS タイマーへの受け渡しを出す
-  useEffect(() => {
-    void getSetting<string>(SHORTCUT_NAME_KEY).then((v) => setShortcutName(v ?? ""));
-  }, []);
 
   const refresh = useCallback(async (s: SessionRec | null) => {
     if (!s) {
@@ -224,7 +216,6 @@ export function Workout({ master }: { master: Master }) {
       {restEndsAt !== null && (
         <RestTimer
           endsAt={restEndsAt}
-          shortcutName={shortcutName}
           onDone={() => undefined}
           onDismiss={() => setRestEndsAt(null)}
           onExtend={(sec) => setRestEndsAt((v) => (v ?? Date.now()) + sec * 1000)}
