@@ -403,10 +403,15 @@ main {
   border-top: 1px solid var(--line);
 }
 .bottom-nav button {
-  min-height: 46px;
+  min-height: 50px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
   /* 5タブぶんの幅に「ボディ」が収まるサイズ */
-  font-size: 12px;
+  font-size: 10.5px;
   font-weight: 700;
   color: var(--ink-3);
   white-space: nowrap;
@@ -414,6 +419,14 @@ main {
 .bottom-nav button.on {
   background: var(--accent-soft);
   color: var(--accent);
+}
+/* アイコンは選択中だけ少し太くして、色以外でも選択が分かるようにする（NFR-7） */
+.tab-icon {
+  display: block;
+  flex: none;
+}
+.bottom-nav button.on .tab-icon {
+  stroke-width: 2.1;
 }
 
 .hint {

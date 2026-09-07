@@ -5,6 +5,7 @@ import { Analysis } from "./screens/Analysis";
 import { Body } from "./screens/Body";
 import { Settings } from "./screens/Settings";
 import { Workout } from "./screens/Workout";
+import { TabIcon } from "./components/TabIcon";
 
 type Tab = "workout" | "exercises" | "progress" | "body" | "settings";
 
@@ -102,7 +103,8 @@ export default function App() {
             onClick={() => setTab(t.id)}
             aria-current={t.id === tab ? "page" : undefined}
           >
-            {t.label}
+            <TabIcon name={t.id} />
+            <span>{t.label}</span>
           </button>
         ))}
       </nav>
