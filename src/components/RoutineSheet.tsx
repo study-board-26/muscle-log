@@ -30,6 +30,20 @@ export function RoutineSheet({
     setDirty(true);
   };
 
+  /**
+   * 保存済みルーティンはテンプレを作った時点のスナップショットなので、
+   * テンプレ側の内容が変わっても自動では追従しない。
+   * 中身が食い違っている時だけ、置き換える導線を出す。
+   */
+  const outdated = (() => {
+    if (!draft) return null;
+    const tpl = TEMPLATES.find((t) => t.name === draft.name);
+    if (!tpl) return null;
+    const shape = (r: RoutineRec) =>
+      JSON.stringify(r.days.map((d) => [d.dayOfWeek, d.label, d.items.map((i) => [i.exerciseId, i.sets])]));
+    return shape(tpl.build()) === shape(draft) ? null : tpl;
+  })();
+
   const editDay = (dayIndex: number, fn: (items: RoutineRec["days"][0]["items"]) => RoutineRec["days"][0]["items"]) => {
     if (!draft) return;
     const days = draft.days.map((d, i) => (i === dayIndex ? { ...d, items: fn(d.items) } : d));
@@ -85,6 +99,25 @@ export function RoutineSheet({
       ) : (
         <>
           <p className="rt-name">{draft.name}</p>
+
+          {outdated && (
+            <div className="rt-outdated">
+              <p>
+                このルーティンは古い内容のままです。最新のメニューに置き換えられます
+                （セット数の調整など、加えた変更は消えます）。
+              </p>
+              <button
+                type="button"
+                className="sub-btn"
+                onClick={() => {
+                  if (!confirm(`「${outdated.name}」を最新のメニューに置き換えます。よろしいですか？`)) return;
+                  update(outdated.build());
+                }}
+              >
+                最新のメニューに置き換える
+              </button>
+            </div>
+          )}
 
           {draft.days.map((day, di) => (
             <section key={`${day.dayOfWeek}-${di}`} className="rt-day">

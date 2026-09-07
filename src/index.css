@@ -1283,6 +1283,20 @@ main {
   font-size: 13px;
   color: var(--ink-3);
 }
+.rt-outdated {
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 11px 12px 12px;
+  margin: 0 0 12px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface));
+}
+.rt-outdated p {
+  margin: 0 0 9px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
 .rt-day {
   background: var(--surface);
   border: 1px solid var(--line);

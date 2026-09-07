@@ -368,6 +368,24 @@ test("ALG-4: 伸びていればRIRが下がっていても提案しない", () =
 const UPPER = new Set(["shoulders", "biceps", "triceps", "forearms", "back", "chest"]);
 const exById = new Map(exercises.map((e) => [e.id, e]));
 
+const muById = new Map(muscles.map((m) => [m.id, m]));
+
+/** ALG-2 と同じ按分で、その日のセットを筋群ごとに積む */
+function perGroupSets(items) {
+  const per = new Map();
+  for (const item of items) {
+    const ex = exById.get(item.exerciseId);
+    const one = new Map();
+    for (const em of ex.muscles) {
+      const mu = muById.get(em.muscleId);
+      if (!mu?.group || em.coefficient <= 0) continue;
+      one.set(mu.group, Math.max(one.get(mu.group) ?? 0, em.coefficient));
+    }
+    for (const [g, c] of one) per.set(g, (per.get(g) ?? 0) + c * item.sets);
+  }
+  return per;
+}
+
 /** 腹筋は上下どちらにも属さないので比率から外す */
 function upperLower(routine) {
   let upper = 0;
@@ -406,6 +424,72 @@ for (const tpl of TEMPLATES) {
   test(`${tpl.name}: 同じ曜日が重複しない`, () => {
     const dows = routine.days.map((d) => d.dayOfWeek);
     assert.equal(new Set(dows).size, dows.length);
+  });
+
+  // 1セッションで1筋群に 11 fractional セットを超えて積まない（Remmert 2025）。
+  // これを超える分は同じ週の別の日に回す方が有効。
+  test(`${tpl.name}: 1回あたり1筋群 11セットを超えない`, () => {
+    for (const day of routine.days) {
+      const per = perGroupSets(day.items);
+      for (const [g, v] of per) {
+        assert.ok(v <= 11, `${day.label} の ${g} が ${v} セット（上限11）`);
+      }
+    }
+  });
+
+  // 種目を増やしすぎると1種目あたりの漸進性が追えなくなる。
+  test(`${tpl.name}: 1日の種目数が上限内`, () => {
+    const limit = tpl.id === "fullbody3" ? 9 : 8;
+    for (const day of routine.days) {
+      assert.ok(day.items.length <= limit, `${day.label} が ${day.items.length}種目（上限${limit}）`);
+    }
+  });
+
+  // 週あたりが ALG-6 のレンジに収まること。テンプレ自体が「不足」と
+  // 判定されるようでは、ボリューム画面の判定と噛み合わない。
+  test(`${tpl.name}: 全筋群が週間レンジ内`, () => {
+    const w = new Map();
+    for (const day of routine.days) {
+      for (const [g, v] of perGroupSets(day.items)) w.set(g, (w.get(g) ?? 0) + v);
+    }
+    for (const g of muscleGroups) {
+      const v = w.get(g.name) ?? 0;
+      const [lo, hi] = g.tier === "supporting" ? [4, 12] : [10, 20];
+      assert.ok(v >= lo && v <= hi, `${g.name} が週${v}セット（${lo}〜${hi}）`);
+    }
+  });
+
+  // 利用者の要望: 胸・二頭・三頭は各日1種目以上ケーブル、肩はケーブルサイドレイズ必須。
+  test(`${tpl.name}: 胸・二頭・三頭にケーブル種目、肩にケーブルサイドレイズ`, () => {
+    for (const day of routine.days) {
+      const regions = new Set(day.items.map((i) => exById.get(i.exerciseId).region));
+      for (const r of ["chest", "biceps", "triceps"]) {
+        if (!regions.has(r)) continue;
+        const n = day.items.filter((i) => {
+          const ex = exById.get(i.exerciseId);
+          return ex.region === r && ex.equipment.includes("cable");
+        }).length;
+        assert.ok(n >= 1, `${day.label} の ${r} にケーブル種目が無い`);
+      }
+      // サイドレイズ系（三角筋中部が prime）を行う日は、必ずケーブル版を使う。
+      // リアデルトだけの日にサイドレイズを足す意味は無いので対象外。
+      const sideDelt = day.items.filter((i) =>
+        exById.get(i.exerciseId).muscles.some(
+          (m) => m.role === "prime" && m.muscleId === "delt_lateral"
+        )
+      );
+      for (const i of sideDelt) {
+        assert.equal(
+          i.exerciseId,
+          "cable_lateral_raise",
+          `${day.label} のサイドレイズがケーブルでない（${i.exerciseId}）`
+        );
+      }
+    }
+    const days = routine.days.filter((d) =>
+      d.items.some((i) => i.exerciseId === "cable_lateral_raise")
+    ).length;
+    assert.ok(days >= 2, `ケーブル・サイドレイズが週${days}日（2日以上にすること）`);
   });
 }
 

@@ -763,7 +763,7 @@
             <thead><tr><th>ID</th><th>要件</th><th>詳細</th><th>優先度</th><th>状態</th></tr></thead>
             <tbody>
               <tr><td class="id">FR-E1</td><td class="name">今日のメニュー</td><td>ホーム画面に、ルーティン上の当日の実施種目・セット数・提案重量を表示し、1タップでセッションを開始する。</td><td class="pri"><span class="pill p0">P0</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
-              <tr><td class="id">FR-E2</td><td class="name">テンプレプログラム</td><td>PPL（押す／引く／脚）、上下分割、全身法などのテンプレートを提供し、選択するだけでルーティンを初期構築できる。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
+              <tr><td class="id">FR-E2</td><td class="name">テンプレプログラム</td><td>PPL（押す／引く／脚）、上下分割、全身法などのテンプレートを提供し、選択するだけでルーティンを初期構築できる。<b>v1.3で全テンプレを組み直した</b>：既定は上下分割（週4）。各筋群を週2回、1回あたり11 fractionalセット以内、週あたりは <code>ALG-6</code> のレンジ内。胸・二頭・三頭には各日1種目以上のケーブル種目、サイドレイズはケーブル版を使う。保存済みルーティンはテンプレ変更に自動追従しないため、ルーティン画面から最新版へ置き換えられる。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-E3</td><td class="name">ルーティン編集</td><td>曜日ごとの種目・セット数・目標レップ帯を自由に編集する。並べ替え、種目差し替えに対応する。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
             </tbody>
           </table>
@@ -1071,7 +1071,7 @@ stabilizer → 0.0 セット（集計対象外）
               <tr><td class="id">OPEN-4</td><td>Phase 1 に含める20種目の確定リスト</td><td>Phase 1 着手前</td><td class="pri"><span class="pill p2">クローズ</span> 種目選定書</td></tr>
               <tr><td class="id">OPEN-5</td><td>複数端末での利用を想定するか（＝将来的な同期の要否）</td><td>Phase 2 着手前</td><td class="pri"><span class="pill p1">未決</span></td></tr>
               <tr><td class="id">OPEN-6</td><td>iPhone の対応最低iOSバージョン</td><td>Phase 1 中</td><td class="pri"><span class="pill p1">未決</span></td></tr>
-              <tr><td class="id">OPEN-7</td><td>テンプレプログラムの目標ボリューム。現状は中級者レンジに対して不足が出る筋群があり、テンプレのセット数を上げるか、事実として提示し続けるかを決める</td><td>実運用で判断</td><td class="pri"><span class="pill p1">未決</span></td></tr>
+              <tr><td class="id">OPEN-7</td><td>テンプレプログラムの目標ボリューム。現状は中級者レンジに対して不足が出る筋群があり、テンプレのセット数を上げるか、事実として提示し続けるかを決める</td><td>実運用で判断</td><td class="pri"><span class="pill p2">クローズ</span> セット数を上げる方を採り、3テンプレとも週間レンジ内に収めた（v1.3）</td></tr>
             </tbody>
           </table>
         </div>
@@ -1103,13 +1103,25 @@ stabilizer → 0.0 セット（集計対象外）
                 データモデルに MuscleGroup を追加し、Routine / BodyWeight / Photo を実装に合わせて更新。<br>
                 <strong>表記：</strong>各要件に実装状況（済 / 一部 / 未 / 廃止）を付けた。<br><strong>追記（同日）：</strong><code>FR-B8</code> に記録の修正を実装し、状態を済に更新。<br><strong>追記（2026-09-07）：</strong>実施回数ランキング上位から重複しない12種目を追加し、収録種目を44に拡張（<code>FR-A1</code>）。エビデンスで選定した32種目とは基準が異なるため、<code>curated</code> フラグで区別する。あわせて記録一覧を日付ごとの表示に変更。
               </td></tr>
+              <tr><td class="name">1.3</td><td class="num">2026-09-07</td><td>
+                <strong>テンプレプログラムの再設計（<code>FR-E2</code>）：</strong>既定を<strong>上下分割（週4）</strong>に変更し、PPL（週6）・全身（週3）も同じ基準で組み直した。設計の根拠は
+                (1) 各筋群を週2回（頻度のメタ分析）、
+                (2) 1セッションで1筋群あたり 11 fractional セットを上限とし、超える分は別の日に回す（1回あたりの用量反応が頭打ちになるため）、
+                (3) 週あたりは <code>ALG-6</code> のレンジ内、
+                (4) 同一筋群を角度の違う2種目で当てる、
+                (5) 上下比は約2:1。<br>
+                <strong>ケーブル種目の配置：</strong>胸・二頭・三頭を鍛える日には各1種目以上のケーブル種目、サイドレイズはケーブル版のみ。ケーブルとフリーウェイトで肥大効果に差は認められていないため、有効性を損なわずに要望を満たせる。<br>
+                <strong>クローズ：</strong><code>OPEN-7</code>。3テンプレとも全17筋群が週間レンジ内に収まり、テンプレ自身が「不足」と判定されることはなくなった。<br>
+                <strong>検証：</strong>上下比・1回あたりの上限・週間レンジ・1日の種目数・ケーブル要件を <code>npm test</code> の検証項目に追加（計61件）。<br>
+                <strong>UI：</strong>保存済みルーティンはテンプレ作成時点のスナップショットなので、内容が食い違う場合にルーティン画面で最新版への置き換えを促す。
+              </td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
       <footer>
-        <p>本書は実装に追従した要件定義（v1.2）。付属文書に「種目選定書」および <code>public/data/</code> 配下の種目マスタがある。記録から重量提案・ボリューム分析までのループは実装済みで、残るのは <code>FR-C3</code>（筋群ヒートマップ）ほか優先度の低い要件。</p>
+        <p>本書は実装に追従した要件定義（v1.3）。付属文書に「種目選定書」および <code>public/data/</code> 配下の種目マスタがある。記録から重量提案・ボリューム分析までのループは実装済みで、残るのは <code>FR-C3</code>（筋群ヒートマップ）ほか優先度の低い要件。</p>
       </footer>
 
     </main>
