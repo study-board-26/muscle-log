@@ -4,28 +4,46 @@
  */
 
 :root {
-  --ground: #11161a;
-  --surface: #181e23;
-  --surface-2: #212930;
-  --ink: #e5ebee;
-  --ink-2: #a2adb4;
-  --ink-3: #77848b;
-  --line: #2a333a;
-  --line-strong: #3b464e;
-  --accent: #74aae8;
-  --accent-ink: #0d1218;
-  --accent-soft: #1a2937;
-  --red: #e0796e;
-  --red-soft: #33211f;
-  --yellow: #dcaf57;
-  --yellow-soft: #2e2718;
-  --green: #63bc93;
-  --green-soft: #172c24;
+  /* 白ベース＋オレンジ。地は純白ではなく少し暖色に振り、カードの白を浮かせる。 */
+  --ground: #faf7f4;
+  --surface: #ffffff;
+  --surface-2: #f3eee8;
+  --ink: #1c1917;
+  --ink-2: #57534e;
+  --ink-3: #78716c;
+  --line: #e7e0d9;
+  --line-strong: #d6ccc2;
+
+  /*
+   * オレンジは白地に対して 4:1 前後までしか出ず、文字色には使えない（NFR-7）。
+   * このため塗りと文字で色を分ける。
+   *   --accent      塗り・枠線・アイコン。この上の文字は --accent-ink（4.9:1）
+   *   --accent-text 白地に置くオレンジの文字（5.5:1）
+   */
+  --accent: #e2600f;
+  --accent-text: #b4460a;
+  --accent-ink: #1c1917;
+  --accent-soft: #fdf0e4;
+
+  /*
+   * 「不足」の判定色。以前は --accent を流用していたが、アクセントが
+   * オレンジになると「過多」の赤と隣り合う色相になり見分けがつかない。
+   * 判定の色はブランド色から切り離す。
+   */
+  --blue: #1d68c7;
+  --blue-soft: #e8f0fb;
+
+  --red: #b3261e;
+  --red-soft: #fbeae8;
+  --yellow: #96650b;
+  --yellow-soft: #fbf1dd;
+  --green: #15803d;
+  --green-soft: #e6f2ea;
 
   --safe-t: env(safe-area-inset-top, 0px);
   --safe-b: env(safe-area-inset-bottom, 0px);
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -193,7 +211,7 @@ main {
   padding-top: 2px;
   font-size: 11px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
   font-variant-numeric: tabular-nums;
   min-width: 34px;
 }
@@ -253,7 +271,7 @@ main {
 }
 .chip.phase {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
   border-color: var(--accent);
 }
 .chip.eq {
@@ -360,7 +378,7 @@ main {
   line-height: 1.6 !important;
 }
 .refs a {
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: none;
   -webkit-user-select: text;
   user-select: text;
@@ -418,7 +436,7 @@ main {
 }
 .bottom-nav button.on {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
 }
 /* アイコンは選択中だけ少し太くして、色以外でも選択が分かるようにする（NFR-7） */
 .tab-icon {
@@ -499,7 +517,7 @@ main {
 .back {
   padding: 6px 2px 8px;
   font-size: 13px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .log-btn {
@@ -848,7 +866,7 @@ main {
   font-variant-numeric: tabular-nums;
 }
 .today-sets .n {
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 700;
   font-size: 11.5px;
 }
@@ -889,7 +907,7 @@ main {
   margin: 0 0 10px;
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .set-edit .inputs {
   margin-bottom: 10px;
@@ -983,7 +1001,7 @@ main {
 .sheet-head button {
   padding: 8px 12px;
   font-size: 14px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .pick-list {
   display: flex;
@@ -1008,7 +1026,7 @@ main {
   min-width: 34px;
   font-size: 11px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .pick-name {
   grid-area: name;
@@ -1200,7 +1218,7 @@ main {
 .today-label {
   font-size: 12px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
   padding: 1px 8px;
   border: 1px solid var(--accent);
   border-radius: 10px;
@@ -1331,7 +1349,7 @@ main {
   justify-content: center;
   border-radius: 50%;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--accent-text);
   font-size: 11px;
   font-weight: 700;
 }
@@ -1378,7 +1396,7 @@ main {
 .rt-code {
   font-size: 10.5px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .rt-ex {
   font-size: 12.5px;
@@ -1560,7 +1578,7 @@ main {
 .hconfirm button.danger {
   background: var(--red);
   border-color: var(--red);
-  color: #1a0f0e;
+  color: #fff;
 }
 
 /* ---------- 体重と写真（FR-B5 / FR-B6） ---------- */
@@ -1781,7 +1799,8 @@ main {
   top: 0;
   bottom: 0;
   background: var(--line-strong);
-  opacity: 0.55;
+  /* 白地では溝との明度差が小さいので、暗い地のときより濃く出す */
+  opacity: 0.9;
 }
 .vol-fill {
   position: absolute;
@@ -1799,8 +1818,8 @@ main {
   font-size: 10.5px;
   text-align: right;
 }
-.st-low .vol-fill { background: var(--accent); }
-.st-low .vol-status { color: var(--accent); }
+.st-low .vol-fill { background: var(--blue); }
+.st-low .vol-status { color: var(--blue); }
 .st-ok .vol-fill { background: var(--green); }
 .st-ok .vol-status { color: var(--green); }
 .st-high .vol-fill { background: var(--red); }
