@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { exportAll, getSetting, setSetting } from "../db";
 import { EXPERIENCE_LABEL, type Experience } from "../lib/progression";
 import { Stepper } from "../components/Stepper";
+import { SHORTCUT_NAME_EXAMPLE, SHORTCUT_NAME_KEY, runShortcut } from "../lib/shortcuts";
 
 /** ホーム画面に追加済みか（NFR-9） */
 function isStandalone(): boolean {
@@ -14,15 +15,18 @@ export function Settings() {
   const [experience, setExperience] = useState<Experience>("beginner");
   const [loaded, setLoaded] = useState(false);
   const [exported, setExported] = useState<string | null>(null);
+  const [shortcutName, setShortcutName] = useState("");
 
   useEffect(() => {
     (async () => {
-      const [bw, exp] = await Promise.all([
+      const [bw, exp, sc] = await Promise.all([
         getSetting<number>("bodyWeightKg"),
         getSetting<Experience>("experience"),
+        getSetting<string>(SHORTCUT_NAME_KEY),
       ]);
       if (bw) setBodyWeight(bw);
       if (exp) setExperience(exp);
+      if (sc) setShortcutName(sc);
       setLoaded(true);
     })();
   }, []);
@@ -36,6 +40,11 @@ export function Settings() {
     if (!loaded) return;
     void setSetting("experience", experience);
   }, [experience, loaded]);
+
+  useEffect(() => {
+    if (!loaded) return;
+    void setSetting(SHORTCUT_NAME_KEY, shortcutName.trim());
+  }, [shortcutName, loaded]);
 
   const standalone = isStandalone();
 
@@ -72,6 +81,51 @@ export function Settings() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="block">
+        <h2>レストタイマー</h2>
+        <p className="hint">
+          アプリ内のタイマーは、画面を消すか他のアプリに切り替えると音が鳴りません。
+          iOS がバックグラウンドの処理を止めるためです。
+          端末標準のタイマーに渡しておけば、ポケットに入れていても鳴ります。
+        </p>
+        <ol className="howto">
+          <li>ショートカットAppで新規ショートカットを作る</li>
+          <li>アクション「タイマーを開始」を追加する</li>
+          <li>時間の欄に［ショートカットの入力］を入れ、単位を「秒」にする</li>
+          <li>
+            名前を付ける（例:「{SHORTCUT_NAME_EXAMPLE}」）。ここに同じ名前を入れる
+          </li>
+        </ol>
+        <label className="field">
+          <span className="stepper-label">ショートカット名</span>
+          <input
+            type="text"
+            value={shortcutName}
+            placeholder={`${SHORTCUT_NAME_EXAMPLE}（空欄なら使わない）`}
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            onChange={(e) => setShortcutName(e.target.value)}
+          />
+        </label>
+        {shortcutName.trim() && (
+          <>
+            <button
+              type="button"
+              className="sub-btn"
+              onClick={() => runShortcut(shortcutName, 120)}
+            >
+              2分で試す
+            </button>
+            <p className="hint">
+              名前が違うとショートカットApp側がエラーを出します。
+              うまくいくと記録画面のレストバーに「iOSタイマー」が出ます。
+              戻るときは画面左上の「◀ 筋トレ記録」を押してください。
+            </p>
+          </>
+        )}
       </section>
 
       <section className="block">
