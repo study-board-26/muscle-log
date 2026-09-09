@@ -1525,6 +1525,63 @@ main {
   padding: 0 12px 14px;
   border-top: 1px solid var(--line);
 }
+/* その日に鍛えた筋群（FR-C7）。棒はその日の最大を100%とした相対値 */
+.dgroups {
+  padding: 12px 0 2px;
+}
+.dgroups h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 9px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.dgroups h3 small {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--ink-3);
+}
+.dgroups ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dgroups li {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+}
+.dg-name {
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dg-track {
+  height: 9px;
+  background: var(--surface-2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dg-track i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 5px;
+}
+.dg-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
 .hsession + .hsession {
   margin-top: 14px;
   padding-top: 12px;
@@ -1543,9 +1600,12 @@ main {
 .hbody .today-sets li {
   border-radius: 8px;
   align-items: start;
+  /* ここの1列目はセット番号ではなく種目コード（CH-1 等）。22pxだと折り返す */
+  grid-template-columns: 40px minmax(0, 1fr) auto 34px;
 }
 .hbody .today-sets .n {
   padding-top: 2px;
+  white-space: nowrap;
 }
 .hbody .today-sets .d {
   line-height: 1.5;

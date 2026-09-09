@@ -107,6 +107,76 @@ export const STATUS_LABEL: Record<VolumeStatus, string> = {
 };
 
 /**
+ * セット群を筋群ごとに積む（ALG-2）。週間集計と1日の内訳で同じ数え方を使う。
+ *
+ * 1セットが1つの筋群に与える寄与は最大1.0までとする。
+ * 例えばベンチプレスは上腕三頭筋の外側頭・内側頭を協働筋に持つが、
+ * 合計すると 0.5 + 0.5 = 1.0 となり、協働なのに主働と同じ量が入ってしまう。
+ */
+function totalsByGroup(
+  sets: SetLogRec[],
+  exById: Map<string, Exercise>,
+  muById: Map<string, Muscle>
+): Map<string, number> {
+  const totals = new Map<string, number>();
+  for (const s of sets) {
+    if (s.type !== "main") continue;
+    const ex = exById.get(s.exerciseId);
+    if (!ex) continue;
+
+    const perGroup = new Map<string, number>();
+    for (const em of ex.muscles) {
+      const mu = muById.get(em.muscleId);
+      if (!mu?.group) continue;
+      if (em.coefficient <= 0) continue;
+      perGroup.set(mu.group, Math.max(perGroup.get(mu.group) ?? 0, em.coefficient));
+    }
+    for (const [group, c] of perGroup) {
+      totals.set(group, (totals.get(group) ?? 0) + c);
+    }
+  }
+  return totals;
+}
+
+/** その日に鍛えた筋群。1回分の内訳なので、週間レンジの判定は付けない。 */
+export interface TrainedGroup {
+  group: string;
+  region: Region;
+  sets: number;
+}
+
+/**
+ * 1日ぶんのセットから、実際に鍛えた筋群だけを多い順に返す（FR-C7）。
+ *
+ * 週間集計（aggregateVolume）と違って0セットの筋群は落とす。
+ * 「その日どこを鍛えたか」を見るのが目的で、鍛えていない筋群は答えではないため。
+ * レンジ判定も付けない。1回ぶんの量を週の目安と比べても意味がない。
+ */
+export function trainedGroups(
+  sets: SetLogRec[],
+  exercises: Exercise[],
+  muscles: Muscle[]
+): TrainedGroup[] {
+  const exById = new Map(exercises.map((e) => [e.id, e]));
+  const muById = new Map(muscles.map((m) => [m.id, m]));
+  const totals = totalsByGroup(sets, exById, muById);
+
+  const regionOf = new Map<string, Region>();
+  for (const m of muscles) {
+    if (m.group && !regionOf.has(m.group)) regionOf.set(m.group, m.region);
+  }
+
+  return [...totals]
+    .filter(([, v]) => v > 0)
+    .map(([group, v]) => ({
+      group,
+      region: regionOf.get(group) ?? "chest",
+      sets: Math.round(v * 10) / 10,
+    }))
+    .sort((a, b) => b.sets - a.sets || a.group.localeCompare(b.group, "ja"));
+}
+
+/**
  * 指定した期間のセットから、筋群別のボリュームを集計する。
  *
  * 1セットが1つの筋群に与える寄与は最大1.0までとする。
@@ -125,24 +195,7 @@ export function aggregateVolume(
   const exById = new Map(exercises.map((e) => [e.id, e]));
   const muById = new Map(muscles.map((m) => [m.id, m]));
 
-  const totals = new Map<string, number>();
-
-  for (const s of sets) {
-    if (s.type !== "main") continue;
-    const ex = exById.get(s.exerciseId);
-    if (!ex) continue;
-
-    const perGroup = new Map<string, number>();
-    for (const em of ex.muscles) {
-      const mu = muById.get(em.muscleId);
-      if (!mu?.group) continue;
-      if (em.coefficient <= 0) continue;
-      perGroup.set(mu.group, Math.max(perGroup.get(mu.group) ?? 0, em.coefficient));
-    }
-    for (const [group, c] of perGroup) {
-      totals.set(group, (totals.get(group) ?? 0) + c);
-    }
-  }
+  const totals = totalsByGroup(sets, exById, muById);
 
   // 部位の並び順を保ったまま、その部位に属する筋群を列挙する
   const seen = new Set<string>();

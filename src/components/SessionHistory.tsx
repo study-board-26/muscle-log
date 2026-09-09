@@ -10,6 +10,7 @@ import {
   type SetLogRec,
 } from "../db";
 import { formatKg, setE1rm } from "../lib/e1rm";
+import { trainedGroups, type TrainedGroup } from "../lib/volume";
 import { SetEditor } from "./SetEditor";
 
 /**
@@ -52,6 +53,8 @@ interface DayGroup {
   totalSets: number;
   /** その日にやった種目と、そのセット数 */
   exercises: { id: string; code: string; name: string; sets: number }[];
+  /** その日に鍛えた筋群と、按分後のセット数（多い順） */
+  groups: TrainedGroup[];
 }
 
 export function SessionHistory({ master }: { master: Master }) {
@@ -78,7 +81,7 @@ export function SessionHistory({ master }: { master: Master }) {
 
       let g = map.get(key);
       if (!g) {
-        g = { key, date: session.startedAt, entries: [], totalSets: 0, exercises: [] };
+        g = { key, date: session.startedAt, entries: [], totalSets: 0, exercises: [], groups: [] };
         map.set(key, g);
       }
       g.entries.push({ session, sets });
@@ -105,6 +108,14 @@ export function SessionHistory({ master }: { master: Master }) {
         };
       });
       g.entries.sort((a, b) => b.session.startedAt - a.session.startedAt);
+
+      // その日どこを鍛えたかは、種目名からは読み取りにくい。
+      // 週間集計と同じ按分（ALG-2）で筋群に落として見せる。
+      g.groups = trainedGroups(
+        g.entries.flatMap((e) => e.sets),
+        master.exercises,
+        master.muscles
+      );
     }
 
     setDays([...map.values()].sort((a, b) => b.date - a.date));
@@ -167,6 +178,27 @@ export function SessionHistory({ master }: { master: Master }) {
 
               {isOpen && (
                 <div className="hbody">
+                  {/* 開いたら最初に「どこを鍛えたか」を出す。種目名の並びからは読み取れないため */}
+                  {g.groups.length > 0 && (
+                    <section className="dgroups">
+                      <h3>
+                        鍛えた部位
+                        <small>主働1.0・協働0.5で換算（ALG-2）</small>
+                      </h3>
+                      <ul>
+                        {g.groups.map((gr) => (
+                          <li key={gr.group}>
+                            <span className="dg-name">{gr.group}</span>
+                            <span className="dg-track">
+                              <i style={{ width: `${(gr.sets / g.groups[0].sets) * 100}%` }} />
+                            </span>
+                            <span className="dg-num">{gr.sets}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+
                   {g.entries.map(({ session, sets }) => (
                     <div key={session.id} className="hsession">
                       {g.entries.length > 1 && (

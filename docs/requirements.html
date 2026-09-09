@@ -499,7 +499,7 @@
     <h1>筋トレアプリ 要件定義書</h1>
     <p class="lede">フォーム解説動画で「どう効かせるか」を確認し、記録に基づいて次に扱う重量が自動で決まる。<br>この2点を軸に、筋肥大を継続的に進めるための個人向けトレーニングアプリ。</p>
     <dl class="meta">
-      <div><dt>Version</dt><dd>1.6</dd></div>
+      <div><dt>Version</dt><dd>1.7</dd></div>
       <div><dt>更新日</dt><dd>2026-09-07</dd></div>
       <div><dt>実行環境</dt><dd>iPhone / PWA</dd></div>
       <div><dt>種目数</dt><dd>44 ＋ 自作分</dd></div>
@@ -739,6 +739,7 @@
               <tr><td class="id">FR-C4</td><td class="name">ボリューム過不足の判定</td><td>経験レベル別の推奨レンジと比較し、不足・適正・過多を判定して一覧表示する（<code>ALG-3</code>）。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-C5</td><td class="name">体重推移と写真タイムライン</td><td>体重の推移グラフ（生値＋7日移動平均）と、写真のタイムラインを同一画面に並べ、任意時点の比較を可能にする。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-C6</td><td class="name">左右差・弱点の検出</td><td>片側種目（ダンベル・片脚種目）の左右の記録差、および部位間のe1RM伸長率の差から、弱点部位を抽出して提示する。</td><td class="pri"><span class="pill p2">P2</span></td><td class="ct"><span class="stt st-todo">未</span></td></tr>
+              <tr><td class="id">FR-C7</td><td class="name">その日に鍛えた部位</td><td>記録一覧で日付を開いたとき、その日に鍛えた筋群を多い順に棒で示す。按分は週間集計と同じ <code>ALG-2</code>（主働1.0・協働0.5、1筋群への寄与は最大1.0）。種目名の並びからは「結局どこを鍛えたのか」が読み取れないため——ベンチプレスが三角筋前部と上腕三頭筋にも入ることは、種目名を見ても分からない。<b>0セットの筋群は出さず、レンジ判定も付けない</b>。1回ぶんの量を週の目安と比べても意味がないため、判定は週単位の <code>FR-C4</code> の役割に留める。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1173,13 +1174,20 @@ stabilizer → 0.0 セット（集計対象外）
                 端末のデータが飛んだとき種目の定義まで失うと、書き出した記録を読み解けなくなるため。<br>
                 <strong>付随：</strong><code>Exercise.video</code> を null 許容にした（自作の種目は動画を持たないことがある）。その場合も検索の導線だけは出す。
               </td></tr>
+              <tr><td class="name">1.7</td><td class="num">2026-09-09</td><td>
+                <strong>新規要件：</strong><code>FR-C7</code>（その日に鍛えた部位）。記録一覧で日付を開くと、その日に鍛えた筋群が多い順に棒で出る。
+                種目名の並びからは「結局どこを鍛えたのか」が読み取れないため——ベンチプレスが三角筋前部と上腕三頭筋にも入ることは、種目名を見ても分からない。<br>
+                <strong>週間集計と同じ按分を使う：</strong><code>ALG-2</code> の按分処理を <code>aggregateVolume</code> から切り出し、週単位の集計と1日の内訳で共有した。数え方が2通りに分かれると、画面ごとに違う数字が出るため。<br>
+                <strong>判定は付けない：</strong>0セットの筋群は表示せず、不足／適正／過多も出さない。1回ぶんの量を週の目安と比べても意味がなく、判定は <code>FR-C4</code>（週単位）の役割。<br>
+                <strong>不具合修正：</strong>記録一覧を開いたときのセット行で、種目コード（CH-1 等）が折り返していた。1列目の幅がセット番号用の22pxのままだったため。
+              </td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
       <footer>
-        <p>本書は実装に追従した要件定義（v1.6）。付属文書に「種目選定書」および <code>public/data/</code> 配下の種目マスタがある。記録から重量提案・ボリューム分析までのループは実装済みで、残るのは <code>FR-C3</code>（筋群ヒートマップ）ほか優先度の低い要件。</p>
+        <p>本書は実装に追従した要件定義（v1.7）。付属文書に「種目選定書」および <code>public/data/</code> 配下の種目マスタがある。記録から重量提案・ボリューム分析までのループは実装済みで、残るのは <code>FR-C3</code>（筋群ヒートマップ）ほか優先度の低い要件。</p>
       </footer>
 
     </main>
