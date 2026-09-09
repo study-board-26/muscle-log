@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Region } from "../data/types";
 import { REGIONS, type Master } from "../data/master";
+import { isCustom } from "../lib/customExercise";
 
 export function ExercisePicker({
   master,
@@ -44,7 +45,7 @@ export function ExercisePicker({
             <span className="pick-meta">
               {ex.repRange[0]}〜{ex.repRange[1]}
               {ex.unit === "weight_seconds" ? "秒" : "回"}
-              {ex.phase === 1 && <span className="chip phase">P1</span>}
+              {!isCustom(ex) && ex.phase === 1 && <span className="chip phase">P1</span>}
             </span>
           </button>
         ))}

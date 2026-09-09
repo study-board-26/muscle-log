@@ -26,8 +26,13 @@ export type MuscleRole = "prime" | "secondary" | "stabilizer";
  * meta:         メタ分析・システマティックレビュー。
  * emg:          急性の筋電図研究。肥大の予測因子としては未検証（ref 1）。
  * principle:    確立された原則からの演繹。直接の比較研究は未確認。
+ * custom:       利用者が自分で追加した種目。根拠は確認していない。
+ *
+ * custom を別の段として置くのは、既存の4段の意味を壊さないため。
+ * 任意に追加された種目を principle に混ぜると、「原則からの演繹」が
+ * 何も保証しないラベルになってしまう。
  */
-export type EvidenceLevel = "intervention" | "meta" | "emg" | "principle";
+export type EvidenceLevel = "intervention" | "meta" | "emg" | "principle" | "custom";
 
 /** 記録単位。FA-4 のような等尺性種目は秒数で記録する（FR-B2 の拡張）。 */
 export type LogUnit = "weight_reps" | "weight_seconds";
@@ -144,8 +149,11 @@ export interface Exercise {
    * 種目選定書が説明しているのは curated の集合のみ。
    */
   curated: boolean;
-  /** フォーム解説動画。FR-A2 の代替として、実際の動画で動作を示す。 */
-  video: ExerciseVideo;
+  /**
+   * フォーム解説動画。FR-A2 の代替として、実際の動画で動作を示す。
+   * 収録済みの44種目は必ず持つ。利用者が追加した種目では null になりうる。
+   */
+  video: ExerciseVideo | null;
   /**
    * ALG-5 の種目係数（体重比）。初回の開始重量を当たり付けするためだけに使う。
    * 公開されている一般的なストレングス基準を丸めた目安で、

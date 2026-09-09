@@ -26,6 +26,22 @@ function webSearchUrl(query: string): string {
 export function FormVideo({ exercise }: { exercise: Exercise }) {
   const v = exercise.video;
 
+  // 自作の種目は動画が無いことがある（FR-A11）。その場合も検索の導線は出す
+  if (!v) {
+    return (
+      <section className="fv">
+        <div className="fv-links">
+          <a href={channelSearchUrl(exercise.name)} target="_blank" rel="noreferrer">
+            今古賀翔の動画を探す
+          </a>
+          <a href={webSearchUrl(exercise.name)} target="_blank" rel="noreferrer">
+            他の解説を探す
+          </a>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="fv">
       <a className="fv-main" href={v.url} target="_blank" rel="noreferrer">

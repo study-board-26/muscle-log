@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { loadMaster, type Master } from "./data/master";
 import { Exercises } from "./screens/Exercises";
 import { Analysis } from "./screens/Analysis";
@@ -52,11 +52,14 @@ export default function App() {
   const [tab, setTab] = useState<Tab>("workout");
   const standalone = useStandalone();
 
-  useEffect(() => {
+  // 自作の種目を足すとマスタの中身が変わるので、読み直せるようにしておく（FR-A11）
+  const reloadMaster = useCallback(() => {
     loadMaster()
       .then(setMaster)
       .catch((e: Error) => setError(e.message));
   }, []);
+
+  useEffect(reloadMaster, [reloadMaster]);
 
   if (error) {
     return (
@@ -87,7 +90,7 @@ export default function App() {
       <div className="app-body">
         {!standalone && <InstallNotice />}
         {tab === "workout" && <Workout master={master} />}
-        {tab === "exercises" && <Exercises master={master} />}
+        {tab === "exercises" && <Exercises master={master} onMasterChanged={reloadMaster} />}
         {tab === "progress" && <Analysis master={master} />}
         {tab === "body" && <Body />}
         {tab === "settings" && <Settings />}

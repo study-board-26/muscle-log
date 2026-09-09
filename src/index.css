@@ -269,6 +269,12 @@ main {
   color: var(--ink-3);
   border-color: var(--line-strong);
 }
+/* 自作の種目。既存の4段と区別がつくよう、根拠の色を持たせない */
+.ev-custom {
+  background: var(--blue-soft);
+  color: var(--blue);
+  border-color: var(--blue);
+}
 .chip.phase {
   background: var(--accent-soft);
   color: var(--accent-text);
@@ -1878,6 +1884,100 @@ main {
   padding: 14px;
   margin-top: 0;
 }
+/* ---------- 自作の種目のフォーム（FR-A11） ---------- */
+.field {
+  display: block;
+  margin-bottom: 14px;
+}
+.field input,
+.form-area {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  font: inherit;
+  font-size: 15px;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.field input { min-height: 42px; }
+.form-area { line-height: 1.6; resize: vertical; }
+.field .hint { margin: 4px 0 8px; }
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.chip-row button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 0 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.chip-row button.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+/* 主働と協働は、選択済みという点では同じなので濃さで差をつける */
+.chip-row button.role-secondary {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+.chip-row button b {
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.75;
+}
+
+.mus-pick {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 11px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.mus-region {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+.mus-group .chip-row { margin-top: 4px; }
+
+.form-errors {
+  margin: 0 0 14px;
+  padding: 11px 14px 11px 30px;
+  background: var(--red-soft);
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.form-errors li + li { margin-top: 5px; }
+
+.add-ex {
+  margin-top: 12px;
+}
+
 .export {
   width: 100%;
   margin-top: 8px;

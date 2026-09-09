@@ -163,15 +163,17 @@ export function ExercisePanel({
           フォームを確認したいのは種目をやる直前で、そのときいるのはこの画面。
           種目タブへ移動して探し直さずに済むよう、ここからも開けるようにする。
         */}
-        <a
-          className="fv-mini"
-          href={exercise.video.url}
-          target="_blank"
-          rel="noreferrer"
-          title={exercise.video.title}
-        >
-          <span aria-hidden="true">▶</span> フォーム
-        </a>
+        {exercise.video && (
+          <a
+            className="fv-mini"
+            href={exercise.video.url}
+            target="_blank"
+            rel="noreferrer"
+            title={exercise.video.title}
+          >
+            <span aria-hidden="true">▶</span> フォーム
+          </a>
+        )}
       </header>
 
       {exercise.criticalNote && <p className="critical">{exercise.criticalNote}</p>}

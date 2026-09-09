@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { ExerciseForm } from "../components/ExerciseForm";
 import { FormVideo } from "../components/FormVideo";
+import { isCustom } from "../lib/customExercise";
 import type { Exercise, Region } from "../data/types";
 import {
   EQUIPMENT_LABEL,
@@ -14,11 +16,13 @@ function ExerciseCard({
   master,
   open,
   onToggle,
+  onEdit,
 }: {
   exercise: Exercise;
   master: Master;
   open: boolean;
   onToggle: () => void;
+  onEdit: () => void;
 }) {
   const primes = exercise.muscles.filter((m) => m.role === "prime");
   const repLabel =
@@ -35,7 +39,10 @@ function ExerciseCard({
           <span className={`chip ev-${exercise.evidence.level}`}>
             {EVIDENCE_LABEL[exercise.evidence.level]}
           </span>
-          {exercise.phase === 1 && <span className="chip phase">P1</span>}
+          {/* P1 は収録済み種目の開発フェーズの印。自作の種目には意味がない */}
+          {!isCustom(exercise) && exercise.phase === 1 && (
+            <span className="chip phase">P1</span>
+          )}
         </span>
         <span className="card-sub">
           {primes.map((m) => master.muscleById.get(m.muscleId)?.nameJa).join("・")}
@@ -99,33 +106,63 @@ function ExerciseCard({
             )}
           </section>
 
-          <section className="block">
-            <h3>効かせるコツ</h3>
-            <ul>
-              {exercise.cues.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ul>
-          </section>
+          {exercise.cues.length > 0 && (
+            <section className="block">
+              <h3>効かせるコツ</h3>
+              <ul>
+                {exercise.cues.map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            </section>
+          )}
 
-          <section className="block">
-            <h3>よくある失敗</h3>
-            <ul>
-              {exercise.commonErrors.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ul>
-          </section>
+          {exercise.commonErrors.length > 0 && (
+            <section className="block">
+              <h3>よくある失敗</h3>
+              <ul>
+                {exercise.commonErrors.map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {isCustom(exercise) && (
+            <button type="button" className="sub-btn" onClick={onEdit}>
+              この種目を直す
+            </button>
+          )}
         </div>
       )}
     </article>
   );
 }
 
-export function Exercises({ master }: { master: Master }) {
+export function Exercises({
+  master,
+  onMasterChanged,
+}: {
+  master: Master;
+  /** 自作の種目を足す・直すと一覧が変わるので、マスタを読み直してもらう */
+  onMasterChanged: () => void;
+}) {
   const [region, setRegion] = useState<Region>("chest");
   const [openId, setOpenId] = useState<string | null>(null);
+  const [formFor, setFormFor] = useState<Exercise | null | undefined>(undefined);
   const list = master.exercises.filter((e) => e.region === region);
+
+  // undefined は閉じている状態。null は新規、Exercise は編集
+  if (formFor !== undefined) {
+    return (
+      <ExerciseForm
+        master={master}
+        editing={formFor}
+        onSaved={onMasterChanged}
+        onClose={() => setFormFor(undefined)}
+      />
+    );
+  }
 
   return (
     <main>
@@ -153,8 +190,13 @@ export function Exercises({ master }: { master: Master }) {
             master={master}
             open={openId === ex.id}
             onToggle={() => setOpenId(openId === ex.id ? null : ex.id)}
+            onEdit={() => setFormFor(ex)}
           />
         ))}
+
+        <button type="button" className="sub-btn add-ex" onClick={() => setFormFor(null)}>
+          種目を追加する
+        </button>
       </div>
     </main>
   );

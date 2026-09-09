@@ -499,10 +499,10 @@
     <h1>筋トレアプリ 要件定義書</h1>
     <p class="lede">フォーム解説動画で「どう効かせるか」を確認し、記録に基づいて次に扱う重量が自動で決まる。<br>この2点を軸に、筋肥大を継続的に進めるための個人向けトレーニングアプリ。</p>
     <dl class="meta">
-      <div><dt>Version</dt><dd>1.5</dd></div>
+      <div><dt>Version</dt><dd>1.6</dd></div>
       <div><dt>更新日</dt><dd>2026-09-07</dd></div>
       <div><dt>実行環境</dt><dd>iPhone / PWA</dd></div>
-      <div><dt>種目数</dt><dd>44（全種目に解説動画）</dd></div>
+      <div><dt>種目数</dt><dd>44 ＋ 自作分</dd></div>
       <div><dt>想定ユーザー</dt><dd>単独利用（個人）</dd></div>
     </dl>
   </header>
@@ -703,6 +703,7 @@
               <tr><td class="id">FR-A8</td><td class="name">テクニック提示</td><td>種目ごとに、停滞時に使える手法（テンポ調整、ストレッチ種目としての可動域重視、レストポーズ、パーシャル）を解説付きで提示する。</td><td class="pri"><span class="pill p2">P2</span></td><td class="ct"><span class="stt st-todo">未</span></td></tr>
               <tr><td class="id">FR-A9</td><td class="name">根拠の強さの表示</td><td>種目ごとに根拠の強さ（介入研究／メタ分析／EMG／原則）を表示する。急性のEMG振幅は筋肥大の予測因子として妥当性が検証されていないため、EMGのみを根拠とする種目を介入研究と同列に見せない。出典リンクもあわせて表示する。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
               <tr><td class="id">FR-A10</td><td class="name">姿勢の警告表示</td><td>姿勢を誤ると効果が大きく落ちる種目（シーテッド・レッグカール、スタンディング・カーフレイズ 等）に警告を表示し、種目名だけでは誤選択を防げないため、記録画面でも同じ警告を出す。介入研究で2〜15倍の差が出ている項目であるため。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
+              <tr><td class="id">FR-A11</td><td class="name">種目の自作</td><td>収録済みの44種目に無い種目を、アプリ上で追加・編集・削除できる。入力を求めるのはアルゴリズムが動くのに必要な項目に限る（使う筋と役割＝<code>ALG-2</code>、目標レップ帯と増量幅＝<code>ALG-3</code>、多関節か＝<code>ALG-4</code>／<code>ALG-7</code>）。コツと解説動画は任意。<b>根拠は <code>custom</code> という独立した段に置き、既存の4段には混ぜない</b>——任意に追加された種目を「原則」に含めると、そのラベルが何も保証しなくなるため。<b>記録がぶら下がっている種目は削除できない</b>（<code>FR-B8</code> で種目の付け替えを許していないのと同じ理由）。自作の種目は端末内に保存し、書き出し（<code>FR-F2</code>）にも含める。</td><td class="pri"><span class="pill p1">P1</span></td><td class="ct"><span class="stt st-done">済</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -824,6 +825,7 @@
               <tr><td class="name">BodyWeight</td><td>id（YYYY-MM-DD）, date, weight</td><td>1日1件。同じ日は上書き。ALG-5 の初回重量推定にも使う</td></tr>
               <tr><td class="name">Photo</td><td>id, date, pose（front/back/side）, blob, width, height</td><td>画像は Blob のまま端末内に保持。長辺1280pxのJPEGに縮小して保存する</td></tr>
               <tr><td class="name">ProgressionState</td><td>exerciseId, currentWeight, currentRepTarget, consecutiveFailures, lastDeloadAt</td><td>重量提案とデロード判定の状態保持</td></tr><tr><td class="name">MuscleGroup</td><td>name, tier（primary/supporting）, note</td><td>ボリューム判定の単位と区分。<code>data/muscleGroups.json</code>（17件）</td></tr>
+              <tr><td class="name">CustomExercise</td><td>Exercise と同じ形</td><td>利用者が追加した種目（<code>FR-A11</code>）。端末内の <code>customExercises</code> に保存し、起動時に収録済みの種目と混ぜて1つの一覧にする。コードは <code>MY-1</code> から振る</td></tr>
               <tr><td class="name">Reference</td><td>id, citation, url, kind, year</td><td>根拠の出典（<code>FR-A9</code>）。実データは <code>data/references.json</code>（21件）</td></tr>
             </tbody>
           </table>
@@ -1159,13 +1161,25 @@ stabilizer → 0.0 セット（集計対象外）
                 「時計」App を直接起動する公開 URL スキームは存在せず、Web Push も「N秒後に鳴らす」の予約手段が iOS に無くプッシュサーバーが要るため、いずれも代替にならない。
                 <code>FR-B4</code> には制約を明記するにとどめる。
               </td></tr>
+              <tr><td class="name">1.6</td><td class="num">2026-09-09</td><td>
+                <strong>新規要件：</strong><code>FR-A11</code>（種目の自作）。収録済みの44種目に無い種目を、アプリ上で追加・編集・削除できるようにした。<br>
+                <strong>入力項目を絞った理由：</strong>収録済みの種目は根拠を確認したうえで全項目を埋めてあるが、同じ量の入力を利用者に求めるのは現実的でない。
+                アルゴリズムが動くのに必要な項目（使う筋と役割・目標レップ帯・増量幅・多関節か）だけを必須にし、コツと解説動画は任意にした。<br>
+                <strong>根拠の段を1つ増やした：</strong><code>EvidenceLevel</code> に <code>custom</code> を追加。
+                任意に追加された種目を既存の <code>principle</code>（原則からの演繹）に混ぜると、そのラベルが何も保証しないものになるため、独立した段として扱う。<br>
+                <strong>削除の制限：</strong>記録がぶら下がっている種目は削除できない。消すと e1RM の推移と週間ボリュームが、種目名を引けない記録を抱えることになる。
+                <code>FR-B8</code> で種目の付け替えを許していないのと同じ理由。<br>
+                <strong>データ：</strong>IndexedDB を v4 に上げ <code>customExercises</code> を追加。書き出し（<code>FR-F2</code>）にも含める——
+                端末のデータが飛んだとき種目の定義まで失うと、書き出した記録を読み解けなくなるため。<br>
+                <strong>付随：</strong><code>Exercise.video</code> を null 許容にした（自作の種目は動画を持たないことがある）。その場合も検索の導線だけは出す。
+              </td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
       <footer>
-        <p>本書は実装に追従した要件定義（v1.5）。付属文書に「種目選定書」および <code>public/data/</code> 配下の種目マスタがある。記録から重量提案・ボリューム分析までのループは実装済みで、残るのは <code>FR-C3</code>（筋群ヒートマップ）ほか優先度の低い要件。</p>
+        <p>本書は実装に追従した要件定義（v1.6）。付属文書に「種目選定書」および <code>public/data/</code> 配下の種目マスタがある。記録から重量提案・ボリューム分析までのループは実装済みで、残るのは <code>FR-C3</code>（筋群ヒートマップ）ほか優先度の低い要件。</p>
       </footer>
 
     </main>

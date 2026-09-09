@@ -1,3 +1,4 @@
+import { getCustomExercises } from "../db";
 import type { MuscleGroupDef } from "../lib/volume";
 import type { Exercise, Muscle, Reference, Region } from "./types";
 
@@ -28,12 +29,17 @@ async function fetchJson<T>(file: string): Promise<T> {
 }
 
 export async function loadMaster(): Promise<Master> {
-  const [muscles, exercises, references, muscleGroups] = await Promise.all([
+  const [muscles, bundled, references, muscleGroups, custom] = await Promise.all([
     fetchJson<Muscle[]>("muscles.json"),
     fetchJson<Exercise[]>("exercises.json"),
     fetchJson<Reference[]>("references.json"),
     fetchJson<MuscleGroupDef[]>("muscleGroups.json"),
+    // 自作の種目は端末内にあるので、収録済みの種目と混ぜて1つの一覧にする（FR-A11）
+    getCustomExercises().catch(() => [] as Exercise[]),
   ]);
+
+  // 収録済みを先に並べる。自作は後ろに溜まるので、部位タブ内で探しやすい
+  const exercises = [...bundled, ...custom];
 
   return {
     muscles,
@@ -61,6 +67,7 @@ export const EVIDENCE_LABEL: Record<string, string> = {
   meta: "メタ分析",
   emg: "EMG",
   principle: "原則",
+  custom: "自分で追加",
 };
 
 export const EQUIPMENT_LABEL: Record<string, string> = {

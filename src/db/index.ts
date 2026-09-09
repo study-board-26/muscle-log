@@ -1,5 +1,5 @@
 import { openDB, type DBSchema, type IDBPDatabase } from "idb";
-import type { LogUnit } from "../data/types";
+import type { Exercise, LogUnit } from "../data/types";
 
 /**
  * 記録は端末内の IndexedDB にのみ保存する。
@@ -128,10 +128,20 @@ interface MuscleLogDB extends DBSchema {
     key: string;
     value: RoutineRec;
   };
+  /**
+   * 利用者が自分で追加した種目（FR-A11）。
+   * 収録済みの44種目は public/data/exercises.json 側にあり、こちらには入らない。
+   * 記録は exerciseId でこの id を参照するので、消すと過去の記録が種目名を
+   * 引けなくなる。削除は記録が無いときだけ許す。
+   */
+  customExercises: {
+    key: string;
+    value: Exercise;
+  };
 }
 
 const DB_NAME = "muscle-log";
-const DB_VERSION = 3;
+const DB_VERSION = 4;
 
 let dbPromise: Promise<IDBPDatabase<MuscleLogDB>> | null = null;
 
@@ -161,6 +171,9 @@ function getDB() {
         }
         if (oldVersion < 3) {
           db.createObjectStore("routines", { keyPath: "id" });
+        }
+        if (oldVersion < 4) {
+          db.createObjectStore("customExercises", { keyPath: "id" });
         }
       },
     });
@@ -397,6 +410,33 @@ export async function deletePhoto(id: string): Promise<void> {
   await db.delete("photos", id);
 }
 
+/* ---------- 自作の種目（FR-A11） ---------- */
+
+export async function getCustomExercises(): Promise<Exercise[]> {
+  const db = await getDB();
+  return db.getAll("customExercises");
+}
+
+export async function putCustomExercise(exercise: Exercise): Promise<void> {
+  const db = await getDB();
+  await db.put("customExercises", exercise);
+}
+
+/**
+ * 記録がぶら下がっている種目は消せない。
+ * 消すと e1RM の推移も週間ボリュームも、種目名を引けない記録を抱えることになる。
+ * FR-B8 で種目の付け替えを許していないのと同じ理由。
+ */
+export async function countSetsForExercise(exerciseId: string): Promise<number> {
+  const db = await getDB();
+  return db.countFromIndex("setLogs", "exerciseId", exerciseId);
+}
+
+export async function deleteCustomExercise(exerciseId: string): Promise<void> {
+  const db = await getDB();
+  await db.delete("customExercises", exerciseId);
+}
+
 /* ---------- エクスポート（FR-F2） ---------- */
 
 /**
@@ -405,13 +445,14 @@ export async function deletePhoto(id: string): Promise<void> {
  */
 export async function exportAll(): Promise<string> {
   const db = await getDB();
-  const [sessions, setLogs, progression, settings, bodyWeights, photoCount] =
+  const [sessions, setLogs, progression, settings, bodyWeights, customExercises, photoCount] =
     await Promise.all([
       db.getAll("sessions"),
       db.getAll("setLogs"),
       db.getAll("progression"),
       db.getAll("settings"),
       db.getAll("bodyWeights"),
+      db.getAll("customExercises"),
       db.count("photos"),
     ]);
   const routine = await db.get("routines", "active");
@@ -424,6 +465,7 @@ export async function exportAll(): Promise<string> {
       progression,
       settings,
       bodyWeights,
+      customExercises,
       routine: routine ?? null,
       photos: { count: photoCount, note: "写真は端末内にのみ保存され、書き出しに含まれません" },
     },
