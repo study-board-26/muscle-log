@@ -16,6 +16,7 @@ import { RestTimer } from "../components/RestTimer";
 import { SessionHistory } from "../components/SessionHistory";
 import { RoutineSheet } from "../components/RoutineSheet";
 import { TodayMenu, todayIndex } from "../components/TodayMenu";
+import { NextTarget } from "../components/NextTarget";
 import { formatMMSS } from "../lib/rest";
 
 function elapsedLabel(from: number, now: number): string {
@@ -77,6 +78,9 @@ export function Workout({ master }: { master: Master }) {
           routine={routine}
           onOpenRoutine={() => setEditingRoutine(true)}
         />
+
+        {/* 何をやるか決めるのはこの画面なので、今日のメニューの隣に置く（FR-D5） */}
+        <NextTarget master={master} />
 
         <div className="start-box">
           <button

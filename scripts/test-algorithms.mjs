@@ -14,6 +14,7 @@ import { e1rm, e1rmSeries, setE1rm } from "../src/lib/e1rm.ts";
 import { estimateStartWeight, suggestNext } from "../src/lib/progression.ts";
 import { aggregateVolume, judge, rangeFor, weekStart } from "../src/lib/volume.ts";
 import { evaluateDeload } from "../src/lib/deload.ts";
+import { suggestNextRegions } from "../src/lib/nextTarget.ts";
 import { TEMPLATES } from "../src/data/routineTemplates.ts";
 import { DURATION, estimateMinutes } from "../src/lib/duration.ts";
 
@@ -362,6 +363,90 @@ test("ALG-4: 伸びていればRIRが下がっていても提案しない", () =
   );
   const m = new Map([["bench_press", grow("bench_press")], ["barbell_squat", grow("barbell_squat")]]);
   assert.equal(evaluateDeload(m, exercises, NOW, null).suggest, false);
+});
+
+/* ---------- ALG-9 次に鍛える部位（FR-D5） ---------- */
+
+const NT_DAY = 24 * 60 * 60 * 1000;
+const NT_NOW = Date.now();
+
+/** exerciseId を n セット、d 日前に実施した記録を作る */
+function ntSets(exerciseId, n, daysAgo) {
+  const at = NT_NOW - daysAgo * NT_DAY;
+  return Array.from({ length: n }, (_, i) => ({
+    exerciseId,
+    sessionId: `s${daysAgo}`,
+    type: "main",
+    unit: "weight_reps",
+    weight: 60,
+    reps: 8,
+    rir: 2,
+    loggedAt: at + i * 60000,
+  }));
+}
+
+const suggest = (sets) =>
+  suggestNextRegions(sets, exercises, muscles, muscleGroups, "intermediate", NT_NOW);
+
+/** 候補に入るかどうかを見るとき用。上位3件の打ち切りを外す */
+const suggestAll = (sets) =>
+  suggestNextRegions(sets, exercises, muscles, muscleGroups, "intermediate", NT_NOW, 99);
+
+test("ALG-9: 記録が無ければ提案しない", () => {
+  assert.deepEqual(suggest([]), []);
+});
+
+test("ALG-9: 提案は最大3部位", () => {
+  assert.ok(suggest(ntSets("bench_press", 3, 5)).length <= 3);
+});
+
+// 同じ筋を続けて叩くのは回復の面で不利なので、翌日には出さない
+test("ALG-9: 直近2日以内に鍛えた部位は出さない", () => {
+  const out = suggest(ntSets("bench_press", 6, 1));
+  assert.ok(!out.some((r) => r.region === "chest"), "前日に鍛えた胸が出ている");
+});
+
+test("ALG-9: 2日空けば候補に戻る", () => {
+  const out = suggestAll(ntSets("bench_press", 1, 2));
+  assert.ok(out.some((r) => r.region === "chest"), "2日空いた胸が候補に無い");
+});
+
+// 十分に積んだ部位より、触っていない部位を先に出す
+test("ALG-9: 足りている部位は、触っていない部位より後ろに来る", () => {
+  // 胸は5日前に12セット（中級レンジ 10〜20 を満たす）。他は一度も無し
+  const out = suggestAll(ntSets("bench_press", 12, 5));
+  const chest = out.findIndex((r) => r.region === "chest");
+  assert.ok(chest > 0, `満たしている胸が先頭に来ている（${out.map((r) => r.region).join(",")}）`);
+  assert.ok(out.some((r) => r.region === "abs"), "一度も鍛えていない腹筋が候補に無い");
+  assert.ok(
+    out.findIndex((r) => r.region === "abs") < chest,
+    "記録の無い腹筋が、満たしている胸より後ろにある"
+  );
+});
+
+test("ALG-9: 提案には根拠が付く", () => {
+  const out = suggest(ntSets("bench_press", 4, 5));
+  assert.ok(out.length > 0);
+  for (const r of out) {
+    assert.ok(r.reasons.length > 0, `${r.region} に根拠が無い`);
+    assert.ok(r.lead, `${r.region} に主因の筋群が無い`);
+  }
+});
+
+// 経過ミリ秒を切り捨てると、3日前の夕方の記録が「2日」になる
+test("ALG-9: 空き日数は暦日で数える", () => {
+  const evening = new Date(NT_NOW - 3 * NT_DAY);
+  evening.setHours(23, 30, 0, 0);
+  const sets = [{
+    exerciseId: "bench_press", sessionId: "s", type: "main", unit: "weight_reps",
+    weight: 60, reps: 8, rir: 2, loggedAt: evening.getTime(),
+  }];
+  const chest = suggestAll(sets).find((r) => r.region === "chest");
+  assert.ok(chest, "胸が候補に無い");
+  assert.ok(
+    chest.reasons.some((t) => t.includes("3日空いています")),
+    `暦日で数えていない: ${chest.reasons.join(" / ")}`
+  );
 });
 
 /* ---------- テンプレプログラムの配分 ---------- */
